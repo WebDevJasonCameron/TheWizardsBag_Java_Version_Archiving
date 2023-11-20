@@ -6,3 +6,9 @@ CREATE TABLE tags (
 
                              PRIMARY KEY (tag_id)
 );
+
+ALTER SEQUENCE tags_seq OWNED BY tags.tag_id;
+
+INSERT INTO tags (name)
+VALUES
+    ('TEST Name');

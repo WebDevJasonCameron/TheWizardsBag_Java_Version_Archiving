@@ -8,7 +8,8 @@ CREATE TABLE items (
                           renowned_quality varchar(255),
                           req_attunement bool,
                           is_cursed bool,
-                          price double precision,
+                          cost double precision,
+                          weight varchar(255),
                           description text,
                           source varchar(255) DEFAULT NULL,
 
@@ -17,6 +18,6 @@ CREATE TABLE items (
 
 ALTER SEQUENCE items_seq OWNED BY items.item_id;
 
-INSERT INTO items (name, ttrpg, rarity, renowned_quality, req_attunement, is_cursed, price, description, source)
+INSERT INTO items (name, ttrpg, rarity, renowned_quality, req_attunement, is_cursed, cost, weight, description, source)
 VALUES
-    ('TEST Name', 'TEST TTRPG', 'TEST RARITY', 'TEST RENOWNED QUALITY', false, false, 2.55, 'TEST DESCRIPTION', 'TEST SOURCE');
+    ('TEST Name', 'TEST TTRPG', 'TEST RARITY', 'TEST RENOWNED QUALITY', false, false, 2.55, 'TEST WEIGHT', 'TEST DESCRIPTION', 'TEST SOURCE');

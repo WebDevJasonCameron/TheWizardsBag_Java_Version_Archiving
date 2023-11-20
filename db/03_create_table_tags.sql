@@ -11,4 +11,24 @@ ALTER SEQUENCE tags_seq OWNED BY tags.tag_id;
 
 INSERT INTO tags (name)
 VALUES
-    ('TEST Name');
+    ('ammunition'),
+    ('armor'),
+    ('consumable'),
+    ('cursed'),
+    ('focus'),
+    ('held'),
+    ('magical'),
+    ('melee'),
+    ('ranged'),
+    ('ring'),
+    ('rod'),
+    ('scroll'),
+    ('shield'),
+    ('staff'),
+    ('wand'),
+    ('heavy'),
+    ('finesse'),
+    ('versatile'),
+    ('thrown'),
+    ('utility'),
+    ('warding');

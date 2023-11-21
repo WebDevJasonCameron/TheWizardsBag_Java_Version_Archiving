@@ -11,13 +11,12 @@ CREATE TABLE items (
                           cost double precision,
                           weight varchar(255),
                           description text,
-                          source varchar(255) DEFAULT NULL,
 
                           PRIMARY KEY (item_id)
 );
 
 ALTER SEQUENCE items_seq OWNED BY items.item_id;
 
-INSERT INTO items (name, ttrpg, rarity, renowned_quality, req_attunement, is_cursed, cost, weight, description, source)
+INSERT INTO items (name, ttrpg, rarity, renowned_quality, req_attunement, is_cursed, cost, weight, description)
 VALUES
-    ('TEST Name', 'TEST TTRPG', 'TEST RARITY', 'TEST RENOWNED QUALITY', false, false, 2.55, 'TEST WEIGHT', 'TEST DESCRIPTION', 'TEST SOURCE');
+    ('TEST Name', 'TEST TTRPG', 'TEST RARITY', 'TEST RENOWNED QUALITY', false, false, 2.55, 'TEST WEIGHT', 'TEST DESCRIPTION');

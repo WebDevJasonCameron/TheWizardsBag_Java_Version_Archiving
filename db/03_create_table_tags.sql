@@ -73,7 +73,7 @@ VALUES
 
     ('sentient'),
     ('scroll'),         --   A magical scroll containing a spell that can be cast.
-    ('shield'),         --   A protective item.
+    ('shield'),         --   A protective Item.
     ('shapechanging'),
     ('social'),
     ('subclass feature'),
@@ -91,12 +91,12 @@ VALUES
     ('versatile'),      --   Weapons that can be used one- or two-handed.
     ('vestige of divergence'),
 
-    ('utility'),        --   Indicates an item primarily used for non-combat purposes or special functions.
+    ('utility'),        --   Indicates an Item primarily used for non-combat purposes or special functions.
 
     ('wand'),           --   A magical wand with specific effects.
-    ('warding'),        --   Suggests an item that provides protection or defense against specific effects.
+    ('warding'),        --   Suggests an Item that provides protection or defense against specific effects.
     ('warm'),
-    ('wondrous item'),  --   A magical item with various effects or properties.
+    ('wondrous Item'),  --   A magical Item with various effects or properties.
     ('wristwear')
 ;
 

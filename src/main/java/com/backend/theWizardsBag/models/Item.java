@@ -1,18 +1,18 @@
 package com.backend.theWizardsBag.models;
 
-public class item {
+public class Item {
 
     // ATTs
-    private int item_id;                    //   auto
+    private int itemId;                    //   auto
     private String name;
     private String ttrpg;                   //   enum
     private String rarity;
-    private String renowned_quality;        //   enum
-    private boolean requires_attunement;
-    private boolean is_cursed;
+    private String renownedQuality;        //   enum
+    private boolean requiresAttunement;
+    private boolean isCursed;
     private double price;
     private String description;
-    private String image_url;
+    private String imageUrl;
 
     // LISTs
     /**

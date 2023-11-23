@@ -24,10 +24,7 @@ public class Item {
     private List<String> tags;
     private List<Note> notes;
     private List<Spell> attachedSpells;
-
-    /**
-     * effects
-     */
+    private List<ItemEffect> effects;
 
     // OBJs
     private Source source;

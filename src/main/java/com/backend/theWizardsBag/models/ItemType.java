@@ -1,11 +1,11 @@
 package com.backend.theWizardsBag.models;
 
-import com.sun.org.apache.bcel.internal.generic.PUSH;
 import com.sun.tools.javac.util.Pair;
 
 public class ItemType {
 
     // ATTs
+    private int typeId;
     private String type;
     private String subType;
     private Pair<String, String> itemType;
@@ -20,6 +20,7 @@ public class ItemType {
     }
 
     // GETs
+    public int getItemTypeID(){return typeId; }
     public String getType() {
         return type;
     }
@@ -47,11 +48,13 @@ public class ItemType {
     @Override
     public String toString() {
         return "ItemType{" +
-                "type='" + type + '\'' +
+                "typeId=" + typeId +
+                ", type='" + type + '\'' +
                 ", subType='" + subType + '\'' +
                 ", itemType=" + itemType +
                 '}';
     }
+
 
     // METHs
 

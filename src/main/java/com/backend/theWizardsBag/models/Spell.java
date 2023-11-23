@@ -1,7 +1,6 @@
 package com.backend.theWizardsBag.models;
 
 import com.backend.theWizardsBag.constants.enums.*;
-
 import java.util.List;
 
 public class Spell {
@@ -9,15 +8,19 @@ public class Spell {
     // ATTs
     private int spellId;
     private SpellLevels level;
-    private CastingTIme castingTime;             // enum
+    private SpellCastingTimes castingTime;
     private String range_area;
-    private String components;
+    private boolean componentsVisual;
+    private boolean componentsSemantic;
+    private boolean componentsMaterial;
+    private String componentsMaterials;
     private String duration;
     private boolean concentration;
     private boolean ritual;
-    private Schools school;
-    private String attackOrSave;
-    private String damageOrEffect;
+    private SpellSchools school;
+    private SpellAttackTypes attack;
+    private SpellSavesRequired saveRequired;
+    private SpellDamageTypes damage;
     private String description;
     private String imageUrl;
 
@@ -25,5 +28,7 @@ public class Spell {
     private List<SpellTags> spellTags;
     private List<RPGClasses> availableFor;
 
+    // OBJs
+    private Source source;
 
 }

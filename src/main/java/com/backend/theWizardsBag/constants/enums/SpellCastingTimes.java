@@ -1,6 +1,6 @@
 package com.backend.theWizardsBag.constants.enums;
 
-public enum CastingTIme {
+public enum SpellCastingTimes {
     ONE_ACTION("1 Action"),
     ONE_BONUS_ACTION("1 Bonus Action"),
     ONE_REACTION("1 Reaction"),
@@ -11,14 +11,14 @@ public enum CastingTIme {
     TWELVE_HOURS("12 Hours"),
     TWENTY_FOUR_HOURS("24 Hours");
 
-    private final String castingTime;
+    private final String castingTimes;
 
-    CastingTIme(String castingTime) {
-        this.castingTime = castingTime;
+    SpellCastingTimes(String castingTimes) {
+        this.castingTimes = castingTimes;
     }
 
     @Override
     public String toString() {
-        return castingTime;
+        return castingTimes;
     }
 }

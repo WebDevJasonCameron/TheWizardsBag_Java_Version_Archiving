@@ -1,6 +1,6 @@
 package com.backend.theWizardsBag.constants.enums;
 
-public enum Schools {
+public enum SpellSchools {
     ABJURATION("abjuration"),
     ALTERATION("alteration"),
     CONJURATION("conjuration"),
@@ -13,8 +13,8 @@ public enum Schools {
 
     private final String school;
 
-    Schools(String size) {
-        this.school = size;
+    SpellSchools(String school) {
+        this.school = school;
     }
 
     @Override

@@ -20,8 +20,8 @@ public class Item {
     private String imageUrl;
 
     // LISTs
-    private List<ItemType> types;           // enum
-    private List<String> tags;              // enum
+    private List<ItemType> types;
+    private List<String> tags;
     private List<Note> notes;
     private List<Spell> attachedSpells;
 

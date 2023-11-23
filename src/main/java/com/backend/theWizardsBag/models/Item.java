@@ -1,9 +1,7 @@
 package com.backend.theWizardsBag.models;
 
 import com.backend.theWizardsBag.constants.enums.Rarity;
-import com.backend.theWizardsBag.constants.enums.SpellTags;
 
-import java.lang.reflect.Type;
 import java.util.List;
 
 public class Item {
@@ -22,8 +20,8 @@ public class Item {
     private String imageUrl;
 
     // LISTs
-    private List<Type> types;
-    private List<SpellTags> tags;
+    private List<ItemType> types;           // enum
+    private List<String> tags;              // enum
     private List<Note> notes;
     private List<Spell> attachedSpells;
 

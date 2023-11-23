@@ -51,9 +51,7 @@ public class User {
         this.avatarImageUrl = avatarImageUrl;
     }
 
-    // METHs
-
-
+    // OVRs
     @Override
     public String toString() {
         return "User{" +
@@ -64,4 +62,6 @@ public class User {
                 ", avatarImageUrl='" + avatarImageUrl + '\'' +
                 '}';
     }
+
+    // METs
 }

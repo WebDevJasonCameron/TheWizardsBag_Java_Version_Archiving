@@ -9,7 +9,7 @@ public class Spell {
     private int spellId;
     private SpellLevels level;
     private SpellCastingTimes castingTime;
-    private String range_area;
+    private SpellRanges range;
     private boolean componentsVisual;
     private boolean componentsSemantic;
     private boolean componentsMaterial;

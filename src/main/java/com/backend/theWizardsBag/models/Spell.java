@@ -19,7 +19,7 @@ public class Spell {
     private boolean ritual;
     private SpellSchools school;
     private SpellAttackTypes attack;
-    private SpellSavesRequired saveRequired;
+    private SpellSaveTypes saveRequired;
     private SpellDamageTypes damage;
     private String description;
     private String imageUrl;

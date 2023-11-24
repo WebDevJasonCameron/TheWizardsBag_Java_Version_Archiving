@@ -1,6 +1,6 @@
 package com.backend.theWizardsBag.constants.enums;
 
-public enum SpellSavesRequired {
+public enum SpellSaveTypes {
     STRENGTH("strength"),
     DEXTERITY("dexterity"),
     CONSTITUTION("constitution"),
@@ -8,14 +8,14 @@ public enum SpellSavesRequired {
     WISDOM("wisdom"),
     CHARISMA("charisma");
 
-    private final String savesRequired;
+    private final String saveTypes;
 
-    SpellSavesRequired(String savesRequired) {
-        this.savesRequired = savesRequired;
+    SpellSaveTypes(String saveTypes) {
+        this.saveTypes = saveTypes;
     }
 
     @Override
     public String toString() {
-        return savesRequired;
+        return saveTypes;
     }
 }

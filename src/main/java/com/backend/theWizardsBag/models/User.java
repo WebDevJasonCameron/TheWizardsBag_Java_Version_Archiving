@@ -12,7 +12,6 @@ public class User {
     // CONs
     public User() {
     }
-
     public User(String username, String email, String password, String avatarImageUrl) {
         this.username = username;
         this.email = email;
@@ -21,7 +20,7 @@ public class User {
     }
 
     // GETs
-    public int getUser_id() {
+    public int getUserId() {
         return userId;
     }
     public String getUsername() {
@@ -33,7 +32,7 @@ public class User {
     public String getPassword() {
         return password;
     }
-    public String getAvatar_image_url() {
+    public String getAvatarImageUrl() {
         return avatarImageUrl;
     }
 
@@ -47,7 +46,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    public void setAvatar_image_url(String avatarImageUrl) {
+    public void setAvatarImageUrl(String avatarImageUrl) {
         this.avatarImageUrl = avatarImageUrl;
     }
 
@@ -64,4 +63,7 @@ public class User {
     }
 
     // METs
+
+
+
 }

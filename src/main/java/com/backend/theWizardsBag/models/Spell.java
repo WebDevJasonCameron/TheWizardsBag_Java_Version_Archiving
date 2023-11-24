@@ -31,4 +31,14 @@ public class Spell {
     // OBJs
     private Source source;
 
+    // CONs
+
+    // GETs
+
+    // SETs
+
+    // OVRs
+
+    // METHs
+
 }

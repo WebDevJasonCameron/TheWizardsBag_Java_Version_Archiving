@@ -8,4 +8,15 @@ public class Note {
     private String note;
     private int authorId;       //   User Id
 
+    // CONs
+
+    // GETs
+
+    // SETs
+
+    // OVRs
+
+    // METHs
+
+
 }

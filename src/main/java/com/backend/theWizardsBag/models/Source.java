@@ -44,4 +44,8 @@ public class Source {
                 ", publishDate='" + publishDate + '\'' +
                 '}';
     }
+
+    // METHs
+
+
 }

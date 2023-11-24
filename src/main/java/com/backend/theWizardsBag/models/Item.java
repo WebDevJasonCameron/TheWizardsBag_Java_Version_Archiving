@@ -1,5 +1,6 @@
 package com.backend.theWizardsBag.models;
 
+import com.backend.theWizardsBag.constants.enums.MagicBonuses;
 import com.backend.theWizardsBag.constants.enums.Rarity;
 
 import java.util.List;
@@ -18,16 +19,27 @@ public class Item {
     private double price;
     private String description;
     private String imageUrl;
+    private MagicBonuses magicBonus;
 
     // LISTs
     private List<ItemType> types;
-    private List<String> tags;
+    private List<ItemTag> tags;
     private List<Note> notes;
     private List<Spell> attachedSpells;
     private List<ItemEffect> effects;
 
     // OBJs
     private Source source;
+
+    // CONs
+
+    // GETs
+
+    // SETs
+
+    // OVRs
+
+    // METHs
 
 
 }

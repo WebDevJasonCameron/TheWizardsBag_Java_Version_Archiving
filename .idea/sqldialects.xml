@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/db/00_start_db.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/00_cdb.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/00_ct_items.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/01_ct_types.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/02_ct_tags.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/03_ct_notes.sql" dialect="PostgreSQL" />
@@ -9,7 +10,7 @@
     <file url="file://$PROJECT_DIR$/db/05_ct_sources.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/06_ct_spells.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/07_ct_effects.sql" dialect="PostgreSQL" />
-    <file url="file://$PROJECT_DIR$/db/101_ct_items.sql" dialect="PostgreSQL" />
-    <file url="file://$PROJECT_DIR$/db/21_ct_item_assets_types.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/21_ct_item_types.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/99_dlt_all.sql" dialect="PostgreSQL" />
   </component>
 </project>

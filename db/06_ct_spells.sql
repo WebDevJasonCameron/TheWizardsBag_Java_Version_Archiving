@@ -20,9 +20,13 @@ CREATE TABLE spells (
                             image_url varchar(255),
 
                             -- conditions list
+
                             -- availability list
+
                             -- spell tags list
-                            -- source id
+
+                            -- source
+                            source_id bigint,
 
                             PRIMARY KEY (spell_id)
 );

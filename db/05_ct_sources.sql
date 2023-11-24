@@ -99,3 +99,15 @@ VALUES
     ('White Plume Mountain', 1979-01-01),
     ('Xanathars Guide to Everything', 2017-11-21)
 ;
+
+ALTER TABLE IF EXISTS spells
+    ADD FOREIGN KEY (source_id)
+    REFERENCES sources (source_id) MATCH SIMPLE
+    ON UPDATE CASCADE
+    ON DELETE NO ACTION;
+
+ALTER TABLE IF EXISTS item
+    ADD FOREIGN KEY (source_id)
+        REFERENCES sources (source_id) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE NO ACTION;

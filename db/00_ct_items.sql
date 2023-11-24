@@ -14,6 +14,8 @@ CREATE TABLE items (
                           description text,
                           image_url varchar(255),
 
+                          source_id bigint,
+
                           PRIMARY KEY (item_id)
 );
 

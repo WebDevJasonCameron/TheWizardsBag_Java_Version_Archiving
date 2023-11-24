@@ -1,7 +1,0 @@
-CREATE DATABASE the_wizards_db;
-GRANT ALL PRIVILEGES ON DATABASE the_wizards_db TO postgres;
-
-DROP TABLE IF EXISTS items;
-DROP TABLE IF EXISTS spells;
-
-DROP DATABASE IF EXISTS the_wizards_db;

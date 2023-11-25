@@ -1,5 +1,6 @@
 CREATE SEQUENCE condition_seq start 10000;
 
+
 CREATE TABLE conditions (
                         condition_id bigint NOT NULL DEFAULT nextval('condition_seq'),
                         condition varchar(255) NOT NULL UNIQUE,

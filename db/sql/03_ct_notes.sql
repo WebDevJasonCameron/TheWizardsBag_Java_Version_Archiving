@@ -13,4 +13,5 @@ ALTER SEQUENCE note_seq OWNED BY notes.note_id;
 
 INSERT INTO notes (name, date, author)
 VALUES
-    ('TEST Name', 1994-10-27, 'TEST AUTHOR');
+    ('TEST Name', '1994-10-27', 'TEST AUTHOR');
+

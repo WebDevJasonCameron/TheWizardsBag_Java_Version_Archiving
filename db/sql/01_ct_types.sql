@@ -2,8 +2,8 @@ CREATE SEQUENCE types_seq start with 10000;
 
 CREATE TABLE types (
                        type_id bigint NOT NULL DEFAULT nextval('types_seq'),
-                       type varchar(255) NOT NULL UNIQUE ,
-                       sub_type varchar(255) NOT NULL UNIQUE ,
+                       type varchar(255) NOT NULL ,
+                       sub_type varchar(255) NOT NULL ,
 
                        PRIMARY KEY (type_id)
 );

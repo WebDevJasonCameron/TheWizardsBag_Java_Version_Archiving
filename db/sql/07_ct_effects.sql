@@ -1,16 +1,16 @@
 CREATE SEQUENCE effect_seq start with 10000;
 
-CREATE TABLE effect (
+CREATE TABLE effects (
                        effect_id bigint NOT NULL DEFAULT nextval('effect_seq'),
-                       effect varchar(255) NOT NULL UNIQUE ,
-                       sub_effect varchar(255) NOT NULL UNIQUE ,
+                       effect varchar(255) NOT NULL,
+                       sub_effect varchar(255) NOT NULL,
 
                        PRIMARY KEY (effect_id)
 );
 
-ALTER SEQUENCE effect_seq OWNED BY effect.effect_id;
+ALTER SEQUENCE effect_seq OWNED BY effects.effect_id;
 
-INSERT INTO effect (effect, sub_effect)
+INSERT INTO effects (effect, sub_effect)
 VALUES
     ('Advantage', ''),                              --   Advantage
     ('Advantage', 'Ability Checks'),
@@ -1376,6 +1376,5 @@ VALUES
     ('Weapon Property', 'Reach'),
     ('Weapon Property', 'Thrown'),
     ('Weapon Property', 'Two-Handed'),
-    ('Weapon Property', 'Versatile'),
-    ('Weapon Property', '')
+    ('Weapon Property', 'Versatile')
 ;

@@ -11,6 +11,12 @@
     <file url="file://$PROJECT_DIR$/db/sql/06_ct_spells.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/07_ct_effects.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/21_ct_item_types.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/sql/22_ct_item_tags.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/sql/23_ct_item_notes.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/sql/24_ct_item_conditions.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/sql/25_ct_item_sources.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/sql/26_ct_item_spells.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/sql/27_ct_item_effects.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/99_dlt_all.sql" dialect="PostgreSQL" />
   </component>
 </project>

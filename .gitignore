@@ -36,3 +36,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Bash Files... cause you just don't need those!###
+*.sh

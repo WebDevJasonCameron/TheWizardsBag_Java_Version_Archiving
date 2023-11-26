@@ -2,15 +2,15 @@ package com.backend.theWizardsBag.constants.enums;
 
 public enum SpellLevels {
     ZERO("cantrip"),
-    ONE("1st"),
-    TWO("2nd"),
-    THREE("3rd"),
-    FOUR("4th"),
-    FIVE("5th"),
-    SIX("6th"),
-    SEVEN("7th"),
-    EIGHT("8th"),
-    NINE("9th");
+    ONE("1"),
+    TWO("2"),
+    THREE("3"),
+    FOUR("4"),
+    FIVE("5"),
+    SIX("6"),
+    SEVEN("7"),
+    EIGHT("8"),
+    NINE("9");
 
     private final String spellLevel;
 

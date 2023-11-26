@@ -6,6 +6,8 @@ DROP TABLE IF EXISTS item_conditions;
 DROP TABLE IF EXISTS item_sources;
 DROP TABLE IF EXISTS item_spells;
 DROP TABLE IF EXISTS item_effects;
+DROP TABLE IF EXISTS spell_conditions;
+DROP TABLE IF EXISTS spell_classes;
 
 -- Drop Main Tables Second
 DROP TABLE IF EXISTS items;
@@ -16,6 +18,7 @@ DROP TABLE IF EXISTS conditions;
 DROP TABLE IF EXISTS sources;
 DROP TABLE IF EXISTS spells;
 DROP TABLE IF EXISTS effects;
+DROP TABLE IF EXISTS rpg_classes;
 
 -- Drop DB Last
 DROP DATABASE IF EXISTS the_wizards_db;

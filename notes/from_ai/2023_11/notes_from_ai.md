@@ -1,5 +1,45 @@
 # Notes from AI
 
+## 2023 11 25 | Bash Script
+Me:
+> Hello again.  I want to say thank you for all your help.  I know things are odd within the company that helps develop your abilities.  Still, it's nice to work with you when the rest of the internet seems to be loosing focus.  With that said, I'd like to ask for your help on figuring out how to write a bash script that will run ten different postgresql files.  These file help me create a database and its tables.  Some of thes file enter records into those tables.  I've set them up so that they are in the best sequential order to build the database and its tables.  I just don't want to manually initiate each one.  Could you help in this?
+
+Gpt:
+> Hello again! I'd be happy to help you create a bash script to run your PostgreSQL files. You can use a simple loop in a bash script to execute each file in the desired order. Here's a basic example:
+
+```bash
+#!/bin/bash
+
+# Set the path to your PostgreSQL files directory
+FILES_DIR="/path/to/your/postgresql/files"
+
+# Loop through the files and execute them
+for FILE in "$FILES_DIR"/*.sql; do
+    echo "Running $FILE..."
+    psql -U your_username -d your_database -a -f "$FILE"
+done
+
+echo "Database setup complete!"
+```
+
+> Make sure to replace `/path/to/your/postgresql/files`, `your_username`, and `your_database` with the actual paths and credentials you're using.
+>
+> Save this script with a `.sh` extension, for example, `run_postgresql_files.sh`. Don't forget to make it executable with:
+
+```bash
+chmod +x run_postgresql_files.sh
+```
+
+> Then, you can execute the script by running:
+
+```bash
+./run_postgresql_files.sh
+```
+
+> This script assumes that you have the `psql` command available in your terminal, and it's in your system's `PATH`. Additionally, it assumes that your PostgreSQL server is running.
+
+> If you encounter any issues or have specific requirements, feel free to let me know!
+
 --- 
 
 ## 2023 11 19 | DnD Tags

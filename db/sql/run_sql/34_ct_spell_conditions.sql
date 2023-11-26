@@ -5,7 +5,7 @@ CREATE TABLE spell_conditions (
                             spells_spell_id bigint,
                             conditions_condition_id bigint,
                             FOREIGN KEY (spells_spell_id) REFERENCES spells(spell_id),
-                            FOREIGN KEY (conditions_condition_id) REFERENCES condionts(condition_id)
+                            FOREIGN KEY (conditions_condition_id) REFERENCES conditions(condition_id)
 );
 
 ALTER SEQUENCE spell_condition_seq OWNED BY spell_conditions.spell_condition_id;

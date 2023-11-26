@@ -23,5 +23,6 @@ VALUES
     ('barbarian'),
     ('magician'),
     ('artificer'),
-    ('bard')
+    ('bard'),
+    ('sorcerer')
 ;

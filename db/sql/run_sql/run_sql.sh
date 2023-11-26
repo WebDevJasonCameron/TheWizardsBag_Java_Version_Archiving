@@ -9,4 +9,4 @@ for FILE in "$FILES_DIR"/*.sql; do
   psql -U postgres -d the_wizards_bag -a -f "$FILE"
 done
 
-ehco "Database setup complete!"
+echo "Database setup complete!"

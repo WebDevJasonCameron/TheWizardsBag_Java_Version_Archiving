@@ -8,6 +8,7 @@
     <file url="file://$PROJECT_DIR$/db/sql/run_sql/02_ct_tags.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/run_sql/03_ct_notes.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/run_sql/04_ct_conditions.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/sql/run_sql/05_ ct_attacktypes.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/run_sql/05_ct_sources.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/run_sql/06_ct_spells.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/run_sql/07_ct_effects.sql" dialect="PostgreSQL" />

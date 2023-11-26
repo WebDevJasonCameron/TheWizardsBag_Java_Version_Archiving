@@ -1,8 +1,8 @@
 package com.backend.theWizardsBag.constants.enums;
 
 public enum SpellDamageTypes {
-    ACID("melee"),
-    BLUDGEONING("ranged"),
+    ACID("acid"),
+    BLUDGEONING("bludgeoning"),
     COLD("cold"),
     FIRE("fire"),
     FORCE("force"),

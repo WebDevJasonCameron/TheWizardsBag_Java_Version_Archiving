@@ -1,6 +1,5 @@
-package com.backend.theWizardsBag.utils.executors;
+package com.backend.theWizardsBag.utils;
 
-import java.security.PublicKey;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

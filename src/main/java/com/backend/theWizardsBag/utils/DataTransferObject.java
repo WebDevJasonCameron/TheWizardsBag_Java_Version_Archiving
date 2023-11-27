@@ -1,4 +1,4 @@
-package com.backend.theWizardsBag.utils.executors;
+package com.backend.theWizardsBag.utils;
 
 public interface DataTransferObject {
     long getId();

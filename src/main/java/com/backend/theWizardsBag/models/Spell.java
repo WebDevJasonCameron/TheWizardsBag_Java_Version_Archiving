@@ -20,13 +20,13 @@ public class Spell {
     private SpellSchools school;
     private SpellAttackTypes attack;
     private SpellSaveTypes saveRequired;
-    private SpellDamageTypes damage;
     private String description;
     private String imageUrl;
 
     // LISTs
     private List<SpellTags> spellTags;
     private List<RPGClasses> availableFor;
+    private List<SpellDamageTypes> damage;
 
     // OBJs
     private Source source;

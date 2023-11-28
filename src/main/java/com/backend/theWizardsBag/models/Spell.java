@@ -1,8 +1,6 @@
 package com.backend.theWizardsBag.models;
 
-import com.backend.theWizardsBag.constants.enums.*;
 import com.backend.theWizardsBag.utils.Objects.DataTransferObject;
-
 
 import java.util.List;
 
@@ -10,9 +8,9 @@ public class Spell implements DataTransferObject {
 
     // ATTs
     private int spellId;
-    private SpellLevels level;
-    private SpellCastingTimes castingTime;
-    private SpellRanges range;
+    private String level;
+    private String castingTime;
+    private String range;
     private boolean componentsVisual;
     private boolean componentsSemantic;
     private boolean componentsMaterial;
@@ -20,19 +18,19 @@ public class Spell implements DataTransferObject {
     private String duration;
     private boolean concentration;
     private boolean ritual;
-    private SpellSchools school;
-    private SpellAttackTypes attack;
-    private SpellSaveTypes saveRequired;
+    private String school;
+    private String attack;
+    private String saveType;
     private String description;
     private String imageUrl;
 
     // LISTs
-    private List<SpellTags> spellTags;
-    private List<RPGClasses> availableFor;
-    private List<SpellDamageTypes> damage;
+    private List<String> spellTags;
+    private List<String> availableFor;
+    private List<String> damage;
 
     // OBJs
-    private Source source;
+    private int source;
 
     // CONs
 
@@ -44,24 +42,24 @@ public class Spell implements DataTransferObject {
         this.spellId = spellId;
     }
 
-    public SpellLevels getLevel() {
+    public String getLevel() {
         return level;
     }
-    public void setLevel(SpellLevels level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 
-    public SpellCastingTimes getCastingTime() {
+    public String getCastingTime() {
         return castingTime;
     }
-    public void setCastingTime(SpellCastingTimes castingTime) {
+    public void setCastingTime(String castingTime) {
         this.castingTime = castingTime;
     }
 
-    public SpellRanges getRange() {
+    public String getRange() {
         return range;
     }
-    public void setRange(SpellRanges range) {
+    public void setRange(String range) {
         this.range = range;
     }
 
@@ -114,25 +112,25 @@ public class Spell implements DataTransferObject {
         this.ritual = ritual;
     }
 
-    public SpellSchools getSchool() {
+    public String getSchool() {
         return school;
     }
-    public void setSchool(SpellSchools school) {
+    public void setSchool(String school) {
         this.school = school;
     }
 
-    public SpellAttackTypes getAttack() {
+    public String getAttack() {
         return attack;
     }
-    public void setAttack(SpellAttackTypes attack) {
+    public void setAttack(String attack) {
         this.attack = attack;
     }
 
-    public SpellSaveTypes getSaveRequired() {
-        return saveRequired;
+    public String getSaveType() {
+        return saveType;
     }
-    public void setSaveRequired(SpellSaveTypes saveRequired) {
-        this.saveRequired = saveRequired;
+    public void setSaveType(String saveType) {
+        this.saveType = saveType;
     }
 
     public String getDescription() {
@@ -149,31 +147,31 @@ public class Spell implements DataTransferObject {
         this.imageUrl = imageUrl;
     }
 
-    public List<SpellTags> getSpellTags() {
+    public List<String> getString() {
         return spellTags;
     }
-    public void setSpellTags(List<SpellTags> spellTags) {
+    public void setString(List<String> spellTags) {
         this.spellTags = spellTags;
     }
 
-    public List<RPGClasses> getAvailableFor() {
+    public List<String> getAvailableFor() {
         return availableFor;
     }
-    public void setAvailableFor(List<RPGClasses> availableFor) {
+    public void setAvailableFor(List<String> availableFor) {
         this.availableFor = availableFor;
     }
 
-    public List<SpellDamageTypes> getDamage() {
+    public List<String> getDamage() {
         return damage;
     }
-    public void setDamage(List<SpellDamageTypes> damage) {
+    public void setDamage(List<String> damage) {
         this.damage = damage;
     }
 
-    public Source getSource() {
+    public int getSource() {
         return source;
     }
-    public void setSource(Source source) {
+    public void setSource(int source) {
         this.source = source;
     }
 

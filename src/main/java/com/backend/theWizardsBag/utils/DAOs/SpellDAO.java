@@ -14,7 +14,6 @@ import java.util.List;
 public class SpellDAO extends DataAccessObject<Spell> {
 
     // VARs
-    private static final String GET_ALL_ORD = "SELECT * FROM spells ORDER BY name" ;
 
 
     // CONs
@@ -39,10 +38,27 @@ public class SpellDAO extends DataAccessObject<Spell> {
             while (rs.next()){
                 Spell spell = new Spell();
 
-                // Fill in all the SETTERS
+                spell.setSpellId(rs.getInt("spell_id"));
+                spell.setLevel(rs.getString("level"));
+                spell.setCastingTime(rs.getString("casting_time"));
+                spell.setRange(rs.getString("range_area"));
+                spell.setComponentsVisual(rs.getBoolean("component_visual"));
+                spell.setComponentsSemantic(rs.getBoolean("component_semantic"));
+                spell.setComponentsMaterial(rs.getBoolean("component_material"));
+                spell.setComponentsMaterials(rs.getString("component_materials"));
+                spell.setDuration(rs.getString("duration"));
+                spell.setConcentration(rs.getBoolean("concentration"));
+                spell.setRitual(rs.getBoolean("ritual"));
+                spell.setSchool(rs.getString("school"));
+                spell.setSaveType(rs.getString("save_type"));
+                spell.setDescription(rs.getString("description"));
+                spell.setImageUrl(rs.getString("image_url"));
+                spell.setSource(rs.getInt("source"));
+
+                // Need to get the lists from junction tables
 
                 // Add to Spell List
-
+                spells.add(spell);
             }
 
 

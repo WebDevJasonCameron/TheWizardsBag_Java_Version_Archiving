@@ -6,7 +6,7 @@ import com.backend.theWizardsBag.utils.Managers.DatabaseConnectionManager;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class JDBCExecutor_test {
+public class SpellJDBCExecutor_test {
 
     public static void main(String[] args) {
 
@@ -19,7 +19,8 @@ public class JDBCExecutor_test {
 
         try {
             Connection connection = dcm.getConnection();
-            //  TEST READ SPELL FROM HERE
+
+
 
         } catch (SQLException e) {
             e.printStackTrace();

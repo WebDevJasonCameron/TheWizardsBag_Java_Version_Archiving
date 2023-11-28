@@ -1,7 +1,7 @@
-package com.backend.theWizardsBag.executors;
+package com.backend.theWizardsBag.utils.Executors;
 
 import com.backend.theWizardsBag.constants.keys.Keys;
-import com.backend.theWizardsBag.utils.DatabaseConnectionManager;
+import com.backend.theWizardsBag.utils.Managers.DatabaseConnectionManager;
 
 import java.sql.Connection;
 import java.sql.SQLException;

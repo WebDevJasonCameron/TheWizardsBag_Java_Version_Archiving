@@ -1,4 +1,4 @@
-package com.backend.theWizardsBag.utils;
+package com.backend.theWizardsBag.utils.Managers;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

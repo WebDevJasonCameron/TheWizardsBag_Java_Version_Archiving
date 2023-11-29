@@ -85,5 +85,7 @@ public class SpellDAO extends DataAccessObject<Spell> {
 
     }
 
+
+
     // METHs
 }

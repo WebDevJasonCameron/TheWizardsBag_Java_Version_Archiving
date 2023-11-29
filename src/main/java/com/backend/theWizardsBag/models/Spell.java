@@ -181,6 +181,32 @@ public class Spell implements DataTransferObject {
         return 0;
     }
 
+    @Override
+    public String toString() {
+        return "Spell{" +
+                "spellId=" + spellId +
+                ", level='" + level + '\'' +
+                ", castingTime='" + castingTime + '\'' +
+                ", range='" + range + '\'' +
+                ", componentsVisual=" + componentsVisual +
+                ", componentsSemantic=" + componentsSemantic +
+                ", componentsMaterial=" + componentsMaterial +
+                ", componentsMaterials='" + componentsMaterials + '\'' +
+                ", duration='" + duration + '\'' +
+                ", concentration=" + concentration +
+                ", ritual=" + ritual +
+                ", school='" + school + '\'' +
+                ", attack='" + attack + '\'' +
+                ", saveType='" + saveType + '\'' +
+                ", description='" + description + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", spellTags=" + spellTags +
+                ", availableFor=" + availableFor +
+                ", damage=" + damage +
+                ", source=" + source +
+                '}';
+    }
+
     // METHs
 
 }

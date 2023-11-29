@@ -1,6 +1,7 @@
 package com.backend.theWizardsBag.utils.Executors;
 
 import com.backend.theWizardsBag.constants.keys.Keys;
+import com.backend.theWizardsBag.utils.DAOs.SpellDAO;
 import com.backend.theWizardsBag.utils.Managers.DatabaseConnectionManager;
 
 import java.sql.Connection;
@@ -19,7 +20,9 @@ public class SpellJDBCExecutor_test {
 
         try {
             Connection connection = dcm.getConnection();
+            SpellDAO spellDAO = new SpellDAO(connection);
 
+            spellDAO.findAll().toString();
 
 
         } catch (SQLException e) {

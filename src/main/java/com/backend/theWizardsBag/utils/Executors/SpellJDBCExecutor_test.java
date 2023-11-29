@@ -1,11 +1,13 @@
 package com.backend.theWizardsBag.utils.Executors;
 
 import com.backend.theWizardsBag.constants.keys.Keys;
+import com.backend.theWizardsBag.models.Spell;
 import com.backend.theWizardsBag.utils.DAOs.SpellDAO;
 import com.backend.theWizardsBag.utils.Managers.DatabaseConnectionManager;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 public class SpellJDBCExecutor_test {
 
@@ -22,7 +24,11 @@ public class SpellJDBCExecutor_test {
             Connection connection = dcm.getConnection();
             SpellDAO spellDAO = new SpellDAO(connection);
 
-            spellDAO.findAll().toString();
+            List<Spell> spells =  spellDAO.findAll();
+
+            for (Spell spell : spells) {
+                System.out.println(spell.toString());
+            }
 
 
         } catch (SQLException e) {

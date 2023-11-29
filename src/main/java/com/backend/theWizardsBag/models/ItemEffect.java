@@ -1,6 +1,7 @@
 package com.backend.theWizardsBag.models;
 
-import com.sun.tools.javac.util.Pair;
+
+import java.util.Dictionary;
 
 public class ItemEffect {
 
@@ -8,7 +9,7 @@ public class ItemEffect {
     private int effectId;
     private String effect;
     private String subEffect;
-    private Pair<String, String> itemEffect;
+    private Dictionary<String, String> itemEffect;
 
     // CONs
     public ItemEffect() {
@@ -16,7 +17,7 @@ public class ItemEffect {
     public ItemEffect(String effect, String subEffect) {
         this.effect = effect;
         this.subEffect = subEffect;
-        this.itemEffect = new Pair<>(this.effect, this.subEffect);
+        this.itemEffect.put(this.effect, this.subEffect);
 
     }
 
@@ -30,7 +31,7 @@ public class ItemEffect {
     public String getSubEffect() {
         return subEffect;
     }
-    public Pair<String, String> getItemEffect() {
+    public Dictionary<String, String> getItemEffect() {
         return itemEffect;
     }
 
@@ -44,7 +45,7 @@ public class ItemEffect {
     public void setItemEffect(String effect, String subEffect) {
         setEffect(effect);
         setSubEffect(subEffect);
-        this.itemEffect = new Pair<>(effect, subEffect);
+        this.itemEffect.put(this.effect, this.subEffect);
     }
 
     // OVRs

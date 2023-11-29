@@ -53,7 +53,7 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 spell.setSaveType(rs.getString("save_type"));
                 spell.setDescription(rs.getString("description"));
                 spell.setImageUrl(rs.getString("image_url"));
-                spell.setSource(rs.getInt("source"));
+                spell.setSource(rs.getInt("source_id"));
 
                 // Need to get the lists from junction tables
 

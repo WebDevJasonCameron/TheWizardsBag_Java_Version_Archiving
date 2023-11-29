@@ -1,6 +1,6 @@
 package com.backend.theWizardsBag.models;
 
-import com.sun.tools.javac.util.Pair;
+import java.util.Dictionary;
 
 public class ItemType {
 
@@ -8,7 +8,7 @@ public class ItemType {
     private int typeId;
     private String type;
     private String subType;
-    private Pair<String, String> itemType;
+    private Dictionary<String, String> itemType;
 
     // CONs
     public ItemType() {
@@ -16,7 +16,7 @@ public class ItemType {
     public ItemType(String type, String subType) {
         this.type = type;
         this.subType = subType;
-        this.itemType = new Pair<>(this.type, this.subType);
+        this.itemType.put(this.type, this.subType);
     }
 
     // GETs
@@ -27,7 +27,7 @@ public class ItemType {
     public String getSubType() {
         return subType;
     }
-    public Pair<String, String> getItemType() {
+    public Dictionary<String, String> getItemType() {
         return itemType;
     }
 
@@ -41,7 +41,7 @@ public class ItemType {
     public void setItemType(String type, String subType){
         setType(type);
         setSubType(subType);
-        this.itemType = new Pair<>(type, subType);
+        this.itemType.put(type, subType);
     }
 
     // OVRs

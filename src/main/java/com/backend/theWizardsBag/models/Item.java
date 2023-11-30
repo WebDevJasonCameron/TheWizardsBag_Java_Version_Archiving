@@ -8,7 +8,7 @@ import java.util.List;
 public class Item {
 
     // ATTs
-    private int itemId;
+    private long itemId;
     private String name;
     private String ttrpg;
     private boolean magical;                //   No Null

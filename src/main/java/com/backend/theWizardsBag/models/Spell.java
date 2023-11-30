@@ -7,7 +7,7 @@ import java.util.List;
 public class Spell implements DataTransferObject {
 
     // ATTs
-    private int spellId;
+    private long spellId;
     private String level;
     private String castingTime;
     private String range;
@@ -31,15 +31,15 @@ public class Spell implements DataTransferObject {
     private List<String> damage;
 
     // OBJs
-    private int source;
+    private long source;
 
     // CONs
 
     // GETs & SETs
-    public int getSpellId() {
+    public long getSpellId() {
         return spellId;
     }
-    public void setSpellId(int spellId) {
+    public void setSpellId(long spellId) {
         this.spellId = spellId;
     }
 
@@ -169,10 +169,10 @@ public class Spell implements DataTransferObject {
         this.damage = damage;
     }
 
-    public int getSource() {
+    public long getSource() {
         return source;
     }
-    public void setSource(int source) {
+    public void setSource(long source) {
         this.source = source;
     }
 

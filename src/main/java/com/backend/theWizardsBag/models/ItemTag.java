@@ -3,7 +3,7 @@ package com.backend.theWizardsBag.models;
 public class ItemTag {
 
     // ATTs
-    private int tagId;
+    private long tagId;
     private String tag;
 
     // CONs
@@ -14,7 +14,7 @@ public class ItemTag {
     }
 
     // GETs
-    public int getTagId() {
+    public long getTagId() {
         return tagId;
     }
     public String getTag() {

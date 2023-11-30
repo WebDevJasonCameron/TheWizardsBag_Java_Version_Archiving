@@ -3,7 +3,7 @@ package com.backend.theWizardsBag.models;
 public class User {
 
     // ATTs
-    private int userId;
+    private long userId;
     private String username;
     private String email;
     private String password;
@@ -20,7 +20,7 @@ public class User {
     }
 
     // GETs
-    public int getUserId() {
+    public long getUserId() {
         return userId;
     }
     public String getUsername() {

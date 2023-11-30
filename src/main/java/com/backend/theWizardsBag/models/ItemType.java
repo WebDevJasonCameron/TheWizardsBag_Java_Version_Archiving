@@ -5,10 +5,11 @@ import java.util.Dictionary;
 public class ItemType {
 
     // ATTs
-    private int typeId;
+    private long typeId;
     private String type;
     private String subType;
     private Dictionary<String, String> itemType;
+    private Dictionary<Long, String> itemTypeObj;
 
     // CONs
     public ItemType() {
@@ -20,7 +21,7 @@ public class ItemType {
     }
 
     // GETs
-    public int getItemTypeID(){return typeId; }
+    public long getItemTypeID(){return typeId; }
     public String getType() {
         return type;
     }

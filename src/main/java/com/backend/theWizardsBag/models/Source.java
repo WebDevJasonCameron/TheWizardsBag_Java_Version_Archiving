@@ -3,21 +3,21 @@ package com.backend.theWizardsBag.models;
 public class Source {
 
     // ATTs
-    private int sourceId;
+    private long sourceId;
     private String name;
     private String publishDate;
 
     // CONs
     public Source() {
     }
-    public Source(int sourceId, String name, String publishDate) {
+    public Source(long sourceId, String name, String publishDate) {
         this.sourceId = sourceId;
         this.name = name;
         this.publishDate = publishDate;
     }
 
     // GETs
-    public int getSourceId() {
+    public long getSourceId() {
         return sourceId;
     }
     public String getName() {

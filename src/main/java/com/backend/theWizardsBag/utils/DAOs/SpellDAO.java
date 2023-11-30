@@ -3,7 +3,6 @@ package com.backend.theWizardsBag.utils.DAOs;
 import com.backend.theWizardsBag.models.Spell;
 import com.backend.theWizardsBag.utils.Objects.DataAccessObject;
 
-import java.beans.Customizer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +13,9 @@ import java.util.List;
 public class SpellDAO extends DataAccessObject<Spell> {
 
     // VARs
+    // Get spellTags by spell id -> join tag name
+    // Get availableFor by spell id -> join af name
+    // Get damage by spell id -> join damage name
 
 
     // CONs
@@ -37,6 +39,10 @@ public class SpellDAO extends DataAccessObject<Spell> {
 
             while (rs.next()){
                 Spell spell = new Spell();
+
+                List<String> spellTags = new ArrayList<>();
+                List<String> availableFor = new ArrayList<>();
+                List<String> damage = new ArrayList<>();
 
                 spell.setSpellId(rs.getInt("spell_id"));
                 spell.setLevel(rs.getString("level"));
@@ -84,7 +90,6 @@ public class SpellDAO extends DataAccessObject<Spell> {
     public void delete(long id) {
 
     }
-
 
 
     // METHs

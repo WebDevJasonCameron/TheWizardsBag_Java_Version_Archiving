@@ -22,6 +22,7 @@ public class Spell implements DataTransferObject {
     private String attack;
     private String saveType;
     private String description;
+
     private String imageUrl;
 
     // LISTs
@@ -147,10 +148,10 @@ public class Spell implements DataTransferObject {
         this.imageUrl = imageUrl;
     }
 
-    public List<String> getString() {
+    public List<String> getSpellTags() {
         return spellTags;
     }
-    public void setString(List<String> spellTags) {
+    public void setSpellTags(List<String> spellTags) {
         this.spellTags = spellTags;
     }
 
@@ -200,9 +201,11 @@ public class Spell implements DataTransferObject {
                 ", saveType='" + saveType + '\'' +
                 ", description='" + description + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
-                ", spellTags=" + spellTags +
+
+                ", spellTags=" + spellTags +                                //   Lists
                 ", availableFor=" + availableFor +
                 ", damage=" + damage +
+
                 ", source=" + source +
                 '}';
     }

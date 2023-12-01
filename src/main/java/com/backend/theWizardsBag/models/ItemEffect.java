@@ -6,27 +6,28 @@ import java.util.Dictionary;
 public class ItemEffect {
 
     // ATTs
-    private long effectId;
+    private long effectJTId;
+    private long effectId;                                  //   <R>
     private String effect;
     private String subEffect;
-    private Dictionary<String, String> itemEffect;
-    private Dictionary<Long, Dictionary> itemEffectObj;
+    private Dictionary<String, String> effectObj;           //   <R>
+    private Dictionary<Long, Dictionary> effectObjObj;      //   <R>
 
     // CONs
     public ItemEffect() {
     }
-    public ItemEffect(long effectId, String effect, String subEffect) {
+    public ItemEffect(long effectJTId, String effect, String subEffect) {
         this.effect = effect;
         this.subEffect = subEffect;
-        this.itemEffect.put(this.effect, this.subEffect);
-        this.itemEffectObj.put(effectId, itemEffect);
+        this.effectObj.put(this.effect, this.subEffect);
+        this.effectObjObj.put(effectJTId, effectObj);
 
     }
 
     // SETs & GETs
-    public void setEffectId(long effectId) {this.effectId = effectId;}
-    public long getEffectId() {
-        return effectId;
+    public void setEffectJTId(long effectJTId) {this.effectJTId = effectJTId;}
+    public long getEffectJTId() {
+        return effectJTId;
     }
 
     public void setEffect(String effect) {
@@ -43,23 +44,25 @@ public class ItemEffect {
         return subEffect;
     }
 
-    public void setItemEffect(String effect, String subEffect) {
+    //   <R>
+    public void setEffectObj(String effect, String subEffect) {
         setEffect(effect);
         setSubEffect(subEffect);
-        this.itemEffect.put(this.effect, this.subEffect);
+        this.effectObj.put(this.effect, this.subEffect);
     }
-    public Dictionary<String, String> getItemEffect() {
-        return itemEffect;
+    public Dictionary<String, String> getEffectObj() {
+        return effectObj;
     }
 
-    public void setItemEffectObj(long effectId, String  effect, String subEffect) {
+    //   <R>
+    public void setItemEffectObj(long effectJTId, String  effect, String subEffect) {
         setEffect(effect);
         setSubEffect(subEffect);
-        this.itemEffect.put(this.effect, this.subEffect);
-        this.itemEffectObj.put(effectId, itemEffect);
+        this.effectObj.put(this.effect, this.subEffect);
+        this.effectObjObj.put(effectJTId, effectObj);
     }
     public Dictionary<Long, Dictionary> getItemEffectObj() {
-        return itemEffectObj;
+        return effectObjObj;
     }
 
 
@@ -67,10 +70,10 @@ public class ItemEffect {
     @Override
     public String toString() {
         return "ItemEffect{" +
-                "effectId=" + effectId +
+                "effectJTId=" + effectJTId +
                 ", effect='" + effect + '\'' +
                 ", subEffect='" + subEffect + '\'' +
-                ", itemEffect=" + itemEffect +
+                ", effectObj=" + effectObj +
                 '}';
     }
 

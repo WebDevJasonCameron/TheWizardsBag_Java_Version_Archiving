@@ -2,7 +2,6 @@ package com.backend.theWizardsBag.models;
 
 import com.backend.theWizardsBag.utils.Objects.DataTransferObject;
 
-import java.util.Dictionary;
 import java.util.List;
 
 public class Spell implements DataTransferObject {

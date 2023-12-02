@@ -1,6 +1,8 @@
 package com.backend.theWizardsBag.models;
 
-public class User {
+import com.backend.theWizardsBag.utils.Objects.DataTransferObject;
+
+public class User implements DataTransferObject {
 
     // ATTs
     private long userId;
@@ -52,6 +54,11 @@ public class User {
 
     // OVRs
     @Override
+    public long getId() {
+        return 0;
+    }
+
+    @Override
     public String toString() {
         return "User{" +
                 "userId=" + userId +
@@ -61,6 +68,8 @@ public class User {
                 ", avatarImageUrl='" + avatarImageUrl + '\'' +
                 '}';
     }
+
+
 
     // METs
 

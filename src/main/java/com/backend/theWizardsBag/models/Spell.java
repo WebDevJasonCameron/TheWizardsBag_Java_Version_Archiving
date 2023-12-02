@@ -2,6 +2,7 @@ package com.backend.theWizardsBag.models;
 
 import com.backend.theWizardsBag.utils.Objects.DataTransferObject;
 
+import java.util.Dictionary;
 import java.util.List;
 
 public class Spell implements DataTransferObject {
@@ -26,9 +27,9 @@ public class Spell implements DataTransferObject {
     private String imageUrl;
 
     // LISTs
-    private List<String> spellTags;
-    private List<String> availableFor;
-    private List<String> damage;
+    private List<SpellTag> tagList;
+    private List<SpellAccessible> accessibleList;
+    private List<Dictionary<Long, String>> damageList;
 
     // OBJs
     private long source;
@@ -148,27 +149,29 @@ public class Spell implements DataTransferObject {
         this.imageUrl = imageUrl;
     }
 
-    public List<String> getSpellTags() {
-        return spellTags;
+    // G&S LISTs
+    public List<SpellTag> getTagList() {
+        return tagList;
     }
-    public void setSpellTags(List<String> spellTags) {
-        this.spellTags = spellTags;
-    }
-
-    public List<String> getAvailableFor() {
-        return availableFor;
-    }
-    public void setAvailableFor(List<String> availableFor) {
-        this.availableFor = availableFor;
+    public void setTagList(List<SpellTag> tagList) {
+        this.tagList = tagList;
     }
 
-    public List<String> getDamage() {
-        return damage;
+    public List<SpellAccessible> getAccessibleList() {
+        return accessibleList;
     }
-    public void setDamage(List<String> damage) {
-        this.damage = damage;
+    public void setAccessibleList(List<SpellAccessible> accessibleList) {
+        this.accessibleList = accessibleList;
     }
 
+    public List<Dictionary<Long, String>> getDamageList() {
+        return damageList;
+    }
+    public void setDamageList(List<Dictionary<Long, String>> damageList) {
+        this.damageList = damageList;
+    }
+
+    // G&S OBJs
     public long getSource() {
         return source;
     }
@@ -202,9 +205,9 @@ public class Spell implements DataTransferObject {
                 ", description='" + description + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
 
-                ", spellTags=" + spellTags +                                //   Lists
-                ", availableFor=" + availableFor +
-                ", damage=" + damage +
+                ", tagList=" + tagList +                                //   Lists
+                ", accessibleList=" + accessibleList +
+                ", damageList=" + damageList +
 
                 ", source=" + source +
                 '}';

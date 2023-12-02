@@ -15,7 +15,6 @@ CREATE TABLE spells (
                             ritual bool NOT NULL,
                             school varchar(255),
                             save_type varchar(255),
-                            damage_type varchar(255),
                             description text,
                             image_url varchar(255),
 
@@ -24,7 +23,6 @@ CREATE TABLE spells (
                             FOREIGN KEY (source_id) REFERENCES sources(source_id),
 
                             -- The following are created in Junction Tables
-                            -- conditions list
                             -- availability list
                             -- spell tags list
                             -- damage type list
@@ -35,6 +33,9 @@ CREATE TABLE spells (
 ALTER SEQUENCE spell_seq OWNED BY spells.spell_id;
 
 
-INSERT INTO spells (name, level, casting_time, range_area, Component_visual, Component_semantic, Component_material, Component_materials, duration, concentration, ritual, school, damage_type, save_type, description, image_url, source_id)
+INSERT INTO spells (name, level, casting_time, range_area, Component_visual, Component_semantic, Component_material, Component_materials, duration, concentration, ritual, school,  save_type, description, image_url, source_id)
 VALUES
-    ('Acid Splash', 'cantrip', '1 action', '60 feet', true, true, false, '', 'instantaneous', false, false, 'conjuration', '', 'DEX', 'You hurl a bubble of acid. Choose one creature within range, or choose two creatures within range that are within 5 feet of each other. A target must succeed on a Dexterity saving throw or take 1d6 acid damage. This spell''s damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6).', '', 10004);
+    ('Acid Splash', 'cantrip', '1 action', '60 feet', true, true, false, '', 'instantaneous', false, false, 'conjuration', 'DEX', 'You hurl a bubble of acid. Choose one creature within range, or choose two creatures within range that are within 5 feet of each other. A target must succeed on a Dexterity saving throw or take 1d6 acid damage. This spell''s damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6).', '', 10004),
+    ('Alarm', '1', '1 action', '30 feet', true, true, true, 'a tiny bell and a piece of fine silver wire', '8 hour', false, true, 'abjuration', 'DEX', 'You hurl a bubble of acid. Choose one creature within range, or choose two creatures within range that are within 5 feet of each other. A target must succeed on a Dexterity saving throw or take 1d6 acid damage. This spell''s damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6).', '', 10004),
+    ('Acid Splash', 'cantrip', '1 action', '60 feet', true, true, false, '', 'instantaneous', false, false, 'conjuration', 'DEX', 'You hurl a bubble of acid. Choose one creature within range, or choose two creatures within range that are within 5 feet of each other. A target must succeed on a Dexterity saving throw or take 1d6 acid damage. This spell''s damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6).', '', 10004)
+    ;

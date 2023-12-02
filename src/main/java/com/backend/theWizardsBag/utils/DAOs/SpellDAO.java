@@ -88,7 +88,6 @@ public class SpellDAO extends DataAccessObject<Spell> {
 
     @Override
     public void delete(long id) {
-
     }
 
 

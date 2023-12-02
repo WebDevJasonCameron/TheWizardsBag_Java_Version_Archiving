@@ -1,12 +1,13 @@
 package com.backend.theWizardsBag.utils.DAOs;
 
 import com.backend.theWizardsBag.models.SpellAccessible;
+import com.backend.theWizardsBag.models.SpellTag;
 import com.backend.theWizardsBag.utils.Objects.DataAccessObject;
 
 import java.sql.Connection;
 import java.util.List;
 
-public class SpellTagDAO extends DataAccessObject<SpellAccessible> {
+public class SpellTagDAO extends DataAccessObject<SpellTag> {
 
     // ATTs
 
@@ -20,25 +21,31 @@ public class SpellTagDAO extends DataAccessObject<SpellAccessible> {
 
     // OVRs
     @Override
-    public SpellAccessible findById(long id) {
+    public SpellTag findById(long id) {
         return null;
     }
+
     @Override
-    public List<SpellAccessible> findAll() {
+    public List<SpellTag> findAll() {
         return null;
     }
+
     @Override
-    public SpellAccessible update(SpellAccessible dto) {
+    public SpellTag update(SpellTag dto) {
         return null;
     }
+
     @Override
-    public SpellAccessible create(SpellAccessible dto) {
+    public SpellTag create(SpellTag dto) {
         return null;
     }
+
     @Override
     public void delete(long id) {
     }
 
+
     // METHs
+    public List<SpellAccessible> findAllWithSpellId(long id) { return null; }
 
 }

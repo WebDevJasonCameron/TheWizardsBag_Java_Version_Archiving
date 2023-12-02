@@ -5,41 +5,43 @@ import com.backend.theWizardsBag.utils.Objects.DataTransferObject;
 public class ItemEffect implements DataTransferObject {
 
     // ATTs
-    private long effectJunctionId;
-    private long effectId;
+    private long itemEffectJunctionId;
+    private long itemEffectId;
     private String effect;
     private String subEffect;
 
 
     // CONs
 
+
     // SETs & GETs
-    public void setEffectJunctionId(long effectJunctionId) {this.effectJunctionId = effectJunctionId;}
-    public long getEffectJunctionId() {
-        return effectJunctionId;
+    public long getItemEffectJunctionId() {
+        return itemEffectJunctionId;
+    }
+    public void setItemEffectJunctionId(long itemEffectJunctionId) {
+        this.itemEffectJunctionId = itemEffectJunctionId;
     }
 
-    public long getEffectId() {
-        return effectId;
+    public long getItemEffectId() {
+        return itemEffectId;
     }
-    public void setEffectId(long effectId) {
-        this.effectId = effectId;
+    public void setItemEffectId(long itemEffectId) {
+        this.itemEffectId = itemEffectId;
     }
 
-    public void setEffect(String effect) {
-        this.effect = effect;
-    }
     public String getEffect() {
         return effect;
     }
-
-    public void setSubEffect(String subEffect) {
-        this.subEffect = subEffect;
+    public void setEffect(String effect) {
+        this.effect = effect;
     }
+
     public String getSubEffect() {
         return subEffect;
     }
-
+    public void setSubEffect(String subEffect) {
+        this.subEffect = subEffect;
+    }
 
     // OVRs
     @Override
@@ -50,13 +52,14 @@ public class ItemEffect implements DataTransferObject {
     @Override
     public String toString() {
         return "ItemEffect{" +
-                "effectJunctionId=" + effectJunctionId +
+                "itemEffectJunctionId=" + itemEffectJunctionId +
+                ", itemEffectId=" + itemEffectId +
                 ", effect='" + effect + '\'' +
                 ", subEffect='" + subEffect + '\'' +
                 '}';
     }
 
-    // METHs
+// METHs
 
 
 }

@@ -1,58 +1,58 @@
 package com.backend.theWizardsBag.models;
 
-import java.util.Dictionary;
+import com.backend.theWizardsBag.utils.Objects.DataTransferObject;
 
-public class ItemType {
+public class ItemType implements DataTransferObject {
 
     // ATTs
-    private long typeId;
+    private long itemTypeJunctionId;
+    private long itemTypeId;
     private String type;
     private String subType;
-    private Dictionary<String, String> itemType;
-    private Dictionary<Long, String> itemTypeObj;
 
     // CONs
-    public ItemType() {
+
+    // GETs & SETs
+    public long getItemTypeJunctionId() {
+        return itemTypeJunctionId;
     }
-    public ItemType(String type, String subType) {
-        this.type = type;
-        this.subType = subType;
-        this.itemType.put(this.type, this.subType);
+    public void setItemTypeJunctionId(long itemTypeJunctionId) {
+        this.itemTypeJunctionId = itemTypeJunctionId;
     }
 
-    // GETs
-    public long getItemTypeID(){return typeId; }
+    public long getItemTypeId() {
+        return itemTypeId;
+    }
+    public void setItemTypeId(long itemTypeId) {
+        this.itemTypeId = itemTypeId;
+    }
+
     public String getType() {
         return type;
     }
-    public String getSubType() {
-        return subType;
-    }
-    public Dictionary<String, String> getItemType() {
-        return itemType;
-    }
-
-    // SETs
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getSubType() {
+        return subType;
     }
     public void setSubType(String subType) {
         this.subType = subType;
     }
-    public void setItemType(String type, String subType){
-        setType(type);
-        setSubType(subType);
-        this.itemType.put(type, subType);
-    }
 
     // OVRs
     @Override
+    public long getId() {
+        return 0;
+    }
+
+    @Override
     public String toString() {
         return "ItemType{" +
-                "typeId=" + typeId +
+                "itemTypeId=" + itemTypeId +
                 ", type='" + type + '\'' +
                 ", subType='" + subType + '\'' +
-                ", itemType=" + itemType +
                 '}';
     }
 

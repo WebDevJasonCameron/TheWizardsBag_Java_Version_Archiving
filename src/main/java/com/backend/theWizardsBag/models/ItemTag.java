@@ -25,7 +25,6 @@ public class ItemTag implements DataTransferObject {
         this.tag = tag;
     }
 
-
     // OVRs
     @Override
     public long getId() {

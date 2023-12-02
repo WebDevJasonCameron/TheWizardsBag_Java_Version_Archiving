@@ -1,36 +1,41 @@
 package com.backend.theWizardsBag.models;
 
-public class ItemTag {
+import com.backend.theWizardsBag.utils.Objects.DataTransferObject;
+
+public class ItemTag implements DataTransferObject {
 
     // ATTs
-    private long tagId;
+    private long itemTagId;
     private String tag;
 
     // CONs
-    public ItemTag() {
+
+    // GETs & SETs
+    public long getItemTagId() {
+        return itemTagId;
     }
-    public ItemTag(String tag) {
-        this.tag = tag;
+    public void setItemTagId(long itemTagId) {
+        this.itemTagId = itemTagId;
     }
 
-    // GETs
-    public long getTagId() {
-        return tagId;
-    }
     public String getTag() {
         return tag;
     }
-
-    // SETs
     public void setTag(String tag) {
         this.tag = tag;
     }
 
+
     // OVRs
+    @Override
+    public long getId() {
+        return 0;
+    }
+
     @Override
     public String toString() {
         return "ItemTag{" +
-                "tagId=" + tagId +
+                "itemTagId=" + itemTagId +
                 ", tag='" + tag + '\'' +
                 '}';
     }

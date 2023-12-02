@@ -1,7 +1,5 @@
 package com.backend.theWizardsBag.models;
 
-import com.backend.theWizardsBag.constants.enums.MagicBonuses;
-import com.backend.theWizardsBag.constants.enums.Rarity;
 
 import java.util.List;
 
@@ -11,22 +9,22 @@ public class Item {
     private long itemId;
     private String name;
     private String ttrpg;
-    private boolean magical;                //   No Null
-    private Rarity rarity;
-    private boolean requiresAttunement;     //   No Null
-    private boolean hasCharges;             //   No Null
+    private boolean magical;                //   Not Null
+    private String rarity;
+    private boolean requiresAttunement;     //   Not Null
+    private boolean hasCharges;             //   Not Null
     private boolean isCursed;
     private double price;
     private String description;
     private String imageUrl;
-    private MagicBonuses magicBonus;
+    private String magicBonus;
 
     // LISTs
-    private List<ItemType> types;
-    private List<ItemTag> tags;
-    private List<Note> notes;
-    private List<Spell> attachedSpells;
-    private List<ItemEffect> effects;
+    private List<ItemType> typeList;
+    private List<ItemTag> tagList;
+    private List<Note> noteList;
+    private List<Spell> attachedSpellList;
+    private List<ItemEffect> effectList;
 
     // OBJs
     private Source source;

@@ -29,7 +29,7 @@ public class Spell implements DataTransferObject {
     // LISTs
     private List<SpellTag> tagList;
     private List<SpellAccessible> accessibleList;
-    private List<Dictionary<Long, String>> damageList;
+    private List<SpellDamage> damageList;
 
     // OBJs
     private long source;
@@ -164,10 +164,10 @@ public class Spell implements DataTransferObject {
         this.accessibleList = accessibleList;
     }
 
-    public List<Dictionary<Long, String>> getDamageList() {
+    public List<SpellDamage> getDamageList() {
         return damageList;
     }
-    public void setDamageList(List<Dictionary<Long, String>> damageList) {
+    public void setDamageList(List<SpellDamage> damageList) {
         this.damageList = damageList;
     }
 

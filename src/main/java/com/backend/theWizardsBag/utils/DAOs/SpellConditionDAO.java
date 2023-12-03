@@ -1,47 +1,45 @@
 package com.backend.theWizardsBag.utils.DAOs;
 
-import com.backend.theWizardsBag.models.SpellAccessible;
-import com.backend.theWizardsBag.models.SpellTag;
+import com.backend.theWizardsBag.models.SpellCondition;
 import com.backend.theWizardsBag.utils.Objects.DataAccessObject;
 
 import java.sql.Connection;
 import java.util.List;
 
-public class SpellTagDAO extends DataAccessObject<SpellTag> {
+public class SpellConditionDAO extends DataAccessObject<SpellCondition> {
 
     // SQLs
 
     // CONs
-    public SpellTagDAO(Connection connection) {
+    public SpellConditionDAO(Connection connection) {
         super(connection);
     }
 
     // OVRs
     @Override
-    public SpellTag findById(long id) {
+    public SpellCondition findById(long id) {
         return null;
     }
 
     @Override
-    public List<SpellTag> findAll() {
+    public List<SpellCondition> findAll() {
         return null;
     }
 
     @Override
-    public SpellTag update(SpellTag dto) {
+    public SpellCondition update(SpellCondition dto) {
         return null;
     }
 
     @Override
-    public SpellTag create(SpellTag dto) {
+    public SpellCondition create(SpellCondition dto) {
         return null;
     }
 
     @Override
     public void delete(long id) {
+
     }
 
     // METHs
-    public List<SpellAccessible> findAllWithSpellId(long id) { return null; }
-
 }

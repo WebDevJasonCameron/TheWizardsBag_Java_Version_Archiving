@@ -8,14 +8,12 @@ import java.util.List;
 
 public class ItemDAO extends DataAccessObject<Item> {
 
-    // VARs
+    // SQLs
 
     // CONs
     public ItemDAO(Connection connection) {
         super(connection);
     }
-
-    // GETs & SETs
 
     // OVRs
     @Override

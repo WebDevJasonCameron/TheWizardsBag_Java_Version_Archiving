@@ -8,33 +8,34 @@ import java.util.List;
 
 public class SpellAccessibleDAO extends DataAccessObject<SpellAccessible> {
 
-    // ATTs
+    // SQLs
 
     // CONs
     public SpellAccessibleDAO(Connection connection) {
         super(connection);
     }
 
-    // SETs & GETs
-
-
     // OVRs
     @Override
     public SpellAccessible findById(long id) {
         return null;
     }
+
     @Override
     public List<SpellAccessible> findAll() {
         return null;
     }
+
     @Override
     public SpellAccessible update(SpellAccessible dto) {
         return null;
     }
+
     @Override
     public SpellAccessible create(SpellAccessible dto) {
         return null;
     }
+
     @Override
     public void delete(long id) {
     }

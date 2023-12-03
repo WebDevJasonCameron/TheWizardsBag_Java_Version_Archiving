@@ -8,14 +8,12 @@ import java.util.List;
 
 public class ItemEffectDAO extends DataAccessObject<ItemEffect> {
 
-    // ATTs
+    // SQLs
 
     // CONs
     public ItemEffectDAO(Connection connection) {
         super(connection);
     }
-
-    // GETs & SETs
 
     // OVRs
     @Override

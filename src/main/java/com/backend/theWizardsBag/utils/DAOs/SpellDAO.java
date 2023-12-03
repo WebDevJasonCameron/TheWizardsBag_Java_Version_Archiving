@@ -12,7 +12,7 @@ import java.util.List;
 
 public class SpellDAO extends DataAccessObject<Spell> {
 
-    // VARs
+    // SQLs
     // Get spellTags by spell id -> join tag name
     // Get availableFor by spell id -> join af name
     // Get damage by spell id -> join damage name

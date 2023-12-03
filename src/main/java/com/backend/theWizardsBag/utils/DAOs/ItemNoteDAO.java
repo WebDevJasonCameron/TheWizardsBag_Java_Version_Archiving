@@ -8,32 +8,34 @@ import java.util.List;
 
 public class ItemNoteDAO extends DataAccessObject<ItemNote> {
 
-    // ATTs
+    // SQLs
 
     // CONs
     public ItemNoteDAO(Connection connection) {
         super(connection);
     }
 
-    // GETs & SETs
-
     // OVRs
     @Override
     public ItemNote findById(long id) {
         return null;
     }
+
     @Override
     public List<ItemNote> findAll() {
         return null;
     }
+
     @Override
     public ItemNote update(ItemNote dto) {
         return null;
     }
+
     @Override
     public ItemNote create(ItemNote dto) {
         return null;
     }
+
     @Override
     public void delete(long id) {
     }

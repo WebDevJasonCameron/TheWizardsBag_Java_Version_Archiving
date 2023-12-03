@@ -22,10 +22,10 @@ CREATE TABLE spells (
                             source_id bigint,
                             FOREIGN KEY (source_id) REFERENCES sources(source_id),
 
-                            -- The following are created in Junction Tables
-                            -- availability list
-                            -- spell tags list
-                            -- damage type list
+                            -- condition list
+                            -- availability (class) list
+                            -- tags list
+                            -- type list
 
                             PRIMARY KEY (spell_id)
 );

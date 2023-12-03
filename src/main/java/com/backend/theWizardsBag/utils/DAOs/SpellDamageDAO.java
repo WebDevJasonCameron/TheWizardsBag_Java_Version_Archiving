@@ -8,32 +8,29 @@ import java.util.List;
 
 public class SpellDamageDAO extends DataAccessObject<SpellDamage> {
 
-    // ATTs
-
+    // SQLs
 
     // CONs
     public SpellDamageDAO(Connection connection) {
         super(connection);
     }
 
-
-
-    // GETs & SETs
-
-
     // OVRs
     @Override
     public SpellDamage findById(long id) {
         return null;
     }
+
     @Override
     public List<SpellDamage> findAll() {
         return null;
     }
+
     @Override
     public SpellDamage update(SpellDamage dto) {
         return null;
     }
+
     @Override
     public SpellDamage create(SpellDamage dto) {
         return null;

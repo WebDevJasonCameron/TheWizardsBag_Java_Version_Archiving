@@ -20,6 +20,7 @@
     <file url="file://$PROJECT_DIR$/db/sql/run_sql/26_ct_item_sources.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/run_sql/27_ct_item_spells.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/run_sql/28_ct_item_effects.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/sql/run_sql/32_ct_spell_tags.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/run_sql/34_ct_spell_conditions.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/run_sql/35_ct_spell_damagetypes.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/run_sql/39_ct_spell_classes.sql" dialect="PostgreSQL" />

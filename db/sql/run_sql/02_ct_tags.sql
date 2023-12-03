@@ -3,101 +3,111 @@ CREATE SEQUENCE tags_seq start with 10000;
 CREATE TABLE tags (
                              tag_id bigint NOT NULL DEFAULT nextval('tags_seq'),
                              name varchar(50) NOT NULL UNIQUE,
+                             type varchar(50) NOT NULL,
 
                              PRIMARY KEY (tag_id)
 );
 
 ALTER SEQUENCE tags_seq OWNED BY tags.tag_id;
 
-INSERT INTO tags (name)
+INSERT INTO tags (name, type)
 VALUES
 
-    ('ammunition'),     --   Used for ranged weapons.
-    ('armor'),          --   Provides protection.
-    ('artificer'),
+    ('Ammunition', 'na'),       --   Used for ranged weapons.
+    ('Armor', 'na'),            --   Provides protection.
+    ('Artificer', 'item'),
 
-    ('bane'),
-    ('banishment'),
-    ('bard'),
-    ('belt'),
-    ('buff'),
+    ('Bane', 'item'),
+    ('Banishment', 'both'),
+    ('Bard', 'item'),
+    ('Belt', 'item'),
+    ('Buff', 'both'),
 
-    ('combat'),
-    ('communication'),
-    ('consumable'),     --   Depleted after a single use (e.g., potions, scrolls).
-    ('container'),
-    ('control'),
-    ('creation'),
-    ('cursed'),         --   Has a negative magical effect or drawback.
+    ('Charmed', 'spell'),
+    ('Combat', 'both'),
+    ('Communication', 'both'),
+    ('Compulsion', 'spell'),
+    ('Consumable', 'item'),     --   Depleted after a single use (e.g., potions, scrolls).
+    ('Container', 'item'),
+    ('Control', 'both'),
+    ('Creation', 'both'),
+    ('Cursed', 'item'),         --   Has a negative magical effect or drawback.
 
-    ('damage'),
-    ('deception'),
-    ('detection'),
-    ('debuf'),
-    ('divination'),
+    ('Damage', 'both'),
+    ('Debuf', 'both'),
+    ('Deception', 'both'),
+    ('Detection', 'both'),
+    ('Divination', 'item'),
+    ('Dunamancy', 'spell'),
 
-    ('eldritch machine'),
-    ('enchantment'),
-    ('evocation'),
-    ('exploration'),
-    ('eyewear'),
 
-    ('finesse'),        --   Weapons that can use either Strength or Dexterity for attack and damage rolls.
+    ('Eldritch Machine', 'item'),
+    ('Enchantment', 'item'),
+    ('Environment', 'spell'),
+    ('Evocation', 'item'),
+    ('Exploration', 'both'),
+    ('Eyewear', 'item'),
 
-    ('focus'),          --   Used as a spellcasting focus for certain classes.
-    ('footwear'),
-    ('foreknowledge'),
+    ('Finesse', 'na'),          --   Weapons that can use either Strength or Dexterity for attack and damage rolls.
+    ('Focus', 'item'),          --   Used as a spellcasting focus for certain classes.
+    ('Footwear', 'item'),
+    ('Foreknowledge', 'both'),
+    ('Foresight', 'spell'),
 
-    ('healing'),
-    ('held'),           --   Items held in the hand, such as weapons or shields.
-    ('headwear'),
-    ('heavy'),          --   Particularly heavy, affecting movement.
+    ('Handwear', 'item'),
+    ('Healing', 'both'),
+    ('Held', 'na'),             --   Items held in the hand, such as weapons or shields.
+    ('Headwear', 'item'),
+    ('Heavy', 'na'),            --   Particularly heavy, affecting movement.
 
-    ('instrument'),
+    ('Instrument', 'item'),
 
-    ('jewelry'),
+    ('Jewelry', 'item'),
 
-    ('magical'),        --   Possesses magical properties or enhancements.
-    ('melee'),          --   Designed for close-quarters combat.
-    ('movement'),
+    ('Magical', 'na'),          --   Possesses magical properties or enhancements.
+    ('Melee', 'na'),            --   Designed for close-quarters combat.
+    ('Movement', 'both'),
 
-    ('necklace'),
-    ('negates difficult terrain'),
-    ('negation'),
+    ('Necklace', 'item'),
+    ('Negates Difficult Terrain', 'item'),
+    ('Negation', 'both'),
 
-    ('outerwear'),
+    ('Outerwear', 'item'),
 
-    ('ranged'),         --   Used for attacks at a distance.
-    ('ring'),           --   A magical ring with specific effects.
-    ('rod'),            --   A magical rod with specific effects.
+    ('Ranged', 'na'),           --   Used for attacks at a distance.
+    ('Ring', 'na'),             --   A magical ring with specific effects.
+    ('Rod', 'na'),              --   A magical rod with specific effects.
 
-    ('sentient'),
-    ('scroll'),         --   A magical scroll containing a spell that can be cast.
-    ('shield'),         --   A protective Item.
-    ('shapechanging'),
-    ('social'),
-    ('subclass feature'),
-    ('summoning'),
-    ('symbiotic'),
-    ('staff'),          --   A magical staff with specific effects.
-    ('scrying'),
+    ('Sangromancy', 'spell'),
+    ('Sentient', 'item'),
+    ('Scroll', 'na'),           --   A magical scroll containing a spell that can be cast.
+    ('Scrying', 'both'),
+    ('Shield', 'na'),           --   A protective Item.
+    ('Shapechanging', 'both'),
+    ('Social', 'both'),
+    ('Special', 'spell'),
+    ('Subclass Feature', 'item'),
+    ('Summoning', 'both'),
+    ('Symbiotic', 'item'),
+    ('Staff', 'na'),            --   A magical staff with specific effects.
 
-    ('tag'),
-    ('tags'),
-    ('teleportation'),
-    ('thrown'),         --   Weapons that can be thrown, such as throwing axes or daggers.
-    ('transmutation'),
 
-    ('versatile'),      --   Weapons that can be used one- or two-handed.
-    ('vestige of divergence'),
+    ('Tag', 'item'),
+    ('Tags', 'item'),
+    ('Teleportation', 'both'),
+    ('Thrown', 'na'),           --   Weapons that can be thrown, such as throwing axes or daggers.
+    ('Transmutation', 'item'),
 
-    ('utility'),        --   Indicates an Item primarily used for non-combat purposes or special functions.
+    ('Versatile', 'na'),        --   Weapons that can be used one- or two-handed.
+    ('Vestige of divergence', 'item'),
 
-    ('wand'),           --   A magical wand with specific effects.
-    ('warding'),        --   Suggests an Item that provides protection or defense against specific effects.
-    ('warm'),
-    ('wondrous Item'),  --   A magical Item with various effects or properties.
-    ('wristwear')
+    ('Utility', 'item'),        --   Indicates an Item primarily used for non-combat purposes or special functions.
+
+    ('Wand', 'na'),             --   A magical wand with specific effects.
+    ('Warding', 'item'),        --   Suggests an Item that provides protection or defense against specific effects.
+    ('Warm', 'item'),
+    ('Wondrous Item', 'na'),    --   A magical Item with various effects or properties.
+    ('Wristwear', 'item')
 ;
 
 

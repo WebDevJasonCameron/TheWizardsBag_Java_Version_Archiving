@@ -9,3 +9,8 @@ CREATE TABLE spell_conditions (
 );
 
 ALTER SEQUENCE spell_condition_seq OWNED BY spell_conditions.spell_condition_id;
+
+INSERT INTO spell_conditions (spells_spell_id, conditions_condition_id)
+VALUES
+    (10002, 10001)
+;

@@ -16,7 +16,7 @@ public class SpellAccessibleDAO extends DataAccessObject<SpellAccessible> {
     }
 
     // OVRs
-    @Override
+    @Override                   //   Junction Table ID
     public SpellAccessible findById(long id) {
         return null;
     }
@@ -40,5 +40,8 @@ public class SpellAccessibleDAO extends DataAccessObject<SpellAccessible> {
     public void delete(long id) {
     }
 
-    // METHs
+    // METHs                    //   Given Spell ID, find all JOINT table data
+    public List<SpellAccessible> findAllWithSpellId (long spellId) { return null;}
+
+
 }

@@ -1,6 +1,6 @@
 package com.backend.theWizardsBag.utils.DAOs;
 
-import com.backend.theWizardsBag.models.Spell;
+import com.backend.theWizardsBag.models.*;
 import com.backend.theWizardsBag.utils.Objects.DataAccessObject;
 
 import java.sql.Connection;
@@ -40,9 +40,10 @@ public class SpellDAO extends DataAccessObject<Spell> {
             while (rs.next()){
                 Spell spell = new Spell();
 
-                List<String> spellTags = new ArrayList<>();
-                List<String> availableFor = new ArrayList<>();
-                List<String> damage = new ArrayList<>();
+                List<SpellTag> spellTags = new ArrayList<>();
+                List<SpellAccessible> availableFor = new ArrayList<>();
+                List<SpellDamage> damage = new ArrayList<>();
+                List<SpellCondition> conditions = new ArrayList<>();
 
                 spell.setSpellId(rs.getInt("spell_id"));
                 spell.setLevel(rs.getString("level"));

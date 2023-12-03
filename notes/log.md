@@ -1,10 +1,28 @@
 # Log
 
-## 2023-1202 | Clearing Things Up
+## 2023-12-02 | Clearing Things Up
 
 I find that I'm doing a lot of reorganizing to some of the code as I figure out how I want variables structured to explain their function.  I'm also finding that the structure of DnD's game is only a illusion.  It really is a chaotic mess with some theoretical structures in place.  Did you know that Tags in spells and Items are different?  Conditions are the same but not tags?  That might make sense but they both have overlapping tags.  I'm thinking about keeping the tags in the same table within the DB while structuring their Enums to use when creating new spells.  That way I can ensure the same inputs are being placed into the DB, but then I only have to deal with one tag table.  Of course that causes a problem (and one I've already figured out as I write this... that's why it's important to do these logs!).  If I have two different enums (spellTags and itemTags) for my input forms, I will inevitably need to update the enum later when things change.  That means adding it to the DB tag table, then finding the correct enum and adding it to that!  I don't think I want to do that!  So, what did I figure out?  Too simple. Add another attribute in the tag class marking the tag as a spell, item or both tag!  OMG, too simple.  Then, make the change in the sql table to represent what each tag should be used for.  More work up front, but now I can sort tags by type.  When I need to update the table (and thus keep the edit and creation forms up-to-date by only providing a selection from that table) everything should stay organized.  
 
 So what are enums good for?  I really don't know.  I thought it would keep me from needing to pull data from a DB, which might be yet another query slowing my web application down.   I think I would like to try asking someone who is smarter than me on that question.
+
+### 1800 | Enum Answer
+
+So I asked ChatGPT on that question from above.  I logged the answer in the AI notes.  It's interesting if you want to see the results.
+
+### 2100 | Executors
+
+I spent a lot of time today clearing up the DB tables.  I now have three spells to us for query testing purposes.  I can't wait to build some python scripts to convert the JSON file into table entries.  Although, I'm having some doubts about being able to strip the data and enter it across the multiple many-to-many tables.  Although, I think I can do it since the side tables won't change... I'll just need to create junction table entries based on the spell number entry and if it has matching attributes to those side tables' records.  I think that could actually be done.  Is it worth the work?  Hell, yeah (^>.<^).  Magic isn't free!  
+
+I'm getting off target with this log.
+
+I wanted to discus what I need to do to create executable query classes.  Specifically, I want an executable clases to have classes that let me target specific executable query tasks.  Let me try to flesh this out...
+
+Within the SpellDAO
+- Execute get all spells
+- Execute get a spell by spell_id
+- Execute get all spell_damage_types by spell_id  <-- (called from the SpellDamageDAO)
+- Execute get all spell_tag_types by spell_id  <-- (called from the SpellTagDAO)
 
 ---
 

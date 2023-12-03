@@ -8,7 +8,7 @@ Aright then, with introductions aside, the purpose of this project is to build T
 
 ## Road Ahead **10,000 Mile High View**
 I'll likely need to create more detailed plans later.  Here are some major milestones I foresee needing to accomplish.
-- [ ] Design and Build SQL commands to create/drop DB and tables (using Postgres and Visual Paradigm) <-Working
+- [X] Design and Build SQL commands to create/drop DB and tables (using Postgres and Visual Paradigm) <-Working
 - [ ] Design OOP Framework for handling CRUD CLI procedures (using Java) <-Working
 - [ ] Code translator to convert JSON item and spell lists found in GitHub into SQL table insertion commands (using Python)
 - [ ] Build GUI to CRUD DB data (Using JavaFX)
@@ -19,4 +19,8 @@ I'll likely need to create more detailed plans later.  Here are some major miles
 - [ ] Tests?
 - [ ] Iterations
 
+## DB Structure 
+Were you wondering how the DB is designed for this project?  Ok, I'm sure it isn't the first question on your mind.  Still, like every great spell, you need to understand the basics.  In this case, I thought I'd share how I am planning out the foundation to our little thaumaturgical experiment!  Below is a visual of the Postgres DB I constructed to manage all our store items.  It will inevitably change as we progress. As such, I'll update when it does.
+
+![TWB_DB_Design_00.01.jpg](README_ASSETS%2Fimages%2FTWB_DB_Design_00.01.jpg)
 

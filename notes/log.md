@@ -1,5 +1,11 @@
 # Log
 
+## 2023-12-04 | Postgres
+
+I've decided I need to learn more about Postgres.  There are functions that might help with to overwhelming join queries I will need to call linked data.  I did a LinkedIn lesson to refresh my knowledge on PG DB.  I don't think I know as much as I thought I did.  I would like the SQL to work for me better than my simplistic and basic understanding allows me to use.  As such, I'm going to take a couple of weeks and dive deeper using a Udemy course I purchased a year ago.  It should help with this project as well as the many other work and personal projects I'll need to do later.  I'm not sure how to demonstrate my activity on GH. I'll probably just create another repo for "learningPostgres."  See you in a couple of weeks!
+
+---
+
 ## 2023-12-02 | Clearing Things Up
 
 I find that I'm doing a lot of reorganizing to some of the code as I figure out how I want variables structured to explain their function.  I'm also finding that the structure of DnD's game is only a illusion.  It really is a chaotic mess with some theoretical structures in place.  Did you know that Tags in spells and Items are different?  Conditions are the same but not tags?  That might make sense but they both have overlapping tags.  I'm thinking about keeping the tags in the same table within the DB while structuring their Enums to use when creating new spells.  That way I can ensure the same inputs are being placed into the DB, but then I only have to deal with one tag table.  Of course that causes a problem (and one I've already figured out as I write this... that's why it's important to do these logs!).  If I have two different enums (spellTags and itemTags) for my input forms, I will inevitably need to update the enum later when things change.  That means adding it to the DB tag table, then finding the correct enum and adding it to that!  I don't think I want to do that!  So, what did I figure out?  Too simple. Add another attribute in the tag class marking the tag as a spell, item or both tag!  OMG, too simple.  Then, make the change in the sql table to represent what each tag should be used for.  More work up front, but now I can sort tags by type.  When I need to update the table (and thus keep the edit and creation forms up-to-date by only providing a selection from that table) everything should stay organized.  

@@ -6,10 +6,10 @@ CREATE TABLE spells (
                             level varchar(255) NOT NULL,
                             casting_time varchar(255),
                             range_area varchar(255),
-                            Component_visual bool NOT NULL,
-                            Component_semantic bool NOT NULL,
-                            Component_material bool NOT NULL,
-                            Component_materials varchar(255),
+                            component_visual bool NOT NULL,
+                            component_semantic bool NOT NULL,
+                            component_material bool NOT NULL,
+                            component_materials varchar(255),
                             duration varchar(255),
                             concentration bool NOT NULL,
                             ritual bool NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE spells (
 ALTER SEQUENCE spell_seq OWNED BY spells.spell_id;
 
 
-INSERT INTO spells (name, level, casting_time, range_area, Component_visual, Component_semantic, Component_material, Component_materials, duration, concentration, ritual, school, save_type, description, image_url, source_id)
+INSERT INTO spells (name, level, casting_time, range_area, component_visual, component_semantic, component_material, component_materials, duration, concentration, ritual, school, save_type, description, image_url, source_id)
 VALUES
     ('Acid Splash', 'cantrip', '1 action', '60 feet', true, true, false, '', 'instantaneous', false, false, 'conjuration', 'DEX', 'You hurl a bubble of acid. Choose one creature within range, or choose two creatures within range that are within 5 feet of each other. A target must succeed on a Dexterity saving throw or take 1d6 acid damage. This spell''s damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6).', '', 10004),
 

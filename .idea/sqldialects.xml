@@ -3,6 +3,7 @@
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/db/sql/00_cdb.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/99_dlt_all.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/sql/insert_spells/insert_spells.sql" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/run_sql/00_ct_items.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/run_sql/01_ct_types.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/run_sql/02_ct_tags.sql" dialect="PostgreSQL" />

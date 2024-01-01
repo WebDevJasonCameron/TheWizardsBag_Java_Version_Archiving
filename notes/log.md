@@ -1,5 +1,21 @@
 # Log
 
+## 2023-12-31 | Insert Spell Data Plan
+
+Hello everyone.  It's been a bit while I've been focussing on how best to build the DB.  I've actually been running through some very awesome PG training.  With that said, I now need to plan on how to take the markdown files that I've collected and convert them into a insert data sql script!  To do this, I'm going to:
+1. Copy the files into one massive directory, so they can be organized alphabetical.  Right now, they are seperated by magic domains (i.e. abjuration, evocation, etcetera).  
+2. I'm going to build a script to produce several insert sql files.  These will be produced at the same time, but I'll explain it in sequential order. 
+   1. I need to build the INSERT INTO spells sql file.  This will Parse out the specifics that will go straight into the spells table.  While this is being done, I'll keep track with what PRIMARY KEY number we should be on, so it can be used in the following INSERT INTO sql files.
+   2. I need to build the INSERT INTO spell_tags sql file.  This will be a combination of the captured spell_id (previously mentioned in #1) and comparing the spell_tags metadata with what can be found within the tags table.  Multiple matches will have multiple insert value lines.
+   3. I need to build the INSERT INTO spell_conditions sql file.  This will be a combination of the captured spell_id (previously mentioned in #1) and comparing the DAMAGE/EFFECT table with what can be found within the conditions table.  Multiple matches will have multiple insert value lines.
+   4. I need to build the INSERT INTO spell_damagetypes sql file.  This will be a combination of the captured spell_id (previously mentioned in #1) and comparing the DAMAGE/EFFECT table with what can be found within the damagetype table.  Multiple matches will have multiple insert value lines.
+   5. I need to build the INSERT INTO spell_classes sql file.  This will be a combination of the captured spell_id (previously mentioned in #1) and comparing the available_fore metadata with what can be found within the rpg_classes table.  Multiple matches will have multiple insert value lines.
+3. Finally, I need to run these sql scripts in order and test the results.  
+
+There is a lot of parsing to make all this work, so I expect it to take some trial and error.  The main reason why I'm doing this is to help build "rebuild" sql scripts, so I can start over when I inevitably need to do just that.  Eventually I'll get to a point when I'm PG dumping backups to the DB (during production).  Right now I just need to have a basic DB construction build our little Arcane Application!
+
+---
+
 ## 2023-12-04 | Postgres
 
 I've decided I need to learn more about Postgres.  There are functions that might help with to overwhelming join queries I will need to call linked data.  I did a LinkedIn lesson to refresh my knowledge on PG DB.  I don't think I know as much as I thought I did.  I would like the SQL to work for me better than my simplistic and basic understanding allows me to use.  As such, I'm going to take a couple of weeks and dive deeper using a Udemy course I purchased a year ago.  It should help with this project as well as the many other work and personal projects I'll need to do later.  I'm not sure how to demonstrate my activity on GH. I'll probably just create another repo for "learningPostgres."  See you in a couple of weeks!

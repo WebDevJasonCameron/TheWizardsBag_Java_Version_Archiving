@@ -1,4 +1,4 @@
-CREATE SEQUENCE spell_damagetypes_seq start 10000;
+CREATE SEQUENCE spell_damagetypes_seq start 1;
 
 CREATE TABLE spell_damagetypes (
                                   spell_damagetype_id bigint NOT NULL DEFAULT nextval('spell_damagetypes_seq'),
@@ -12,5 +12,5 @@ ALTER SEQUENCE spell_damagetypes_seq OWNED BY spell_damagetypes.spell_damagetype
 
 INSERT INTO spell_damagetypes (spells_spell_id,damagetypes_damagetype_id)
 VALUES
-    (10000, 10000)
+    (1, 1)
 ;

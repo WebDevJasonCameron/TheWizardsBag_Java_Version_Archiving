@@ -1,4 +1,4 @@
-CREATE SEQUENCE note_seq start with 10000;
+CREATE SEQUENCE note_seq start with 1;
 
 CREATE TABLE notes (
                              note_id bigint NOT NULL DEFAULT nextval('note_seq'),

@@ -1,4 +1,4 @@
-CREATE SEQUENCE spell_class_seq start 10000;
+CREATE SEQUENCE spell_class_seq start 0;
 
 CREATE TABLE spell_classes (
                                   spell_class_id bigint NOT NULL DEFAULT nextval('spell_class_seq'),

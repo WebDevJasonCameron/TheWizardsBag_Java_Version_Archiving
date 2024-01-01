@@ -1,4 +1,4 @@
-CREATE SEQUENCE damagetype_seq start with 0;
+CREATE SEQUENCE damagetype_seq start with 1;
 
 CREATE TABLE damagetypes (
                        damagetype_id bigint NOT NULL DEFAULT nextval('damagetype_seq'),

@@ -1,4 +1,4 @@
-CREATE SEQUENCE items_seq start with 0;
+CREATE SEQUENCE items_seq start with 1;
 
 CREATE TABLE items (
                           item_id bigint NOT NULL DEFAULT nextval('items_seq'),

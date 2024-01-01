@@ -1,4 +1,4 @@
-CREATE SEQUENCE spell_condition_seq start 0;
+CREATE SEQUENCE spell_condition_seq start 1;
 
 CREATE TABLE spell_conditions (
                             spell_condition_id bigint NOT NULL DEFAULT nextval('spell_condition_seq'),
@@ -12,5 +12,5 @@ ALTER SEQUENCE spell_condition_seq OWNED BY spell_conditions.spell_condition_id;
 
 INSERT INTO spell_conditions (spells_spell_id, conditions_condition_id)
 VALUES
-    (2, 1)
+    (3, 2)
 ;

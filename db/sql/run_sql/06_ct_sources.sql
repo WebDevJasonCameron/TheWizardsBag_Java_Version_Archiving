@@ -1,4 +1,4 @@
-CREATE SEQUENCE sources_seq start with 0;
+CREATE SEQUENCE sources_seq start with 1;
 
 CREATE TABLE sources (
                       source_id bigint NOT NULL DEFAULT nextval('sources_seq'),

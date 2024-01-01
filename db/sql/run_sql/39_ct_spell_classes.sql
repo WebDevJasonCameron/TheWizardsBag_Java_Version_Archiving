@@ -1,4 +1,4 @@
-CREATE SEQUENCE spell_class_seq start 0;
+CREATE SEQUENCE spell_class_seq start 1;
 
 CREATE TABLE spell_classes (
                                   spell_class_id bigint NOT NULL DEFAULT nextval('spell_class_seq'),
@@ -12,11 +12,11 @@ ALTER SEQUENCE spell_class_seq OWNED BY spell_classes.spell_class_id;
 
 INSERT INTO spell_classes (spells_spell_id, classes_class_id)
 VALUES
-    (0, 13),
-    (0, 8),
-    (1, 3),
-    (1, 8),
-    (2, 12),
+    (1, 14),
+    (1, 9),
     (2, 4),
-    (2, 3)
+    (2, 9),
+    (3, 13),
+    (3, 5),
+    (3, 4)
 ;

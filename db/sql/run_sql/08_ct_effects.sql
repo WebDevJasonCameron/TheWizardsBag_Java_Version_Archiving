@@ -1,4 +1,4 @@
-CREATE SEQUENCE effect_seq start with 0;
+CREATE SEQUENCE effect_seq start with 1;
 
 CREATE TABLE effects (
                        effect_id bigint NOT NULL DEFAULT nextval('effect_seq'),

@@ -1,4 +1,4 @@
-CREATE SEQUENCE item_spell_seq start 1;
+CREATE SEQUENCE item_spell_seq start 0;
 
 CREATE TABLE item_spells (
                               item_spell_id bigint NOT NULL DEFAULT nextval('item_spell_seq'),

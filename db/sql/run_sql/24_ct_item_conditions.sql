@@ -1,4 +1,4 @@
-CREATE SEQUENCE item_condition_seq start 1;
+CREATE SEQUENCE item_condition_seq start 0;
 
 CREATE TABLE item_conditions (
                             item_condition_id bigint NOT NULL DEFAULT nextval('item_condition_seq'),

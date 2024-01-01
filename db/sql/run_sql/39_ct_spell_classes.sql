@@ -12,11 +12,11 @@ ALTER SEQUENCE spell_class_seq OWNED BY spell_classes.spell_class_id;
 
 INSERT INTO spell_classes (spells_spell_id, classes_class_id)
 VALUES
-    (10000, 10013),
-    (10000, 10008),
-    (10001, 10003),
-    (10001, 10008),
-    (10002, 10012),
-    (10002, 10004),
-    (10002, 10003)
+    (0, 13),
+    (0, 8),
+    (1, 3),
+    (1, 8),
+    (2, 12),
+    (2, 4),
+    (2, 3)
 ;

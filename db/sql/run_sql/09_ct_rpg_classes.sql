@@ -1,4 +1,4 @@
-CREATE SEQUENCE class_seq start with 1;
+CREATE SEQUENCE class_seq start with 0;
 
 CREATE TABLE rpg_classes (
                        class_id bigint NOT NULL DEFAULT nextval('class_seq'),

@@ -24,5 +24,6 @@ VALUES
     ('magician'),
     ('artificer'),
     ('bard'),
-    ('sorcerer')
+    ('sorcerer'),
+    ('alchemist')
 ;

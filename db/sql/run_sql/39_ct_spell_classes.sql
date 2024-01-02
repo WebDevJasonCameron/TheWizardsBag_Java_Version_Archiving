@@ -10,6 +10,8 @@ CREATE TABLE spell_classes (
 
 ALTER SEQUENCE spell_class_seq OWNED BY spell_classes.spell_class_id;
 
+
+/*
 INSERT INTO spell_classes (spells_spell_id, classes_class_id)
 VALUES
     (1, 14),
@@ -20,3 +22,5 @@ VALUES
     (3, 5),
     (3, 4)
 ;
+
+ */

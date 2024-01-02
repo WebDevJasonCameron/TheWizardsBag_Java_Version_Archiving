@@ -34,7 +34,7 @@ VALUES
     ('Cursed', 'item'),         --   Has a negative magical effect or drawback.
 
     ('Damage', 'both'),
-    ('Debuf', 'both'),
+    ('Debuff', 'both'),
     ('Deception', 'both'),
     ('Detection', 'both'),
     ('Divination', 'item'),
@@ -101,10 +101,10 @@ VALUES
     ('Versatile', 'na'),        --   Weapons that can be used one- or two-handed.
     ('Vestige of divergence', 'item'),
 
-    ('Utility', 'item'),        --   Indicates an Item primarily used for non-combat purposes or special functions.
+    ('Utility', 'both'),        --   Indicates an Item primarily used for non-combat purposes or special functions.
 
     ('Wand', 'na'),             --   A magical wand with specific effects.
-    ('Warding', 'item'),        --   Suggests an Item that provides protection or defense against specific effects.
+    ('Warding', 'both'),        --   Suggests an Item that provides protection or defense against specific effects.
     ('Warm', 'item'),
     ('Wondrous Item', 'na'),    --   A magical Item with various effects or properties.
     ('Wristwear', 'item')

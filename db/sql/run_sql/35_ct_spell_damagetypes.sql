@@ -10,7 +10,10 @@ CREATE TABLE spell_damagetypes (
 
 ALTER SEQUENCE spell_damagetypes_seq OWNED BY spell_damagetypes.spell_damagetype_id;
 
+/*
 INSERT INTO spell_damagetypes (spells_spell_id,damagetypes_damagetype_id)
 VALUES
     (1, 1)
 ;
+
+ */

@@ -32,7 +32,7 @@ CREATE TABLE spells (
 
 ALTER SEQUENCE spell_seq OWNED BY spells.spell_id;
 
-
+/*
 INSERT INTO spells (name, level, casting_time, range_area, component_visual, component_semantic, component_material, component_materials, duration, concentration, ritual, school, save_type, description, image_url, source_id)
 VALUES
     ('Acid Splash', 'cantrip', '1 action', '60 feet', true, true, false, '', 'instantaneous', false, false, 'conjuration', 'DEX', 'You hurl a bubble of acid. Choose one creature within range, or choose two creatures within range that are within 5 feet of each other. A target must succeed on a Dexterity saving throw or take 1d6 acid damage. This spell''s damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6).', '', 5),
@@ -41,3 +41,5 @@ VALUES
 
     ('Animal Friendship', '1', '1 action', '30 feet', true, true, true, 'a morsel of food', '24 hours', false, false, 'enchantment', 'WIS', 'This spell lets you convince a beast that you mean it no harm. Choose a beast that you can see within range. It must see and hear you. If the beast''s Intelligence is 4 or higher, the spell fails. Otherwise, the beast must succeed on a Wisdom saving throw or be charmed by you for the spell''s duration. If you or one of your companions harms the target, the spell ends.', '', 5)
     ;
+
+ */

@@ -2,14 +2,14 @@ CREATE SEQUENCE spell_seq start 1;
 
 CREATE TABLE spells (
                             spell_id bigint NOT NULL DEFAULT nextval('spell_seq'),
-                            name varchar(255) NOT NULL UNIQUE ,
+                            name varchar(999) NOT NULL UNIQUE ,
                             level varchar(255) NOT NULL,
                             casting_time varchar(255),
                             range_area varchar(255),
                             component_visual bool NOT NULL,
                             component_semantic bool NOT NULL,
                             component_material bool NOT NULL,
-                            component_materials varchar(255),
+                            component_materials varchar(999),
                             duration varchar(255),
                             concentration bool NOT NULL,
                             ritual bool NOT NULL,

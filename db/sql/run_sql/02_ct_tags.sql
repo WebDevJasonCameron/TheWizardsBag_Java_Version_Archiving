@@ -10,6 +10,9 @@ CREATE TABLE tags (
 
 ALTER SEQUENCE tags_seq OWNED BY tags.tag_id;
 
+ALTER SEQUENCE tags_seq RESTART WITH 1;
+
+
 INSERT INTO tags (name, type)
 VALUES
 

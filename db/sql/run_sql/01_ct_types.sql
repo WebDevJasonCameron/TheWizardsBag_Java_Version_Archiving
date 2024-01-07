@@ -10,6 +10,9 @@ CREATE TABLE types (
 
 ALTER SEQUENCE types_seq OWNED BY types.type_id;
 
+ALTER SEQUENCE types_seq RESTART WITH 1;
+
+
 INSERT INTO types (type, sub_type)
 VALUES
     ('weapon', ''),                     --   Weapons

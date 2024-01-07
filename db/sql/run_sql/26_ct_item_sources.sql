@@ -9,3 +9,5 @@ CREATE TABLE item_sources (
 );
 
 ALTER SEQUENCE item_source_seq OWNED BY item_sources.item_source_id;
+
+ALTER SEQUENCE item_source_seq RESTART WITH 1;

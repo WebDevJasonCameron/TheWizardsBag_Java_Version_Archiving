@@ -9,3 +9,5 @@ CREATE TABLE item_spells (
 );
 
 ALTER SEQUENCE item_spell_seq OWNED BY item_spells.item_spell_id;
+
+ALTER SEQUENCE item_spell_seq RESTART WITH 1;

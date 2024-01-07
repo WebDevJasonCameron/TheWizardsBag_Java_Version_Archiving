@@ -11,6 +11,8 @@ CREATE TABLE notes (
 
 ALTER SEQUENCE note_seq OWNED BY notes.note_id;
 
+ALTER SEQUENCE note_seq RESTART WITH 1;
+
 INSERT INTO notes (name, date, author)
 VALUES
     ('TEST Name', '1994-10-27', 'TEST AUTHOR');

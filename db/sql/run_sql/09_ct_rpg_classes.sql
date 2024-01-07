@@ -11,6 +11,8 @@ CREATE TABLE rpg_classes (
 
 ALTER SEQUENCE class_seq OWNED BY rpg_classes.class_id;
 
+ALTER SEQUENCE class_seq RESTART WITH 1;
+
 INSERT INTO rpg_classes (class_name, subclass_name, description)
 VALUES
     ('rouge','', 'rogues are talented individuals who hone skills of the unethical or criminal. a rogue''s skill in thieving, killing, etc. is rivaled by none as they become experts in their field.'),

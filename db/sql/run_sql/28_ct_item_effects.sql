@@ -9,3 +9,5 @@ CREATE TABLE item_effects (
 );
 
 ALTER SEQUENCE item_effect_seq OWNED BY item_effects.item_effect_id;
+
+ALTER SEQUENCE item_effect_seq RESTART WITH 1;

@@ -9,3 +9,5 @@ CREATE TABLE item_types (
 );
 
 ALTER SEQUENCE item_type_seq OWNED BY item_types.item_type_id;
+
+ALTER SEQUENCE item_type_seq RESTART WITH 1;

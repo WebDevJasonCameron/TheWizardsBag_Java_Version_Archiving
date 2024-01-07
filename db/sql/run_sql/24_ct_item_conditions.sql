@@ -9,3 +9,5 @@ CREATE TABLE item_conditions (
 );
 
 ALTER SEQUENCE item_condition_seq OWNED BY item_conditions.item_condition_id;
+
+ALTER SEQUENCE item_condition_seq RESTART WITH 1;

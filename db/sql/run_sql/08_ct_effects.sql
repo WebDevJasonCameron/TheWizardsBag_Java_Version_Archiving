@@ -10,6 +10,9 @@ CREATE TABLE effects (
 
 ALTER SEQUENCE effect_seq OWNED BY effects.effect_id;
 
+ALTER SEQUENCE effect_seq RESTART WITH 1;
+
+
 INSERT INTO effects (effect, sub_effect)
 VALUES
     ('Advantage', ''),                              --   Advantage

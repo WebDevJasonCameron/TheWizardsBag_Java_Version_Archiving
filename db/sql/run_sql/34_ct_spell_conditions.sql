@@ -10,6 +10,9 @@ CREATE TABLE spell_conditions (
 
 ALTER SEQUENCE spell_condition_seq OWNED BY spell_conditions.spell_condition_id;
 
+ALTER SEQUENCE spell_condition_seq RESTART WITH 1;
+
+
 /*
 INSERT INTO spell_conditions (spells_spell_id, conditions_condition_id)
 VALUES

@@ -9,3 +9,5 @@ CREATE TABLE spell_tags (
 );
 
 ALTER SEQUENCE spell_tag_seq OWNED BY spell_tags.spell_tag_id;
+
+ALTER SEQUENCE spell_tag_seq RESTART WITH 1;

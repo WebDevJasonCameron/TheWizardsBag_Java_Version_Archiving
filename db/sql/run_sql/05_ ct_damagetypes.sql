@@ -9,6 +9,9 @@ CREATE TABLE damagetypes (
 
 ALTER SEQUENCE damagetype_seq OWNED BY damagetypes.damagetype_id;
 
+ALTER SEQUENCE damagetype_seq RESTART WITH 1;
+
+
 INSERT INTO damagetypes (damage)
 VALUES
     ('Acid'),

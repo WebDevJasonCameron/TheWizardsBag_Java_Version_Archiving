@@ -10,6 +10,9 @@ CREATE TABLE sources (
 
 ALTER SEQUENCE sources_seq OWNED BY sources.source_id;
 
+ALTER SEQUENCE sources_seq RESTART WITH 1;
+
+
 INSERT INTO sources (name, publish_date)
 VALUES
     ('Acquisition Incorporate', '2019-06-18'),

@@ -9,3 +9,5 @@ CREATE TABLE item_notes (
 );
 
 ALTER SEQUENCE item_note_seq OWNED BY item_notes.item_note_id;
+
+ALTER SEQUENCE item_note_seq RESTART WITH 1;

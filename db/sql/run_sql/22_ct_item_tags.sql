@@ -9,3 +9,5 @@ CREATE TABLE item_tags (
 );
 
 ALTER SEQUENCE item_tag_seq OWNED BY item_tags.item_tag_id;
+
+ALTER SEQUENCE item_tag_seq RESTART WITH 1;

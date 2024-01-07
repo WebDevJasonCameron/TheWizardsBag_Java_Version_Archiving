@@ -11,6 +11,9 @@ CREATE TABLE conditions (
 
 ALTER SEQUENCE condition_seq OWNED BY conditions.condition_id;
 
+ALTER SEQUENCE condition_seq RESTART WITH 1;
+
+
 INSERT INTO conditions (condition, description)
 VALUES
     ('Blinded', 'A blinded creature can''t see and automatically fails any ability check that requires sight. Attack rolls against the creature have advantage, and the creature''s attack rolls have disadvantage.'),

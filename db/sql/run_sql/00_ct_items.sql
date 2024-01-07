@@ -21,6 +21,8 @@ CREATE TABLE items (
 
 ALTER SEQUENCE items_seq OWNED BY items.item_id;
 
+ALTER SEQUENCE items_seq RESTART WITH 1;
+
 INSERT INTO items (name, ttrpg, rarity, renowned_quality, requires_attunement, has_charges, is_cursed, cost, weight, description, image_url)
 VALUES
     ('TEST Name', 'TEST TTRPG', 'TEST RARITY', 'TEST RENOWNED QUALITY', false, false, false, 2.55, 'TEST WEIGHT', 'TEST DESCRIPTION', 'TEST IMAGE URL');

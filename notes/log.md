@@ -1,5 +1,11 @@
 # Log
 
+## 2024-01-07 | Items Table
+
+Happy New Year!  I just finish the set-up for ingesting all the spells I have from the basic rules books.  I used python to scrape all the markdown files I had and then rewrite the data into five separate sql files for inserting them into their proper tables.  SQL is often a pain when it comes down to organizing many-to-many relations.  You need junction tables to keep track of the relations.  That being said, I need to remind my self that you don't always need to go straight into building complex tables.  I'm now working on the scripts to ingest the items I have already stored in markdown files.  I was trying to figure why I hadn't created "create table" for rarities.  Then it hit me, an Item won't have multiple rarities... well, it could, but that's why we have a "varies" denominator.  So! No need to put more work on my shoulders.  KISS.  Then refactor it so you can Kiss again!!  
+
+---
+
 ## 2023-12-31 | Insert Spell Data Plan
 
 Hello everyone.  It's been a bit while I've been focussing on how best to build the DB.  I've actually been running through some very awesome PG training.  With that said, I now need to plan on how to take the markdown files that I've collected and convert them into a insert data sql script!  To do this, I'm going to:

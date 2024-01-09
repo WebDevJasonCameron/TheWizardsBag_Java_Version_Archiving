@@ -16,6 +16,7 @@ CREATE TABLE items (
                           magic_bonus_plus_1 bool,                      -- Read the description to get these
                           magic_bonus_plus_2 bool,
                           magic_bonus_plus_3 bool,
+                          charges bool,                                 -- Read description for "charges"
                           notes text,                                   -- If doc has "Notes:"
 
                           source_id bigint,

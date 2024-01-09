@@ -25,20 +25,16 @@ Once again I find myself in front of a very large task and its very easily an ov
        - I want to keep any existing tables that are used in the MD description portion of the MD
 11. Image URL will be set to blank
 12. Magic bonus plus 1, 2, or/and 3 will need to be grabbed from scraping the description for "+1 bonus"... etcetera
-13. Notes will be grabbed from the MD's lines by scanning for any line that starts "Notes: "
+13. Description notes will be grabbed from the MD's lines by scanning for any line that starts "Notes: "
       - The Notes consist of multiple distinguishing notes without much order.  I may need to fix this
 
 The following explains the many-to-many tables that will require junction tables with the items table:
-1. item_types : 
-2. item_tags : 
-3. item_notes :
-4. item_conditions : 
-5. item_attached_spells : 
-6. item_effects : 
-
-
-
-
+1. item_types : from "asset_type:" in MD and compared with "types" table list
+2. item_tags : from "item_tag:" in MD and compared with "tags" table list
+3. item_notes : Mostly blank
+4. item_conditions : scraped from "description" in MD and compared with "conditions" table list
+5. item_attached_spells : scraped from "description" in MD and compared with "spells" table list
+6. item_effects : scraped from "description" in MD and compared with "effects" table list
 
 ---
 

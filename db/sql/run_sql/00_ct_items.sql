@@ -17,7 +17,7 @@ CREATE TABLE items (
                           magic_bonus_plus_2 bool,
                           magic_bonus_plus_3 bool,
                           type varchar(255),                            -- from "asset_type", "- " prefix
-                          notes text,                                   -- If doc has "Notes:"
+                          description_notes text,                                   -- If doc has "Notes:"
 
                           source_id bigint,
 

@@ -7,7 +7,7 @@ CREATE TABLE items (
                           rarity varchar(255),                          -- rarity
                           renowned_quality varchar(255),                -- renowned_quality
                           requires_attunement bool,                     -- req_attunement
-                          has_charges bool,                             --
+                          has_charges bool,                             -- Read description for "charges"
                           is_cursed bool,
                           cost double precision,
                           weight varchar(255),
@@ -16,7 +16,7 @@ CREATE TABLE items (
                           magic_bonus_plus_1 bool,                      -- Read the description to get these
                           magic_bonus_plus_2 bool,
                           magic_bonus_plus_3 bool,
-                          charges bool,                                 -- Read description for "charges"
+                          type varchar(255),                            -- from "asset_type", "- " prefix
                           notes text,                                   -- If doc has "Notes:"
 
                           source_id bigint,

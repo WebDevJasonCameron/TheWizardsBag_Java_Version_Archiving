@@ -1,5 +1,47 @@
 # Log
 
+## 2024-01-08 | Insert Item Data Plan
+
+Once again I find myself in front of a very large task and its very easily an overwhelming one.  Just like the spell data, I need to insert all the item data I have collected as mark down files.  It would be nice to say that I could just reproduce what I did for the spell data.  In a few cases, I can.  Mostly, I'll need to grab data from the MD files with different algorithms.  I like what I previously did for planning out the spell data, so I'm going to that again.  Let's start with looking at the item attributes.  These will be set in the "Create table" sql document.  
+1. Name can be grabbed from the MD document by checking for any line that starts with "#"
+2. TTRPG will be set to 5 for now.  
+      - I'll need to actually go through and reset them once the GUI is completed, or I can use PG to select them
+3. Rarity will come from the MD's "rarity:" label
+      - An enum will be used to keep things consistent when adding new items
+      - Remember, an item can only carry one rarity status.  Thus, I don't need a many-to-many table  
+4. Renowned will come from the MD's "renowned_quality" label
+      - An enum will be used to keep things consistent when adding new items
+      - Remember, an item can only carry one rarity status.  Thus, I don't need a many-to-many table
+5. Attunement requirement will come from the MD's "req_attunement" label
+      - This will be a boolean
+6. Using charge notation will come from scanning the item description for the word "charges"
+      - This will be a boolean
+7. Cursed notation will come from the MD's "is_cursed" label
+8. Cost will be set to blank 
+9. Weight will be set to blank
+10. Description will come from the MD's description 
+       - I'll need to count how the number of times "---" shows up on the page.  After the third time, we can gather the text 
+       - We will also have to ignore the following "Notes:", "Item Tags:", and image MD syntax 
+       - I want to keep any existing tables that are used in the MD description portion of the MD
+11. Image URL will be set to blank
+12. Magic bonus plus 1, 2, or/and 3 will need to be grabbed from scraping the description for "+1 bonus"... etcetera
+13. Notes will be grabbed from the MD's lines by scanning for any line that starts "Notes: "
+      - The Notes consist of multiple distinguishing notes without much order.  I may need to fix this
+
+The following explains the many-to-many tables that will require junction tables with the items table:
+1. item_types : 
+2. item_tags : 
+3. item_notes :
+4. item_conditions : 
+5. item_attached_spells : 
+6. item_effects : 
+
+
+
+
+
+---
+
 ## 2024-01-07 | Items Table
 
 Happy New Year!  I just finish the set-up for ingesting all the spells I have from the basic rules books.  I used python to scrape all the markdown files I had and then rewrite the data into five separate sql files for inserting them into their proper tables.  SQL is often a pain when it comes down to organizing many-to-many relations.  You need junction tables to keep track of the relations.  That being said, I need to remind my self that you don't always need to go straight into building complex tables.  I'm now working on the scripts to ingest the items I have already stored in markdown files.  I was trying to figure why I hadn't created "create table" for rarities.  Then it hit me, an Item won't have multiple rarities... well, it could, but that's why we have a "varies" denominator.  So! No need to put more work on my shoulders.  KISS.  Then refactor it so you can Kiss again!!  

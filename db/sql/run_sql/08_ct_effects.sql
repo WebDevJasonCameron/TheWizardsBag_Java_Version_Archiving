@@ -183,7 +183,6 @@ VALUES
     ('Damage', 'Shortbow'),
     ('Damage', 'Slashing'),
     ('Damage', 'Thunder'),
-    ('Damage', 'Thunder'),
     ('Damage', 'Unarmed Attacks'),
 
     ('Disadvantage', ''),                           --   Disadvantage
@@ -1124,8 +1123,6 @@ VALUES
     ('Resistance', 'Bludgeoning'),
     ('Resistance', 'Bludgeoning, Piercing, and Slashing from Non-magical Attacks'),
     ('Resistance', 'Cold'),
-    ('Resistance', 'Damage Dealt by Traps'),
-    ('Resistance', 'Cod'),
     ('Resistance', 'Damage Dealt by Traps'),
     ('Resistance', 'Fire'),
     ('Resistance', 'Force'),

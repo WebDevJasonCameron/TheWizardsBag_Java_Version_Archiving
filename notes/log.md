@@ -1,5 +1,25 @@
 # Log
 
+## 2024-01-16 | Hard Freeze
+
+So, there is a hard freeze (weather) going on here where I live.  Jut wanted to log that prior to figuring out what to do next.  The DB is loaded with all the spells and items I got from my md collection of the basic rules.  There is a ton more I can pull from the other books.  I guess that is where I can begin.  I need a nicer GUI to input more items and spells.  That said, I should probably just build a working CLI that can go through the flow of creating or inputting spells and items. 
+
+Question: Should we be able to read or write first?  If I were five, I suspect I should learn to read then write.  
+
+Reading:
+- Need to pull a spell from db (without its many-to-many relationships)
+- Next, pull the full spell including all its relationships 
+- Need to pull a item from db (without its many-to-many relationships)
+- Next, pull the full item including all its inner relationships
+- Lastly, pull the full item including all its inner and outer relationships (spells... lets stop there)
+
+Writing:
+1. So, let see... Entering anything into the DB from the CLI should be figured out.  I'll use Java because it's where its were I started out.  Gryffindor all the way, baby!  Okay, it also because I need the continued practice.
+2. Spells are their own thing.  They should be added to the db, so we can use them as "attached spells" to our items.  We can use the frameworks established in the foundational db construction.
+3. Items will be the third step.
+
+---
+
 ## 2024-01-08 | Insert Item Data Plan
 
 Once again I find myself in front of a very large task and its very easily an overwhelming one.  Just like the spell data, I need to insert all the item data I have collected as mark down files.  It would be nice to say that I could just reproduce what I did for the spell data.  In a few cases, I can.  Mostly, I'll need to grab data from the MD files with different algorithms.  I like what I previously did for planning out the spell data, so I'm going to that again.  Let's start with looking at the item attributes.  These will be set in the "Create table" sql document.  

@@ -8,6 +8,7 @@ public class Spell implements DataTransferObject {
 
     // ATTs
     private long spellId;
+    private String name;
     private String level;
     private String castingTime;
     private String range;
@@ -19,16 +20,15 @@ public class Spell implements DataTransferObject {
     private boolean concentration;
     private boolean ritual;
     private String school;
-    private String attack;
     private String saveType;
     private String description;
-
     private String imageUrl;
 
     // LISTs
     private List<SpellTag> tagList;
-    private List<SpellAccessible> accessibleList;
+    private List<SpellCondition> conditionList;
     private List<SpellDamage> damageList;
+    private List<SpellAccessible> accessibleList;
 
     // OBJs
     private long source;
@@ -36,6 +36,13 @@ public class Spell implements DataTransferObject {
     // CONs
 
     // GETs & SETs
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public long getSpellId() {
         return spellId;
     }
@@ -120,13 +127,6 @@ public class Spell implements DataTransferObject {
         this.school = school;
     }
 
-    public String getAttack() {
-        return attack;
-    }
-    public void setAttack(String attack) {
-        this.attack = attack;
-    }
-
     public String getSaveType() {
         return saveType;
     }
@@ -154,6 +154,13 @@ public class Spell implements DataTransferObject {
     }
     public void setTagList(List<SpellTag> tagList) {
         this.tagList = tagList;
+    }
+
+    public List<SpellCondition> getConditionList() {
+        return conditionList;
+    }
+    public void setConditionList(List<SpellCondition> conditionList) {
+        this.conditionList = conditionList;
     }
 
     public List<SpellAccessible> getAccessibleList() {
@@ -199,12 +206,12 @@ public class Spell implements DataTransferObject {
                 ", concentration=" + concentration +
                 ", ritual=" + ritual +
                 ", school='" + school + '\'' +
-                ", attack='" + attack + '\'' +
                 ", saveType='" + saveType + '\'' +
                 ", description='" + description + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
 
                 ", tagList=" + tagList +                                //   Lists
+                ", conditionList=" + conditionList +
                 ", accessibleList=" + accessibleList +
                 ", damageList=" + damageList +
 

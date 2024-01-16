@@ -11,19 +11,24 @@ public class Item implements DataTransferObject {
     private long itemId;
     private String name;
     private String ttrpg;
-    private boolean magical;                //   Not Null
     private String rarity;
-    private boolean requiresAttunement;     //   Not Null
-    private boolean hasCharges;             //   Not Null
+    private String renownedQuality;
+    private boolean requiresAttunement;
+    private boolean hasCharges;
     private boolean isCursed;
     private double price;
+    private String weight;
     private String description;
     private String imageUrl;
-    private String magicBonus;
+    private boolean magicBonusPlus1;
+    private boolean magicBonusPlus2;
+    private boolean magicBonusPlus3;
+    private String descriptionNotes;
 
     // LISTs
     private List<ItemType> typeList;
     private List<ItemTag> tagList;
+    private List<ItemCondition> conditionList;
     private List<ItemNote> noteList;
     private List<Spell> attachedSpellList;
     private List<ItemEffect> effectList;
@@ -55,18 +60,18 @@ public class Item implements DataTransferObject {
         this.ttrpg = ttrpg;
     }
 
-    public boolean isMagical() {
-        return magical;
-    }
-    public void setMagical(boolean magical) {
-        this.magical = magical;
-    }
-
     public String getRarity() {
         return rarity;
     }
     public void setRarity(String rarity) {
         this.rarity = rarity;
+    }
+
+    public String getRenownedQuality() {
+        return renownedQuality;
+    }
+    public void setRenownedQuality(String renownedQuality) {
+        this.renownedQuality = renownedQuality;
     }
 
     public boolean isRequiresAttunement() {
@@ -97,6 +102,13 @@ public class Item implements DataTransferObject {
         this.price = price;
     }
 
+    public String getWeight() {
+        return weight;
+    }
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -111,11 +123,32 @@ public class Item implements DataTransferObject {
         this.imageUrl = imageUrl;
     }
 
-    public String getMagicBonus() {
-        return magicBonus;
+    public boolean isMagicBonusPlus1() {
+        return magicBonusPlus1;
     }
-    public void setMagicBonus(String magicBonus) {
-        this.magicBonus = magicBonus;
+    public void setMagicBonusPlus1(boolean magicBonusPlus1) {
+        this.magicBonusPlus1 = magicBonusPlus1;
+    }
+
+    public boolean isMagicBonusPlus2() {
+        return magicBonusPlus2;
+    }
+    public void setMagicBonusPlus2(boolean magicBonusPlus2) {
+        this.magicBonusPlus2 = magicBonusPlus2;
+    }
+
+    public boolean isMagicBonusPlus3() {
+        return magicBonusPlus3;
+    }
+    public void setMagicBonusPlus3(boolean magicBonusPlus3) {
+        this.magicBonusPlus3 = magicBonusPlus3;
+    }
+
+    public String getDescriptionNotes() {
+        return descriptionNotes;
+    }
+    public void setDescriptionNotes(String descriptionNotes) {
+        this.descriptionNotes = descriptionNotes;
     }
 
     // LISTs
@@ -131,6 +164,13 @@ public class Item implements DataTransferObject {
     }
     public void setTagList(List<ItemTag> tagList) {
         this.tagList = tagList;
+    }
+
+    public List<ItemCondition> getConditionList() {
+        return conditionList;
+    }
+    public void setConditionList(List<ItemCondition> conditionList) {
+        this.conditionList = conditionList;
     }
 
     public List<ItemNote> getNoteList() {
@@ -174,17 +214,22 @@ public class Item implements DataTransferObject {
                 "itemId=" + itemId +
                 ", name='" + name + '\'' +
                 ", ttrpg='" + ttrpg + '\'' +
-                ", magical=" + magical +
                 ", rarity='" + rarity + '\'' +
+                ", renownedQuality='" + renownedQuality + '\'' +
                 ", requiresAttunement=" + requiresAttunement +
                 ", hasCharges=" + hasCharges +
                 ", isCursed=" + isCursed +
                 ", price=" + price +
+                ", weight='" + weight + '\'' +
                 ", description='" + description + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
-                ", magicBonus='" + magicBonus + '\'' +
+                ", magicBonusPlus1=" + magicBonusPlus1 +
+                ", magicBonusPlus2=" + magicBonusPlus2 +
+                ", magicBonusPlus3=" + magicBonusPlus3 +
+                ", descriptionNotes='" + descriptionNotes + '\'' +
                 ", typeList=" + typeList +
                 ", tagList=" + tagList +
+                ", conditionList=" + conditionList +
                 ", noteList=" + noteList +
                 ", attachedSpellList=" + attachedSpellList +
                 ", effectList=" + effectList +
@@ -192,8 +237,7 @@ public class Item implements DataTransferObject {
                 '}';
     }
 
-
-    // METHs
+// METHs
 
 
 }

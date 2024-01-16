@@ -17,6 +17,7 @@ INSERT INTO types (type, sub_type)
 VALUES
     ('weapon', ''),                     --   Weapons
     ('weapon melee', ''),               --   Melee Weapons
+    ('weapon melee', 'axe'),
     ('weapon melee', 'battleaxe'),
     ('weapon melee', 'club'),
     ('weapon melee', 'dagger'),
@@ -30,6 +31,8 @@ VALUES
     ('weapon melee', 'handaxe'),
     ('weapon melee', 'hoopak'),
     ('weapon melee', 'lance'),
+    ('weapon melee', 'hammer'),
+    ('weapon melee', 'knife'),
     ('weapon melee', 'light hammer'),
     ('weapon melee', 'longsword'),
     ('weapon melee', 'mace'),
@@ -43,6 +46,7 @@ VALUES
     ('weapon melee', 'sickle'),
     ('weapon melee', 'staff'),
     ('weapon melee', 'spear'),
+    ('weapon melee', 'sword'),
     ('weapon melee', 'trident'),
     ('weapon melee', 'war pick'),
     ('weapon melee', 'warhammer'),
@@ -59,12 +63,13 @@ VALUES
     ('weapon ranged', 'sling'),
     ('weapon ammunition', ''),          --   Ammunition Weapons
     ('weapon ammunition', 'dart'),
+    ('weapon ammunition', 'arrow'),
     ('weapon thrown', ''),              --   Thrown Weapons
     ('weapon thrown', 'boomerang'),
     ('weapon thrown', 'javelin'),
     ('weapon thrown', 'net'),
     ('weapon firearms', ''),            --   Firearms Weapons
-    ('weapon firearms', 'antimatter riffle'),
+    ('weapon firearms', 'antimatter rifle'),
     ('weapon firearms', 'bad news'),
     ('weapon firearms', 'blunderbuss'),
     ('weapon firearms', 'firearm'),
@@ -101,13 +106,14 @@ VALUES
     ('heavy armor', 'plate'),
     ('shield', ''),                    --   Shields
     ('magical', ''),                    --   Magical Items
-    ('magical', 'rings'),
-    ('magical', 'wands'),
+    ('magical', 'ring'),
+    ('magical', 'wand'),
     ('magical', 'staves'),
-    ('magical', 'rods'),
-    ('magical', 'scrolls'),
+    ('magical', 'rod'),
+    ('magical', 'scroll'),
     ('magical', 'potion'),
     ('magical', 'wondrous items'),
+    ('magical', 'spellcasting focus'),
     ('adventure gear', ''),             --   Adventuring Gear
     ('adventure gear', 'backpacks'),
     ('adventure gear', 'bedrolls'),
@@ -115,22 +121,36 @@ VALUES
     ('adventure gear', 'climbing gear'),
     ('adventure gear', 'camping supplies'),
     ('adventure gear', 'rope'),
+    ('adventure gear', 'lantern'),
+    ('adventure gear', 'light'),
     ('vehicle', ''),                   --   Vehicles
     ('vehicle', 'land vehicles'),
     ('vehicle', 'water vehicles'),
     ('vehicle', 'air vehicles'),
-    ('clothing', ''),                   --   Clothing
-    ('clothing', 'common clothing'),
-    ('clothing', 'noble attire'),
-    ('clothing', 'traveller cloaks'),
-    ('clothing', 'cloak'),
-    ('clothing', 'hats and headgear'),
+    ('vehicle', 'mount'),
+    ('clothes', ''),                   --   Clothing
+    ('clothes', 'common clothing'),
+    ('clothes', 'noble attire'),
+    ('clothes', 'traveller cloaks'),
+    ('clothes', 'boots'),
+    ('clothes', 'cloak'),
+    ('clothes', 'headband'),
+    ('clothes', 'cape'),
+    ('clothes', 'bracers'),
+    ('clothes', 'belt'),
+    ('clothes', 'hats and headgear'),
+    ('clothes', 'helm'),
+    ('clothes', 'gloves'),
+    ('clothes', 'gauntlets'),
+    ('clothes', 'robes'),
+    ('clothes', 'mantle'),
+    ('clothes', 'slippers'),
     ('artifacts', ''),                  --   Artifacts
     ('crafting', ''),                   --   Crafting
     ('crafting', 'alchemical substances'),
     ('crafting', 'crafting materials'),
-    ('tool', ''),                      --   Tools
-    ('tool', 'cooking utensils'),
+    ('tools', ''),                      --   Tools
+    ('tools', 'cooking utensils'),
     ('book', ''),                      --    Literature/books
     ('book', 'spellbooks'),
     ('book', 'tomes of knowledge'),
@@ -143,20 +163,21 @@ VALUES
     ('food', ''),                       --   Food
     ('food', 'beverages'),
     ('food', 'specialized food'),
-    ('instrument', ''),                --   Instruments
+    ('instruments', ''),                --   Instruments
     ('instrument', 'musical instruments'),
     ('jewelry', ''),                    --   Jewelry
-    ('jewelry', ''),
     ('jewelry', 'necklaces'),
     ('jewelry', 'bracelets'),
     ('jewelry', 'earrings'),
     ('jewelry', 'gemstones'),
+    ('jewelry', 'amulet'),
+    ('jewelry', 'gem'),
+    ('jewelry', 'medallion'),
     ('navigation', ''),                 --   Navigation
     ('navigation', 'maps'),
     ('navigation', 'compass'),
     ('navigation', 'nautical charts'),
     ('pet', ''),                       --   Pets
-    ('pet', ''),
     ('pet', 'familiars'),
     ('pet', 'exotic pets'),
     ('poison', ''),                    --   Poisons
@@ -166,15 +187,28 @@ VALUES
     ('trophies', 'monster trophies'),
     ('trophies', 'rare specimens'),
     ('document', ''),                  --   Documents
-    ('document', ''),
     ('document', 'letters'),
     ('document', 'contracts'),
     ('document', 'important documents'),
     ('mundane', ''),                    --   Mundane
+
     ('miscellaneous', ''),               --   Miscellaneous
+    ('miscellaneous', 'gaming set'),
+    ('miscellaneous', 'kit'),
+    ('miscellaneous', 'supplies'),
+    ('miscellaneous', 'trap'),
+    ('miscellaneous', 'services'),
+    ('miscellaneous', 'shackles'),
+
 
     ('gear and equipment', ''),
-    ('spellcasting', ''),
-    ('consumable', ''),
-    ('saddle', '')
+    ('gear and equipment', 'saddle'),
+    ('gear and equipment', 'utility'),
+
+    ('consumables', ''),
+
+    ('building', ''),
+    ('building', 'fortress')
+
+
 ;

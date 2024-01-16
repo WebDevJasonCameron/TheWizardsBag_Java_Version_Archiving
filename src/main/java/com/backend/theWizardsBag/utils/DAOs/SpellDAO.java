@@ -41,9 +41,9 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 Spell spell = new Spell();
 
                 List<SpellTag> spellTags = new ArrayList<>();
-                List<SpellAccessible> availableFor = new ArrayList<>();
-                List<SpellDamage> damage = new ArrayList<>();
-                List<SpellCondition> conditions = new ArrayList<>();
+                List<SpellClass> spellClasses = new ArrayList<>();
+                List<SpellDamage> spellDamages = new ArrayList<>();
+                List<SpellCondition> spellConditions = new ArrayList<>();
 
                 spell.setSpellId(rs.getInt("spell_id"));
                 spell.setName(rs.getString("name"));

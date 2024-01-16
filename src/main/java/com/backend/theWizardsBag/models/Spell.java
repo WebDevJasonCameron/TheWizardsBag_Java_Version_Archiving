@@ -28,7 +28,7 @@ public class Spell implements DataTransferObject {
     private List<SpellTag> tagList;
     private List<SpellCondition> conditionList;
     private List<SpellDamage> damageList;
-    private List<SpellAccessible> accessibleList;
+    private List<SpellClass> classList;
 
     // OBJs
     private long source;
@@ -163,11 +163,11 @@ public class Spell implements DataTransferObject {
         this.conditionList = conditionList;
     }
 
-    public List<SpellAccessible> getAccessibleList() {
-        return accessibleList;
+    public List<SpellClass> getClassList() {
+        return classList;
     }
-    public void setAccessibleList(List<SpellAccessible> accessibleList) {
-        this.accessibleList = accessibleList;
+    public void setClassList(List<SpellClass> classList) {
+        this.classList = classList;
     }
 
     public List<SpellDamage> getDamageList() {
@@ -213,7 +213,7 @@ public class Spell implements DataTransferObject {
                 ", tagList=" + tagList +
                 ", conditionList=" + conditionList +
                 ", damageList=" + damageList +
-                ", accessibleList=" + accessibleList +
+                ", classList=" + classList +
                 ", source=" + source +
                 '}';
     }

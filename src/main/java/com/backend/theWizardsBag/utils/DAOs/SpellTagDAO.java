@@ -1,6 +1,6 @@
 package com.backend.theWizardsBag.utils.DAOs;
 
-import com.backend.theWizardsBag.models.SpellAccessible;
+import com.backend.theWizardsBag.models.SpellClass;
 import com.backend.theWizardsBag.models.SpellTag;
 import com.backend.theWizardsBag.utils.Objects.DataAccessObject;
 
@@ -67,6 +67,6 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
     }
 
     // METHs
-    public List<SpellAccessible> findAllWithSpellId(long id) { return null; }
+    public List<SpellClass> findAllWithSpellId(long id) { return null; }
 
 }

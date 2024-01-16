@@ -9,8 +9,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-public class SpellJDBCExecutor_test {
+public class SpellJDBCExecutor {
 
+    // <!> <R> We are using main function to test... this will need to change to a proper function
     public static void main(String[] args) {
 
         // VARs

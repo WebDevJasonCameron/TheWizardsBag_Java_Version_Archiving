@@ -46,6 +46,7 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 List<SpellCondition> conditions = new ArrayList<>();
 
                 spell.setSpellId(rs.getInt("spell_id"));
+                spell.setName(rs.getString("name"));
                 spell.setLevel(rs.getString("level"));
                 spell.setCastingTime(rs.getString("casting_time"));
                 spell.setRange(rs.getString("range_area"));

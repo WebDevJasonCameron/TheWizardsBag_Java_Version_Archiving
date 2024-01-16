@@ -5,6 +5,10 @@ import com.backend.theWizardsBag.models.SpellTag;
 import com.backend.theWizardsBag.utils.Objects.DataAccessObject;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SpellTagDAO extends DataAccessObject<SpellTag> {
@@ -24,7 +28,28 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
 
     @Override
     public List<SpellTag> findAll() {
-        return null;
+        List<SpellTag> spellTagList = new ArrayList<>();
+
+        try(PreparedStatement statement = this.connection.prepareStatement("SELECT * FROM tags");){
+
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                SpellTag spellTag = new SpellTag();
+
+                spellTag.setSpellTagId(rs.getInt("tag_id"));
+                spellTag.setTagName(rs.getString("name"));
+                spellTag.setTagType(rs.getString("type"));
+
+                spellTagList.add(spellTag);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException();
+        }
+
+        return spellTagList;
     }
 
     @Override

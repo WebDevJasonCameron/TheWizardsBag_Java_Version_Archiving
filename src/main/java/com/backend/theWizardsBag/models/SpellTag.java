@@ -6,24 +6,32 @@ public class SpellTag implements DataTransferObject {
 
     // ATTs
     private long spellTagId;
-    private String tag;
+    private String tagName;
+    private String tagType;
 
     // CONs
 
 
     // GETS & SETs
-    public long getSpellTagID() {
+    public long getSpellTagId() {
         return spellTagId;
     }
-    public void setSpellTagID(long spellTagId) {
+    public void setSpellTagId(long spellTagId) {
         this.spellTagId = spellTagId;
     }
 
-    public String getTag() {
-        return tag;
+    public String getTagName() {
+        return tagName;
     }
-    public void setTag(String tag) {
-        this.tag = tag;
+    public void setTagName(String tagName) {
+        this.tagName = tagName;
+    }
+
+    public String getTagType() {
+        return tagType;
+    }
+    public void setTagType(String tagType) {
+        this.tagType = tagType;
     }
 
     // OVRs
@@ -35,10 +43,11 @@ public class SpellTag implements DataTransferObject {
     @Override
     public String toString() {
         return "SpellTag{" +
-                "spellTagID=" + spellTagId +
-                ", tag='" + tag + '\'' +
+                "spellTagId=" + spellTagId +
+                ", tagName='" + tagName + '\'' +
+                ", tagType='" + tagType + '\'' +
                 '}';
     }
 
-    // METHs
+// METHs
 }

@@ -195,6 +195,7 @@ public class Spell implements DataTransferObject {
     public String toString() {
         return "Spell{" +
                 "spellId=" + spellId +
+                ", name='" + name + '\'' +
                 ", level='" + level + '\'' +
                 ", castingTime='" + castingTime + '\'' +
                 ", range='" + range + '\'' +
@@ -209,16 +210,14 @@ public class Spell implements DataTransferObject {
                 ", saveType='" + saveType + '\'' +
                 ", description='" + description + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
-
-                ", tagList=" + tagList +                                //   Lists
+                ", tagList=" + tagList +
                 ", conditionList=" + conditionList +
-                ", accessibleList=" + accessibleList +
                 ", damageList=" + damageList +
-
+                ", accessibleList=" + accessibleList +
                 ", source=" + source +
                 '}';
     }
 
-    // METHs
+// METHs
 
 }

@@ -1,9 +1,14 @@
 package com.backend.theWizardsBag.utils.DAOs;
 
+import com.backend.theWizardsBag.models.Spell;
 import com.backend.theWizardsBag.models.SpellCondition;
 import com.backend.theWizardsBag.utils.Objects.DataAccessObject;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SpellConditionDAO extends DataAccessObject<SpellCondition> {
@@ -23,7 +28,27 @@ public class SpellConditionDAO extends DataAccessObject<SpellCondition> {
 
     @Override
     public List<SpellCondition> findAll() {
-        return null;
+        List<SpellCondition> spellConditions = new ArrayList<>();
+
+        try(PreparedStatement statement = this .connection.prepareStatement("SELECT * FROM conditions");){
+
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()){
+                SpellCondition spellCondition = new SpellCondition();
+
+                spellCondition.setConditionID(rs.getInt("condition_id"));
+                spellCondition.setConditionName(rs.getString("condition"));
+                spellCondition.setConditionDescription(rs.getString("description"));
+
+                spellConditions.add(spellCondition);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException();
+        }
+
+        return spellConditions;
     }
 
     @Override

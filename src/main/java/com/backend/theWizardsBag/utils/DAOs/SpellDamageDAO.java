@@ -4,6 +4,10 @@ import com.backend.theWizardsBag.models.SpellDamage;
 import com.backend.theWizardsBag.utils.Objects.DataAccessObject;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SpellDamageDAO extends DataAccessObject<SpellDamage> {
@@ -23,7 +27,24 @@ public class SpellDamageDAO extends DataAccessObject<SpellDamage> {
 
     @Override
     public List<SpellDamage> findAll() {
-        return null;
+        List<SpellDamage> spellDamages = new ArrayList<>();
+
+        try (PreparedStatement statement = this.connection.prepareStatement("SELECT * FROM damagetypes");) {
+            ResultSet rs = statement.executeQuery();
+
+            while(rs.next()) {
+                SpellDamage spellDamage = new SpellDamage();
+
+                spellDamage.setDamageID(rs.getInt("damagetype_id"));
+                spellDamage.setDamageName(rs.getString("damage"));
+
+                spellDamages.add(spellDamage);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        return spellDamages;
     }
 
     @Override

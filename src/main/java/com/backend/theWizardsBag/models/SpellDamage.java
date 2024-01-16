@@ -5,32 +5,39 @@ import com.backend.theWizardsBag.utils.Objects.DataTransferObject;
 public class SpellDamage implements DataTransferObject {
 
     // ATTs
-    private long spellDamageID;
-    private String damage;
+    private long damageID;
+    private String damageName;
 
     // CONs
 
 
     // GETs & SETs
-    public long getSpellDamageID() {
-        return spellDamageID;
+    public long getDamageID() {
+        return damageID;
     }
-    public void setSpellDamageID(long spellDamageID) {
-        this.spellDamageID = spellDamageID;
-    }
-
-    public String getDamage() {
-        return damage;
-    }
-    public void setDamage(String damage) {
-        this.damage = damage;
+    public void setDamageID(long damageID) {
+        this.damageID = damageID;
     }
 
+    public String getDamageName() {
+        return damageName;
+    }
+    public void setDamageName(String damageName) {
+        this.damageName = damageName;
+    }
 
     // OVRs
     @Override
     public long getId() {
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "SpellDamage{" +
+                "damageID=" + damageID +
+                ", damageName='" + damageName + '\'' +
+                '}';
     }
 
     // METHs

@@ -36,10 +36,10 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
             while (rs.next()){
                 SpellClass spellClass = new SpellClass();
 
-                spellClass.setSpellClassId(rs.getInt("class_id"));
-                spellClass.setSpellClassName(rs.getString("class_name"));
-                spellClass.setSpellSubClassName(rs.getString("subclass_name"));
-                spellClass.setSpellDescription(rs.getString("description"));
+                spellClass.setClassID(rs.getInt("class_id"));
+                spellClass.setClassName(rs.getString("class_name"));
+                spellClass.setSubClassName(rs.getString("subclass_name"));
+                spellClass.setClassDescription(rs.getString("description"));
 
                 spellClasses.add(spellClass);
             }

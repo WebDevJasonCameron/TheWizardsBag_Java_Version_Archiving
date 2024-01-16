@@ -5,7 +5,7 @@ import com.backend.theWizardsBag.utils.Objects.DataTransferObject;
 public class SpellTag implements DataTransferObject {
 
     // ATTs
-    private long spellTagId;
+    private long tagID;
     private String tagName;
     private String tagType;
 
@@ -13,11 +13,11 @@ public class SpellTag implements DataTransferObject {
 
 
     // GETS & SETs
-    public long getSpellTagId() {
-        return spellTagId;
+    public long getTagID() {
+        return tagID;
     }
-    public void setSpellTagId(long spellTagId) {
-        this.spellTagId = spellTagId;
+    public void setTagID(long tagID) {
+        this.tagID = tagID;
     }
 
     public String getTagName() {
@@ -43,7 +43,7 @@ public class SpellTag implements DataTransferObject {
     @Override
     public String toString() {
         return "SpellTag{" +
-                "spellTagId=" + spellTagId +
+                "tagID=" + tagID +
                 ", tagName='" + tagName + '\'' +
                 ", tagType='" + tagType + '\'' +
                 '}';

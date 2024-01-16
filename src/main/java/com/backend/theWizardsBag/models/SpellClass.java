@@ -5,41 +5,41 @@ import com.backend.theWizardsBag.utils.Objects.DataTransferObject;
 public class SpellClass implements DataTransferObject {
 
     // ATTs
-    private long spellClassId;
-    private String spellClassName;
-    private  String spellSubClassName;
-    private String spellDescription;
+    private long classID;
+    private String className;
+    private  String subClassName;
+    private String classDescription;
 
     // CONs
 
 
     // GETs & SETs
-    public long getSpellClassId() {
-        return spellClassId;
+    public long getClassID() {
+        return classID;
     }
-    public void setSpellClassId(long spellClassId) {
-        this.spellClassId = spellClassId;
-    }
-
-    public String getSpellClassName() {
-        return spellClassName;
-    }
-    public void setSpellClassName(String spellClassName) {
-        this.spellClassName = spellClassName;
+    public void setClassID(long classID) {
+        this.classID = classID;
     }
 
-    public String getSpellSubClassName() {
-        return spellSubClassName;
+    public String getClassName() {
+        return className;
     }
-    public void setSpellSubClassName(String spellSubClassName) {
-        this.spellSubClassName = spellSubClassName;
+    public void setClassName(String className) {
+        this.className = className;
     }
 
-    public String getSpellDescription() {
-        return spellDescription;
+    public String getSubClassName() {
+        return subClassName;
     }
-    public void setSpellDescription(String spellDescription) {
-        this.spellDescription = spellDescription;
+    public void setSubClassName(String subClassName) {
+        this.subClassName = subClassName;
+    }
+
+    public String getClassDescription() {
+        return classDescription;
+    }
+    public void setClassDescription(String classDescription) {
+        this.classDescription = classDescription;
     }
 
     // OVRs
@@ -51,10 +51,10 @@ public class SpellClass implements DataTransferObject {
     @Override
     public String toString() {
         return "SpellClass{" +
-                "spellClassId=" + spellClassId +
-                ", spellClassName='" + spellClassName + '\'' +
-                ", spellSubClassName='" + spellSubClassName + '\'' +
-                ", spellDescription='" + spellDescription + '\'' +
+                "classID=" + classID +
+                ", className='" + className + '\'' +
+                ", subClassName='" + subClassName + '\'' +
+                ", classDescription='" + classDescription + '\'' +
                 '}';
     }
 

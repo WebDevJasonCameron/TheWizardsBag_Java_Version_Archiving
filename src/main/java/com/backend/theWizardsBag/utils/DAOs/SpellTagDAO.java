@@ -30,14 +30,19 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
     public List<SpellTag> findAll() {
         List<SpellTag> spellTagList = new ArrayList<>();
 
-        try(PreparedStatement statement = this.connection.prepareStatement("SELECT * FROM tags");){
+        try(PreparedStatement statement = this.connection.prepareStatement("" +
+                "SELECT * FROM tags " +
+                "WHERE\n" +
+                "\ttype = 'na'\n" +
+                "\tOR type = 'both'\n" +
+                "\tOR type = 'spell' ");){
 
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
                 SpellTag spellTag = new SpellTag();
 
-                spellTag.setSpellTagId(rs.getInt("tag_id"));
+                spellTag.setTagID(rs.getInt("tag_id"));
                 spellTag.setTagName(rs.getString("name"));
                 spellTag.setTagType(rs.getString("type"));
 

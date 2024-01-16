@@ -16,7 +16,6 @@ ALTER SEQUENCE types_seq RESTART WITH 1;
 INSERT INTO types (type, sub_type)
 VALUES
     ('weapon', ''),                     --   Weapons
-    ('weapon', 'any'),
     ('weapon melee', ''),               --   Melee Weapons
     ('weapon melee', 'battleaxe'),
     ('weapon melee', 'club'),
@@ -42,6 +41,7 @@ VALUES
     ('weapon melee', 'scimitar'),
     ('weapon melee', 'shortsword'),
     ('weapon melee', 'sickle'),
+    ('weapon melee', 'staff'),
     ('weapon melee', 'spear'),
     ('weapon melee', 'trident'),
     ('weapon melee', 'war pick'),
@@ -60,7 +60,6 @@ VALUES
     ('weapon ammunition', ''),          --   Ammunition Weapons
     ('weapon ammunition', 'dart'),
     ('weapon thrown', ''),              --   Thrown Weapons
-    ('weapon thrown', 'boomerang'),
     ('weapon thrown', 'boomerang'),
     ('weapon thrown', 'javelin'),
     ('weapon thrown', 'net'),
@@ -82,35 +81,32 @@ VALUES
     ('weapon firearms', 'rifle, hunting'),
     ('weapon firearms', 'shotgun'),
 
-
-
     ('armor', ''),                      --   Armor
-    ('armor', 'any'),
-    ('light armor', 'any'),             --   Light Armor
+    ('light armor', ''),             --   Light Armor
     ('light armor', 'pride silk outfit'),
     ('light armor', 'padded'),
     ('light armor', 'leather'),
     ('light armor', 'studded leather'),
-    ('medium armor', 'any'),            --   Med Armor
+    ('medium armor', ''),            --   Med Armor
     ('medium armor', 'hide'),
     ('medium armor', 'chain shirt'),
     ('medium armor', 'scale mail'),
     ('medium armor', 'breastplate'),
     ('medium armor', 'half plate'),
     ('medium armor', 'spiked armor'),
-    ('heavy armor', 'any'),             --   Heavy Armor
+    ('heavy armor', ''),             --   Heavy Armor
     ('heavy armor', 'ring mail'),
     ('heavy armor', 'chain mail'),
     ('heavy armor', 'splint'),
     ('heavy armor', 'plate'),
-    ('shields', ''),                    --   Shields
+    ('shield', ''),                    --   Shields
     ('magical', ''),                    --   Magical Items
     ('magical', 'rings'),
     ('magical', 'wands'),
     ('magical', 'staves'),
     ('magical', 'rods'),
     ('magical', 'scrolls'),
-    ('magical', 'potions'),
+    ('magical', 'potion'),
     ('magical', 'wondrous items'),
     ('adventure gear', ''),             --   Adventuring Gear
     ('adventure gear', 'backpacks'),
@@ -119,38 +115,38 @@ VALUES
     ('adventure gear', 'climbing gear'),
     ('adventure gear', 'camping supplies'),
     ('adventure gear', 'rope'),
-    ('vehicles', ''),                   --   Vehicles
-    ('vehicles', 'land vehicles'),
-    ('vehicles', 'water vehicles'),
-    ('vehicles', 'air vehicles'),
+    ('vehicle', ''),                   --   Vehicles
+    ('vehicle', 'land vehicles'),
+    ('vehicle', 'water vehicles'),
+    ('vehicle', 'air vehicles'),
     ('clothing', ''),                   --   Clothing
     ('clothing', 'common clothing'),
     ('clothing', 'noble attire'),
     ('clothing', 'traveller cloaks'),
+    ('clothing', 'cloak'),
     ('clothing', 'hats and headgear'),
     ('artifacts', ''),                  --   Artifacts
     ('crafting', ''),                   --   Crafting
     ('crafting', 'alchemical substances'),
     ('crafting', 'crafting materials'),
-    ('tools', ''),                      --   Tools
-    ('tools', 'cooking utensils'),
-    ('books', ''),                      --    Literature/books
-    ('books', 'spellbooks'),
-    ('books', 'tomes of knowledge'),
-    ('books', 'scrolls'),
-    ('books', 'ancient scrolls'),
-    ('containers', ''),                 --   Containers
-    ('containers', 'bags of holding'),
-    ('containers', 'chests'),
-    ('containers', 'pouches'),
+    ('tool', ''),                      --   Tools
+    ('tool', 'cooking utensils'),
+    ('book', ''),                      --    Literature/books
+    ('book', 'spellbooks'),
+    ('book', 'tomes of knowledge'),
+    ('book', 'scrolls'),
+    ('book', 'ancient scrolls'),
+    ('container', ''),                 --   Containers
+    ('container', 'bags of holding'),
+    ('container', 'chests'),
+    ('container', 'pouches'),
     ('food', ''),                       --   Food
     ('food', 'beverages'),
     ('food', 'specialized food'),
-    ('instruments', ''),                --   Instruments
-    ('instruments', 'any'),
-    ('instruments', 'musical instruments'),
+    ('instrument', ''),                --   Instruments
+    ('instrument', 'musical instruments'),
     ('jewelry', ''),                    --   Jewelry
-    ('jewelry', 'any'),
+    ('jewelry', ''),
     ('jewelry', 'necklaces'),
     ('jewelry', 'bracelets'),
     ('jewelry', 'earrings'),
@@ -159,21 +155,26 @@ VALUES
     ('navigation', 'maps'),
     ('navigation', 'compass'),
     ('navigation', 'nautical charts'),
-    ('pets', ''),                       --   Pets
-    ('pets', 'any'),
-    ('pets', 'familiars'),
-    ('pets', 'exotic pets'),
-    ('poisons', ''),                    --   Poisons
-    ('poisons', 'poison weapons'),
-    ('poisons', 'ingestible poisons'),
+    ('pet', ''),                       --   Pets
+    ('pet', ''),
+    ('pet', 'familiars'),
+    ('pet', 'exotic pets'),
+    ('poison', ''),                    --   Poisons
+    ('poison', 'poison weapons'),
+    ('poison', 'ingestible poisons'),
     ('trophies', ''),                   --   Trophies
     ('trophies', 'monster trophies'),
     ('trophies', 'rare specimens'),
-    ('documents', ''),                  --   Documents
-    ('documents', 'any'),
-    ('documents', 'letters'),
-    ('documents', 'contracts'),
-    ('documents', 'important documents'),
+    ('document', ''),                  --   Documents
+    ('document', ''),
+    ('document', 'letters'),
+    ('document', 'contracts'),
+    ('document', 'important documents'),
     ('mundane', ''),                    --   Mundane
-    ('miscellaneous', '')               --   Miscellaneous
+    ('miscellaneous', ''),               --   Miscellaneous
+
+    ('gear and equipment', ''),
+    ('spellcasting', ''),
+    ('consumable', ''),
+    ('saddle', '')
 ;

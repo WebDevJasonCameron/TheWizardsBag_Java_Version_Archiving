@@ -4,11 +4,12 @@
     <file url="file://$PROJECT_DIR$/db/sql/00_cdb.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/99_dlt_all.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/insert_item_data/00_insert_items.sql" dialect="PostgreSQL" />
-    <file url="file://$PROJECT_DIR$/db/sql/insert_item_data/01_insert_item_tags.sql" dialect="PostgreSQL" />
-    <file url="file://$PROJECT_DIR$/db/sql/insert_item_data/02_insert_item_notes.sql" dialect="PostgreSQL" />
-    <file url="file://$PROJECT_DIR$/db/sql/insert_item_data/03_insert_item_conditions.sql" dialect="PostgreSQL" />
-    <file url="file://$PROJECT_DIR$/db/sql/insert_item_data/04_insert_item_attached_spells.sql" dialect="PostgreSQL" />
-    <file url="file://$PROJECT_DIR$/db/sql/insert_item_data/05_insert_item_effects.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/sql/insert_item_data/01_insert_item_types.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/sql/insert_item_data/02_insert_item_tags.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/sql/insert_item_data/03_insert_item_notes.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/sql/insert_item_data/04_insert_item_conditions.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/sql/insert_item_data/05_insert_item_attached_spells.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/sql/insert_item_data/06_insert_item_effects.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/insert_spell_data/00_insert_spells.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/insert_spell_data/01_insert_spell_tags.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/insert_spell_data/02_insert_spell_conditions.sql" dialect="PostgreSQL" />
@@ -28,7 +29,6 @@
     <file url="file://$PROJECT_DIR$/db/sql/run_sql/22_ct_item_tags.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/run_sql/23_ct_item_notes.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/run_sql/24_ct_item_conditions.sql" dialect="PostgreSQL" />
-    <file url="file://$PROJECT_DIR$/db/sql/run_sql/26_ct_item_sources.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/run_sql/27_ct_item_spells.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/run_sql/28_ct_item_effects.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/db/sql/run_sql/32_ct_spell_tags.sql" dialect="PostgreSQL" />

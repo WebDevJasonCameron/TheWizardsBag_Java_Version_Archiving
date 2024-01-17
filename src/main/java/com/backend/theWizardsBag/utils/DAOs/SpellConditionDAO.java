@@ -14,6 +14,7 @@ import java.util.List;
 public class SpellConditionDAO extends DataAccessObject<SpellCondition> {
 
     // SQLs
+    private final static String GET_BY_ID = "SELECT condition_id, condition, description FROM conditions WHERE condition_id=?";
 
     // CONs
     public SpellConditionDAO(Connection connection) {
@@ -23,7 +24,25 @@ public class SpellConditionDAO extends DataAccessObject<SpellCondition> {
     // OVRs
     @Override
     public SpellCondition findById(long id) {
-        return null;
+        SpellCondition spellCondition = new SpellCondition();
+
+        try (PreparedStatement statement = this.connection.prepareStatement(GET_BY_ID);) {
+            statement.setLong(1, id);
+
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                spellCondition.setConditionID(rs.getLong("condition_id"));
+                spellCondition.setConditionName(rs.getString("condition"));
+                spellCondition.setConditionDescription(rs.getString("description"));
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException();
+        }
+
+        return spellCondition;
     }
 
     @Override
@@ -67,4 +86,6 @@ public class SpellConditionDAO extends DataAccessObject<SpellCondition> {
     }
 
     // METHs
+
+
 }

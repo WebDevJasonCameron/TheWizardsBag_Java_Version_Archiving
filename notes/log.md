@@ -1,6 +1,12 @@
 # Log
 
-## 2024-01-16 | Hard Freeze
+## 2024-01-16 | Labels and IDs Matter
+
+I spent a lot of time the last couple of days refactoring the labels of vars and in some case, just adding and deleting them, because the DB was slightly off from what I imagined it to be while writing Java code.  I know!  I'm surprised as you!  Yet, the DB is roughly done with data inside (That took a long month and a half) and I noted some of my var labels sucked.  Some of them still do.  However, I think taking to the time to ensure your labels make clear contestant meaning will help much later down the road.  I also found that I needed to distinguish the attribute id such as conditionID and classID from the spellConditionId and spellClassID.  My reasoning is, I have quite a lot of junction tables!  Each model could have (should have) identified the classID along with the junction's spellClassID.  This way, I can target the junction's spellClassID and delete it... while not deleting neither the item/spell or the class from their respective tables!  I can also modify a missed relation by grabbing the junction's id for an item and changing it to a different classID.  Are you confused?  That's magic baby!  LOL, it's not all twinkling lights and explosions (^>_<^)
+
+---
+
+## 2024-01-15 | Hard Freeze
 
 So, there is a hard freeze (weather) going on here where I live.  Jut wanted to log that prior to figuring out what to do next.  The DB is loaded with all the spells and items I got from my md collection of the basic rules.  There is a ton more I can pull from the other books.  I guess that is where I can begin.  I need a nicer GUI to input more items and spells.  That said, I should probably just build a working CLI that can go through the flow of creating or inputting spells and items. 
 

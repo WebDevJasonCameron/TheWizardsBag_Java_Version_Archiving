@@ -42,7 +42,7 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
             while (rs.next()) {
                 SpellTag spellTag = new SpellTag();
 
-                spellTag.setTagID(rs.getInt("tag_id"));
+                spellTag.setTagID(rs.getLong("tag_id"));
                 spellTag.setTagName(rs.getString("name"));
                 spellTag.setTagType(rs.getString("type"));
 

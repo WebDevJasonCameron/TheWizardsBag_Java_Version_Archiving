@@ -21,6 +21,8 @@ public class SpellTagJDBCExecutor {
         // METHs
         DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db",  "postgres", password);
 
+        // <!> Get All...
+        /*
         try {
             Connection connection = dcm.getConnection();
             SpellTagDAO spellTagDAO = new SpellTagDAO(connection);
@@ -30,7 +32,18 @@ public class SpellTagJDBCExecutor {
             for (SpellTag spellTag : spellTags) {
                 System.out.println(spellTag.toString());
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+         */
 
+        // <!> Get by ID...
+        try {
+            Connection connection = dcm.getConnection();
+            SpellTagDAO spellTagDAO = new SpellTagDAO(connection);
+
+            SpellTag spellTag = spellTagDAO.findById(1);
+            System.out.println(spellTag);
 
         } catch (SQLException e) {
             e.printStackTrace();

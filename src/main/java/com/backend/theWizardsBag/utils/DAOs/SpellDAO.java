@@ -13,10 +13,7 @@ import java.util.List;
 public class SpellDAO extends DataAccessObject<Spell> {
 
     // SQLs
-    // Get spellTags by spell id -> join tag name
-    // Get availableFor by spell id -> join af name
-    // Get damage by spell id -> join damage name
-
+    private final static String GET_BY_ID = "SELECT * FROM spells WHERE spell_id=?";
 
     // CONs
     public SpellDAO(Connection connection){
@@ -26,7 +23,43 @@ public class SpellDAO extends DataAccessObject<Spell> {
     // OVRs
     @Override
     public Spell findById(long id) {
-        return null;
+        Spell spell = new Spell();
+
+        try (PreparedStatement statement = this.connection.prepareStatement(GET_BY_ID);) {
+            statement.setLong(1, id);
+
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                List<SpellTag> spellTags = new ArrayList<>();
+                List<SpellClass> spellClasses = new ArrayList<>();
+                List<SpellDamage> spellDamages = new ArrayList<>();
+                List<SpellCondition> spellConditions = new ArrayList<>();
+
+                spell.setSpellId(rs.getLong("spell_id"));
+                spell.setName(rs.getString("name"));
+                spell.setLevel(rs.getString("level"));
+                spell.setCastingTime(rs.getString("casting_time"));
+                spell.setRange(rs.getString("range_area"));
+                spell.setComponentsVisual(rs.getBoolean("component_visual"));
+                spell.setComponentsSemantic(rs.getBoolean("component_semantic"));
+                spell.setComponentsMaterial(rs.getBoolean("component_material"));
+                spell.setComponentsMaterials(rs.getString("component_materials"));
+                spell.setDuration(rs.getString("duration"));
+                spell.setConcentration(rs.getBoolean("concentration"));
+                spell.setRitual(rs.getBoolean("ritual"));
+                spell.setSchool(rs.getString("school"));
+                spell.setSaveType(rs.getString("save_type"));
+                spell.setDescription(rs.getString("description"));
+                spell.setImageUrl(rs.getString("image_url"));
+                spell.setSource(rs.getInt("source_id"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException();
+        }
+
+        return spell;
     }
 
     @Override

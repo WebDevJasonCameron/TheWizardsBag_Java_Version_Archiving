@@ -14,7 +14,7 @@ import java.util.List;
 public class SpellConditionDAO extends DataAccessObject<SpellCondition> {
 
     // SQLs
-    private final static String GET_BY_ID = "SELECT condition_id, condition, description FROM conditions WHERE condition_id=?";
+    private final static String GET_BY_ID = "SELECT * FROM conditions WHERE condition_id=?";
 
     // CONs
     public SpellConditionDAO(Connection connection) {

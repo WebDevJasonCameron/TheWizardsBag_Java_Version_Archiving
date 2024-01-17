@@ -13,6 +13,7 @@ import java.util.List;
 public class SpellDamageDAO extends DataAccessObject<SpellDamage> {
 
     // SQLs
+    private final static String GET_BY_ID = "SELECT * FROM damagetypes WHERE damagetype_id=?";
 
     // CONs
     public SpellDamageDAO(Connection connection) {
@@ -22,7 +23,23 @@ public class SpellDamageDAO extends DataAccessObject<SpellDamage> {
     // OVRs
     @Override
     public SpellDamage findById(long id) {
-        return null;
+        SpellDamage spellDamage = new SpellDamage();
+
+        try (PreparedStatement statement = this.connection.prepareStatement(GET_BY_ID);) {
+            statement.setLong(1, id);
+
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()){
+                spellDamage.setDamageID(rs.getLong("damagetype_id"));
+                spellDamage.setDamageName(rs.getString("damage"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        return spellDamage;
     }
 
     @Override

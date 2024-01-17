@@ -21,6 +21,8 @@ public class SpellDamagetypeJDBCExecutor {
         // METHs
         DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db",  "postgres", password);
 
+        // <!> Get All...
+        /*
         try {
             Connection connection = dcm.getConnection();
             SpellDamageDAO spellDamageDAO = new SpellDamageDAO(connection);
@@ -30,6 +32,19 @@ public class SpellDamagetypeJDBCExecutor {
             for (SpellDamage spellDamage : spellDamages) {
                 System.out.println(spellDamage);
             }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+         */
+
+        // <!> Get by ID...
+        try {
+            Connection connection = dcm.getConnection();
+            SpellDamageDAO spellDamageDAO = new SpellDamageDAO(connection);
+
+            SpellDamage spellDamage = spellDamageDAO.findById(1);
+            System.out.println(spellDamage);
 
         } catch (SQLException e) {
             e.printStackTrace();

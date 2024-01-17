@@ -38,7 +38,7 @@ public class SpellConditionJDBCExecutor {
         }
         */
 
-        // <!> Get by ID
+        // <!> Get by ID...
         try {
             Connection connection = dcm.getConnection();
             SpellConditionDAO spellConditionDAO = new SpellConditionDAO(connection);

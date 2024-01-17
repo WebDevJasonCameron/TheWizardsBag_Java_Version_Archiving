@@ -14,6 +14,7 @@ import java.util.List;
 public class SpellTagDAO extends DataAccessObject<SpellTag> {
 
     // SQLs
+    private final static String GET_BY_ID = "SELECT * FROM tags WHERE tag_id=?";
 
     // CONs
     public SpellTagDAO(Connection connection) {
@@ -23,7 +24,23 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
     // OVRs
     @Override
     public SpellTag findById(long id) {
-        return null;
+        SpellTag spellTag = new SpellTag();
+
+        try (PreparedStatement statement = this.connection.prepareStatement(GET_BY_ID);) {
+            statement.setLong(1, id);
+
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()){
+                spellTag.setTagID(rs.getLong("tag_id"));
+                spellTag.setTagName(rs.getString("name"));
+                spellTag.setTagType(rs.getString("type"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        return spellTag;
     }
 
     @Override

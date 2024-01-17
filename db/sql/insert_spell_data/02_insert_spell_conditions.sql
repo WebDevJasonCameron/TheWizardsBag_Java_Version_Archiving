@@ -1,5 +1,8 @@
 INSERT INTO spell_conditions
-(spells_spell_id, conditions_condition_id)
+    (
+     spells_spell_id,
+     conditions_condition_id
+    )
 VALUES
     (10, 15),
     (22, 8),

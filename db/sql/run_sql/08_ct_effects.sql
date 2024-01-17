@@ -2,8 +2,8 @@ CREATE SEQUENCE effect_seq start with 1;
 
 CREATE TABLE effects (
                        effect_id bigint NOT NULL DEFAULT nextval('effect_seq'),
-                       effect varchar(255) NOT NULL,
-                       sub_effect varchar(255) NOT NULL,
+                       effect_name varchar(255) NOT NULL,
+                       effect_sub_effect varchar(255) NOT NULL,
 
                        PRIMARY KEY (effect_id)
 );
@@ -13,7 +13,7 @@ ALTER SEQUENCE effect_seq OWNED BY effects.effect_id;
 ALTER SEQUENCE effect_seq RESTART WITH 1;
 
 
-INSERT INTO effects (effect, sub_effect)
+INSERT INTO effects (effect_name, effect_sub_effect)
 VALUES
     ('Advantage', ''),                              --   Advantage
     ('Advantage', 'Ability Checks'),

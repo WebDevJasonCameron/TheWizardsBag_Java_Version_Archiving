@@ -1,21 +1,21 @@
 INSERT INTO spells
 (
-    name,
-    level,
-    casting_time,
-    range_area,
-    component_visual,
-    component_semantic,
-    component_material,
-    component_materials,
-    duration,
-    concentration,
-    ritual,
-    school,
-    save_type,
-    description,
-    image_url,
-    source_id
+    spell_name,
+    spell_level,
+    spell_casting_time,
+    spell_range_area,
+    spell_component_visual,
+    spell_component_semantic,
+    spell_component_material,
+    spell_component_materials,
+    spell_duration,
+    spell_concentration,
+    spell_ritual,
+    spell_school,
+    spell_save_type,
+    spell_description,
+    spell_image_url,
+    spell_source_id
 )
 VALUES
     ('Druidcraft', 'cantrip', '1 action', '30 ft', 'True', 'True', 'False', '', 'instantaneous', 'False', 'False', 'transmutation', 'none', 'Whispering to the spirits of nature, you create one of the following effects within range:

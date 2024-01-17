@@ -1,5 +1,8 @@
 INSERT INTO spell_classes
-(spells_spell_id, classes_class_id)
+    (
+     spells_spell_id,
+     classes_class_id
+    )
 VALUES
     (1, 46),
     (2, 122),

@@ -1,5 +1,8 @@
 INSERT INTO spell_tags
-(spells_spell_id, tags_tag_id)
+    (
+     spells_spell_id,
+     tags_tag_id
+    )
 VALUES
     (1, 15),
     (2, 36),

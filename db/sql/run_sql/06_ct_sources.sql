@@ -2,8 +2,8 @@ CREATE SEQUENCE sources_seq start with 1;
 
 CREATE TABLE sources (
                       source_id bigint NOT NULL DEFAULT nextval('sources_seq'),
-                      name varchar(50) NOT NULL UNIQUE,
-                      publish_date date,
+                      source_name varchar(50) NOT NULL UNIQUE,
+                      source_publish_date date,
 
                       PRIMARY KEY (source_id)
 );

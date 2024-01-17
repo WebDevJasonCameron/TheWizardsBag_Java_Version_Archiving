@@ -3,8 +3,8 @@ CREATE SEQUENCE class_seq start with 1;
 CREATE TABLE rpg_classes (
                        class_id bigint NOT NULL DEFAULT nextval('class_seq'),
                        class_name varchar(255) NOT NULL ,
-                       subclass_name varchar(255),
-                       description TEXT,
+                       class_subclass_name varchar(255),
+                       class_description TEXT,
 
                        PRIMARY KEY (class_id)
 );
@@ -13,7 +13,7 @@ ALTER SEQUENCE class_seq OWNED BY rpg_classes.class_id;
 
 ALTER SEQUENCE class_seq RESTART WITH 1;
 
-INSERT INTO rpg_classes (class_name, subclass_name, description)
+INSERT INTO rpg_classes (class_name, class_subclass_name, class_description)
 VALUES
     ('rouge','', 'rogues are talented individuals who hone skills of the unethical or criminal. a rogue''s skill in thieving, killing, etc. is rivaled by none as they become experts in their field.'),
 

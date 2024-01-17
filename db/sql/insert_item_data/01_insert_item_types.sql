@@ -1,5 +1,8 @@
 INSERT INTO item_types
-    (items_item_id, types_type_id)
+    (
+     items_item_id,
+     types_type_id
+    )
 VALUES
     (1, 90),
     (2, 183),

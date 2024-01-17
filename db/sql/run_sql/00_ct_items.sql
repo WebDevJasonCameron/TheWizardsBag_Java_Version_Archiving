@@ -2,21 +2,21 @@ CREATE SEQUENCE items_seq start with 1;
 
 CREATE TABLE items (
                           item_id bigint NOT NULL DEFAULT nextval('items_seq'),
-                          name varchar(255) NOT NULL,
-                          ttrpg varchar(255),                           --  5
-                          rarity varchar(255),                          -- rarity
-                          renowned_quality varchar(255),                -- renowned_quality
-                          requires_attunement bool,                     -- req_attunement
-                          has_charges bool,                             -- Read description for "charges"
-                          is_cursed bool,
-                          cost double precision,
-                          weight varchar(255),
-                          description text,
-                          image_url varchar(255),
-                          magic_bonus_plus_1 bool,                      -- Read the description to get these
-                          magic_bonus_plus_2 bool,
-                          magic_bonus_plus_3 bool,
-                          description_notes text,                        -- If doc has "Notes:"
+                          item_name varchar(255) NOT NULL,
+                          item_ttrpg varchar(255),                           --  5
+                          item_rarity varchar(255),                          -- rarity
+                          item_renowned_quality varchar(255),                -- renowned_quality
+                          item_requires_attunement bool,                     -- req_attunement
+                          item_has_charges bool,                             -- Read description for "charges"
+                          item_is_cursed bool,
+                          item_cost double precision,
+                          item_weight varchar(255),
+                          item_description text,
+                          item_image_url varchar(255),
+                          item_magic_bonus_plus_1 bool,                      -- Read the description to get these
+                          item_magic_bonus_plus_2 bool,
+                          item_magic_bonus_plus_3 bool,
+                          item_description_notes text,                        -- If doc has "Notes:"
 
                           source_id bigint,
 

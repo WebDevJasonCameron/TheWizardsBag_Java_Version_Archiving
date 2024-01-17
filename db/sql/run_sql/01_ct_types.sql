@@ -2,8 +2,8 @@ CREATE SEQUENCE types_seq start with 1;
 
 CREATE TABLE types (
                        type_id bigint NOT NULL DEFAULT nextval('types_seq'),
-                       type varchar(255) NOT NULL ,
-                       sub_type varchar(255) NOT NULL ,
+                       type_name varchar(255) NOT NULL ,
+                       type_sub_type varchar(255) NOT NULL ,
 
                        PRIMARY KEY (type_id)
 );
@@ -13,7 +13,7 @@ ALTER SEQUENCE types_seq OWNED BY types.type_id;
 ALTER SEQUENCE types_seq RESTART WITH 1;
 
 
-INSERT INTO types (type, sub_type)
+INSERT INTO types (type_name, type_sub_type)
 VALUES
     ('weapon', ''),                     --   Weapons
     ('weapon melee', ''),               --   Melee Weapons

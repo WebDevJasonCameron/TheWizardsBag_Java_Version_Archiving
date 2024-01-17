@@ -1,5 +1,21 @@
 INSERT INTO items
-    (name, ttrpg, rarity, renowned_quality, requires_attunement, has_charges, is_cursed, cost, weight, description, image_url, magic_bonus_plus_1, magic_bonus_plus_2, magic_bonus_plus_3, description_notes, source_id)
+    (
+     item_name,
+     item_ttrpg,
+     item_rarity,
+     item_renowned_quality,
+     item_requires_attunement,
+     item_has_charges,
+     item_is_cursed,
+     item_cost,
+     item_weight,
+     item_description,
+     item_image_url,
+     item_magic_bonus_plus_1,
+     item_magic_bonus_plus_2,
+     item_magic_bonus_plus_3,
+     item_description_notes,
+     source_id)
 VALUES
     ('Goggles of Night', 'DND5E', 'uncommon', 'Wondrous Item', 'False', 'False', 'False', null, null, 'While wearing these dark lenses, you have[darkvision](https://www.dndbeyond.com/compendium/rules/basic-rules/monsters#Darkvision)out to a range of 60 feet. If you already have[darkvision](https://www.dndbeyond.com/compendium/rules/basic-rules/monsters#Darkvision), wearing the goggles increases its range by 60 feet.', null, 'False', 'False', 'False', 'sense: darkvision, detection, eyewear', '5'),
     ('Crystal', 'DND5E', null, null, 'False', 'False', 'False', null, null, null, null, 'False', 'False', 'False', null, '5'),

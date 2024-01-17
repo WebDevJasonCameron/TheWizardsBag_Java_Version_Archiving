@@ -1,5 +1,8 @@
 INSERT INTO item_tags
-    (items_item_id, tags_tag_id)
+    (
+     items_item_id,
+     tags_tag_id
+    )
 VALUES
     (1, 21),
     (1, 29),

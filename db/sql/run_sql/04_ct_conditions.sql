@@ -3,8 +3,8 @@ CREATE SEQUENCE condition_seq start 1;
 
 CREATE TABLE conditions (
                         condition_id bigint NOT NULL DEFAULT nextval('condition_seq'),
-                        condition varchar(255) NOT NULL UNIQUE,
-                        description text NOT NULL,
+                        condition_name varchar(255) NOT NULL UNIQUE,
+                        condition_description text NOT NULL,
 
                         PRIMARY KEY (condition_id)
 );
@@ -14,7 +14,7 @@ ALTER SEQUENCE condition_seq OWNED BY conditions.condition_id;
 ALTER SEQUENCE condition_seq RESTART WITH 1;
 
 
-INSERT INTO conditions (condition, description)
+INSERT INTO conditions (condition_name, condition_description)
 VALUES
     ('Blinded', 'A blinded creature can''t see and automatically fails any ability check that requires sight. Attack rolls against the creature have advantage, and the creature''s attack rolls have disadvantage.'),
     ('Charmed', 'A charmed creature can''t attack the charmer or target the charmer with harmful abilities or magical effects.  The charmer has advantage on any ability check to interact socially with the creature.'),

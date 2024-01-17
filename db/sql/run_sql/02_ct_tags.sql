@@ -2,8 +2,8 @@ CREATE SEQUENCE tags_seq start with 1;
 
 CREATE TABLE tags (
                              tag_id bigint NOT NULL DEFAULT nextval('tags_seq'),
-                             name varchar(50) NOT NULL UNIQUE,
-                             type varchar(50) NOT NULL,
+                             tag_name varchar(50) NOT NULL UNIQUE,
+                             tag_type varchar(50) NOT NULL,
 
                              PRIMARY KEY (tag_id)
 );
@@ -13,7 +13,7 @@ ALTER SEQUENCE tags_seq OWNED BY tags.tag_id;
 ALTER SEQUENCE tags_seq RESTART WITH 1;
 
 
-INSERT INTO tags (name, type)
+INSERT INTO tags (tag_name, tag_type)
 VALUES
 
     ('Ammunition', 'na'),       --   Used for ranged weapons.

@@ -38,12 +38,29 @@ public class SpellTagJDBCExecutor {
          */
 
         // <!> Get by ID...
+        /*
         try {
             Connection connection = dcm.getConnection();
             SpellTagDAO spellTagDAO = new SpellTagDAO(connection);
 
             SpellTag spellTag = spellTagDAO.findById(1);
             System.out.println(spellTag);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        */
+
+        // <!> Get All by Spell ID...
+        try {
+            Connection connection = dcm.getConnection();
+            SpellTagDAO spellTagDAO = new SpellTagDAO(connection);
+
+            List<SpellTag> spellTags = spellTagDAO.findAllWithSpellId(50);
+
+            for(SpellTag spellTag : spellTags) {
+                System.out.println(spellTag);
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();

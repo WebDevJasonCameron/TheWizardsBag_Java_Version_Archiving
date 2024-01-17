@@ -16,6 +16,15 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
     // SQLs
     private final static String GET_BY_ID = "SELECT * FROM tags WHERE tag_id=?";
 
+    private final static String GET_ALL_BY_SPELL_ID = "SELECT \n" +
+                                            " s.*,\n" +
+                                            " t.*\n" +
+                                        "FROM spells s\n" +
+                                            "\tJOIN spell_tags st ON s.spell_id = st.spells_spell_id\n" +
+                                            "\tJOIN tags t ON t.tag_id = st.tags_tag_id\n" +
+                                        "WHERE \n" +
+                                            "\ts.spell_id = ?";
+
     // CONs
     public SpellTagDAO(Connection connection) {
         super(connection);
@@ -89,6 +98,36 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
     }
 
     // METHs
-    public List<SpellClass> findAllWithSpellId(long id) { return null; }
+    public List<SpellTag> findAllWithSpellId(long spellId) {
+        List<SpellTag> spellTags = new ArrayList<>();
+
+        try (PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_SPELL_ID);) {
+            statement.setLong(1, spellId);
+
+            ResultSet rs = statement.executeQuery();
+            long tagId = 0;
+
+            while (rs.next()){
+                long currentTagId = rs.getLong("tag_id");
+
+                if(currentTagId != tagId) {
+                    SpellTag spellTag = new SpellTag();
+
+                    spellTag.setTagID(rs.getLong("tag_id"));
+                    spellTag.setTagName(rs.getString("name"));
+                    spellTag.setTagType(rs.getString("type"));
+
+                    spellTags.add(spellTag);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+
+
+        return spellTags;
+    }
 
 }

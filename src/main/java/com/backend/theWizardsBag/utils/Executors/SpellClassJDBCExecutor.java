@@ -7,6 +7,7 @@ import com.backend.theWizardsBag.utils.Managers.DatabaseConnectionManager;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SpellClassJDBCExecutor {
@@ -39,6 +40,7 @@ public class SpellClassJDBCExecutor {
          */
 
         // <!> Get by ID...
+        /*
         try {
             Connection connection = dcm.getConnection();
             SpellClassDAO spellClassDAO = new SpellClassDAO(connection);
@@ -49,6 +51,21 @@ public class SpellClassJDBCExecutor {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        */
 
+        // <!> Get by Spell ID...
+        try {
+            Connection connection = dcm.getConnection();
+            SpellClassDAO spellClassDAO = new SpellClassDAO(connection);
+
+            List<SpellClass> spellClasses = spellClassDAO.findAllBySpellId(26);
+
+            for (SpellClass spellClass : spellClasses) {
+                System.out.println(spellClass.getClassName());
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

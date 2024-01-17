@@ -57,7 +57,7 @@ public class SpellConditionJDBCExecutor {
             Connection connection = dcm.getConnection();
             SpellConditionDAO spellConditionDAO = new SpellConditionDAO(connection);
 
-            List<SpellCondition> spellConditions = spellConditionDAO.findAllBySpellId(44);
+            List<SpellCondition> spellConditions = spellConditionDAO.findAllBySpellId(22);
 
             for (SpellCondition spellCondition : spellConditions) {
                 System.out.println(spellCondition);

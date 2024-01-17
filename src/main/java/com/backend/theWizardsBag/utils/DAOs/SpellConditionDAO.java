@@ -99,17 +99,15 @@ public class SpellConditionDAO extends DataAccessObject<SpellCondition> {
 
         try (PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_SPELL_ID);) {
             statement.setLong(1, spellId);
-            SpellCondition spellCondition = new SpellCondition();
 
             ResultSet rs = statement.executeQuery();
             long conditionId = 0;
-            SpellCondition condition = null;
 
             while (rs.next()) {
                 long currentConditionId = rs.getLong("condition_id");
 
                 if(conditionId != currentConditionId){
-                    spellCondition = new SpellCondition();
+                    SpellCondition spellCondition = new SpellCondition();
 
                     spellCondition.setSpellConditionID(rs.getLong("spell_condition_id"));
                     spellCondition.setConditionID(rs.getLong("condition_id"));

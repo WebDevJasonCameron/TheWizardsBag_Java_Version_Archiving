@@ -39,6 +39,7 @@ public class SpellDamagetypeJDBCExecutor {
          */
 
         // <!> Get by ID...
+        /*
         try {
             Connection connection = dcm.getConnection();
             SpellDamageDAO spellDamageDAO = new SpellDamageDAO(connection);
@@ -50,5 +51,21 @@ public class SpellDamagetypeJDBCExecutor {
             e.printStackTrace();
         }
 
+         */
+
+        // <!> Get All by Spell ID...
+        try {
+            Connection connection = dcm.getConnection();
+            SpellDamageDAO spellDamageDAO = new SpellDamageDAO(connection);
+
+            List<SpellDamage> spellDamages = spellDamageDAO.findAllBySpellId(22);
+
+            for (SpellDamage spellDamage : spellDamages) {
+                System.out.println(spellDamage);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

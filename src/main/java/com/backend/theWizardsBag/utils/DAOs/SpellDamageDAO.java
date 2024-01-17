@@ -15,6 +15,15 @@ public class SpellDamageDAO extends DataAccessObject<SpellDamage> {
     // SQLs
     private final static String GET_BY_ID = "SELECT * FROM damagetypes WHERE damagetype_id=?";
 
+    private final static String GET_ALL_BY_SPELL_ID = "SELECT  " +
+                                        " s.*, " +
+                                        " d.* " +
+                                    "FROM spells s " +
+                                        " JOIN spell_damagetypes sd ON s.spell_id = sd.spells_spell_id " +
+                                        " JOIN damagetypes d ON d.damagetype_id = sd.damagetypes_damagetype_id " +
+                                    "WHERE  " +
+                                        " s.spell_id = ?";
+
     // CONs
     public SpellDamageDAO(Connection connection) {
         super(connection);
@@ -79,4 +88,32 @@ public class SpellDamageDAO extends DataAccessObject<SpellDamage> {
     }
 
     // METHs
+    public List<SpellDamage> findAllBySpellId (long spellId) {
+        List<SpellDamage> spellDamages = new ArrayList<>();
+
+        try(PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_SPELL_ID);){
+            statement.setLong(1, spellId);
+
+            ResultSet rs = statement.executeQuery();
+            long damagetypeId = 0;
+
+            while (rs.next()) {
+                long currentDamagetypeId = rs.getLong("damagetype_id");
+
+                if (damagetypeId != currentDamagetypeId) {
+                    SpellDamage spellDamage = new SpellDamage();
+
+                    spellDamage.setDamageID(rs.getLong("damagetype_id"));
+                    spellDamage.setDamageName(rs.getString("damage"));
+
+                    spellDamages.add(spellDamage);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        return spellDamages;
+    }
 }

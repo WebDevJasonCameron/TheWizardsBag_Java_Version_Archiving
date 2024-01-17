@@ -5,6 +5,7 @@ import com.backend.theWizardsBag.utils.Objects.DataTransferObject;
 public class SpellCondition implements DataTransferObject {
 
     // ATTs
+    private long spellConditionID;                          //   Junction ID
     private long conditionID;
     private String conditionName;
     private String conditionDescription;
@@ -12,6 +13,13 @@ public class SpellCondition implements DataTransferObject {
     // CONs
 
     // GETs & SETs
+    public long getSpellConditionID() {
+        return spellConditionID;
+    }
+    public void setSpellConditionID(long spellConditionID) {
+        this.spellConditionID = spellConditionID;
+    }
+
     public long getConditionID() {
         return conditionID;
     }
@@ -42,7 +50,8 @@ public class SpellCondition implements DataTransferObject {
     @Override
     public String toString() {
         return "SpellCondition{" +
-                "conditionID=" + conditionID +
+                "spellConditionID=" + spellConditionID +
+                ", conditionID=" + conditionID +
                 ", conditionName='" + conditionName + '\'' +
                 ", conditionDescription='" + conditionDescription + '\'' +
                 '}';

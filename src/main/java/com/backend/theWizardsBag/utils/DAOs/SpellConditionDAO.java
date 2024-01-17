@@ -34,7 +34,6 @@ public class SpellConditionDAO extends DataAccessObject<SpellCondition> {
                 spellCondition.setConditionID(rs.getLong("condition_id"));
                 spellCondition.setConditionName(rs.getString("condition"));
                 spellCondition.setConditionDescription(rs.getString("description"));
-
             }
 
         } catch (SQLException e) {

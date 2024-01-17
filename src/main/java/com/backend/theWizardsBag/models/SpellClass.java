@@ -5,6 +5,7 @@ import com.backend.theWizardsBag.utils.Objects.DataTransferObject;
 public class SpellClass implements DataTransferObject {
 
     // ATTs
+    private long spellClassID;                          //   Junction ID
     private long classID;
     private String className;
     private  String subClassName;
@@ -14,6 +15,13 @@ public class SpellClass implements DataTransferObject {
 
 
     // GETs & SETs
+    public long getSpellClassID() {
+        return spellClassID;
+    }
+    public void setSpellClassID(long spellClassID) {
+        this.spellClassID = spellClassID;
+    }
+
     public long getClassID() {
         return classID;
     }
@@ -51,7 +59,8 @@ public class SpellClass implements DataTransferObject {
     @Override
     public String toString() {
         return "SpellClass{" +
-                "classID=" + classID +
+                "spellClassID=" + spellClassID +
+                ", classID=" + classID +
                 ", className='" + className + '\'' +
                 ", subClassName='" + subClassName + '\'' +
                 ", classDescription='" + classDescription + '\'' +

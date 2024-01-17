@@ -17,10 +17,9 @@ public class SpellConditionDAO extends DataAccessObject<SpellCondition> {
     private final static String GET_BY_ID = "SELECT * FROM conditions WHERE condition_id=?";
 
     private final static String GET_ALL_BY_SPELL_ID =   "SELECT  " +
-                                                            "sc.spell_condition_id, " +
-                                                            "c.condition_id," +
-                                                            "c.condition," +
-                                                            "c.description " +
+                                                            "s.*, " +
+                                                            "sc.*, " +
+                                                            "c.*" +
                                                         "FROM spells s " +
                                                             " JOIN spell_conditions sc ON s.spell_id = sc.spells_spell_id " +
                                                             " JOIN conditions c ON c.condition_id = sc.conditions_condition_id " +
@@ -43,8 +42,8 @@ public class SpellConditionDAO extends DataAccessObject<SpellCondition> {
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
                 spellCondition.setConditionID(rs.getLong("condition_id"));
-                spellCondition.setConditionName(rs.getString("condition"));
-                spellCondition.setConditionDescription(rs.getString("description"));
+                spellCondition.setConditionName(rs.getString("condition_name"));
+                spellCondition.setConditionDescription(rs.getString("condition_description"));
             }
 
         } catch (SQLException e) {
@@ -66,9 +65,9 @@ public class SpellConditionDAO extends DataAccessObject<SpellCondition> {
             while (rs.next()){
                 SpellCondition spellCondition = new SpellCondition();
 
-                spellCondition.setConditionID(rs.getInt("condition_id"));
-                spellCondition.setConditionName(rs.getString("condition"));
-                spellCondition.setConditionDescription(rs.getString("description"));
+                spellCondition.setConditionID(rs.getLong("condition_id"));
+                spellCondition.setConditionName(rs.getString("condition_name"));
+                spellCondition.setConditionDescription(rs.getString("condition_description"));
 
                 spellConditions.add(spellCondition);
             }
@@ -111,8 +110,8 @@ public class SpellConditionDAO extends DataAccessObject<SpellCondition> {
 
                     spellCondition.setSpellConditionID(rs.getLong("spell_condition_id"));
                     spellCondition.setConditionID(rs.getLong("condition_id"));
-                    spellCondition.setConditionName(rs.getString("condition"));
-                    spellCondition.setConditionDescription(rs.getString("description"));
+                    spellCondition.setConditionName(rs.getString("condition_name"));
+                    spellCondition.setConditionDescription(rs.getString("condition_description"));
 
                     spellConditions.add(spellCondition);
                 }

@@ -61,7 +61,7 @@ public class SpellClassJDBCExecutor {
             List<SpellClass> spellClasses = spellClassDAO.findAllBySpellId(26);
 
             for (SpellClass spellClass : spellClasses) {
-                System.out.println(spellClass.getClassName());
+                System.out.println(spellClass);
             }
 
         } catch (SQLException e) {

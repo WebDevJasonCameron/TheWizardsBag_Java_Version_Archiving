@@ -36,22 +36,22 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 List<SpellCondition> spellConditions = new ArrayList<>();
 
                 spell.setSpellId(rs.getLong("spell_id"));
-                spell.setName(rs.getString("name"));
-                spell.setLevel(rs.getString("level"));
-                spell.setCastingTime(rs.getString("casting_time"));
-                spell.setRange(rs.getString("range_area"));
-                spell.setComponentsVisual(rs.getBoolean("component_visual"));
-                spell.setComponentsSemantic(rs.getBoolean("component_semantic"));
-                spell.setComponentsMaterial(rs.getBoolean("component_material"));
-                spell.setComponentsMaterials(rs.getString("component_materials"));
-                spell.setDuration(rs.getString("duration"));
-                spell.setConcentration(rs.getBoolean("concentration"));
-                spell.setRitual(rs.getBoolean("ritual"));
-                spell.setSchool(rs.getString("school"));
-                spell.setSaveType(rs.getString("save_type"));
-                spell.setDescription(rs.getString("description"));
-                spell.setImageUrl(rs.getString("image_url"));
-                spell.setSource(rs.getInt("source_id"));
+                spell.setName(rs.getString("spell_name"));
+                spell.setLevel(rs.getString("spell_level"));
+                spell.setCastingTime(rs.getString("spell_casting_time"));
+                spell.setRange(rs.getString("spell_range_area"));
+                spell.setComponentsVisual(rs.getBoolean("spell_component_visual"));
+                spell.setComponentsSemantic(rs.getBoolean("spell_component_semantic"));
+                spell.setComponentsMaterial(rs.getBoolean("spell_component_material"));
+                spell.setComponentsMaterials(rs.getString("spell_component_materials"));
+                spell.setDuration(rs.getString("spell_duration"));
+                spell.setConcentration(rs.getBoolean("spell_concentration"));
+                spell.setRitual(rs.getBoolean("spell_ritual"));
+                spell.setSchool(rs.getString("spell_school"));
+                spell.setSaveType(rs.getString("spell_save_type"));
+                spell.setDescription(rs.getString("spell_description"));
+                spell.setImageUrl(rs.getString("spell_image_url"));
+                spell.setSource(rs.getInt("spell_source_id"));
             }
 
         } catch (SQLException e) {
@@ -79,22 +79,22 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 List<SpellCondition> spellConditions = new ArrayList<>();
 
                 spell.setSpellId(rs.getLong("spell_id"));
-                spell.setName(rs.getString("name"));
-                spell.setLevel(rs.getString("level"));
-                spell.setCastingTime(rs.getString("casting_time"));
-                spell.setRange(rs.getString("range_area"));
-                spell.setComponentsVisual(rs.getBoolean("component_visual"));
-                spell.setComponentsSemantic(rs.getBoolean("component_semantic"));
-                spell.setComponentsMaterial(rs.getBoolean("component_material"));
-                spell.setComponentsMaterials(rs.getString("component_materials"));
-                spell.setDuration(rs.getString("duration"));
-                spell.setConcentration(rs.getBoolean("concentration"));
-                spell.setRitual(rs.getBoolean("ritual"));
-                spell.setSchool(rs.getString("school"));
-                spell.setSaveType(rs.getString("save_type"));
-                spell.setDescription(rs.getString("description"));
-                spell.setImageUrl(rs.getString("image_url"));
-                spell.setSource(rs.getInt("source_id"));
+                spell.setName(rs.getString("spell_name"));
+                spell.setLevel(rs.getString("spell_level"));
+                spell.setCastingTime(rs.getString("spell_casting_time"));
+                spell.setRange(rs.getString("spell_range_area"));
+                spell.setComponentsVisual(rs.getBoolean("spell_component_visual"));
+                spell.setComponentsSemantic(rs.getBoolean("spell_component_semantic"));
+                spell.setComponentsMaterial(rs.getBoolean("spell_component_material"));
+                spell.setComponentsMaterials(rs.getString("spell_component_materials"));
+                spell.setDuration(rs.getString("spell_duration"));
+                spell.setConcentration(rs.getBoolean("spell_concentration"));
+                spell.setRitual(rs.getBoolean("spell_ritual"));
+                spell.setSchool(rs.getString("spell_school"));
+                spell.setSaveType(rs.getString("spell_save_type"));
+                spell.setDescription(rs.getString("spell_description"));
+                spell.setImageUrl(rs.getString("spell_image_url"));
+                spell.setSource(rs.getInt("spell_source_id"));
 
                 // Need to get the lists from junction tables
 

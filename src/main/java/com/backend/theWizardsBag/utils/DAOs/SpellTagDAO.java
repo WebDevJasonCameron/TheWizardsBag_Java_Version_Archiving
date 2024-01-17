@@ -18,6 +18,7 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
 
     private final static String GET_ALL_BY_SPELL_ID = "SELECT \n" +
                                             " s.*,\n" +
+                                            " st.*,\n" +
                                             " t.*\n" +
                                         "FROM spells s\n" +
                                             "\tJOIN spell_tags st ON s.spell_id = st.spells_spell_id\n" +
@@ -41,8 +42,8 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
             ResultSet rs = statement.executeQuery();
             while (rs.next()){
                 spellTag.setTagID(rs.getLong("tag_id"));
-                spellTag.setTagName(rs.getString("name"));
-                spellTag.setTagType(rs.getString("type"));
+                spellTag.setTagName(rs.getString("tag_name"));
+                spellTag.setTagType(rs.getString("tag_type"));
             }
 
         } catch (SQLException e) {
@@ -69,8 +70,8 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
                 SpellTag spellTag = new SpellTag();
 
                 spellTag.setTagID(rs.getLong("tag_id"));
-                spellTag.setTagName(rs.getString("name"));
-                spellTag.setTagType(rs.getString("type"));
+                spellTag.setTagName(rs.getString("tag_name"));
+                spellTag.setTagType(rs.getString("tag_type"));
 
                 spellTagList.add(spellTag);
             }
@@ -113,9 +114,10 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
                 if(currentTagId != tagId) {
                     SpellTag spellTag = new SpellTag();
 
+                    spellTag.setSpellTagID(rs.getLong("spell_tag_id"));
                     spellTag.setTagID(rs.getLong("tag_id"));
-                    spellTag.setTagName(rs.getString("name"));
-                    spellTag.setTagType(rs.getString("type"));
+                    spellTag.setTagName(rs.getString("tag_name"));
+                    spellTag.setTagType(rs.getString("tag_type"));
 
                     spellTags.add(spellTag);
                 }

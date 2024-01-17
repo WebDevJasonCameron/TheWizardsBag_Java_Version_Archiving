@@ -17,6 +17,7 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
 
     private final static String GET_ALL_BY_SPELL_ID = "SELECT \n" +
                                                 " s.*,\n" +
+                                                " sc.*,\n" +
                                                 " rc.*\n" +
                                                 "FROM spells s\n" +
                                                 "\tJOIN spell_classes sc ON s.spell_id = sc.spells_spell_id\n" +
@@ -41,8 +42,8 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
             while (rs.next()){
                 spellClass.setClassID(rs.getLong("class_id"));
                 spellClass.setClassName(rs.getString("class_name"));
-                spellClass.setSubClassName(rs.getString("subclass_name"));
-                spellClass.setClassDescription(rs.getString("description"));
+                spellClass.setSubClassName(rs.getString("class_subclass_name"));
+                spellClass.setClassDescription(rs.getString("class_description"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -65,8 +66,8 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
 
                 spellClass.setClassID(rs.getLong("class_id"));
                 spellClass.setClassName(rs.getString("class_name"));
-                spellClass.setSubClassName(rs.getString("subclass_name"));
-                spellClass.setClassDescription(rs.getString("description"));
+                spellClass.setSubClassName(rs.getString("class_subclass_name"));
+                spellClass.setClassDescription(rs.getString("class_description"));
 
                 spellClasses.add(spellClass);
             }
@@ -109,10 +110,11 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
                 if (currentClassId != classId) {
                     SpellClass spellClass = new SpellClass();
 
+                    spellClass.setSpellClassID(rs.getLong("spell_class_id"));
                     spellClass.setClassID(rs.getLong("class_id"));
                     spellClass.setClassName(rs.getString("class_name"));
-                    spellClass.setSubClassName(rs.getString("subclass_name"));
-                    spellClass.setClassDescription(rs.getString("description"));
+                    spellClass.setSubClassName(rs.getString("class_subclass_name"));
+                    spellClass.setClassDescription(rs.getString("class_description"));
 
                     spellClasses.add(spellClass);
                 }

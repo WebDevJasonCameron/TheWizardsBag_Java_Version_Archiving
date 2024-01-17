@@ -17,6 +17,7 @@ public class SpellDamageDAO extends DataAccessObject<SpellDamage> {
 
     private final static String GET_ALL_BY_SPELL_ID = "SELECT  " +
                                         " s.*, " +
+                                        " sd.*, " +
                                         " d.* " +
                                     "FROM spells s " +
                                         " JOIN spell_damagetypes sd ON s.spell_id = sd.spells_spell_id " +
@@ -40,7 +41,7 @@ public class SpellDamageDAO extends DataAccessObject<SpellDamage> {
             ResultSet rs = statement.executeQuery();
             while (rs.next()){
                 spellDamage.setDamageID(rs.getLong("damagetype_id"));
-                spellDamage.setDamageName(rs.getString("damage"));
+                spellDamage.setDamageName(rs.getString("damagetype_name"));
             }
 
         } catch (SQLException e) {
@@ -103,8 +104,9 @@ public class SpellDamageDAO extends DataAccessObject<SpellDamage> {
                 if (damagetypeId != currentDamagetypeId) {
                     SpellDamage spellDamage = new SpellDamage();
 
+                    spellDamage.setSpellDamageID(rs.getLong("spell_damagetype_id"));
                     spellDamage.setDamageID(rs.getLong("damagetype_id"));
-                    spellDamage.setDamageName(rs.getString("damage"));
+                    spellDamage.setDamageName(rs.getString("damagetype_name"));
 
                     spellDamages.add(spellDamage);
                 }

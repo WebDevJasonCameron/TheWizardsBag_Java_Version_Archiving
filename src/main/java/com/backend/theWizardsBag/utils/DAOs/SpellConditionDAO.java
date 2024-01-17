@@ -16,6 +16,17 @@ public class SpellConditionDAO extends DataAccessObject<SpellCondition> {
     // SQLs
     private final static String GET_BY_ID = "SELECT * FROM conditions WHERE condition_id=?";
 
+    private final static String GET_ALL_BY_SPELL_ID =   "SELECT  " +
+                                                            "sc.spell_condition_id, " +
+                                                            "c.condition_id," +
+                                                            "c.condition," +
+                                                            "c.description " +
+                                                        "FROM spells s " +
+                                                            " JOIN spell_conditions sc ON s.spell_id = sc.spells_spell_id " +
+                                                            " JOIN conditions c ON c.condition_id = sc.conditions_condition_id " +
+                                                        "WHERE  " +
+                                                            " sc.spells_spell_id = ?";
+
     // CONs
     public SpellConditionDAO(Connection connection) {
         super(connection);
@@ -80,11 +91,40 @@ public class SpellConditionDAO extends DataAccessObject<SpellCondition> {
     }
 
     @Override
-    public void delete(long id) {
-
-    }
+    public void delete(long id) {}
 
     // METHs
+    public List<SpellCondition> findAllBySpellId(long spellId) {
+        List<SpellCondition> spellConditions = new ArrayList<>();
 
+        try (PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_SPELL_ID);) {
+            statement.setLong(1, spellId);
+            SpellCondition spellCondition = new SpellCondition();
+
+            ResultSet rs = statement.executeQuery();
+            long conditionId = 0;
+            SpellCondition condition = null;
+
+            while (rs.next()) {
+                long currentConditionId = rs.getLong("condition_id");
+
+                if(conditionId != currentConditionId){
+                    spellCondition = new SpellCondition();
+
+                    spellCondition.setSpellConditionID(rs.getLong("spell_condition_id"));
+                    spellCondition.setConditionID(rs.getLong("condition_id"));
+                    spellCondition.setConditionName(rs.getString("condition"));
+                    spellCondition.setConditionDescription(rs.getString("description"));
+
+                    spellConditions.add(spellCondition);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        return spellConditions;
+    }
 
 }

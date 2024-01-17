@@ -39,12 +39,30 @@ public class SpellConditionJDBCExecutor {
         */
 
         // <!> Get by ID...
+        /*
         try {
             Connection connection = dcm.getConnection();
             SpellConditionDAO spellConditionDAO = new SpellConditionDAO(connection);
 
             SpellCondition spellCondition = spellConditionDAO.findById(1);
             System.out.println(spellCondition);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+         */
+
+        // <!> Get All by Spell Id...
+        try {
+            Connection connection = dcm.getConnection();
+            SpellConditionDAO spellConditionDAO = new SpellConditionDAO(connection);
+
+            List<SpellCondition> spellConditions = spellConditionDAO.findAllBySpellId(44);
+
+            for (SpellCondition spellCondition : spellConditions) {
+                System.out.println(spellCondition);
+            }
+
 
         } catch (SQLException e) {
             e.printStackTrace();

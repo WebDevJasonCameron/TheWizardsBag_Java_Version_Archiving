@@ -63,7 +63,7 @@ public class SpellDamageDAO extends DataAccessObject<SpellDamage> {
                 SpellDamage spellDamage = new SpellDamage();
 
                 spellDamage.setDamageID(rs.getLong("damagetype_id"));
-                spellDamage.setDamageName(rs.getString("damage"));
+                spellDamage.setDamageName(rs.getString("damagetype_name"));
 
                 spellDamages.add(spellDamage);
             }

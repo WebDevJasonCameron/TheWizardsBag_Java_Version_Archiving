@@ -60,9 +60,9 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
         try(PreparedStatement statement = this.connection.prepareStatement("" +
                 "SELECT * FROM tags " +
                 "WHERE\n" +
-                "\ttype = 'na'\n" +
-                "\tOR type = 'both'\n" +
-                "\tOR type = 'spell' ");){
+                "\ttag_type = 'na'\n" +
+                "\tOR tag_type = 'both'\n" +
+                "\tOR tag_type = 'spell' ");){
 
             ResultSet rs = statement.executeQuery();
 

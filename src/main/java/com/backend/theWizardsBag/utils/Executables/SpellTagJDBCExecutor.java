@@ -1,4 +1,4 @@
-package com.backend.theWizardsBag.utils.Executors;
+package com.backend.theWizardsBag.utils.Executables;
 
 import com.backend.theWizardsBag.constants.keys.Keys;
 import com.backend.theWizardsBag.models.SpellTag;
@@ -7,6 +7,7 @@ import com.backend.theWizardsBag.utils.Managers.DatabaseConnectionManager;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SpellTagJDBCExecutor {
@@ -18,7 +19,7 @@ public class SpellTagJDBCExecutor {
         Keys jdbcKey = new Keys();
         String password = jdbcKey.jdbcPassword();
 
-        // METHs
+        // OBJs
         DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db",  "postgres", password);
 
         // <!> Get All...
@@ -65,6 +66,29 @@ public class SpellTagJDBCExecutor {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public List<SpellTag> ExecuteGetAllBySpellId(long spellId){
+
+        // VARs
+        Keys jdbcKey = new Keys();
+        String password = jdbcKey.jdbcPassword();
+        List<SpellTag> spellTags = new ArrayList<>();
+
+        // OBJs
+        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db",  "postgres", password);
+
+        try {
+            Connection connection = dcm.getConnection();
+            SpellTagDAO spellTagDAO = new SpellTagDAO(connection);
+
+            spellTags = spellTagDAO.findAllWithSpellId(spellId);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return spellTags;
     }
 
 }

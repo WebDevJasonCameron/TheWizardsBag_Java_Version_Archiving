@@ -1,4 +1,4 @@
-package com.backend.theWizardsBag.utils.Executors;
+package com.backend.theWizardsBag.utils.Executables;
 
 import com.backend.theWizardsBag.constants.keys.Keys;
 import com.backend.theWizardsBag.models.SpellCondition;

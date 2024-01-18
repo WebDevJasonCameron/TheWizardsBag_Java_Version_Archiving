@@ -1,5 +1,11 @@
 # Log
 
+## 2024-01-17 | Hey Log
+
+I've been able to do quite a lot when we're in the middle of the "Freeze of 24."  Is this still winter of 2023 or do we switch to saying it's the winter of 2024?  And does that mean we have two winters in one year???  Google!? Okay, as far as I can tell... We say this is still the winter of 2023 because winter starts in December.  Thus, we have yet to experience the winter of 2024.  So, We are experience the "Freeze of 23 but happed in 2024." Clear?  I digress. I've updated the sql tables to be syntactically clearer.  I've also been able to do searches by id of attribute, or search all attributes by spell id number.  This is cool.  The purpose of this is so we can get a spell with all it's many-to-many attributes (i.e. tags).  So, when we do a search for a spell (next thing, search by name), we can include all the tags, damagetypes, and other stuff.  Also, since these are java objects, we will have all their attributes.  That is pretty cool.  Wow, pretty soon, I need to create a CLI application to view what we have in the DB.  That's cool. 
+
+---
+
 ## 2024-01-16 | Labels and IDs Matter
 
 I spent a lot of time the last couple of days refactoring the labels of vars and in some case, just adding and deleting them, because the DB was slightly off from what I imagined it to be while writing Java code.  I know!  I'm surprised as you!  Yet, the DB is roughly done with data inside (That took a long month and a half) and I noted some of my var labels sucked.  Some of them still do.  However, I think taking to the time to ensure your labels make clear contestant meaning will help much later down the road.  I also found that I needed to distinguish the attribute id such as conditionID and classID from the spellConditionId and spellClassID.  My reasoning is, I have quite a lot of junction tables!  Each model could have (should have) identified the classID along with the junction's spellClassID.  This way, I can target the junction's spellClassID and delete it... while not deleting neither the item/spell or the class from their respective tables!  I can also modify a missed relation by grabbing the junction's id for an item and changing it to a different classID.  Are you confused?  That's magic baby!  LOL, it's not all twinkling lights and explosions (^>_<^)

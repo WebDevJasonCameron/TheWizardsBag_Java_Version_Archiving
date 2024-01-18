@@ -1,4 +1,4 @@
-package com.backend.theWizardsBag.utils.Executors;
+package com.backend.theWizardsBag.utils.Executables;
 
 import com.backend.theWizardsBag.constants.keys.Keys;
 import com.backend.theWizardsBag.models.SpellClass;
@@ -7,7 +7,6 @@ import com.backend.theWizardsBag.utils.Managers.DatabaseConnectionManager;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class SpellClassJDBCExecutor {

@@ -7,6 +7,7 @@ import com.backend.theWizardsBag.utils.Managers.DatabaseConnectionManager;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SpellClassJDBCExecutor {
@@ -20,23 +21,6 @@ public class SpellClassJDBCExecutor {
 
         // METHs
         DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
-
-        // <!> Get All...
-        /*
-        try {
-            Connection connection = dcm.getConnection();
-            SpellClassDAO spellClassDAO = new SpellClassDAO(connection);
-
-            List<SpellClass> spellClasses = spellClassDAO.findAll();
-
-            for (SpellClass spellClass : spellClasses) {
-                System.out.println(spellClass);
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-         */
 
         // <!> Get by ID...
         /*
@@ -66,5 +50,44 @@ public class SpellClassJDBCExecutor {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public static List<SpellClass> getAll() {
+        Keys jdbcKey = new Keys();
+        String password = jdbcKey.jdbcPassword();
+        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
+
+        List<SpellClass> spellClasses = new ArrayList<>();
+
+        try {
+            Connection connection = dcm.getConnection();
+            SpellClassDAO spellClassDAO = new SpellClassDAO(connection);
+            spellClasses = spellClassDAO.findAll();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return spellClasses;
+    }
+
+    public static SpellClass getById(long id) {
+        Keys jdbcKey = new Keys();
+        String password = jdbcKey.jdbcPassword();
+        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
+
+        SpellClass spellClass = new SpellClass();
+
+        try {
+            Connection connection = dcm.getConnection();
+            SpellClassDAO spellClassDAO = new SpellClassDAO(connection);
+            spellClass = spellClassDAO.findById(2);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return spellClass;
     }
 }

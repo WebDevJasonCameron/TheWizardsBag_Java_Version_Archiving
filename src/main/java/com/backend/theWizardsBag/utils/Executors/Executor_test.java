@@ -3,9 +3,12 @@ package com.backend.theWizardsBag.utils.Executors;
 
 import com.backend.theWizardsBag.constants.enums.SpellDamageTypes;
 import com.backend.theWizardsBag.models.Spell;
+import com.backend.theWizardsBag.models.SpellCondition;
 import com.backend.theWizardsBag.models.SpellDamage;
 import com.backend.theWizardsBag.models.SpellTag;
+import com.backend.theWizardsBag.utils.Executables.SpellConditionJDBCExecutor;
 import com.backend.theWizardsBag.utils.Executables.SpellDamagetypeJDBCExecutor;
+import com.backend.theWizardsBag.utils.Executables.SpellJDBCExecutor;
 import com.backend.theWizardsBag.utils.Executables.SpellTagJDBCExecutor;
 
 import java.util.ArrayList;
@@ -13,6 +16,48 @@ import java.util.List;
 
 public class Executor_test {
     public static void main(String[] args) {
+
+        // TEST SPELLS
+        SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
+
+        // Get All...
+        /*
+        List<Spell> spells1 = spellJDBCExecutor.getAll();
+        for (Spell spell : spells1) {
+            System.out.println(spell.getName());
+        }
+         */
+
+        // Get by Id...
+        /*
+        Spell spell2 = spellJDBCExecutor.getById(55);
+        System.out.println(spell2);
+         */
+
+        // TEST SPELL CONDITIONS
+        SpellConditionJDBCExecutor spellConditionJDBCExecutor = new SpellConditionJDBCExecutor();
+
+        // Get All...
+        /*
+        List<SpellCondition> spellConditions1 = spellConditionJDBCExecutor.getAll();
+        for (SpellCondition spellCondition : spellConditions1) {
+            System.out.println(spellCondition);
+        }
+         */
+
+        // Get by ID...
+        /*
+        SpellCondition spellCondition1 = spellConditionJDBCExecutor.getById(5);
+        System.out.println(spellCondition1);
+        */
+
+        // Get All by Spell ID...
+        /*
+        List<SpellCondition> spellConditions1 = spellConditionJDBCExecutor.getAllBySpellId(44);
+        for (SpellCondition spellCondition : spellConditions1) {
+            System.out.println(spellCondition);
+        }
+        */
 
         // TEST DAMAGETYPES
         SpellDamagetypeJDBCExecutor spellDamagetypeJDBCExecutor = new SpellDamagetypeJDBCExecutor();

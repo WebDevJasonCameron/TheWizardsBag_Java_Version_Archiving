@@ -7,65 +7,69 @@ import com.backend.theWizardsBag.utils.Managers.DatabaseConnectionManager;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SpellConditionJDBCExecutor {
 
-    // <!> <R> We are using main function to test... this will need to change to a proper function
-    public static void main(String[] args) {
-
-        // VARs
+    public static List<SpellCondition> getAll() {
         Keys jdbcKey = new Keys();
         String password = jdbcKey.jdbcPassword();
-
-        // METHs
         DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db",  "postgres", password);
 
-        // <!> Get All...
-        /*
+        List<SpellCondition> spellConditions = new ArrayList<>();
+
         try {
             Connection connection = dcm.getConnection();
             SpellConditionDAO spellConditionDAO = new SpellConditionDAO(connection);
-
-            List<SpellCondition> spellConditions = spellConditionDAO.findAll();
-
-            for (SpellCondition spellCondition : spellConditions){
-                System.out.println(spellCondition);
-            }
+            spellConditions = spellConditionDAO.findAll();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        */
+        return spellConditions;
+    }
 
-        // <!> Get by ID...
-        /*
+    public static SpellCondition getById(long id) {
+        Keys jdbcKey = new Keys();
+        String password = jdbcKey.jdbcPassword();
+        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db",  "postgres", password);
+
+        SpellCondition spellCondition = new SpellCondition();
+
         try {
             Connection connection = dcm.getConnection();
             SpellConditionDAO spellConditionDAO = new SpellConditionDAO(connection);
-
-            SpellCondition spellCondition = spellConditionDAO.findById(1);
-            System.out.println(spellCondition);
+            spellCondition = spellConditionDAO.findById(id);
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-         */
 
-        // <!> Get All by Spell Id...
+        return spellCondition;
+
+    }
+
+    public static List<SpellCondition> getAllBySpellId(long spellId) {
+        Keys jdbcKey = new Keys();
+        String password = jdbcKey.jdbcPassword();
+        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db",  "postgres", password);
+
+        List<SpellCondition> spellConditions = new ArrayList<>();
+
         try {
             Connection connection = dcm.getConnection();
             SpellConditionDAO spellConditionDAO = new SpellConditionDAO(connection);
 
-            List<SpellCondition> spellConditions = spellConditionDAO.findAllBySpellId(22);
+            spellConditions = spellConditionDAO.findAllBySpellId(spellId);
 
             for (SpellCondition spellCondition : spellConditions) {
                 System.out.println(spellCondition);
             }
 
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return spellConditions;
     }
 }

@@ -20,6 +20,16 @@ public class Executor_test {
         // TEST SPELLS
         SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
 
+
+
+        // Get all the tags for a spell
+        Spell spell = spellJDBCExecutor.getById(10);
+        System.out.println(spell.getConditionList());
+
+
+
+        // -------------------------------------------------------------------------------
+
         // Get All...
         /*
         List<Spell> spells1 = spellJDBCExecutor.getAll();

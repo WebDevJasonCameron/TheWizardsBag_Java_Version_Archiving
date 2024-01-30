@@ -1,6 +1,8 @@
 package com.backend.theWizardsBag.utils.DAOs;
 
 import com.backend.theWizardsBag.models.*;
+import com.backend.theWizardsBag.utils.Executables.SpellConditionJDBCExecutor;
+import com.backend.theWizardsBag.utils.Executables.SpellTagJDBCExecutor;
 import com.backend.theWizardsBag.utils.Objects.DataAccessObject;
 
 import java.sql.Connection;
@@ -30,7 +32,6 @@ public class SpellDAO extends DataAccessObject<Spell> {
 
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
-                List<SpellTag> spellTags = new ArrayList<>();
                 List<SpellClass> spellClasses = new ArrayList<>();
                 List<SpellDamage> spellDamages = new ArrayList<>();
                 List<SpellCondition> spellConditions = new ArrayList<>();
@@ -52,6 +53,17 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 spell.setDescription(rs.getString("spell_description"));
                 spell.setImageUrl(rs.getString("spell_image_url"));
                 spell.setSource(rs.getInt("spell_source_id"));
+
+                // Get & Set Spell Tags
+                SpellTagJDBCExecutor spellTagJDBCExecutor = new SpellTagJDBCExecutor();
+                spell.setTagList(spellTagJDBCExecutor.getAllBySpellId(spell.getSpellId()));
+
+                // Get & Set Spell Conditions
+                SpellConditionJDBCExecutor spellConditionJDBCExecutor = new SpellConditionJDBCExecutor();
+                spell.setConditionList(spellConditionJDBCExecutor.getAllBySpellId(spell.getSpellId()));
+
+
+
             }
 
         } catch (SQLException e) {

@@ -1,7 +1,9 @@
 package com.backend.theWizardsBag.utils.DAOs;
 
 import com.backend.theWizardsBag.models.*;
+import com.backend.theWizardsBag.utils.Executables.SpellClassJDBCExecutor;
 import com.backend.theWizardsBag.utils.Executables.SpellConditionJDBCExecutor;
+import com.backend.theWizardsBag.utils.Executables.SpellDamagetypeJDBCExecutor;
 import com.backend.theWizardsBag.utils.Executables.SpellTagJDBCExecutor;
 import com.backend.theWizardsBag.utils.Objects.DataAccessObject;
 
@@ -32,9 +34,7 @@ public class SpellDAO extends DataAccessObject<Spell> {
 
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
-                List<SpellClass> spellClasses = new ArrayList<>();
                 List<SpellDamage> spellDamages = new ArrayList<>();
-                List<SpellCondition> spellConditions = new ArrayList<>();
 
                 spell.setSpellId(rs.getLong("spell_id"));
                 spell.setName(rs.getString("spell_name"));
@@ -62,6 +62,13 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 SpellConditionJDBCExecutor spellConditionJDBCExecutor = new SpellConditionJDBCExecutor();
                 spell.setConditionList(spellConditionJDBCExecutor.getAllBySpellId(spell.getSpellId()));
 
+                // Get & Set Spell Classes
+                SpellClassJDBCExecutor spellClassJDBCExecutor = new SpellClassJDBCExecutor();
+                spell.setClassList(spellClassJDBCExecutor.getAllBySpellId(spell.getSpellId()));
+
+                // Get & Set Spell Damages
+                SpellDamagetypeJDBCExecutor spellDamagetypeJDBCExecutor = new SpellDamagetypeJDBCExecutor();
+                spell.setDamageList(spellDamagetypeJDBCExecutor.getAllBySpellId(spell.getSpellId()));
 
 
             }

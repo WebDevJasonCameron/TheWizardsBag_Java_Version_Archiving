@@ -2,14 +2,8 @@ package com.backend.theWizardsBag.utils.Executors;
 
 
 import com.backend.theWizardsBag.constants.enums.SpellDamageTypes;
-import com.backend.theWizardsBag.models.Spell;
-import com.backend.theWizardsBag.models.SpellCondition;
-import com.backend.theWizardsBag.models.SpellDamage;
-import com.backend.theWizardsBag.models.SpellTag;
-import com.backend.theWizardsBag.utils.Executables.SpellConditionJDBCExecutor;
-import com.backend.theWizardsBag.utils.Executables.SpellDamagetypeJDBCExecutor;
-import com.backend.theWizardsBag.utils.Executables.SpellJDBCExecutor;
-import com.backend.theWizardsBag.utils.Executables.SpellTagJDBCExecutor;
+import com.backend.theWizardsBag.models.*;
+import com.backend.theWizardsBag.utils.Executables.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +15,8 @@ public class Executor_test {
         SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
 
 
-
-        // Get all the tags for a spell
-        Spell spell = spellJDBCExecutor.getById(10);
-        System.out.println(spell.getConditionList());
-
+        Spell spell = spellJDBCExecutor.getById(8);
+        System.out.println(spell.getDamageList());
 
 
         // -------------------------------------------------------------------------------
@@ -44,6 +35,33 @@ public class Executor_test {
         System.out.println(spell2);
          */
 
+        // -------------------------------------------------------------------------------
+        // TEST SPELL CLASSES
+        SpellClassJDBCExecutor spellClassJDBCExecutor = new SpellClassJDBCExecutor();
+
+        // Get All...
+        /*
+        List<SpellClass> spellClasses = spellClassJDBCExecutor.getAll();
+        for (SpellClass spellClass : spellClasses) {
+            System.out.println(spellClass);
+        }
+         */
+
+        // Get By ID...
+        /*
+        SpellClass spellClass = spellClassJDBCExecutor.getById(2);
+        System.out.println(spellClass);
+         */
+
+        // Get By Spell ID...
+        /*
+        List<SpellClass> spellClasses = spellClassJDBCExecutor.getAllBySpellId(10);
+        for (SpellClass spellClass : spellClasses) {
+            System.out.println(spellClass);
+        }
+         */
+
+        // -------------------------------------------------------------------------------
         // TEST SPELL CONDITIONS
         SpellConditionJDBCExecutor spellConditionJDBCExecutor = new SpellConditionJDBCExecutor();
 
@@ -69,6 +87,7 @@ public class Executor_test {
         }
         */
 
+        // -------------------------------------------------------------------------------
         // TEST DAMAGETYPES
         SpellDamagetypeJDBCExecutor spellDamagetypeJDBCExecutor = new SpellDamagetypeJDBCExecutor();
 
@@ -94,6 +113,7 @@ public class Executor_test {
         }
         */
 
+        // -------------------------------------------------------------------------------
         // TEST TAG
         SpellTagJDBCExecutor spellTagJDBCExecutor = new SpellTagJDBCExecutor();
 

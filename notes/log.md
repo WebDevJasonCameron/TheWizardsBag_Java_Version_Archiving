@@ -1,5 +1,15 @@
 # Log
 
+## 2024-01-29 | Spells 
+
+After taking a week or so to do a quick blog project, I'm back.  Honestly, I wanted a blog to talk more about what we are doing here at Wizard Bag Co.  I am just so freaking excited at the things we've been learning and I wanted to share it in an area where I can be a little more creative.  So, if you feel like it, check out my stuff on Jason-Codes.blog.  
+
+I digress, as so often I do.  We now can query a spell and get the list of attributes stored in many-to-many tables.  That was indeed complicated. But worth it.  Yes, I know I could use an ORM, but I wanted to do it the "hard way" so I can understand just what is going on behind the scenes.  Every good wizard is curious about such things, you know.  With that said, I first had to build the spell look up script.  Once that was done, I needed to build look up scripts for all the one-to-many and many-to-many tables that are connected to the Spell object.  These scripts included the "SpellClass", "SpellConditions", "SpellDamagetype", and "SpellTag" lists.  Each one of these list objects needed a special query towards the junction table to find all relating objects with the specified spell id number.  Then, that list response was applied to the Spell object's appropriate list attributes.  As such, we have all the attributes for a spell object available for query!  
+
+I find it funny that this only the beginning because we need to do the same for ALL the items within our inventory.  That means you will have an Item object with attributes that also have list of attributes which will include spell objects that have their own attributes and list of attributes that are also collected through junctions tables.  The rabbit hole is deep my friend.  So very deep.  
+
+---
+
 ## 2024-01-17 | Hey Log
 
 I've been able to do quite a lot when we're in the middle of the "Freeze of 24."  Is this still winter of 2023 or do we switch to saying it's the winter of 2024?  And does that mean we have two winters in one year???  Google!? Okay, as far as I can tell... We say this is still the winter of 2023 because winter starts in December.  Thus, we have yet to experience the winter of 2024.  So, We are experience the "Freeze of 23 but happed in 2024." Clear?  I digress. I've updated the sql tables to be syntactically clearer.  I've also been able to do searches by id of attribute, or search all attributes by spell id number.  This is cool.  The purpose of this is so we can get a spell with all it's many-to-many attributes (i.e. tags).  So, when we do a search for a spell (next thing, search by name), we can include all the tags, damagetypes, and other stuff.  Also, since these are java objects, we will have all their attributes.  That is pretty cool.  Wow, pretty soon, I need to create a CLI application to view what we have in the DB.  That's cool. 

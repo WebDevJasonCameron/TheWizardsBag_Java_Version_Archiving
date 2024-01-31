@@ -92,11 +92,6 @@ public class SpellDAO extends DataAccessObject<Spell> {
             while (rs.next()){
                 Spell spell = new Spell();
 
-                List<SpellTag> spellTags = new ArrayList<>();
-                List<SpellClass> spellClasses = new ArrayList<>();
-                List<SpellDamage> spellDamages = new ArrayList<>();
-                List<SpellCondition> spellConditions = new ArrayList<>();
-
                 spell.setSpellId(rs.getLong("spell_id"));
                 spell.setName(rs.getString("spell_name"));
                 spell.setLevel(rs.getString("spell_level"));
@@ -115,8 +110,21 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 spell.setImageUrl(rs.getString("spell_image_url"));
                 spell.setSource(rs.getInt("spell_source_id"));
 
-                // Need to get the lists from junction tables
+                // Get & Set Spell Tags
+                SpellTagJDBCExecutor spellTagJDBCExecutor = new SpellTagJDBCExecutor();
+                spell.setTagList(spellTagJDBCExecutor.getAllBySpellId(spell.getSpellId()));
 
+                // Get & Set Spell Conditions
+                SpellConditionJDBCExecutor spellConditionJDBCExecutor = new SpellConditionJDBCExecutor();
+                spell.setConditionList(spellConditionJDBCExecutor.getAllBySpellId(spell.getSpellId()));
+
+                // Get & Set Spell Classes
+                SpellClassJDBCExecutor spellClassJDBCExecutor = new SpellClassJDBCExecutor();
+                spell.setClassList(spellClassJDBCExecutor.getAllBySpellId(spell.getSpellId()));
+
+                // Get & Set Spell Damages
+                SpellDamagetypeJDBCExecutor spellDamagetypeJDBCExecutor = new SpellDamagetypeJDBCExecutor();
+                spell.setDamageList(spellDamagetypeJDBCExecutor.getAllBySpellId(spell.getSpellId()));
                 // Add to Spell List
                 spells.add(spell);
             }

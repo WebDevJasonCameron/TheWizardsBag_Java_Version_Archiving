@@ -51,4 +51,23 @@ public class SpellJDBCExecutor {
         return spell;
     }
 
+    public static Spell getBySpellName(String spellName){
+        Keys jdbcKey = new Keys();
+        String password = jdbcKey.jdbcPassword();
+        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db",  "postgres", password);
+
+        Spell spell = new Spell();
+
+        try {
+            Connection connection = dcm.getConnection();
+            SpellDAO spellDAO = new SpellDAO(connection);
+            spell =  spellDAO.findBySpellName(spellName);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return spell;
+    }
+
 }

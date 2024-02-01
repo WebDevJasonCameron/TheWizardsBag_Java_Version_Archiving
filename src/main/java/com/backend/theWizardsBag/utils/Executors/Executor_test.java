@@ -15,8 +15,8 @@ public class Executor_test {
         SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
 
 
-        Spell spell = spellJDBCExecutor.getById(8);
-        System.out.println(spell.getDamageList());
+        Spell spell = spellJDBCExecutor.getBySpellName("Spare the Dying");
+        System.out.println(spell);
 
 
         // -------------------------------------------------------------------------------

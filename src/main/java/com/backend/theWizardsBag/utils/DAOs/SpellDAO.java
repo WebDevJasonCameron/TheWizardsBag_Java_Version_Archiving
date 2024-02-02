@@ -21,7 +21,8 @@ public class SpellDAO extends DataAccessObject<Spell> {
 
     private final static String GET_BY_SPELL_NAME = "SELECT * FROM spells WHERE LOWER(spell_name)=LOWER(?)";
 
-    private final static String GET_BY_WORD_IN_NAME = "SELECT * FROM spells WHERE LOWER(?) IN (LOWER(spell_name))";
+    private final static String GET_BY_WORD_IN_NAME = "SELECT * FROM spells " +
+                                                      "WHERE POSITION(LOWER(?) IN (LOWER(spell_name))) > 0";
 
     // CONs
     public SpellDAO(Connection connection){

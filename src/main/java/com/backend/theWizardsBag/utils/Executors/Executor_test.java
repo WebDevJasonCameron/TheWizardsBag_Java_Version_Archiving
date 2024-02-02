@@ -15,9 +15,9 @@ public class Executor_test {
         SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
 
 
-        List<Spell> spells = spellJDBCExecutor.getAllByWordInSpellName("find");
+        List<Spell> spells = spellJDBCExecutor.getAllByWordInSpellName("speak");
         for (Spell spell : spells) {
-            System.out.println(spell);
+            System.out.println(spell.getName());
         }
 
 

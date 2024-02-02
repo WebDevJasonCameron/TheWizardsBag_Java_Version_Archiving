@@ -14,13 +14,6 @@ public class Executor_test {
         // TEST SPELLS
         SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
 
-
-        List<Spell> spells = spellJDBCExecutor.getAllByWordInSpellName("speak");
-        for (Spell spell : spells) {
-            System.out.println(spell.getName());
-        }
-
-
         // -------------------------------------------------------------------------------
 
         // Get All...
@@ -40,6 +33,10 @@ public class Executor_test {
         // -------------------------------------------------------------------------------
         // TEST SPELL CLASSES
         SpellClassJDBCExecutor spellClassJDBCExecutor = new SpellClassJDBCExecutor();
+
+        // Create Spell Class...
+        spellClassJDBCExecutor.createSpellClass("test class name 1", "test class sub name 1", "test class description 1");
+
 
         // Get All...
         /*

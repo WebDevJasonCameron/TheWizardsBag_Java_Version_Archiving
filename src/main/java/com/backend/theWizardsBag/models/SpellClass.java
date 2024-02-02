@@ -8,7 +8,7 @@ public class SpellClass implements DataTransferObject {
     private long spellClassID;                          //   Junction ID
     private long classID;
     private String className;
-    private  String subClassName;
+    private  String classSubClassName;
     private String classDescription;
 
     // CONs
@@ -36,11 +36,11 @@ public class SpellClass implements DataTransferObject {
         this.className = className;
     }
 
-    public String getSubClassName() {
-        return subClassName;
+    public String getClassSubClassName() {
+        return classSubClassName;
     }
-    public void setSubClassName(String subClassName) {
-        this.subClassName = subClassName;
+    public void setClassSubClassName(String classSubClassName) {
+        this.classSubClassName = classSubClassName;
     }
 
     public String getClassDescription() {
@@ -62,7 +62,7 @@ public class SpellClass implements DataTransferObject {
                 "spellClassID=" + spellClassID +
                 ", classID=" + classID +
                 ", className='" + className + '\'' +
-                ", subClassName='" + subClassName + '\'' +
+                ", classSubClassName='" + classSubClassName + '\'' +
                 ", classDescription='" + classDescription + '\'' +
                 '}';
     }

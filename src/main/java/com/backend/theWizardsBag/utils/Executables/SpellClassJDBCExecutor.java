@@ -42,7 +42,7 @@ public class SpellClassJDBCExecutor {
         try {
             Connection connection = dcm.getConnection();
             SpellClassDAO spellClassDAO = new SpellClassDAO(connection);
-            spellClass = spellClassDAO.findById(2);
+            spellClass = spellClassDAO.findById(id);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -70,4 +70,33 @@ public class SpellClassJDBCExecutor {
 
         return spellClasses;
     }
+
+    public static Long createSpellClass(String className, String classSubClassName, String classDescription){
+        Keys jdbcKey = new Keys();
+        String password = jdbcKey.jdbcPassword();
+        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
+
+        try {
+            Connection connection = dcm.getConnection();
+            SpellClassDAO spellClassDAO = new SpellClassDAO(connection);
+
+            // Used to create a new spell class entry in the db
+            SpellClass spellClass = new SpellClass();
+
+            spellClass.setClassName(className);
+            spellClass.setClassSubClassName(classSubClassName);
+            spellClass.setClassDescription(classDescription);
+
+            spellClassDAO.create(spellClass);
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+
+        return null;
+    }
+
 }

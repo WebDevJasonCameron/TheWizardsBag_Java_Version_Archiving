@@ -13,6 +13,10 @@ import java.util.List;
 public class SpellClassDAO extends DataAccessObject<SpellClass> {
 
     // SQLs
+    private final static String INSERT = "INSERT INTO rpg_classes " +
+                                            "(class_name, class_subclass_name, class_description) " +
+                                         "VALUES (?, ?, ?)";
+
     private final static String GET_BY_ID = "SELECT * FROM rpg_classes WHERE class_id=?";
 
     private final static String GET_ALL_BY_SPELL_ID = "SELECT \n" +
@@ -42,7 +46,7 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
             while (rs.next()){
                 spellClass.setClassID(rs.getLong("class_id"));
                 spellClass.setClassName(rs.getString("class_name"));
-                spellClass.setSubClassName(rs.getString("class_subclass_name"));
+                spellClass.setClassSubClassName(rs.getString("class_subclass_name"));
                 spellClass.setClassDescription(rs.getString("class_description"));
             }
         } catch (SQLException e) {
@@ -66,7 +70,7 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
 
                 spellClass.setClassID(rs.getLong("class_id"));
                 spellClass.setClassName(rs.getString("class_name"));
-                spellClass.setSubClassName(rs.getString("class_subclass_name"));
+                spellClass.setClassSubClassName(rs.getString("class_subclass_name"));
                 spellClass.setClassDescription(rs.getString("class_description"));
 
                 spellClasses.add(spellClass);
@@ -87,7 +91,17 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
 
     @Override
     public SpellClass create(SpellClass dto) {
-        return null;
+        try(PreparedStatement statement = this.connection.prepareStatement(INSERT);){
+            statement.setString(1, dto.getClassName());
+            statement.setString(2, dto.getClassSubClassName());
+            statement.setString(3, dto.getClassDescription());
+            statement.execute();
+            long id = this.getLastVal(CLASS_SEQUENCE);
+            return this.findById(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -113,7 +127,7 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
                     spellClass.setSpellClassID(rs.getLong("spell_class_id"));
                     spellClass.setClassID(rs.getLong("class_id"));
                     spellClass.setClassName(rs.getString("class_name"));
-                    spellClass.setSubClassName(rs.getString("class_subclass_name"));
+                    spellClass.setClassSubClassName(rs.getString("class_subclass_name"));
                     spellClass.setClassDescription(rs.getString("class_description"));
 
                     spellClasses.add(spellClass);

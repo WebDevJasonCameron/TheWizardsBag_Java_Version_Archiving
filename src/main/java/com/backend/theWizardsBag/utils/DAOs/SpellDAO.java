@@ -21,6 +21,8 @@ public class SpellDAO extends DataAccessObject<Spell> {
 
     private final static String GET_BY_SPELL_NAME = "SELECT * FROM spells WHERE LOWER(spell_name)=LOWER(?)";
 
+    private final static String GET_BY_WORD_IN_NAME = "SELECT * FROM spells WHERE LOWER(?) IN (LOWER(spell_name))";
+
     // CONs
     public SpellDAO(Connection connection){
         super(connection);
@@ -36,7 +38,6 @@ public class SpellDAO extends DataAccessObject<Spell> {
 
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
-                List<SpellDamage> spellDamages = new ArrayList<>();
 
                 spell.setSpellId(rs.getLong("spell_id"));
                 spell.setName(rs.getString("spell_name"));
@@ -160,10 +161,61 @@ public class SpellDAO extends DataAccessObject<Spell> {
 
         try (PreparedStatement statement = this.connection.prepareStatement(GET_BY_SPELL_NAME);) {
             statement.setString(1, spellName);
-
             ResultSet rs = statement.executeQuery();
+
             while (rs.next()) {
-                List<SpellDamage> spellDamages = new ArrayList<>();
+                spell.setSpellId(rs.getLong("spell_id"));
+                spell.setName(rs.getString("spell_name"));
+                spell.setLevel(rs.getString("spell_level"));
+                spell.setCastingTime(rs.getString("spell_casting_time"));
+                spell.setRange(rs.getString("spell_range_area"));
+                spell.setComponentsVisual(rs.getBoolean("spell_component_visual"));
+                spell.setComponentsSemantic(rs.getBoolean("spell_component_semantic"));
+                spell.setComponentsMaterial(rs.getBoolean("spell_component_material"));
+                spell.setComponentsMaterials(rs.getString("spell_component_materials"));
+                spell.setDuration(rs.getString("spell_duration"));
+                spell.setConcentration(rs.getBoolean("spell_concentration"));
+                spell.setRitual(rs.getBoolean("spell_ritual"));
+                spell.setSchool(rs.getString("spell_school"));
+                spell.setSaveType(rs.getString("spell_save_type"));
+                spell.setDescription(rs.getString("spell_description"));
+                spell.setImageUrl(rs.getString("spell_image_url"));
+                spell.setSource(rs.getInt("spell_source_id"));
+
+                // Get & Set Spell Tags
+                SpellTagJDBCExecutor spellTagJDBCExecutor = new SpellTagJDBCExecutor();
+                spell.setTagList(spellTagJDBCExecutor.getAllBySpellId(spell.getSpellId()));
+
+                // Get & Set Spell Conditions
+                SpellConditionJDBCExecutor spellConditionJDBCExecutor = new SpellConditionJDBCExecutor();
+                spell.setConditionList(spellConditionJDBCExecutor.getAllBySpellId(spell.getSpellId()));
+
+                // Get & Set Spell Classes
+                SpellClassJDBCExecutor spellClassJDBCExecutor = new SpellClassJDBCExecutor();
+                spell.setClassList(spellClassJDBCExecutor.getAllBySpellId(spell.getSpellId()));
+
+                // Get & Set Spell Damages
+                SpellDamagetypeJDBCExecutor spellDamagetypeJDBCExecutor = new SpellDamagetypeJDBCExecutor();
+                spell.setDamageList(spellDamagetypeJDBCExecutor.getAllBySpellId(spell.getSpellId()));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException();
+        }
+
+        return spell;
+    }
+
+    public List<Spell> findAllWithWordInSpellName(String word){
+        List<Spell> spells = new ArrayList<>();
+
+        try(PreparedStatement statement = this.connection.prepareStatement(GET_BY_WORD_IN_NAME);){
+            statement.setString(1, word);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()){
+                Spell spell = new Spell();
 
                 spell.setSpellId(rs.getLong("spell_id"));
                 spell.setName(rs.getString("spell_name"));
@@ -198,15 +250,16 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 // Get & Set Spell Damages
                 SpellDamagetypeJDBCExecutor spellDamagetypeJDBCExecutor = new SpellDamagetypeJDBCExecutor();
                 spell.setDamageList(spellDamagetypeJDBCExecutor.getAllBySpellId(spell.getSpellId()));
-
-
+                // Add to Spell List
+                spells.add(spell);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new RuntimeException();
+            throw new RuntimeException(e);
         }
 
-        return spell;
+        return spells;
+
     }
 }

@@ -15,8 +15,10 @@ public class Executor_test {
         SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
 
 
-        Spell spell = spellJDBCExecutor.getBySpellName("spare the dying");
-        System.out.println(spell);
+        List<Spell> spells = spellJDBCExecutor.getAllByWordInSpellName("find");
+        for (Spell spell : spells) {
+            System.out.println(spell);
+        }
 
 
         // -------------------------------------------------------------------------------

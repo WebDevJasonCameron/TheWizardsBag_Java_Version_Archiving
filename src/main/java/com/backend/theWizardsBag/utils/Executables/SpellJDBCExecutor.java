@@ -12,7 +12,7 @@ import java.util.List;
 
 public class SpellJDBCExecutor {
 
-    public static List<Spell> getAll(){
+    public static List<Spell> getAll() {
         Keys jdbcKey = new Keys();
         String password = jdbcKey.jdbcPassword();
         DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db",  "postgres", password);
@@ -31,7 +31,7 @@ public class SpellJDBCExecutor {
         return spells;
     }
 
-    public static Spell getById (long id){
+    public static Spell getById (long id) {
         Keys jdbcKey = new Keys();
         String password = jdbcKey.jdbcPassword();
         DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db",  "postgres", password);
@@ -51,7 +51,7 @@ public class SpellJDBCExecutor {
         return spell;
     }
 
-    public static Spell getBySpellName(String spellName){
+    public static Spell getBySpellName(String spellName) {
         Keys jdbcKey = new Keys();
         String password = jdbcKey.jdbcPassword();
         DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db",  "postgres", password);
@@ -68,6 +68,25 @@ public class SpellJDBCExecutor {
         }
 
         return spell;
+    }
+
+    public static List<Spell> getAllByWordInSpellName(String word) {
+        Keys jdbcKey = new Keys();
+        String password = jdbcKey.jdbcPassword();
+        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db",  "postgres", password);
+
+        List<Spell> spells = new ArrayList<>();
+
+        try {
+            Connection connection = dcm.getConnection();
+            SpellDAO spellDAO = new SpellDAO(connection);
+            spells =  spellDAO.findAllWithWordInSpellName(word);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return spells;
     }
 
 }

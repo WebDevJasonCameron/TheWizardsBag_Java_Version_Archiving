@@ -99,4 +99,27 @@ public class SpellClassJDBCExecutor {
         return null;
     }
 
+    public static void deleteByIdSpellClass(long spellId){
+        Keys jdbcKey = new Keys();
+        String password = jdbcKey.jdbcPassword();
+        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
+
+        try {
+            Connection connection = dcm.getConnection();
+            SpellClassDAO spellClassDAO = new SpellClassDAO(connection);
+
+            SpellClass spellClassBeingDelete = spellClassDAO.findById(spellId);
+            spellClassDAO.delete(spellId);
+            System.out.println("Deleted: " + spellClassBeingDelete.getClassName());
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+
+
+    }
+
 }

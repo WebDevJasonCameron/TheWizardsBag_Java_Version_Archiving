@@ -35,7 +35,15 @@ public class Executor_test {
         SpellClassJDBCExecutor spellClassJDBCExecutor = new SpellClassJDBCExecutor();
 
         // Create Spell Class...
+        /*
         spellClassJDBCExecutor.createSpellClass("test class name 1", "test class sub name 1", "test class description 1");
+         */
+
+        // Delete Spell Class...
+        /*
+        spellClassJDBCExecutor.deleteByIdSpellClass(144);
+         */
+
 
 
         // Get All...

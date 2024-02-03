@@ -17,6 +17,8 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
                                             "(class_name, class_subclass_name, class_description) " +
                                          "VALUES (?, ?, ?)";
 
+    private final static String DELETE = "DELETE FROM rpg_classes WHERE class_id = ?";
+
     private final static String GET_BY_ID = "SELECT * FROM rpg_classes WHERE class_id=?";
 
     private final static String GET_ALL_BY_SPELL_ID = "SELECT \n" +
@@ -106,6 +108,13 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
 
     @Override
     public void delete(long id) {
+        try(PreparedStatement statement = this.connection.prepareStatement(DELETE);) {
+            statement.setLong(1, id);
+            statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 
     // METHs

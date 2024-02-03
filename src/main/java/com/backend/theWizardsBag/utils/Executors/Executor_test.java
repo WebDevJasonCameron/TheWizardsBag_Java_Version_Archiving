@@ -60,6 +60,14 @@ public class Executor_test {
         System.out.println(spellClass);
          */
 
+        // Get All By Name...
+        /*
+        List<SpellClass> spellClasses = spellClassJDBCExecutor.getAllByClassName("bard");
+        for (SpellClass spellClass : spellClasses) {
+            System.out.println(spellClass.getClassName() + ", " + spellClass.getClassSubClassName());
+        }
+         */
+
         // Get By Spell ID...
         /*
         List<SpellClass> spellClasses = spellClassJDBCExecutor.getAllBySpellId(10);

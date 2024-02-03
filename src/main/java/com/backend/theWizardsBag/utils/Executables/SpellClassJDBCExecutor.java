@@ -12,6 +12,7 @@ import java.util.List;
 
 public class SpellClassJDBCExecutor {
 
+    // GETs
     public static List<SpellClass> getAll() {
         Keys jdbcKey = new Keys();
         String password = jdbcKey.jdbcPassword();
@@ -51,6 +52,28 @@ public class SpellClassJDBCExecutor {
         return spellClass;
     }
 
+    public static List<SpellClass> getAllByClassName(String className) {
+        Keys jdbcKey = new Keys();
+        String password = jdbcKey.jdbcPassword();
+        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
+
+        List<SpellClass> spellClasses = new ArrayList<>();
+
+        try {
+            Connection connection = dcm.getConnection();
+            SpellClassDAO spellClassDAO = new SpellClassDAO(connection);
+            spellClasses = spellClassDAO.findAllByClassName(className);
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return spellClasses;
+    }
+
+
+    // GET BY SPELL
     public static List<SpellClass> getAllBySpellId(long spellId) {
         Keys jdbcKey = new Keys();
         String password = jdbcKey.jdbcPassword();
@@ -71,6 +94,7 @@ public class SpellClassJDBCExecutor {
         return spellClasses;
     }
 
+    // CREATE
     public static Long createSpellClass(String className, String classSubClassName, String classDescription){
         Keys jdbcKey = new Keys();
         String password = jdbcKey.jdbcPassword();
@@ -88,8 +112,6 @@ public class SpellClassJDBCExecutor {
             spellClass.setClassDescription(classDescription);
 
             spellClassDAO.create(spellClass);
-
-
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
@@ -99,6 +121,7 @@ public class SpellClassJDBCExecutor {
         return null;
     }
 
+    // DELETE
     public static void deleteByIdSpellClass(long spellId){
         Keys jdbcKey = new Keys();
         String password = jdbcKey.jdbcPassword();
@@ -117,9 +140,6 @@ public class SpellClassJDBCExecutor {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
-
-
-
     }
 
 }

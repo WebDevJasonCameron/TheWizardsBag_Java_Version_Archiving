@@ -21,6 +21,8 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
 
     private final static String GET_BY_ID = "SELECT * FROM rpg_classes WHERE class_id=?";
 
+    private final static String GET_ALL_BY_NAME = "SELECT * FROM rpg_classes WHERE class_name=?";
+
     private final static String GET_ALL_BY_SPELL_ID = "SELECT \n" +
                                                 " s.*,\n" +
                                                 " sc.*,\n" +
@@ -118,6 +120,34 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
     }
 
     // METHs
+    public List<SpellClass> findAllByClassName (String className) {
+        List<SpellClass> spellClasses = new ArrayList<>();
+
+        try(PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_NAME);){
+            statement.setString(1, className);
+
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()){
+                SpellClass spellClass = new SpellClass();
+
+                spellClass.setClassID(rs.getLong("class_id"));
+                spellClass.setClassName(rs.getString("class_name"));
+                spellClass.setClassSubClassName(rs.getString("class_subclass_name"));
+                spellClass.setClassDescription(rs.getString("class_description"));
+
+                spellClasses.add(spellClass);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        return spellClasses;
+    }
+
+
     public List<SpellClass> findAllBySpellId (long spellId) {
         List<SpellClass> spellClasses = new ArrayList<>();
 

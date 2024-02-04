@@ -45,7 +45,6 @@ public class Executor_test {
          */
 
 
-
         // Get All...
         /*
         List<SpellClass> spellClasses = spellClassJDBCExecutor.getAll();
@@ -67,6 +66,10 @@ public class Executor_test {
             System.out.println(spellClass.getClassName() + ", " + spellClass.getClassSubClassName());
         }
          */
+
+        // Get by Name and SubName...
+        SpellClass spellClass = spellClassJDBCExecutor.getByClassNameAndSubclassName("rouge", "thief");
+        System.out.println(spellClass);
 
         // Get By Spell ID...
         /*

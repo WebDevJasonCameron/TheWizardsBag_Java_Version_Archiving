@@ -14,9 +14,9 @@ public class SpellClassJDBCExecutor {
 
     // GETs
     public static List<SpellClass> getAll() {
-        Keys jdbcKey = new Keys();
-        String password = jdbcKey.jdbcPassword();
-        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
+        final Keys jdbcKey = new Keys();
+        final String password = jdbcKey.jdbcPassword();
+        final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
 
         List<SpellClass> spellClasses = new ArrayList<>();
 
@@ -34,9 +34,9 @@ public class SpellClassJDBCExecutor {
     }
 
     public static SpellClass getById(long id) {
-        Keys jdbcKey = new Keys();
-        String password = jdbcKey.jdbcPassword();
-        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
+        final Keys jdbcKey = new Keys();
+        final String password = jdbcKey.jdbcPassword();
+        final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
 
         SpellClass spellClass = new SpellClass();
 
@@ -53,17 +53,16 @@ public class SpellClassJDBCExecutor {
     }
 
     public static List<SpellClass> getAllByClassName(String className) {
-        Keys jdbcKey = new Keys();
-        String password = jdbcKey.jdbcPassword();
-        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
+        final Keys jdbcKey = new Keys();
+        final String password = jdbcKey.jdbcPassword();
+        final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
 
         List<SpellClass> spellClasses = new ArrayList<>();
 
         try {
             Connection connection = dcm.getConnection();
             SpellClassDAO spellClassDAO = new SpellClassDAO(connection);
-            spellClasses = spellClassDAO.findAllByClassName(className);
-
+            spellClasses = spellClassDAO.findAllByName(className);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -72,12 +71,32 @@ public class SpellClassJDBCExecutor {
         return spellClasses;
     }
 
+    public static SpellClass getByClassNameAndSubclassName(String className, String classSubclassName) {
+        final Keys jdbcKey = new Keys();
+        final String password = jdbcKey.jdbcPassword();
+        final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db",  "postgres", password);
+
+        SpellClass spellClass = new SpellClass();
+
+        try {
+            Connection connection = dcm.getConnection();
+            SpellClassDAO spellClassDAO = new SpellClassDAO(connection);
+
+            spellClass = spellClassDAO.findByNameAndSubName(className, classSubclassName);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return spellClass;
+    }
 
     // GET BY SPELL
     public static List<SpellClass> getAllBySpellId(long spellId) {
-        Keys jdbcKey = new Keys();
-        String password = jdbcKey.jdbcPassword();
-        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
+        final Keys jdbcKey = new Keys();
+        final String password = jdbcKey.jdbcPassword();
+        final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
 
         List<SpellClass> spellClasses = new ArrayList<>();
 
@@ -96,9 +115,9 @@ public class SpellClassJDBCExecutor {
 
     // CREATE
     public static Long createSpellClass(String className, String classSubClassName, String classDescription){
-        Keys jdbcKey = new Keys();
-        String password = jdbcKey.jdbcPassword();
-        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
+        final Keys jdbcKey = new Keys();
+        final String password = jdbcKey.jdbcPassword();
+        final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
 
         try {
             Connection connection = dcm.getConnection();
@@ -123,9 +142,9 @@ public class SpellClassJDBCExecutor {
 
     // DELETE
     public static void deleteByIdSpellClass(long spellId){
-        Keys jdbcKey = new Keys();
-        String password = jdbcKey.jdbcPassword();
-        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
+        final Keys jdbcKey = new Keys();
+        final String password = jdbcKey.jdbcPassword();
+        final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
 
         try {
             Connection connection = dcm.getConnection();

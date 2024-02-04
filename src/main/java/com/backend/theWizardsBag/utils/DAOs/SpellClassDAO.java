@@ -23,6 +23,10 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
 
     private final static String GET_ALL_BY_NAME = "SELECT * FROM rpg_classes WHERE class_name=?";
 
+    private final static String GET_BY_NAME_AND_SUB_NAME = "SELECT * FROM rpg_classes " +
+                                                            "WHERE class_name=? " +
+                                                            "AND class_subclass_name=?";
+
     private final static String GET_ALL_BY_SPELL_ID = "SELECT \n" +
                                                 " s.*,\n" +
                                                 " sc.*,\n" +
@@ -120,7 +124,7 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
     }
 
     // METHs
-    public List<SpellClass> findAllByClassName (String className) {
+    public List<SpellClass> findAllByName (String className) {
         List<SpellClass> spellClasses = new ArrayList<>();
 
         try(PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_NAME);){
@@ -147,6 +151,31 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
         return spellClasses;
     }
 
+    public SpellClass findByNameAndSubName (String className, String classSubclassName){
+        SpellClass spellClass = new SpellClass();
+
+        try (PreparedStatement statement = this.connection.prepareStatement(GET_BY_NAME_AND_SUB_NAME);) {
+            statement.setString(1, className);
+            statement.setString(2, classSubclassName);
+
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                spellClass.setClassID(rs.getLong("class_id"));
+                spellClass.setClassName(rs.getString("class_name"));
+                spellClass.setClassSubClassName(rs.getString("class_subclass_name"));
+                spellClass.setClassDescription(rs.getString("class_description"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        return spellClass;
+    }
+
+
+            //GET_BY_NAME_AND_SUB_NAME
 
     public List<SpellClass> findAllBySpellId (long spellId) {
         List<SpellClass> spellClasses = new ArrayList<>();

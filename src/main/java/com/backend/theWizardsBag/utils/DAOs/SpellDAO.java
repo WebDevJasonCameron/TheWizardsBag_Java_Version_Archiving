@@ -17,9 +17,11 @@ import java.util.List;
 public class SpellDAO extends DataAccessObject<Spell> {
 
     // SQLs
-    private final static String GET_BY_ID = "SELECT * FROM spells WHERE spell_id=?";
+    private final static String GET_BY_ID = "SELECT * FROM spells " +
+                                            "WHERE spell_id=?";
 
-    private final static String GET_BY_SPELL_NAME = "SELECT * FROM spells WHERE LOWER(spell_name)=LOWER(?)";
+    private final static String GET_BY_SPELL_NAME = "SELECT * FROM spells " +
+                                                    "WHERE LOWER(spell_name)=LOWER(?)";
 
     private final static String GET_BY_WORD_IN_NAME = "SELECT * FROM spells " +
                                                       "WHERE POSITION(LOWER(?) IN (LOWER(spell_name))) > 0";

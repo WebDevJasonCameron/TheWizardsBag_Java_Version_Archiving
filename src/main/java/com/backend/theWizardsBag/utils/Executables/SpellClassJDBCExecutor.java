@@ -52,7 +52,7 @@ public class SpellClassJDBCExecutor {
         return spellClass;
     }
 
-    public static List<SpellClass> getAllByClassName(String className) {
+    public static List<SpellClass> getAllByName(String className) {
         final Keys jdbcKey = new Keys();
         final String password = jdbcKey.jdbcPassword();
         final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
@@ -71,7 +71,7 @@ public class SpellClassJDBCExecutor {
         return spellClasses;
     }
 
-    public static SpellClass getByClassNameAndSubclassName(String className, String classSubclassName) {
+    public static SpellClass getByNameAndSubName(String className, String classSubclassName) {
         final Keys jdbcKey = new Keys();
         final String password = jdbcKey.jdbcPassword();
         final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db",  "postgres", password);

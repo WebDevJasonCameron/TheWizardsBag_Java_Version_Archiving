@@ -17,11 +17,14 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
                                             "(class_name, class_subclass_name, class_description) " +
                                          "VALUES (?, ?, ?)";
 
-    private final static String DELETE = "DELETE FROM rpg_classes WHERE class_id = ?";
+    private final static String DELETE = "DELETE FROM rpg_classes " +
+                                         "WHERE class_id = ?";
 
-    private final static String GET_BY_ID = "SELECT * FROM rpg_classes WHERE class_id=?";
+    private final static String GET_BY_ID = "SELECT * FROM rpg_classes " +
+                                            "WHERE class_id=?";
 
-    private final static String GET_ALL_BY_NAME = "SELECT * FROM rpg_classes WHERE class_name=?";
+    private final static String GET_ALL_BY_NAME = "SELECT * FROM rpg_classes " +
+                                                  "WHERE class_name=?";
 
     private final static String GET_BY_NAME_AND_SUB_NAME = "SELECT * FROM rpg_classes " +
                                                             "WHERE class_name=? " +
@@ -173,9 +176,6 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
 
         return spellClass;
     }
-
-
-            //GET_BY_NAME_AND_SUB_NAME
 
     public List<SpellClass> findAllBySpellId (long spellId) {
         List<SpellClass> spellClasses = new ArrayList<>();

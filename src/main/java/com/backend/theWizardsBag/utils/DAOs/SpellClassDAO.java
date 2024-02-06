@@ -127,6 +127,7 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
     }
 
     // METHs
+    // <!> Move this to a rpgClassDAO!
     public List<SpellClass> findAllByName (String className) {
         List<SpellClass> spellClasses = new ArrayList<>();
 
@@ -153,7 +154,7 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
 
         return spellClasses;
     }
-
+    // <!> Move this to a rpgClassDAO!
     public SpellClass findByNameAndSubName (String className, String classSubclassName){
         SpellClass spellClass = new SpellClass();
 

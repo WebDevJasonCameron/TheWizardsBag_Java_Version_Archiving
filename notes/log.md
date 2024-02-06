@@ -1,5 +1,24 @@
 # Log
 
+## 2024-02-05 | Mixed Classes
+
+I was having a hard time figuring how to build out my DAOs.  For example, the SpellClass DAO was making SQL queries for all the classes.  This it hit me, I don't want that.  That should go to the class (prgClasses) DAO.  If I want to create, update or delete a rpg class, I should use a targeted class DAO.  The SpellClass DAO should let me target the junction table and CRUD data relating this.  Then, I should be able to use the executables within the narrower class DAO to read the class information.  I also need to realize that it doesn't matter if I don't use rpg class in the items attributes.  Doing it this way means things stay confined to the "best answer" so-to-spake.  So!  I need a:
+
+- Conditions DAO
+- Effects DAO
+- Damagetypes DAO
+- Sources DAO
+- RPG Class dAO
+- Tags DAO
+- Types DAO
+
+When that is done, I'll need to rework the following DAOs to focus on junction table CRUD functions
+
+- spellClasses
+- spellConditions
+- spellDamagetypes
+- spellTags 
+
 ## 2024-01-29 | Spells 
 
 After taking a week or so to do a quick blog project, I'm back.  Honestly, I wanted a blog to talk more about what we are doing here at Wizard Bag Co.  I am just so freaking excited at the things we've been learning and I wanted to share it in an area where I can be a little more creative.  So, if you feel like it, check out my stuff on Jason-Codes.blog.  

@@ -68,8 +68,10 @@ public class Executor_test {
          */
 
         // Get by Name and SubName...
+        /*
         SpellClass spellClass = spellClassJDBCExecutor.getByNameAndSubName("rouge", "thief");
         System.out.println(spellClass);
+         */
 
         // Get By Spell ID...
         /*

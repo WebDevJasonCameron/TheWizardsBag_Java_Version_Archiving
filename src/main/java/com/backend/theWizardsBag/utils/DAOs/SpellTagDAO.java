@@ -14,7 +14,12 @@ import java.util.List;
 public class SpellTagDAO extends DataAccessObject<SpellTag> {
 
     // SQLs
-    private final static String GET_BY_ID = "SELECT * FROM tags WHERE tag_id=?";
+    private final static String GET_BY_ID = "SELECT * FROM tags " +
+                                            "WHERE tag_id=?";
+
+    private final static String GET_BY_NAME = "SELECT * FROM tags" +
+                                              "WHERE tag_name=?";
+
 
     private final static String GET_ALL_BY_SPELL_ID = "SELECT \n" +
                                             " s.*,\n" +
@@ -58,11 +63,11 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
         List<SpellTag> spellTagList = new ArrayList<>();
 
         try(PreparedStatement statement = this.connection.prepareStatement("" +
-                "SELECT * FROM tags " +
-                "WHERE\n" +
-                "\ttag_type = 'na'\n" +
-                "\tOR tag_type = 'both'\n" +
-                "\tOR tag_type = 'spell' ");){
+                                            "SELECT * FROM tags " +
+                                            "WHERE\n" +
+                                                "\ttag_type = 'na'\n" +
+                                                "\tOR tag_type = 'both'\n" +
+                                                "\tOR tag_type = 'spell' ");){
 
             ResultSet rs = statement.executeQuery();
 
@@ -85,20 +90,45 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
     }
 
     @Override
+    // <!> This should focus on the spell tag relations, NOT tag itself!  Think spell_tags table, not tags!
     public SpellTag update(SpellTag dto) {
         return null;
     }
 
     @Override
+    // <!> This should focus on the spell tag relations, NOT tag itself!  Think spell_tags table, not tags!
     public SpellTag create(SpellTag dto) {
         return null;
     }
 
     @Override
+    // <!> This should focus on the spell tag relations, NOT tag itself!  Think spell_tags table, not tags!
     public void delete(long id) {
     }
 
     // METHs
+    // <!> Move this to a rpgClassDAO!
+    public SpellTag findByName (String tagName){
+        SpellTag spellTag = new SpellTag();
+
+        try(PreparedStatement statement = this.connection.prepareStatement(GET_BY_NAME);) {
+            statement.setString(1, tagName);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()){
+                spellTag.setTagID(rs.getLong("tag_id"));
+                spellTag.setTagName(rs.getString("tag_name"));
+                spellTag.setTagName(rs.getString("tag_type"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        return spellTag;
+    }
+
     public List<SpellTag> findAllWithSpellId(long spellId) {
         List<SpellTag> spellTags = new ArrayList<>();
 

@@ -12,6 +12,8 @@ import java.util.List;
 
 public class SpellTagJDBCExecutor {
 
+
+
     public List<SpellTag> getAll(){
         final Keys jdbcKey = new Keys();
         final String password = jdbcKey.jdbcPassword();
@@ -31,7 +33,7 @@ public class SpellTagJDBCExecutor {
         return spellTags;
     }
 
-    public SpellTag getByID(long id) {
+    public SpellTag getById(long id) {
         final Keys jdbcKey = new Keys();
         final String password = jdbcKey.jdbcPassword();
         final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db",  "postgres", password);
@@ -47,7 +49,7 @@ public class SpellTagJDBCExecutor {
             e.printStackTrace();
         }
 
-        return spellTag;
+        return null;
 
     }
 

@@ -1,6 +1,5 @@
 package com.backend.theWizardsBag.utils.DAOs;
 
-import com.backend.theWizardsBag.models.SpellClass;
 import com.backend.theWizardsBag.models.SpellTag;
 import com.backend.theWizardsBag.utils.Objects.DataAccessObject;
 
@@ -14,22 +13,30 @@ import java.util.List;
 public class SpellTagDAO extends DataAccessObject<SpellTag> {
 
     // SQLs
-    private final static String GET_BY_ID = "SELECT * FROM tags " +
-                                            "WHERE tag_id=?";
+    private final static String GET_BY_ID = "SELECT " +
+                                                "st.*, " +
+                                                "s.*, " +
+                                                "t.* " +
+                                            "FROM spell_tags st " +
+                                                "JOIN spells s ON st.spells_spell_id = s.spell_id " +
+                                                "JOIN tags t ON st.tags_tag_id = t.tag_id " +
+                                            "WHERE " +
+                                                "st.spell_tag_id = 1;";
 
+    // <!> Delete this after TagDAO completed
     private final static String GET_BY_NAME = "SELECT * FROM tags" +
                                               "WHERE tag_name=?";
 
-
-    private final static String GET_ALL_BY_SPELL_ID = "SELECT \n" +
-                                            " s.*,\n" +
-                                            " st.*,\n" +
-                                            " t.*\n" +
-                                        "FROM spells s\n" +
-                                            "\tJOIN spell_tags st ON s.spell_id = st.spells_spell_id\n" +
-                                            "\tJOIN tags t ON t.tag_id = st.tags_tag_id\n" +
-                                        "WHERE \n" +
-                                            "\ts.spell_id = ?";
+    // <!> Change to focus on spell_tags table
+    private final static String GET_ALL_BY_SPELL_ID = "SELECT " +
+                                            " s.*, " +
+                                            " st.*, " +
+                                            " t.* " +
+                                        "FROM spells s " +
+                                            "JOIN spell_tags st ON s.spell_id = st.spells_spell_id " +
+                                            "JOIN tags t ON t.tag_id = st.tags_tag_id " +
+                                        "WHERE " +
+                                            "s.spell_id = ?";
 
     // CONs
     public SpellTagDAO(Connection connection) {
@@ -38,6 +45,7 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
 
     // OVRs
     @Override
+    // <!> This targets the spell_tag_id.  Useful for changing a spell's tag when you know it
     public SpellTag findById(long id) {
         SpellTag spellTag = new SpellTag();
 
@@ -46,9 +54,13 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
 
             ResultSet rs = statement.executeQuery();
             while (rs.next()){
-                spellTag.setTagID(rs.getLong("tag_id"));
+
+                spellTag.setSpellTagID(rs.getLong("spell_tag_id"));
+                spellTag.setTagID(rs.getLong("tags_tag_id"));
+                spellTag.setSpellName(rs.getString("spell_name"));
                 spellTag.setTagName(rs.getString("tag_name"));
                 spellTag.setTagType(rs.getString("tag_type"));
+
             }
 
         } catch (SQLException e) {
@@ -59,6 +71,8 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
     }
 
     @Override
+    // <!> This should target all spell_tag_id.  Should group by spell id, so you can see a
+    // list of spells and their related tags
     public List<SpellTag> findAll() {
         List<SpellTag> spellTagList = new ArrayList<>();
 
@@ -91,6 +105,7 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
 
     @Override
     // <!> This should focus on the spell tag relations, NOT tag itself!  Think spell_tags table, not tags!
+    // <!>
     public SpellTag update(SpellTag dto) {
         return null;
     }

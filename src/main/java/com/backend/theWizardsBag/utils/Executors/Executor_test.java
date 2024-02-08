@@ -76,7 +76,8 @@ public class Executor_test {
 
         // update
 
-        tagJDBCExecutor.update(79, "Calvin 1", "Calvin Description 1");
+        Tag inputTag = new Tag(79, "Calvin 1", "Calvin Description 1");
+        tagJDBCExecutor.update(inputTag);
 
         // delete
         /*

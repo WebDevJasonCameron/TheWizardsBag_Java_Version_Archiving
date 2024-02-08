@@ -23,10 +23,6 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
                                             "WHERE " +
                                                 "st.spell_tag_id = 1;";
 
-    // <!> Delete this after TagDAO completed
-    private final static String GET_BY_NAME = "SELECT * FROM tags" +
-                                              "WHERE tag_name=?";
-
     // <!> Change to focus on spell_tags table
     private final static String GET_ALL_BY_SPELL_ID = "SELECT " +
                                             " s.*, " +
@@ -45,7 +41,6 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
 
     // OVRs
     @Override
-    // <!> This targets the spell_tag_id.  Useful for changing a spell's tag when you know it
     public SpellTag findById(long id) {
         SpellTag spellTag = new SpellTag();
 
@@ -71,36 +66,9 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
     }
 
     @Override
-    // <!> This should target all spell_tag_id.  Should group by spell id, so you can see a
-    // list of spells and their related tags
+    // <!> Should group by spell id, so you can see a list of spells and their related tags
     public List<SpellTag> findAll() {
-        List<SpellTag> spellTagList = new ArrayList<>();
-
-        try(PreparedStatement statement = this.connection.prepareStatement("" +
-                                            "SELECT * FROM tags " +
-                                            "WHERE\n" +
-                                                "\ttag_type = 'na'\n" +
-                                                "\tOR tag_type = 'both'\n" +
-                                                "\tOR tag_type = 'spell' ");){
-
-            ResultSet rs = statement.executeQuery();
-
-            while (rs.next()) {
-                SpellTag spellTag = new SpellTag();
-
-                spellTag.setTagID(rs.getLong("tag_id"));
-                spellTag.setTagName(rs.getString("tag_name"));
-                spellTag.setTagType(rs.getString("tag_type"));
-
-                spellTagList.add(spellTag);
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException();
-        }
-
-        return spellTagList;
+        return null;
     }
 
     @Override
@@ -122,28 +90,6 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
     }
 
     // METHs
-    // <!> Move this to a rpgClassDAO!
-    public SpellTag findByName (String tagName){
-        SpellTag spellTag = new SpellTag();
-
-        try(PreparedStatement statement = this.connection.prepareStatement(GET_BY_NAME);) {
-            statement.setString(1, tagName);
-            ResultSet rs = statement.executeQuery();
-
-            while (rs.next()){
-                spellTag.setTagID(rs.getLong("tag_id"));
-                spellTag.setTagName(rs.getString("tag_name"));
-                spellTag.setTagName(rs.getString("tag_type"));
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
-
-        return spellTag;
-    }
-
     public List<SpellTag> findAllWithSpellId(long spellId) {
         List<SpellTag> spellTags = new ArrayList<>();
 

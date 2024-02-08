@@ -141,6 +141,7 @@ public class SpellClassJDBCExecutor {
     }
 
     // DELETE
+    // <!> Focus on joint table for this
     public static void deleteByIdSpellClass(long spellId){
         final Keys jdbcKey = new Keys();
         final String password = jdbcKey.jdbcPassword();

@@ -3,19 +3,24 @@ package com.backend.theWizardsBag.utils.DAOs;
 import com.backend.theWizardsBag.models.Tag;
 import com.backend.theWizardsBag.utils.Objects.DataAccessObject;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TagDAO extends DataAccessObject<Tag> {
 
     // SQLs
+    private final static String INSERT = "INSERT INTO tags " +
+                                            "(tag_name, tag_type)" +
+                                         "VALUES (?, ?)";
+
+    private final static String DELETE = "DELETE FROM tags " +
+                                         "WHERE tag_id = ?";
+
     private final static String GET_BY_ID = "SELECT * FROM tags " +
                                             "WHERE tag_id=?";
 
-    private final static String GET_BY_NAME = "SELECT * FROM tags" +
+    private final static String GET_BY_NAME = "SELECT * FROM tags " +
                                               "WHERE tag_name=?";
 
     // CONs
@@ -47,7 +52,29 @@ public class TagDAO extends DataAccessObject<Tag> {
 
     @Override
     public List<Tag> findAll() {
-        return null;
+        List<Tag> tags = new ArrayList<>();
+
+        try(PreparedStatement statement =
+                    this.connection.prepareStatement("SELECT * FROM tags ");){
+
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                Tag spellTag = new Tag();
+
+                spellTag.setTagID(rs.getLong("tag_id"));
+                spellTag.setTagName(rs.getString("tag_name"));
+                spellTag.setTagType(rs.getString("tag_type"));
+
+                tags.add(spellTag);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException();
+        }
+
+        return tags;
     }
 
     @Override
@@ -57,13 +84,49 @@ public class TagDAO extends DataAccessObject<Tag> {
 
     @Override
     public Tag create(Tag dto) {
-        return null;
+        try(PreparedStatement statement = this.connection.prepareStatement(INSERT);){
+            statement.setString(1, dto.getTagName());
+            statement.setString(2, dto.getTagType());
+            statement.execute();
+            long id = this.getLastVal(TAG_SEQUENCE);
+            return this.findById(id);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void delete(long id) {
-
+        try(PreparedStatement statement = this.connection.prepareStatement(DELETE);) {
+            statement.setLong(1, id);
+            statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 
     // METHs
+    public Tag findByName (String tagName){
+        Tag tag = new Tag();
+
+        try(PreparedStatement statement = this.connection.prepareStatement(GET_BY_NAME);) {
+            statement.setString(1, tagName);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()){
+                tag.setTagID(rs.getLong("tag_id"));
+                tag.setTagName(rs.getString("tag_name"));
+                tag.setTagType(rs.getString("tag_type"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        return tag;
+    }
 }

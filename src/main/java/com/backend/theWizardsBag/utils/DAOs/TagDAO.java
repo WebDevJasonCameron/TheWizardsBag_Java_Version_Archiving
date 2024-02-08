@@ -23,6 +23,8 @@ public class TagDAO extends DataAccessObject<Tag> {
     private final static String GET_BY_NAME = "SELECT * FROM tags " +
                                               "WHERE tag_name=?";
 
+    private final static String UPDATE = "UPDATE tags SET tag_name = ?, tag_type =? WHERE tag_id = ?";
+
     // CONs
     public TagDAO(Connection connection) {
         super(connection);
@@ -79,7 +81,37 @@ public class TagDAO extends DataAccessObject<Tag> {
 
     @Override
     public Tag update(Tag dto) {
-        return null;
+        Tag tag;
+
+        try {
+            this.connection.setAutoCommit(false);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        try (PreparedStatement statement = this.connection.prepareStatement(UPDATE);){
+            statement.setString(1, dto.getTagName());
+            statement.setString(2, dto.getTagType());
+            statement.setLong(3, dto.getTagID());
+            statement.execute();
+
+            this.connection.commit();                               // Commit and Rollbacks
+            tag = this.findById(dto.getTagID());
+
+        } catch (SQLException e) {
+             try {
+                 this.connection.rollback();
+             } catch (SQLException sqle) {
+                 e.printStackTrace();
+                 throw new RuntimeException(sqle);
+             }
+
+             e.printStackTrace();
+             throw new RuntimeException(e);
+        }
+        return tag;
     }
 
     @Override

@@ -10,6 +10,14 @@ public class Tag implements DataTransferObject {
     private String tagType;
 
     // CONs
+    public Tag() {
+    }
+
+    public Tag(long tagID, String tagName, String tagType) {
+        this.tagID = tagID;
+        this.tagName = tagName;
+        this.tagType = tagType;
+    }
 
     // GETs & SETs
     public long getTagID() {

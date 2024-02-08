@@ -72,6 +72,30 @@ public class TagJDBCExecutor {
         return tags;
     }
 
+    public Tag update(long tagId, String tagName, String tagType){
+        Keys keys = new Keys();
+        String password = keys.jdbcPassword();
+        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "postgres", "postgres", password);
+
+        Tag tagOutput = null;
+
+        try {
+            Connection connection = dcm.getConnection();
+            TagDAO tagDAO = new TagDAO(connection);
+
+            Tag tagNewData = new Tag(tagId, tagName, tagType);
+            Tag tagOldData = tagDAO.findById(tagId);
+            tagOutput = tagDAO.update(tagNewData);
+            System.out.println("Replacing: " + tagOldData.getTagName() + " - " + tagOldData.getTagType());
+            System.out.println("With: " + tagOutput.getTagName() + " - " + tagOutput.getTagType());
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        return tagOutput;
+    }
+
     public Tag create(String tagName, String tagType){
         final Keys jdbcKey = new Keys();
         final String password = jdbcKey.jdbcPassword();

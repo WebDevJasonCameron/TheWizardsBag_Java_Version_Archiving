@@ -56,8 +56,10 @@ public class Executor_test {
          */
 
         // by name
+        /*
         Tag tag = tagJDBCExecutor.getByName("Shapechanging");
         System.out.println(tag);
+         */
 
         // all
         /*
@@ -69,8 +71,12 @@ public class Executor_test {
 
         // create
         /*
-        System.out.println("Created: \n" + tagJDBCExecutor.create("Tag Test Name 2", "Tag Test Type 2").toString());
-         */
+        System.out.println("Created: \n" + tagJDBCExecutor.create("Tag Test Name 1", "Tag Test Type 1").toString());
+        */
+
+        // update
+
+        tagJDBCExecutor.update(79, "Calvin 1", "Calvin Description 1");
 
         // delete
         /*

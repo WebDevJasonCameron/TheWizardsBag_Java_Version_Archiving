@@ -82,12 +82,11 @@ public class TagDAO extends DataAccessObject<Tag> {
     @Override
     public Tag update(Tag dto) {
         Tag tag = null;
-
         try {
             this.connection.setAutoCommit(false);
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new RuntimeException("Update, 1st Try: \n" + e);
+            throw new RuntimeException(e);
         }
 
         try (PreparedStatement statement = this.connection.prepareStatement(UPDATE);){
@@ -106,11 +105,11 @@ public class TagDAO extends DataAccessObject<Tag> {
                  this.connection.rollback();
              } catch (SQLException sqle) {
                  e.printStackTrace();
-                 throw new RuntimeException("Update, 3rd, deeper Try: \n" + sqle);
+                 throw new RuntimeException(sqle);
              }
 
              e.printStackTrace();
-             throw new RuntimeException("Update, 2nd Try: \n" + e);
+             throw new RuntimeException(e);
         }
         return tag;
     }

@@ -1,0 +1,1 @@
+UPDATE tags SET tag_name = 'calvin tag', tag_type = 'calvin type' WHERE tag_id = 79;

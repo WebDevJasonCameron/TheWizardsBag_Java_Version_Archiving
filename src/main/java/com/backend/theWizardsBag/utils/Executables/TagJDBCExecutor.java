@@ -81,7 +81,15 @@ public class TagJDBCExecutor {
             Connection connection = dcm.getConnection();
             TagDAO tagDAO = new TagDAO(connection);
 
-            tagDAO.update(tagNewData);
+            Tag tag = tagDAO.findById(tagNewData.getTagID());
+            System.out.println(tag.getTagName() + " - " + tag.getTagType() );
+
+            tag.setTagName(tagNewData.getTagName());
+            tag.setTagType(tagNewData.getTagType());
+            tag = tagDAO.update(tag);
+
+            System.out.println(tag.getTagName() + " - " + tag.getTagType() );
+
 
         } catch (SQLException e) {
             e.printStackTrace();

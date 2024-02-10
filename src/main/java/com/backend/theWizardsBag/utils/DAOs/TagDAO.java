@@ -23,7 +23,7 @@ public class TagDAO extends DataAccessObject<Tag> {
     private final static String GET_BY_NAME = "SELECT * FROM tags " +
                                               "WHERE tag_name=?";
 
-    private final static String UPDATE = "UPDATE tags SET tag_name = ?, tag_type = ? WHERE tag_id = ?";
+    private final static String UPDATE = " UPDATE tags SET tag_name = ?, tag_type = ? WHERE tag_id = ? ";
 
     // CONs
     public TagDAO(Connection connection) {
@@ -90,6 +90,7 @@ public class TagDAO extends DataAccessObject<Tag> {
             statement.execute();
 
             tag = this.findById(dto.getTagID());
+            System.out.println(tag);
 
         } catch (SQLException e) {
              e.printStackTrace();

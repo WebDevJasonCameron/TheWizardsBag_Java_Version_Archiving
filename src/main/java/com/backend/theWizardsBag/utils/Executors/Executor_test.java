@@ -42,18 +42,13 @@ public class Executor_test {
 
         // -------------------------------------------------------------------------------
         // TEST Tag
-
-
-
-        // -------------------------------------------------------------------------------
-        // TEST Type
         TagJDBCExecutor tagJDBCExecutor = new TagJDBCExecutor();
 
         // by id
         /*
         Tag tag = tagJDBCExecutor.getById(12);
         System.out.printf(tag.toString());
-         */
+        */
 
         // by name
         /*
@@ -76,7 +71,7 @@ public class Executor_test {
 
         // update
 
-        Tag inputTag = new Tag(79, "Calvin ", "Calvin Description 2");
+        Tag inputTag = new Tag(80, "Mocha", "Mocha Description");
         tagJDBCExecutor.update(inputTag);
 
 
@@ -85,6 +80,21 @@ public class Executor_test {
         tagJDBCExecutor.delete(78);
          */
 
+        // -------------------------------------------------------------------------------
+        // TEST Type
+        TypeJDBCExecutor typeJDBCExecutor = new TypeJDBCExecutor();
+
+        // create
+        /*
+        Type type = typeJDBCExecutor.create("Test type 1", "Test sub type 1");
+        System.out.println(type);
+        */
+
+        // find by id
+        /*
+        Type type = typeJDBCExecutor.getById(6);
+        System.out.println(type);
+        */
 
 
         // -------------------------------------------------------------------------------
@@ -100,7 +110,13 @@ public class Executor_test {
         // TEST SpellClass
         SpellClassJDBCExecutor spellClassJDBCExecutor = new SpellClassJDBCExecutor();
 
+        // get by id
+        /*
+        SpellClass spellClass = spellClassJDBCExecutor.getById(1);
+        System.out.println(spellClass);
+        /*
 
+         */
         // -------------------------------------------------------------------------------
         // TEST SpellCondition
         SpellConditionJDBCExecutor spellConditionJDBCExecutor = new SpellConditionJDBCExecutor();

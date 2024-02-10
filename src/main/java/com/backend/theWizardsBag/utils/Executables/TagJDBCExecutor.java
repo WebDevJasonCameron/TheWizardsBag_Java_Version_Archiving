@@ -75,7 +75,7 @@ public class TagJDBCExecutor {
     public void update(Tag tagNewData){
         Keys keys = new Keys();
         String password = keys.jdbcPassword();
-        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "postgres", "postgres", password);
+        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
 
         try {
             Connection connection = dcm.getConnection();

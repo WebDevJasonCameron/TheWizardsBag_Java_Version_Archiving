@@ -86,21 +86,26 @@ public class Executor_test {
 
         // create
         /*
-        Type type = typeJDBCExecutor.create("Test type 2", "Test sub type 2");
+        Type type = typeJDBCExecutor.create("Calvin", "Mocha");
         System.out.println(type);
         */
 
         // find by id
         /*
-        Type type = typeJDBCExecutor.getById(377);
+        Type type = typeJDBCExecutor.getById(378);
         System.out.println(type);
         */
 
         // delete
         /*
-        typeJDBCExecutor.delete(377);
-         */
+        typeJDBCExecutor.delete(379);
+        */
 
+        // update
+        /*
+        Type typeNetData = new Type(378, "no name", "no sub");
+        typeJDBCExecutor.update(typeNetData);
+        */
 
         // -------------------------------------------------------------------------------
         // TEST Tag

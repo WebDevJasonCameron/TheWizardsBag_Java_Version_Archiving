@@ -32,6 +32,21 @@ public class TypeDAO extends DataAccessObject<Type> {
 
     // OVRs
     @Override
+    public Type create(Type dto) {
+        try (PreparedStatement statement = this.connection.prepareStatement(INSERT);) {
+            statement.setString(1, dto.getTypeName());
+            statement.setString(2, dto.getTypeSubType());
+            statement.execute();
+            long id = this.getLastVal(TYPE_SEQUENCE);
+            return this.findById(id);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public Type findById(long id) {
         Type type = new Type();
 
@@ -82,7 +97,7 @@ public class TypeDAO extends DataAccessObject<Type> {
     public Type update(Type dto) {
         Type type = null;
 
-        try (PreparedStatement statement = this.connection.prepareStatement(DELETE);){
+        try (PreparedStatement statement = this.connection.prepareStatement(UPDATE);){
             statement.setString(1, dto.getTypeName());
             statement.setString(2, dto.getTypeSubType());
             statement.setLong(3, dto.getTypeId());
@@ -96,21 +111,6 @@ public class TypeDAO extends DataAccessObject<Type> {
             throw new RuntimeException(e);
         }
         return type;
-    }
-
-    @Override
-    public Type create(Type dto) {
-        try (PreparedStatement statement = this.connection.prepareStatement(INSERT);) {
-            statement.setString(1, dto.getTypeName());
-            statement.setString(2, dto.getTypeSubType());
-            statement.execute();
-            long id = this.getLastVal(TYPE_SEQUENCE);
-            return this.findById(id);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
     }
 
     @Override

@@ -32,6 +32,21 @@ public class TagDAO extends DataAccessObject<Tag> {
 
     // OVRs
     @Override
+    public Tag create(Tag dto) {
+        try(PreparedStatement statement = this.connection.prepareStatement(INSERT);){
+            statement.setString(1, dto.getTagName());
+            statement.setString(2, dto.getTagType());
+            statement.execute();
+            long id = this.getLastVal(TAG_SEQUENCE);
+            return this.findById(id);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public Tag findById(long id) {
         Tag tag = new Tag();
 
@@ -97,21 +112,6 @@ public class TagDAO extends DataAccessObject<Tag> {
              throw new RuntimeException(e);
         }
         return tag;
-    }
-
-    @Override
-    public Tag create(Tag dto) {
-        try(PreparedStatement statement = this.connection.prepareStatement(INSERT);){
-            statement.setString(1, dto.getTagName());
-            statement.setString(2, dto.getTagType());
-            statement.execute();
-            long id = this.getLastVal(TAG_SEQUENCE);
-            return this.findById(id);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
     }
 
     @Override

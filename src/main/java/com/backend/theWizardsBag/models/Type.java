@@ -10,7 +10,14 @@ public class Type implements DataTransferObject {
     private String typeSubType;
 
     // CONs
+    public Type() {
+    }
 
+    public Type(long typeId, String typeName, String typeSubType) {
+        this.typeId = typeId;
+        this.typeName = typeName;
+        this.typeSubType = typeSubType;
+    }
 
     // GETs & SETs
     public long getTypeId() {

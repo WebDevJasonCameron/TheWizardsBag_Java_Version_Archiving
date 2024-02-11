@@ -10,13 +10,16 @@ import java.sql.SQLException;
 
 public class TypeJDBCExecutor {
 
+    // ATTs
+    final Keys keys = new Keys();
+    final String password = keys.jdbcPassword();
+    final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
+
+    // MTHs
     public Type create(String typeName, String typeSubType) {
-        Keys keys = new Keys();
-        String password = keys.jdbcPassword();
-        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
 
         try {
-            Connection connection = dcm.getConnection();
+            Connection connection = this.dcm.getConnection();
             TypeDAO typeDAO = new TypeDAO(connection);
             Type type = new Type();
 
@@ -32,14 +35,9 @@ public class TypeJDBCExecutor {
     }
 
     public Type getById(long id) {
-        Keys keys = new Keys();
-        String password = keys.jdbcPassword();
-        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
-
         Type type = new Type();
-
         try {
-            Connection connection = dcm.getConnection();
+            Connection connection = this.dcm.getConnection();
             TypeDAO typeDAO = new TypeDAO(connection);
             type = typeDAO.findById(id);
 
@@ -53,12 +51,8 @@ public class TypeJDBCExecutor {
     }
 
     public Type update(Type typeNewData) {
-        Keys keys = new Keys();
-        String password = keys.jdbcPassword();
-        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
-
         try {
-            Connection connection = dcm.getConnection();
+            Connection connection = this.dcm.getConnection();
             TypeDAO typeDAO = new TypeDAO(connection);
 
             Type type = typeDAO.findById(typeNewData.getTypeId());
@@ -79,17 +73,12 @@ public class TypeJDBCExecutor {
     }
 
     public void delete(long id) {
-        final Keys jdbcKey = new Keys();
-        final String password = jdbcKey.jdbcPassword();
-        final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
-
         try {
-            Connection connection = dcm.getConnection();
+            Connection connection = this.dcm.getConnection();
             TypeDAO typeDAO = new TypeDAO(connection);
             Type typeBeingDeleted = typeDAO.findById(id);
             typeDAO.delete(id);
             System.out.println("Deleted: " + typeBeingDeleted.getTypeName());
-
 
         } catch (SQLException e) {
             e.printStackTrace();

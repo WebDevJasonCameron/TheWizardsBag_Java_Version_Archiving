@@ -10,7 +10,7 @@ public abstract class DataAccessObject <T extends DataTransferObject> {
 
     protected final Connection connection;
     protected final static String LAST_VAL = "SELECT last_value FROM ";
-    protected final static String TYPE_SEQUENCE = "type_seq";
+    protected final static String TYPE_SEQUENCE = "types_seq";   // <!> Change to singular
     protected final static String TAG_SEQUENCE = "tag_seq";
     protected final static String SPELL_SEQUENCE = "spell_seq";
     protected final static String CLASS_SEQUENCE = "class_seq";

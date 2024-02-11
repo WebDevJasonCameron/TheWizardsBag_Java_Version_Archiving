@@ -10,6 +10,27 @@ import java.sql.SQLException;
 
 public class TypeJDBCExecutor {
 
+    public Type create(String typeName, String typeSubType) {
+        Keys keys = new Keys();
+        String password = keys.jdbcPassword();
+        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
+
+        try {
+            Connection connection = dcm.getConnection();
+            TypeDAO typeDAO = new TypeDAO(connection);
+            Type type = new Type();
+
+            type.setTypeName(typeName);
+            type.setTypeSubType(typeSubType);
+
+            return typeDAO.create(type);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
     public Type getById(long id) {
         Keys keys = new Keys();
         String password = keys.jdbcPassword();
@@ -31,7 +52,7 @@ public class TypeJDBCExecutor {
         return type;
     }
 
-    public Type create(String typeName, String typeSubType) {
+    public Type update(Type typeNewData) {
         Keys keys = new Keys();
         String password = keys.jdbcPassword();
         DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
@@ -39,12 +60,36 @@ public class TypeJDBCExecutor {
         try {
             Connection connection = dcm.getConnection();
             TypeDAO typeDAO = new TypeDAO(connection);
-            Type type = new Type();
 
-            type.setTypeName(typeName);
-            type.setTypeSubType(typeSubType);
+            Type type = typeDAO.findById(typeNewData.getTypeId());
+            System.out.println(type.getTypeName() + " - " + type.getTypeSubType());   // <R> remove after test
 
-            return typeDAO.create(type);
+            type.setTypeName(typeNewData.getTypeName());
+            type.setTypeSubType(typeNewData.getTypeSubType());
+            type = typeDAO.update(type);
+
+            System.out.println(type.getTypeName() + " - " + type.getTypeSubType());   // <R> remove after test
+
+            return type;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void delete(long id) {
+        final Keys jdbcKey = new Keys();
+        final String password = jdbcKey.jdbcPassword();
+        final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
+
+        try {
+            Connection connection = dcm.getConnection();
+            TypeDAO typeDAO = new TypeDAO(connection);
+            Type typeBeingDeleted = typeDAO.findById(id);
+            typeDAO.delete(id);
+            System.out.println("Deleted: " + typeBeingDeleted.getTypeName());
+
 
         } catch (SQLException e) {
             e.printStackTrace();

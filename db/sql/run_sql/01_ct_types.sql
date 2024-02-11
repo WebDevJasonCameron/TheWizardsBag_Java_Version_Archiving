@@ -1,16 +1,16 @@
-CREATE SEQUENCE types_seq start with 1;
+CREATE SEQUENCE type_seq start with 1;
 
 CREATE TABLE types (
-                       type_id bigint NOT NULL DEFAULT nextval('types_seq'),
+                       type_id bigint NOT NULL DEFAULT nextval('type_seq'),
                        type_name varchar(255) NOT NULL ,
                        type_sub_type varchar(255) NOT NULL ,
 
                        PRIMARY KEY (type_id)
 );
 
-ALTER SEQUENCE types_seq OWNED BY types.type_id;
+ALTER SEQUENCE type_seq OWNED BY types.type_id;
 
-ALTER SEQUENCE types_seq RESTART WITH 1;
+ALTER SEQUENCE type_seq RESTART WITH 1;
 
 
 INSERT INTO types (type_name, type_sub_type)

@@ -12,6 +12,27 @@ import java.util.List;
 
 public class TagJDBCExecutor {
 
+    public Tag create(String tagName, String tagType){
+        final Keys jdbcKey = new Keys();
+        final String password = jdbcKey.jdbcPassword();
+        final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
+
+        try {
+            Connection connection = dcm.getConnection();
+            TagDAO tagDAO = new TagDAO(connection);
+            Tag tag = new Tag();
+
+            tag.setTagName(tagName);
+            tag.setTagType(tagType);
+
+            return tagDAO.create(tag);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
     public Tag getById(long id){
         final Keys jdbcKey = new Keys();
         final String password = jdbcKey.jdbcPassword();
@@ -72,7 +93,7 @@ public class TagJDBCExecutor {
         return tags;
     }
 
-    public void update(Tag tagNewData){
+    public Tag update(Tag tagNewData){
         Keys keys = new Keys();
         String password = keys.jdbcPassword();
         DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
@@ -82,41 +103,21 @@ public class TagJDBCExecutor {
             TagDAO tagDAO = new TagDAO(connection);
 
             Tag tag = tagDAO.findById(tagNewData.getTagID());
-            System.out.println(tag.getTagName() + " - " + tag.getTagType() );
+            System.out.println(tag.getTagName() + " - " + tag.getTagType() );   // <R> remove after test
 
             tag.setTagName(tagNewData.getTagName());
             tag.setTagType(tagNewData.getTagType());
             tag = tagDAO.update(tag);
 
-            System.out.println(tag.getTagName() + " - " + tag.getTagType() );
+            System.out.println(tag.getTagName() + " - " + tag.getTagType() );   // <R> remove after test
 
+            return tag;
 
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException("TagJDBCExecutor error: " + e);
         }
 
-    }
-
-    public Tag create(String tagName, String tagType){
-        final Keys jdbcKey = new Keys();
-        final String password = jdbcKey.jdbcPassword();
-        final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
-
-        try {
-            Connection connection = dcm.getConnection();
-            TagDAO tagDAO = new TagDAO(connection);
-            Tag tag = new Tag();
-
-            tag.setTagName(tagName);
-            tag.setTagType(tagType);
-
-            return tagDAO.create(tag);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
     }
 
     public void delete(long id){

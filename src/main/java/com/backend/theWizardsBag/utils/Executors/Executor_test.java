@@ -70,10 +70,10 @@ public class Executor_test {
          */
 
         // update
-
+        /*
         Tag inputTag = new Tag(80, "Mocha", "Mocha Description");
         tagJDBCExecutor.update(inputTag);
-
+        /*
 
         // delete
         /*
@@ -86,15 +86,20 @@ public class Executor_test {
 
         // create
         /*
-        Type type = typeJDBCExecutor.create("Test type 1", "Test sub type 1");
+        Type type = typeJDBCExecutor.create("Test type 2", "Test sub type 2");
         System.out.println(type);
         */
 
         // find by id
         /*
-        Type type = typeJDBCExecutor.getById(6);
+        Type type = typeJDBCExecutor.getById(377);
         System.out.println(type);
         */
+
+        // delete
+        /*
+        typeJDBCExecutor.delete(377);
+         */
 
 
         // -------------------------------------------------------------------------------

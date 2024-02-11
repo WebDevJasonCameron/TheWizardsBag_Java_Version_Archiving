@@ -73,7 +73,7 @@ public class TagDAO extends DataAccessObject<Tag> {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new RuntimeException();
+            throw new RuntimeException(e);
         }
 
         return tags;

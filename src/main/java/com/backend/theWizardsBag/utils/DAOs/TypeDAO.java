@@ -4,6 +4,7 @@ import com.backend.theWizardsBag.models.Type;
 import com.backend.theWizardsBag.utils.Objects.DataAccessObject;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TypeDAO extends DataAccessObject<Type> {
@@ -13,17 +14,23 @@ public class TypeDAO extends DataAccessObject<Type> {
                                             "(type_name, type_sub_type)" +
                                          "VALUES (?, ?)";
 
+    private final static String DELETE = "DELETE FROM types " +
+                                         "WHERE type_id = ?";
+
     private final static String GET_BY_ID = "SELECT * FROM types " +
                                             "WHERE type_id=?";
 
+    private final static String UPDATE = "UPDATE types SET type_name = ?, type_sub_type = ? " +
+                                         "WHERE type_id = ?";
+
+
+
     // CONs
-
-
-    // OVRs
     public TypeDAO(Connection connection) {
         super(connection);
     }
 
+    // OVRs
     @Override
     public Type findById(long id) {
         Type type = new Type();
@@ -47,12 +54,48 @@ public class TypeDAO extends DataAccessObject<Type> {
 
     @Override
     public List<Type> findAll() {
+        List<Type> types = new ArrayList<>();
+
+        try(PreparedStatement statement = this.connection.prepareStatement("SELECT * FROM types");){
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                Type type = new Type();
+
+                type.setTypeId(rs.getLong("type_id"));
+                type.setTypeName(rs.getString("type_name"));
+                type.setTypeSubType(rs.getString("type_sub_type"));
+
+
+
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+
         return null;
     }
 
     @Override
     public Type update(Type dto) {
-        return null;
+        Type type = null;
+
+        try (PreparedStatement statement = this.connection.prepareStatement(DELETE);){
+            statement.setString(1, dto.getTypeName());
+            statement.setString(2, dto.getTypeSubType());
+            statement.setLong(3, dto.getTypeId());
+            statement.execute();
+
+            type = this.findById(dto.getTypeId());
+            System.out.println(type);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        return type;
     }
 
     @Override
@@ -72,7 +115,13 @@ public class TypeDAO extends DataAccessObject<Type> {
 
     @Override
     public void delete(long id) {
-
+        try(PreparedStatement statement = this.connection.prepareStatement(DELETE);){
+            statement.setLong(1, id);
+            statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 
     // MTHs

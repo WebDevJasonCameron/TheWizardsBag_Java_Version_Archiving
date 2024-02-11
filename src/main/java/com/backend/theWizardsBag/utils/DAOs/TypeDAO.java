@@ -14,16 +14,22 @@ public class TypeDAO extends DataAccessObject<Type> {
                                             "(type_name, type_sub_type)" +
                                          "VALUES (?, ?)";
 
-    private final static String DELETE = "DELETE FROM types " +
-                                         "WHERE type_id = ?";
-
     private final static String GET_BY_ID = "SELECT * FROM types " +
                                             "WHERE type_id=?";
+
+    private final static String GET_ALL_BY_NAME = "SELECT * FROM types " +
+                                                  "WHERE type_name = ?";
+
+    private final static String GET_BY_NAME_AND_SUB = "SELECT * FROM types " +
+                                                      "WHERE " +
+                                                        "type_name = ? " +
+                                                        "AND type_sub_type = ?";
 
     private final static String UPDATE = "UPDATE types SET type_name = ?, type_sub_type = ? " +
                                          "WHERE type_id = ?";
 
-
+    private final static String DELETE = "DELETE FROM types " +
+            "WHERE type_id = ?";
 
     // CONs
     public TypeDAO(Connection connection) {
@@ -125,4 +131,47 @@ public class TypeDAO extends DataAccessObject<Type> {
     }
 
     // MTHs
+    public List<Type> findAllByName (String typeName) {
+        List<Type> types = new ArrayList<>();
+
+        try (PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_NAME);) {
+            statement.setString(1, typeName);
+            ResultSet rs = statement.executeQuery();
+
+            while(rs.next()){
+                Type type = new Type();
+                type.setTypeId(rs.getLong("type_id"));
+                type.setTypeName(rs.getString("type_name"));
+                type.setTypeSubType(rs.getString("type_sub_type"));
+                types.add(type);
+            }
+
+        } catch (SQLException e) {
+          e.printStackTrace();
+          throw new RuntimeException(e);
+        }
+        return types;
+    }
+
+    public Type findByNameAndSubType (String typeName, String typeSubType){
+        Type type = new Type();
+
+        try (PreparedStatement statement = this.connection.prepareStatement(GET_BY_NAME_AND_SUB);){
+            statement.setString(1, typeName);
+            statement.setString(2, typeSubType);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()){
+                type.setTypeId(rs.getLong("type_id"));
+                type.setTypeName(rs.getString("type_name"));
+                type.setTypeSubType(rs.getString("type_sub_type"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        return type;
+    }
 }

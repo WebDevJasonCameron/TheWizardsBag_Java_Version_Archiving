@@ -12,13 +12,15 @@ import java.util.List;
 
 public class TagJDBCExecutor {
 
-    public Tag create(String tagName, String tagType){
-        final Keys jdbcKey = new Keys();
-        final String password = jdbcKey.jdbcPassword();
-        final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
+    // ATTs
+    final Keys jdbcKey = new Keys();
+    final String password = jdbcKey.jdbcPassword();
+    final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
 
+    //MTHs
+    public Tag create(String tagName, String tagType){
         try {
-            Connection connection = dcm.getConnection();
+            Connection connection = this.dcm.getConnection();
             TagDAO tagDAO = new TagDAO(connection);
             Tag tag = new Tag();
 
@@ -34,14 +36,9 @@ public class TagJDBCExecutor {
     }
 
     public Tag getById(long id){
-        final Keys jdbcKey = new Keys();
-        final String password = jdbcKey.jdbcPassword();
-        final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db",  "postgres", password);
-
         Tag tag = new Tag();
-
         try {
-            Connection connection = dcm.getConnection();
+            Connection connection = this.dcm.getConnection();
             TagDAO tagDAO = new TagDAO(connection);
             tag = tagDAO.findById(id);
 
@@ -54,35 +51,23 @@ public class TagJDBCExecutor {
     }
 
     public Tag getByName(String name){
-        final Keys jdbcKey = new Keys();
-        final String password = jdbcKey.jdbcPassword();
-        final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db",  "postgres", password);
-
-        Tag tag = new Tag();
-
         try {
-            Connection connection = dcm.getConnection();
+            Connection connection = this.dcm.getConnection();
             TagDAO tagDAO = new TagDAO(connection);
 
-            tag = tagDAO.findByName(name);
+            return tagDAO.findByName(name);
 
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
-
-        return tag;
     }
 
     public List<Tag> getAll(){
-        final Keys jdbcKey = new Keys();
-        final String password = jdbcKey.jdbcPassword();
-        final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db",  "postgres", password);
-
         List<Tag> tags = new ArrayList<>();
 
         try {
-            Connection connection = dcm.getConnection();
+            Connection connection = this.dcm.getConnection();
             TagDAO tagDAO = new TagDAO(connection);
             tags =  tagDAO.findAll();
 
@@ -94,12 +79,8 @@ public class TagJDBCExecutor {
     }
 
     public Tag update(Tag tagNewData){
-        Keys keys = new Keys();
-        String password = keys.jdbcPassword();
-        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
-
         try {
-            Connection connection = dcm.getConnection();
+            Connection connection = this.dcm.getConnection();
             TagDAO tagDAO = new TagDAO(connection);
 
             Tag tag = tagDAO.findById(tagNewData.getTagID());
@@ -121,17 +102,12 @@ public class TagJDBCExecutor {
     }
 
     public void delete(long id){
-        final Keys jdbcKey = new Keys();
-        final String password = jdbcKey.jdbcPassword();
-        final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
-
         try {
-            Connection connection = dcm.getConnection();
+            Connection connection = this.dcm.getConnection();
             TagDAO tagDAO = new TagDAO(connection);
             Tag tagBeingDeleted = tagDAO.findById(id);
             tagDAO.delete(id);
             System.out.println("Deleted: " + tagBeingDeleted.getTagName());
-
 
         } catch (SQLException e) {
             e.printStackTrace();

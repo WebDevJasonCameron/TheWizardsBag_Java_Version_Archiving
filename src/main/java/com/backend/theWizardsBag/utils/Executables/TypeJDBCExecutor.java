@@ -7,6 +7,7 @@ import com.backend.theWizardsBag.utils.Managers.DatabaseConnectionManager;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 public class TypeJDBCExecutor {
 
@@ -17,7 +18,6 @@ public class TypeJDBCExecutor {
 
     // MTHs
     public Type create(String typeName, String typeSubType) {
-
         try {
             Connection connection = this.dcm.getConnection();
             TypeDAO typeDAO = new TypeDAO(connection);
@@ -35,19 +35,41 @@ public class TypeJDBCExecutor {
     }
 
     public Type getById(long id) {
-        Type type = new Type();
         try {
             Connection connection = this.dcm.getConnection();
             TypeDAO typeDAO = new TypeDAO(connection);
-            type = typeDAO.findById(id);
+            return typeDAO.findById(id);
 
 
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+    }
 
-        return type;
+    public List<Type> getAllByName(String typeName){
+        try {
+            Connection connection = this.dcm.getConnection();
+            TypeDAO typeDAO = new TypeDAO(connection);
+            return typeDAO.findAllByName(typeName);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Type getByNameAndSubType(String typeName, String typeSubType) {
+        try {
+            Connection connection = this.dcm.getConnection();
+            TypeDAO typeDAO = new TypeDAO(connection);
+
+            return typeDAO.findByNameAndSubType(typeName, typeSubType);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 
     public Type update(Type typeNewData) {

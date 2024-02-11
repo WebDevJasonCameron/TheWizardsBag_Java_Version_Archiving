@@ -96,6 +96,17 @@ public class Executor_test {
         System.out.println(type);
         */
 
+        // find all by name
+        /*
+        List<Type> types = typeJDBCExecutor.getAllByName("document");
+        for (Type type : types) {
+            System.out.println(type);
+        }
+        */
+
+        // find by name and sub
+        System.out.println(typeJDBCExecutor.getByNameAndSubType("document", "letters"));
+
         // delete
         /*
         typeJDBCExecutor.delete(379);

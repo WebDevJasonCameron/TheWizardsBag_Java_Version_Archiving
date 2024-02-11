@@ -12,8 +12,23 @@ public class Executor_test {
 
         // -------------------------------------------------------------------------------
         // TEST Condition
+        ConditionJDBCExecutor conditionJDBCExecutor = new ConditionJDBCExecutor();
 
+        // create
+        /*
+        System.out.println(conditionJDBCExecutor.create("test name", "test description"));
+        */
 
+        // get by id
+        /*
+        System.out.println(conditionJDBCExecutor.getByID(17));
+         */
+
+        // get all
+        List<Condition> conditions = conditionJDBCExecutor.getAll();
+        for (Condition condition : conditions) {
+            System.out.println(condition);
+        }
 
         // -------------------------------------------------------------------------------
         // TEST Damagetype
@@ -41,47 +56,12 @@ public class Executor_test {
 
 
         // -------------------------------------------------------------------------------
-        // TEST Tag
+        // TEST Tag     <- Completed
         TagJDBCExecutor tagJDBCExecutor = new TagJDBCExecutor();
 
-        // by id
-        /*
-        Tag tag = tagJDBCExecutor.getById(12);
-        System.out.printf(tag.toString());
-        */
-
-        // by name
-        /*
-        Tag tag = tagJDBCExecutor.getByName("Shapechanging");
-        System.out.println(tag);
-         */
-
-        // all
-        /*
-        List<Tag> tags = tagJDBCExecutor.getAll();
-        for (Tag tag : tags) {
-            System.out.println(tag);
-        }
-         */
-
-        // create
-        /*
-        System.out.println("Created: \n" + tagJDBCExecutor.create("Tag Test Name 2", "Tag Test Type 2").toString());
-         */
-
-        // update
-        /*
-        Tag inputTag = new Tag(80, "Mocha", "Mocha Description");
-        tagJDBCExecutor.update(inputTag);
-        /*
-
-        // delete
-        /*
-        tagJDBCExecutor.delete(78);
-         */
 
         // -------------------------------------------------------------------------------
-        // TEST Type
+        // TEST Type     <- Completed
         TypeJDBCExecutor typeJDBCExecutor = new TypeJDBCExecutor();
 
         // create
@@ -105,7 +85,9 @@ public class Executor_test {
         */
 
         // find by name and sub
+        /*
         System.out.println(typeJDBCExecutor.getByNameAndSubType("document", "letters"));
+        */
 
         // delete
         /*

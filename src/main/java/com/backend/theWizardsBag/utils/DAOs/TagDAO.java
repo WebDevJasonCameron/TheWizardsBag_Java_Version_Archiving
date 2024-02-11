@@ -14,16 +14,18 @@ public class TagDAO extends DataAccessObject<Tag> {
                                             "(tag_name, tag_type)" +
                                          "VALUES (?, ?)";
 
-    private final static String DELETE = "DELETE FROM tags " +
-                                         "WHERE tag_id = ?";
-
     private final static String GET_BY_ID = "SELECT * FROM tags " +
                                             "WHERE tag_id=?";
+
+    private final static String GET_ALL = "SELECT * FROM tags";
 
     private final static String GET_BY_NAME = "SELECT * FROM tags " +
                                               "WHERE tag_name=?";
 
     private final static String UPDATE = " UPDATE tags SET tag_name = ?, tag_type = ? WHERE tag_id = ? ";
+
+    private final static String DELETE = "DELETE FROM tags " +
+            "WHERE tag_id = ?";
 
     // CONs
     public TagDAO(Connection connection) {
@@ -72,18 +74,18 @@ public class TagDAO extends DataAccessObject<Tag> {
         List<Tag> tags = new ArrayList<>();
 
         try(PreparedStatement statement =
-                    this.connection.prepareStatement("SELECT * FROM tags ");){
+                    this.connection.prepareStatement(GET_ALL);){
 
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
-                Tag spellTag = new Tag();
+                Tag tag = new Tag();
 
-                spellTag.setTagID(rs.getLong("tag_id"));
-                spellTag.setTagName(rs.getString("tag_name"));
-                spellTag.setTagType(rs.getString("tag_type"));
+                tag.setTagID(rs.getLong("tag_id"));
+                tag.setTagName(rs.getString("tag_name"));
+                tag.setTagType(rs.getString("tag_type"));
 
-                tags.add(spellTag);
+                tags.add(tag);
             }
 
         } catch (SQLException e) {

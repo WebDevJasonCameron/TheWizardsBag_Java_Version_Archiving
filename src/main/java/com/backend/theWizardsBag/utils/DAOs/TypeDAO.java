@@ -17,6 +17,8 @@ public class TypeDAO extends DataAccessObject<Type> {
     private final static String GET_BY_ID = "SELECT * FROM types " +
                                             "WHERE type_id=?";
 
+    private final static String GET_ALL = "SELECT * FROM types";
+
     private final static String GET_ALL_BY_NAME = "SELECT * FROM types " +
                                                   "WHERE type_name = ?";
 
@@ -29,7 +31,7 @@ public class TypeDAO extends DataAccessObject<Type> {
                                          "WHERE type_id = ?";
 
     private final static String DELETE = "DELETE FROM types " +
-            "WHERE type_id = ?";
+                                         "WHERE type_id = ?";
 
     // CONs
     public TypeDAO(Connection connection) {
@@ -77,7 +79,7 @@ public class TypeDAO extends DataAccessObject<Type> {
     public List<Type> findAll() {
         List<Type> types = new ArrayList<>();
 
-        try(PreparedStatement statement = this.connection.prepareStatement("SELECT * FROM types");){
+        try(PreparedStatement statement = this.connection.prepareStatement(GET_ALL);){
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -87,16 +89,14 @@ public class TypeDAO extends DataAccessObject<Type> {
                 type.setTypeName(rs.getString("type_name"));
                 type.setTypeSubType(rs.getString("type_sub_type"));
 
-
-
+                types.add(type);
             }
         }catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
 
-
-        return null;
+        return types;
     }
 
     @Override

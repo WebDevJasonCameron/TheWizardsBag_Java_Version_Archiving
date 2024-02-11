@@ -7,6 +7,7 @@ import com.backend.theWizardsBag.utils.Managers.DatabaseConnectionManager;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TypeJDBCExecutor {
@@ -45,6 +46,19 @@ public class TypeJDBCExecutor {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+    }
+
+    public List<Type> getAll(){
+        try {
+            Connection connection = this.dcm.getConnection();
+            TypeDAO typeDAO = new TypeDAO(connection);
+            return typeDAO.findAll();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
     }
 
     public List<Type> getAllByName(String typeName){

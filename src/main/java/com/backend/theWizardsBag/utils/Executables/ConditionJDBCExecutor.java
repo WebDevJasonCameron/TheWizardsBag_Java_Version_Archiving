@@ -58,5 +58,38 @@ public class ConditionJDBCExecutor {
         }
     }
 
+    public Condition update(Condition conditionNewData) {
+        try {
+            Connection connection = this.dcm.getConnection();
+            ConditionDAO conditionDAO = new ConditionDAO(connection);
 
+            Condition condition = conditionDAO.findById(conditionNewData.getConditionId());
+            System.out.println(condition.getConditionName() + " - " + condition.getConditionDescription());  // <R> remove after test
+
+            condition.setConditionName(conditionNewData.getConditionName());
+            condition.setConditionDescription(conditionNewData.getConditionDescription());
+            condition = conditionDAO.update(condition);
+
+            System.out.println(condition.getConditionName() + " - " + condition.getConditionDescription());  // <R> remove after test
+
+            return condition;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void delete(long id) {
+        try {
+            Connection connection = this.dcm.getConnection();
+            ConditionDAO conditionDAO = new ConditionDAO(connection);
+            Condition conditionBeingDeleted = conditionDAO.findById(id);
+            conditionDAO.delete(id);
+            System.out.println("Deleted: " + conditionBeingDeleted.getConditionName());  // <R> Delete after test
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
 }

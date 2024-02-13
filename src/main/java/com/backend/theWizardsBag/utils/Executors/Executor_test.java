@@ -25,10 +25,23 @@ public class Executor_test {
          */
 
         // get all
+        /*
         List<Condition> conditions = conditionJDBCExecutor.getAll();
         for (Condition condition : conditions) {
             System.out.println(condition);
         }
+        */
+
+        // update
+        /*
+        Condition conditionWithNewData = new Condition(17, "Calvin name" , "Mocha Description");
+        conditionJDBCExecutor.update(conditionWithNewData);
+        */
+
+        // delete
+        conditionJDBCExecutor.delete(17);
+
+
 
         // -------------------------------------------------------------------------------
         // TEST Damagetype

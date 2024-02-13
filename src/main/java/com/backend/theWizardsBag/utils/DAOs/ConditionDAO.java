@@ -96,12 +96,33 @@ public class ConditionDAO extends DataAccessObject<Condition> {
 
     @Override
     public Condition update(Condition dto) {
-        return null;
+        Condition condition = null;
+
+        try (PreparedStatement statement = this.connection.prepareStatement(UPDATE);){
+            statement.setString(1, dto.getConditionName());
+            statement.setString(2, dto.getConditionDescription());
+            statement.setLong(3, dto.getConditionId());
+            statement.execute();
+
+            condition = this.findById(dto.getConditionId());
+            System.out.println(condition);
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        return condition;
     }
 
     @Override
     public void delete(long id) {
-
+        try(PreparedStatement statement = this.connection.prepareStatement(DELETE);){
+            statement.setLong(1, id);
+            statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 
     // MTHs

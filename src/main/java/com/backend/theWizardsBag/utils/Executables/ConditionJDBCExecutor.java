@@ -58,6 +58,18 @@ public class ConditionJDBCExecutor {
         }
     }
 
+    public Condition getByName (String conditionName){
+        try {
+            Connection connection = this.dcm.getConnection();
+            ConditionDAO conditionDAO = new ConditionDAO(connection);
+            return conditionDAO.findByName(conditionName);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
     public Condition update(Condition conditionNewData) {
         try {
             Connection connection = this.dcm.getConnection();

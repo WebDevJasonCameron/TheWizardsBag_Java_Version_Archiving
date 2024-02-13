@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class ConditionDAO extends DataAccessObject<Condition> {
 
@@ -22,9 +23,12 @@ public class ConditionDAO extends DataAccessObject<Condition> {
 
     private final static String GET_ALL = "SELECT * FROM conditions";
 
+    private final static String GET_BY_NAME = "SELECT * FROM conditions " +
+                                              "WHERE condition_name = ?";
+
     private final static String UPDATE = "UPDATE conditions " +
                                          "SET condition_name = ?, condition_description = ? " +
-                                         "WHERE condition_id = ?";
+                                         "WHERE LOWER(condition_id) = ?";
 
     private final static String DELETE = "DELETE FROM conditions " +
                                          "WHERE condition_id = ?";
@@ -126,4 +130,25 @@ public class ConditionDAO extends DataAccessObject<Condition> {
     }
 
     // MTHs
+    public Condition findByName (String conditionName) {
+        Condition condition = new Condition();
+
+        try (PreparedStatement statement = this.connection.prepareStatement(GET_BY_NAME);) {
+            statement.setString(1, conditionName);
+            statement.execute();
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()){
+                condition.setConditionId(rs.getLong("condition_id"));
+                condition.setConditionName(rs.getString("condition_name"));
+                condition.setConditionDescription(rs.getString("condition_description"));
+            }
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        return condition;
+    }
 }

@@ -32,6 +32,11 @@ public class Executor_test {
         }
         */
 
+        // get by name
+        System.out.println(conditionJDBCExecutor.getByName("Blinded"));
+
+
+
         // update
         /*
         Condition conditionWithNewData = new Condition(17, "Calvin name" , "Mocha Description");
@@ -39,7 +44,9 @@ public class Executor_test {
         */
 
         // delete
+        /*
         conditionJDBCExecutor.delete(17);
+         */
 
 
 

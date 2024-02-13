@@ -16,7 +16,7 @@ public class ConditionJDBCExecutor {
     final String password = keys.jdbcPassword();
     final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
 
-    // METHs
+    // MTHs
     public Condition create(String conditionName, String conditionDescription){
         try {
             Connection connection = this.dcm.getConnection();

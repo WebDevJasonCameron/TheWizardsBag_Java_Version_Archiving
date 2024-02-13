@@ -33,8 +33,9 @@ public class Executor_test {
         */
 
         // get by name
-        System.out.println(conditionJDBCExecutor.getByName("Blinded"));
-
+        /*
+        System.out.println(conditionJDBCExecutor.getByName("blinded"));
+        */
 
 
         // update
@@ -52,7 +53,39 @@ public class Executor_test {
 
         // -------------------------------------------------------------------------------
         // TEST Damagetype
+        DamagetypeJDBCExecutor damagetypeJDBCExecutor = new DamagetypeJDBCExecutor();
 
+        // create
+        /*
+        System.out.println(damagetypeJDBCExecutor.create("Calvin Damage"));
+        */
+
+        // find by id
+        /*
+        System.out.println(damagetypeJDBCExecutor.getById(39));
+        */
+
+        // find all
+        /*
+        List<Damagetype> damagetypes = damagetypeJDBCExecutor.getAll();
+        for (Damagetype damagetype : damagetypes) {
+            System.out.println(damagetype);
+        }
+         */
+
+        // find by name
+        System.out.println(damagetypeJDBCExecutor.getByName("acid"));
+
+        // update
+        /*
+        Damagetype damagetypeWithNewData = new Damagetype(39, "Mocha Damage");
+        damagetypeJDBCExecutor.update(damagetypeWithNewData);
+        */
+
+        // delete
+        /*
+        damagetypeJDBCExecutor.delete(39);
+        */
 
 
         // -------------------------------------------------------------------------------
@@ -84,41 +117,6 @@ public class Executor_test {
         // TEST Type     <- Completed
         TypeJDBCExecutor typeJDBCExecutor = new TypeJDBCExecutor();
 
-        // create
-        /*
-        Type type = typeJDBCExecutor.create("Calvin", "Mocha");
-        System.out.println(type);
-        */
-
-        // find by id
-        /*
-        Type type = typeJDBCExecutor.getById(378);
-        System.out.println(type);
-        */
-
-        // find all by name
-        /*
-        List<Type> types = typeJDBCExecutor.getAllByName("document");
-        for (Type type : types) {
-            System.out.println(type);
-        }
-        */
-
-        // find by name and sub
-        /*
-        System.out.println(typeJDBCExecutor.getByNameAndSubType("document", "letters"));
-        */
-
-        // delete
-        /*
-        typeJDBCExecutor.delete(379);
-        */
-
-        // update
-        /*
-        Type typeNetData = new Type(378, "no name", "no sub");
-        typeJDBCExecutor.update(typeNetData);
-        */
 
         // -------------------------------------------------------------------------------
         // TEST Tag

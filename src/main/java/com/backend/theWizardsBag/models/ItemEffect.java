@@ -54,7 +54,7 @@ public class ItemEffect implements DataTransferObject {
         return "ItemEffect{" +
                 "itemEffectJunctionId=" + itemEffectJunctionId +
                 ", itemEffectId=" + itemEffectId +
-                ", effect='" + effect + '\'' +
+                ", Effect='" + effect + '\'' +
                 ", subEffect='" + subEffect + '\'' +
                 '}';
     }

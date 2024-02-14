@@ -11,43 +11,8 @@ public class Executor_test {
     public static void main(String[] args) {
 
         // -------------------------------------------------------------------------------
-        // TEST Condition
+        // TEST Condition     <- Completed
         ConditionJDBCExecutor conditionJDBCExecutor = new ConditionJDBCExecutor();
-
-        // create
-        /*
-        System.out.println(conditionJDBCExecutor.create("test name", "test description"));
-        */
-
-        // get by id
-        /*
-        System.out.println(conditionJDBCExecutor.getByID(17));
-         */
-
-        // get all
-        /*
-        List<Condition> conditions = conditionJDBCExecutor.getAll();
-        for (Condition condition : conditions) {
-            System.out.println(condition);
-        }
-        */
-
-        // get by name
-        /*
-        System.out.println(conditionJDBCExecutor.getByName("blinded"));
-        */
-
-
-        // update
-        /*
-        Condition conditionWithNewData = new Condition(17, "Calvin name" , "Mocha Description");
-        conditionJDBCExecutor.update(conditionWithNewData);
-        */
-
-        // delete
-        /*
-        conditionJDBCExecutor.delete(17);
-         */
 
 
 
@@ -74,7 +39,9 @@ public class Executor_test {
          */
 
         // find by name
+        /*
         System.out.println(damagetypeJDBCExecutor.getByName("acid"));
+        */
 
         // update
         /*
@@ -90,6 +57,30 @@ public class Executor_test {
 
         // -------------------------------------------------------------------------------
         // TEST Effect
+        EffectJDBCExecutor effectJDBCExecutor = new EffectJDBCExecutor();
+
+        // create
+        /*
+        System.out.println(effectJDBCExecutor.create("Calvin Name", "Mocha sub"));
+        */
+
+        // find by id
+        /*
+        System.out.println(effectJDBCExecutor.getById(2657));
+        */
+
+        // find all
+        /*
+        List<Effect> effects = effectJDBCExecutor.getAll();
+        for (Effect effect: effects) {
+            System.out.println(effect);
+        }
+         */
+
+        // update
+        Effect effectWithNewData = new Effect(2657, "Mocha Name", "Mocha sub name");
+        System.out.println(effectJDBCExecutor.update(effectWithNewData));
+
 
 
 

@@ -34,7 +34,7 @@ VALUES
     ('Container', 'item'),
     ('Control', 'both'),
     ('Creation', 'both'),
-    ('Cursed', 'item'),         --   Has a negative magical effect or drawback.
+    ('Cursed', 'item'),         --   Has a negative magical Effect or drawback.
 
     ('Damage', 'both'),
     ('Debuff', 'both'),

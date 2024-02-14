@@ -2,7 +2,8 @@ package com.backend.theWizardsBag.models;
 
 import com.backend.theWizardsBag.utils.Objects.DataTransferObject;
 
-import java.util.Date;
+import java.sql.Date;
+
 
 public class Note implements DataTransferObject {
 
@@ -40,7 +41,7 @@ public class Note implements DataTransferObject {
         this.noteName = noteName;
     }
 
-    public Date getNoteDate() {
+    public java.sql.Date getNoteDate() {
         return noteDate;
     }
     public void setNoteDate(Date noteDate) {

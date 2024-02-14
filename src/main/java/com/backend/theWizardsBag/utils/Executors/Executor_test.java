@@ -4,6 +4,7 @@ package com.backend.theWizardsBag.utils.Executors;
 import com.backend.theWizardsBag.models.*;
 import com.backend.theWizardsBag.utils.Executables.*;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,8 +70,14 @@ public class Executor_test {
 
         // -------------------------------------------------------------------------------
         // TEST Note
+        NoteJDBCExecutor noteJDBCExecutor = new NoteJDBCExecutor();
 
+        // create
+        /*
+        System.out.println(noteJDBCExecutor.create("Calvin Note", Date.valueOf("2024-01-01"), "Much to be said here", "Mocha"));
+        */
 
+        // find by id
 
         // -------------------------------------------------------------------------------
         // TEST RpgClass

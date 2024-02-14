@@ -14,9 +14,10 @@ public abstract class DataAccessObject <T extends DataTransferObject> {
     protected final static String CONDITION_SEQUENCE = "condition_seq";
     protected final static String DAMAGETYPE_SEQUENCE = "damagetype_seq";
     protected final static String ITEM_SEQUENCE = "item_seq";
+    protected final static String NOTE_SEQUENCE = "note_seq";
     protected final static String SPELL_SEQUENCE = "spell_seq";
     protected final static String TAG_SEQUENCE = "tag_seq";
-    protected final static String TYPE_SEQUENCE = "types_seq";   // <!> Change to singular
+    protected final static String TYPE_SEQUENCE = "type_seq";
 
     // CONs
     public DataAccessObject(Connection connection){

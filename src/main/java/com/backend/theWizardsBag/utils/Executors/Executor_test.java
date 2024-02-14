@@ -15,44 +15,9 @@ public class Executor_test {
         ConditionJDBCExecutor conditionJDBCExecutor = new ConditionJDBCExecutor();
 
 
-
         // -------------------------------------------------------------------------------
-        // TEST Damagetype
+        // TEST Damagetype     <- Completed
         DamagetypeJDBCExecutor damagetypeJDBCExecutor = new DamagetypeJDBCExecutor();
-
-        // create
-        /*
-        System.out.println(damagetypeJDBCExecutor.create("Calvin Damage"));
-        */
-
-        // find by id
-        /*
-        System.out.println(damagetypeJDBCExecutor.getById(39));
-        */
-
-        // find all
-        /*
-        List<Damagetype> damagetypes = damagetypeJDBCExecutor.getAll();
-        for (Damagetype damagetype : damagetypes) {
-            System.out.println(damagetype);
-        }
-         */
-
-        // find by name
-        /*
-        System.out.println(damagetypeJDBCExecutor.getByName("acid"));
-        */
-
-        // update
-        /*
-        Damagetype damagetypeWithNewData = new Damagetype(39, "Mocha Damage");
-        damagetypeJDBCExecutor.update(damagetypeWithNewData);
-        */
-
-        // delete
-        /*
-        damagetypeJDBCExecutor.delete(39);
-        */
 
 
         // -------------------------------------------------------------------------------

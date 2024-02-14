@@ -121,8 +121,56 @@ public class EffectDAO extends DataAccessObject<Effect> {
 
     @Override
     public void delete(long id) {
-
+        try(PreparedStatement statement = this.connection.prepareStatement(DELETE);){
+            statement.setLong(1, id);
+            statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 
     // MTHs
+    public List<Effect> findAllByName(String effectName) {
+        List<Effect> effects = new ArrayList<>();
+
+        try(PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_NAME);){
+            statement.setString(1, effectName);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                Effect effect = new Effect();
+
+                effect.setEffectId(rs.getLong("effect_id"));
+                effect.setEffectName(rs.getString("effect_name"));
+                effect.setEffectSubEffect(rs.getString("effect_sub_effect"));
+
+                effects.add(effect);
+
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        return effects;
+    }
+
+    public Effect findByNameAndSub(String effectName, String effectSubEffect) {
+        Effect effect = new Effect();
+
+        try(PreparedStatement statement = this.connection.prepareStatement(GET_BY_NAME_AND_SUB);){
+            statement.setString(1, effectName);
+            statement.setString(2, effectSubEffect);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                effect.setEffectId(rs.getLong("effect_id"));
+                effect.setEffectName(rs.getString("effect_name"));
+                effect.setEffectSubEffect(rs.getString("effect_sub_effect"));
+
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        return effect;
+    }
 }

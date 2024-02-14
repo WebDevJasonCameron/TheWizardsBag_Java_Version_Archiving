@@ -7,6 +7,7 @@ import com.backend.theWizardsBag.utils.Managers.DatabaseConnectionManager;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class EffectJDBCExecutor {
@@ -56,6 +57,30 @@ public class EffectJDBCExecutor {
         }
     }
 
+    public List<Effect> getAllByName(String effectName) {
+        try {
+            Connection connection = this.dcm.getConnection();
+            EffectDAO effectDAO = new EffectDAO(connection);
+            return effectDAO.findAllByName(effectName);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Effect getByNameAndSub(String effectName, String effectSubEffect) {
+        try {
+            Connection connection = this.dcm.getConnection();
+            EffectDAO effectDAO = new EffectDAO(connection);
+            return effectDAO.findByNameAndSub(effectName, effectSubEffect);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
     public Effect update(Effect effectNewData){
         try {
             Connection connection = this.dcm.getConnection();
@@ -67,6 +92,20 @@ public class EffectJDBCExecutor {
             effect = effectDAO.update(effect);
 
             return effect;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void delete(long id) {
+        try {
+            Connection connection = this.dcm.getConnection();
+            EffectDAO effectDAO = new EffectDAO(connection);
+            Effect effectBeingDeleted = effectDAO.findById(id);
+            effectDAO.delete(id);
+            System.out.println("Deleted: " + effectBeingDeleted.getEffectName());  // <R> Delete after test
+
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);

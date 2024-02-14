@@ -77,11 +77,29 @@ public class Executor_test {
         }
          */
 
+        // find all by name
+        /*
+        List<Effect> effects = effectJDBCExecutor.getAllByName("Size");
+        for (Effect effect : effects) {
+            System.out.println(effect);
+        }
+         */
+
+        // find by name and sub
+        /*
+        System.out.println(effectJDBCExecutor.getByNameAndSub("Size", "Tiny"));
+        */
+
         // update
+        /*
         Effect effectWithNewData = new Effect(2657, "Mocha Name", "Mocha sub name");
         System.out.println(effectJDBCExecutor.update(effectWithNewData));
+        */
 
-
+        // delete
+        /*
+        effectJDBCExecutor.delete(2657);
+        */
 
 
         // -------------------------------------------------------------------------------

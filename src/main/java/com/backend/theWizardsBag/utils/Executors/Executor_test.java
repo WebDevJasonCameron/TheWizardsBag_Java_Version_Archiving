@@ -22,50 +22,8 @@ public class Executor_test {
 
 
         // -------------------------------------------------------------------------------
-        // TEST Effect
+        // TEST Effect     <- Completed
         EffectJDBCExecutor effectJDBCExecutor = new EffectJDBCExecutor();
-
-        // create
-        /*
-        System.out.println(effectJDBCExecutor.create("Calvin Name", "Mocha sub"));
-        */
-
-        // find by id
-        /*
-        System.out.println(effectJDBCExecutor.getById(2657));
-        */
-
-        // find all
-        /*
-        List<Effect> effects = effectJDBCExecutor.getAll();
-        for (Effect effect: effects) {
-            System.out.println(effect);
-        }
-         */
-
-        // find all by name
-        /*
-        List<Effect> effects = effectJDBCExecutor.getAllByName("Size");
-        for (Effect effect : effects) {
-            System.out.println(effect);
-        }
-         */
-
-        // find by name and sub
-        /*
-        System.out.println(effectJDBCExecutor.getByNameAndSub("Size", "Tiny"));
-        */
-
-        // update
-        /*
-        Effect effectWithNewData = new Effect(2657, "Mocha Name", "Mocha sub name");
-        System.out.println(effectJDBCExecutor.update(effectWithNewData));
-        */
-
-        // delete
-        /*
-        effectJDBCExecutor.delete(2657);
-        */
 
 
         // -------------------------------------------------------------------------------
@@ -102,10 +60,12 @@ public class Executor_test {
         */
 
         // find all by author
+        /*
         List<Note> notes = noteJDBCExecutor.getAllByAuthor("teSt author");
         for (Note note : notes){
             System.out.println(note);
         }
+        */
 
 
         // -------------------------------------------------------------------------------
@@ -115,6 +75,10 @@ public class Executor_test {
 
         // -------------------------------------------------------------------------------
         // TEST Source
+        SourceJDBCExecutor sourceJDBCExecutor = new SourceJDBCExecutor();
+
+        // create
+        System.out.println(sourceJDBCExecutor.create("Calvin Rules", Date.valueOf("2024-02-23"), "Mocha Publishing's", "RPG X"));
 
 
 

@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+import java.util.PropertyResourceBundle;
 
 public abstract class DataAccessObject <T extends DataTransferObject> {
 
@@ -15,6 +16,7 @@ public abstract class DataAccessObject <T extends DataTransferObject> {
     protected final static String DAMAGETYPE_SEQUENCE = "damagetype_seq";
     protected final static String ITEM_SEQUENCE = "item_seq";
     protected final static String NOTE_SEQUENCE = "note_seq";
+    protected final static String SOURCE_SEQUENCE = "source_seq";
     protected final static String SPELL_SEQUENCE = "spell_seq";
     protected final static String TAG_SEQUENCE = "tag_seq";
     protected final static String TYPE_SEQUENCE = "type_seq";

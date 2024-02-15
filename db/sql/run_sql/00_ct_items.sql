@@ -18,7 +18,7 @@ CREATE TABLE items (
                           item_magic_bonus_plus_3 bool,
                           item_description_notes text,                        -- If doc has "Notes:"
 
-                          source_id bigint,
+                          item_source_id bigint,
 
                           PRIMARY KEY (item_id)
 );

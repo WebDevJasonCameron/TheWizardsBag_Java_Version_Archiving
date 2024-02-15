@@ -75,7 +75,8 @@ public class NoteDAO extends DataAccessObject<Note> {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
-        return note;    }
+        return note;
+    }
 
     @Override
     public List<Note> findAll() {
@@ -99,7 +100,8 @@ public class NoteDAO extends DataAccessObject<Note> {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
-        return notes;    }
+        return notes;
+    }
 
     @Override
     public Note update(Note dto) {

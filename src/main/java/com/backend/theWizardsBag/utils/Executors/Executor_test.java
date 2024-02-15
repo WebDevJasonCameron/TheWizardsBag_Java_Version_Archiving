@@ -77,9 +77,42 @@ public class Executor_test {
         // TEST Source
         SourceJDBCExecutor sourceJDBCExecutor = new SourceJDBCExecutor();
 
+        /*
         // create
         System.out.println(sourceJDBCExecutor.create("Calvin Rules", Date.valueOf("2024-02-23"), "Mocha Publishing's", "RPG X"));
+        */
 
+        // find by id
+        /*
+        System.out.println(sourceJDBCExecutor.getById(85));
+        */
+
+        // find all
+        /*
+        List<Source> sources = sourceJDBCExecutor.getAll();
+        for(Source source : sources){
+            System.out.println(source);
+        }
+        */
+
+        // find all by ttrpg
+        /*
+        List<Source> sources = sourceJDBCExecutor.getAllByTTRPG("");
+        for (Source source : sources){
+            System.out.println(source);
+        }
+         */
+
+        // update
+        /*
+        Source sourceWithNewData = new Source(85, "Mocha Rules", Date.valueOf("2024-01-12"), "Mocha's Mega Publishing's", "Cool RPG");
+        sourceJDBCExecutor.update(sourceWithNewData);
+        */
+
+        // delete
+        /*
+        sourceJDBCExecutor.delete(85);
+        */
 
 
         // -------------------------------------------------------------------------------

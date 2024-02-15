@@ -78,6 +78,27 @@ public class Executor_test {
         */
 
         // find by id
+        /*
+        System.out.println(noteJDBCExecutor.getById(2));
+        */
+
+        // find all
+        /*
+        List<Note> notes = noteJDBCExecutor.getAll();
+        for (Note note : notes) {
+            System.out.println(note);
+        }
+        */
+
+        // update
+        /*
+        Note noteWithNewData = new Note(2, "Mocha note",  Date.valueOf("2024-02-02"), "Calvin objects!", "Mocha Cameron");
+        noteJDBCExecutor.update(noteWithNewData);
+        */
+
+        // delete
+        noteJDBCExecutor.delete(2);
+
 
         // -------------------------------------------------------------------------------
         // TEST RpgClass

@@ -41,7 +41,7 @@ public class Note implements DataTransferObject {
         this.noteName = noteName;
     }
 
-    public java.sql.Date getNoteDate() {
+    public Date getNoteDate() {
         return noteDate;
     }
     public void setNoteDate(Date noteDate) {

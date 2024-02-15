@@ -117,7 +117,8 @@ public class EffectDAO extends DataAccessObject<Effect> {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
-        return effect;    }
+        return effect;
+    }
 
     @Override
     public void delete(long id) {

@@ -22,6 +22,9 @@ public class NoteDAO extends DataAccessObject<Note> {
 
     private final static String GET_ALL = "SELECT * FROM notes ";
 
+    private final static String GET_ALL_BY_AUTHOR = "SELECT * FROM notes " +
+            "WHERE LOWER(note_author) = LOWER( ? )";
+
     private final static String UPDATE = "UPDATE notes " +
             "SET note_name = ?, note_date = ?, note_content = ?, note_author = ? " +
             "WHERE note_id = ? ";
@@ -131,5 +134,29 @@ public class NoteDAO extends DataAccessObject<Note> {
     }
 
     // MTHs
+    public List<Note> findAllByAuthor(String noteAuthor) {
+        List<Note> notes = new ArrayList<>();
 
+        try (PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_AUTHOR);){
+            statement.setString(1, noteAuthor);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()){
+                Note note = new Note();
+
+                note.setNoteId(rs.getLong("note_id"));
+                note.setNoteName(rs.getString("note_name"));
+                note.setNoteDate(rs.getDate("note_date"));
+                note.setNoteContent(rs.getString("note_content"));
+                note.setNoteAuthor(rs.getString("note_author"));
+
+                notes.add(note);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        return notes;
+    }
 }

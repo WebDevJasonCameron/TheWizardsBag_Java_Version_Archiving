@@ -7,6 +7,7 @@ import com.backend.theWizardsBag.utils.Managers.DatabaseConnectionManager;
 
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -53,6 +54,18 @@ public class NoteJDBCExecutor {
             Connection connection = this.dcm.getConnection();
             NoteDAO noteDAO = new NoteDAO(connection);
             return noteDAO.findAll();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Note> getAllByAuthor (String noteAuthor){
+        try {
+            Connection connection = this.dcm.getConnection();
+            NoteDAO noteDAO = new NoteDAO(connection);
+            return noteDAO.findAllByAuthor(noteAuthor);
+
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);

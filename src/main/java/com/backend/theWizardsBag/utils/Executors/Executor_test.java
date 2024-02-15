@@ -97,7 +97,15 @@ public class Executor_test {
         */
 
         // delete
+        /*
         noteJDBCExecutor.delete(2);
+        */
+
+        // find all by author
+        List<Note> notes = noteJDBCExecutor.getAllByAuthor("teSt author");
+        for (Note note : notes){
+            System.out.println(note);
+        }
 
 
         // -------------------------------------------------------------------------------

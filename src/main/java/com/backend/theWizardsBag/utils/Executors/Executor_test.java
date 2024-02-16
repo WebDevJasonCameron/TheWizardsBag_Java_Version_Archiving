@@ -27,45 +27,8 @@ public class Executor_test {
 
 
         // -------------------------------------------------------------------------------
-        // TEST Note
+        // TEST Note     <- Completed
         NoteJDBCExecutor noteJDBCExecutor = new NoteJDBCExecutor();
-
-        // create
-        /*
-        System.out.println(noteJDBCExecutor.create("Calvin Note", Date.valueOf("2024-01-01"), "Much to be said here", "Mocha"));
-        */
-
-        // find by id
-        /*
-        System.out.println(noteJDBCExecutor.getById(2));
-        */
-
-        // find all
-        /*
-        List<Note> notes = noteJDBCExecutor.getAll();
-        for (Note note : notes) {
-            System.out.println(note);
-        }
-        */
-
-        // update
-        /*
-        Note noteWithNewData = new Note(2, "Mocha note",  Date.valueOf("2024-02-02"), "Calvin objects!", "Mocha Cameron");
-        noteJDBCExecutor.update(noteWithNewData);
-        */
-
-        // delete
-        /*
-        noteJDBCExecutor.delete(2);
-        */
-
-        // find all by author
-        /*
-        List<Note> notes = noteJDBCExecutor.getAllByAuthor("teSt author");
-        for (Note note : notes){
-            System.out.println(note);
-        }
-        */
 
 
         // -------------------------------------------------------------------------------

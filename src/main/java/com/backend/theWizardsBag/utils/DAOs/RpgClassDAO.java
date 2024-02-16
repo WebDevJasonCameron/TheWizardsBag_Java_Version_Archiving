@@ -15,27 +15,36 @@ public class RpgClassDAO extends DataAccessObject<RpgClass> {
 
     // SQLs
     private final static String INSERT = "INSERT INTO rpg_classes " +
-            "(class_name, class_subclass_name, class_description) " +
-            "VALUES (?, ?, ?)";
+                                            "(class_name, " +
+                                            "class_subclass_name, " +
+                                            "class_description) " +
+                                         "VALUES (?, ?, ?) ";
 
     private final static String GET_BY_ID = "SELECT * FROM rpg_classes " +
-            "WHERE class_id = ? ";
+                                            "WHERE class_id = ? ";
 
     private final static String GET_ALL = "SELECT * FROM rpg_classes ";
 
     private final static String GET_ALL_BY_NAME = "SELECT * FROM rpg_classes " +
-            "WHERE LOWER(class_name) = LOWER( ? )";
+                                                  "WHERE " +
+                                                      "LOWER(class_name) = LOWER( ? ) ";
 
     private final static String GET_BY_NAME_AND_SUB = "SELECT * FROM rpg_classes " +
-            "WHERE LOWER(class_name) = LOWER( ? ) " +
-            "AND LOWER(class_subclass_name) = LOWER( ? ) ";
+                                                      "WHERE " +
+                                                         "LOWER(class_name) = LOWER( ? ) " +
+                                                      "AND " +
+                                                         "LOWER(class_subclass_name) = LOWER( ? ) ";
 
     private final static String UPDATE = "UPDATE rpg_classes " +
-            "SET class_name = ?, class_subclass_name = ?, class_description = ? " +
-            "WHERE class_id = ? ";
+                                         "SET " +
+                                             "class_name = ?, " +
+                                             "class_subclass_name = ?, " +
+                                             "class_description = ? " +
+                                         "WHERE " +
+                                             "class_id = ? ";
 
     private final static String DELETE = "DELETE FROM rpg_classes " +
-            "WHERE class_id = ? ";
+                                         "WHERE class_id = ? ";
 
     // CONs
     public RpgClassDAO(Connection connection) {

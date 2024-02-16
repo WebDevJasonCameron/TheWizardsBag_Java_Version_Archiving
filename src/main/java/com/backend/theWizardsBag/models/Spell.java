@@ -8,41 +8,56 @@ public class Spell implements DataTransferObject {
 
     // ATTs
     private long spellId;
-    private String name;
-    private String level;
-    private String castingTime;
-    private String range;
-    private boolean componentsVisual;
-    private boolean componentsSemantic;
-    private boolean componentsMaterial;
-    private String componentsMaterials;
-    private String duration;
-    private boolean concentration;
-    private boolean ritual;
-    private String school;
-    private String saveType;
-    private String description;
-    private String imageUrl;
+    private String spellName;
+    private String spellLevel;
+    private String spellCastingTime;
+    private String spellRange;
+    private boolean spellComponentsVisual;
+    private boolean spellComponentsSemantic;
+    private boolean spellComponentsMaterial;
+    private String spellComponentsMaterials;
+    private String spellDuration;
+    private boolean spellConcentration;
+    private boolean spellRitual;
+    private String spellSchool;
+    private String spellSaveType;
+    private String spellDescription;
+    private String spellImageUrl;
 
     // LISTs
-    private List<SpellTag> tagList;
-    private List<SpellCondition> conditionList;
-    private List<SpellDamage> damageList;
-    private List<SpellClass> classList;
+    private List<SpellTag> spellTagList;
+    private List<SpellCondition> spellConditionList;
+    private List<SpellDamage> spellDamageList;
+    private List<SpellClass> spellClassList;
 
     // OBJs
-    private long source;
+    private long spellSource;
 
     // CONs
+    public Spell() {
+    }
+
+    public Spell(long spellId, String spellName, String spellLevel, String spellCastingTime, String spellRange, boolean spellComponentsVisual, boolean spellComponentsSemantic, boolean spellComponentsMaterial, String spellComponentsMaterials, String spellDuration, boolean spellConcentration, boolean spellRitual, String spellSchool, String spellSaveType, String spellDescription, String spellImageUrl, long spellSource) {
+        this.spellId = spellId;
+        this.spellName = spellName;
+        this.spellLevel = spellLevel;
+        this.spellCastingTime = spellCastingTime;
+        this.spellRange = spellRange;
+        this.spellComponentsVisual = spellComponentsVisual;
+        this.spellComponentsSemantic = spellComponentsSemantic;
+        this.spellComponentsMaterial = spellComponentsMaterial;
+        this.spellComponentsMaterials = spellComponentsMaterials;
+        this.spellDuration = spellDuration;
+        this.spellConcentration = spellConcentration;
+        this.spellRitual = spellRitual;
+        this.spellSchool = spellSchool;
+        this.spellSaveType = spellSaveType;
+        this.spellDescription = spellDescription;
+        this.spellImageUrl = spellImageUrl;
+        this.spellSource = spellSource;
+    }
 
     // GETs & SETs
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public long getSpellId() {
         return spellId;
     }
@@ -50,140 +65,150 @@ public class Spell implements DataTransferObject {
         this.spellId = spellId;
     }
 
-    public String getLevel() {
-        return level;
+    public String getSpellName() {
+        return spellName;
     }
-    public void setLevel(String level) {
-        this.level = level;
-    }
-
-    public String getCastingTime() {
-        return castingTime;
-    }
-    public void setCastingTime(String castingTime) {
-        this.castingTime = castingTime;
+    public void setSpellName(String spellName) {
+        this.spellName = spellName;
     }
 
-    public String getRange() {
-        return range;
+    public String getSpellLevel() {
+        return spellLevel;
     }
-    public void setRange(String range) {
-        this.range = range;
-    }
-
-    public boolean isComponentsVisual() {
-        return componentsVisual;
-    }
-    public void setComponentsVisual(boolean componentsVisual) {
-        this.componentsVisual = componentsVisual;
+    public void setSpellLevel(String spellLevel) {
+        this.spellLevel = spellLevel;
     }
 
-    public boolean isComponentsSemantic() {
-        return componentsSemantic;
+    public String getSpellCastingTime() {
+        return spellCastingTime;
     }
-    public void setComponentsSemantic(boolean componentsSemantic) {
-        this.componentsSemantic = componentsSemantic;
-    }
-
-    public boolean isComponentsMaterial() {
-        return componentsMaterial;
-    }
-    public void setComponentsMaterial(boolean componentsMaterial) {
-        this.componentsMaterial = componentsMaterial;
+    public void setSpellCastingTime(String spellCastingTime) {
+        this.spellCastingTime = spellCastingTime;
     }
 
-    public String getComponentsMaterials() {
-        return componentsMaterials;
+    public String getSpellRange() {
+        return spellRange;
     }
-    public void setComponentsMaterials(String componentsMaterials) {
-        this.componentsMaterials = componentsMaterials;
-    }
-
-    public String getDuration() {
-        return duration;
-    }
-    public void setDuration(String duration) {
-        this.duration = duration;
+    public void setSpellRange(String spellRange) {
+        this.spellRange = spellRange;
     }
 
-    public boolean isConcentration() {
-        return concentration;
+    public boolean isSpellComponentsVisual() {
+        return spellComponentsVisual;
     }
-    public void setConcentration(boolean concentration) {
-        this.concentration = concentration;
-    }
-
-    public boolean isRitual() {
-        return ritual;
-    }
-    public void setRitual(boolean ritual) {
-        this.ritual = ritual;
+    public void setSpellComponentsVisual(boolean spellComponentsVisual) {
+        this.spellComponentsVisual = spellComponentsVisual;
     }
 
-    public String getSchool() {
-        return school;
+    public boolean isSpellComponentsSemantic() {
+        return spellComponentsSemantic;
     }
-    public void setSchool(String school) {
-        this.school = school;
-    }
-
-    public String getSaveType() {
-        return saveType;
-    }
-    public void setSaveType(String saveType) {
-        this.saveType = saveType;
+    public void setSpellComponentsSemantic(boolean spellComponentsSemantic) {
+        this.spellComponentsSemantic = spellComponentsSemantic;
     }
 
-    public String getDescription() {
-        return description;
+    public boolean isSpellComponentsMaterial() {
+        return spellComponentsMaterial;
     }
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setSpellComponentsMaterial(boolean spellComponentsMaterial) {
+        this.spellComponentsMaterial = spellComponentsMaterial;
     }
 
-    // G&S LISTs
-    public List<SpellTag> getTagList() {
-        return tagList;
+    public String getSpellComponentsMaterials() {
+        return spellComponentsMaterials;
     }
-    public void setTagList(List<SpellTag> tagList) {
-        this.tagList = tagList;
-    }
-
-    public List<SpellCondition> getConditionList() {
-        return conditionList;
-    }
-    public void setConditionList(List<SpellCondition> conditionList) {
-        this.conditionList = conditionList;
+    public void setSpellComponentsMaterials(String spellComponentsMaterials) {
+        this.spellComponentsMaterials = spellComponentsMaterials;
     }
 
-    public List<SpellClass> getClassList() {
-        return classList;
+    public String getSpellDuration() {
+        return spellDuration;
     }
-    public void setClassList(List<SpellClass> classList) {
-        this.classList = classList;
-    }
-
-    public List<SpellDamage> getDamageList() {
-        return damageList;
-    }
-    public void setDamageList(List<SpellDamage> damageList) {
-        this.damageList = damageList;
+    public void setSpellDuration(String spellDuration) {
+        this.spellDuration = spellDuration;
     }
 
-    // G&S OBJs
-    public long getSource() {
-        return source;
+    public boolean isSpellConcentration() {
+        return spellConcentration;
     }
-    public void setSource(long source) {
-        this.source = source;
+    public void setSpellConcentration(boolean spellConcentration) {
+        this.spellConcentration = spellConcentration;
     }
+
+    public boolean isSpellRitual() {
+        return spellRitual;
+    }
+    public void setSpellRitual(boolean spellRitual) {
+        this.spellRitual = spellRitual;
+    }
+
+    public String getSpellSchool() {
+        return spellSchool;
+    }
+    public void setSpellSchool(String spellSchool) {
+        this.spellSchool = spellSchool;
+    }
+
+    public String getSpellSaveType() {
+        return spellSaveType;
+    }
+    public void setSpellSaveType(String spellSaveType) {
+        this.spellSaveType = spellSaveType;
+    }
+
+    public String getSpellDescription() {
+        return spellDescription;
+    }
+    public void setSpellDescription(String spellDescription) {
+        this.spellDescription = spellDescription;
+    }
+
+    public String getSpellImageUrl() {
+        return spellImageUrl;
+    }
+    public void setSpellImageUrl(String spellImageUrl) {
+        this.spellImageUrl = spellImageUrl;
+    }
+
+
+    // GETs & SETs LISTs
+    public List<SpellTag> getSpellTagList() {
+        return spellTagList;
+    }
+    public void setSpellTagList(List<SpellTag> spellTagList) {
+        this.spellTagList = spellTagList;
+    }
+
+    public List<SpellCondition> getSpellConditionList() {
+        return spellConditionList;
+    }
+    public void setSpellConditionList(List<SpellCondition> spellConditionList) {
+        this.spellConditionList = spellConditionList;
+    }
+
+    public List<SpellDamage> getSpellDamageList() {
+        return spellDamageList;
+    }
+    public void setSpellDamageList(List<SpellDamage> spellDamageList) {
+        this.spellDamageList = spellDamageList;
+    }
+
+    public List<SpellClass> getSpellClassList() {
+        return spellClassList;
+    }
+    public void setSpellClassList(List<SpellClass> spellClassList) {
+        this.spellClassList = spellClassList;
+    }
+
+
+    // GETs & SETs OBJs
+    public long getSpellSource() {
+        return spellSource;
+    }
+    public void setSpellSource(long spellSource) {
+        this.spellSource = spellSource;
+    }
+
 
     // OVRs
     @Override
@@ -195,29 +220,28 @@ public class Spell implements DataTransferObject {
     public String toString() {
         return "Spell{" +
                 "spellId=" + spellId +
-                ", name='" + name + '\'' +
-                ", level='" + level + '\'' +
-                ", castingTime='" + castingTime + '\'' +
-                ", range='" + range + '\'' +
-                ", componentsVisual=" + componentsVisual +
-                ", componentsSemantic=" + componentsSemantic +
-                ", componentsMaterial=" + componentsMaterial +
-                ", componentsMaterials='" + componentsMaterials + '\'' +
-                ", duration='" + duration + '\'' +
-                ", concentration=" + concentration +
-                ", ritual=" + ritual +
-                ", school='" + school + '\'' +
-                ", saveType='" + saveType + '\'' +
-                ", description='" + description + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
-                ", tagList=" + tagList +
-                ", conditionList=" + conditionList +
-                ", damageList=" + damageList +
-                ", classList=" + classList +
-                ", source=" + source +
+                ", spellName='" + spellName + '\'' +
+                ", spellLevel='" + spellLevel + '\'' +
+                ", spellCastingTime='" + spellCastingTime + '\'' +
+                ", spellRange='" + spellRange + '\'' +
+                ", spellComponentsVisual=" + spellComponentsVisual +
+                ", spellComponentsSemantic=" + spellComponentsSemantic +
+                ", spellComponentsMaterial=" + spellComponentsMaterial +
+                ", spellComponentsMaterials='" + spellComponentsMaterials + '\'' +
+                ", spellDuration='" + spellDuration + '\'' +
+                ", spellConcentration=" + spellConcentration +
+                ", spellRitual=" + spellRitual +
+                ", spellSchool='" + spellSchool + '\'' +
+                ", spellSaveType='" + spellSaveType + '\'' +
+                ", spellDescription='" + spellDescription + '\'' +
+                ", spellImageUrl='" + spellImageUrl + '\'' +
+                ", spellTagList=" + spellTagList +
+                ", spellConditionList=" + spellConditionList +
+                ", spellDamageList=" + spellDamageList +
+                ", spellClassList=" + spellClassList +
+                ", spellSource=" + spellSource +
                 '}';
     }
 
-// METHs
 
 }

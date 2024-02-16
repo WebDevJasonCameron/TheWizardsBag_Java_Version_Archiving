@@ -33,6 +33,48 @@ public class Executor_test {
 
         // -------------------------------------------------------------------------------
         // TEST RpgClass
+        RpgClassJDBCExecutor classJDBCExecutor = new RpgClassJDBCExecutor();
+
+        // create
+        /*
+        System.out.println(classJDBCExecutor.create("Calvin-ite", "The Calvin", "A great Paladin in the order of Calvin-ite"));
+        */
+
+        // find by id
+        /*
+        System.out.println(classJDBCExecutor.getById(144));
+        */
+
+        // find all
+        /*
+        List<RpgClass> rpgClasses = classJDBCExecutor.getAll();
+        for(RpgClass rpgClass : rpgClasses){
+            System.out.println(rpgClass);
+        }
+        */
+
+        // update
+        /*
+        RpgClass classWithNewData = new RpgClass(144, "Mocha Rouge", "Ninja Black", "The clan of jumping high and shadow's death");
+        System.out.println(classJDBCExecutor.update(classWithNewData));
+        */
+
+        // delete
+        /*
+        classJDBCExecutor.delete(144);
+         */
+
+        // find all by name
+        /*
+        List<RpgClass> rpgClasses = classJDBCExecutor.getAllByName("bard");
+        for(RpgClass rpgClass : rpgClasses){
+            System.out.println(rpgClass);
+        }
+        */
+
+        // find by name and sub
+        System.out.println(classJDBCExecutor.getByNameAndSub("cleric", "War domain"));
+
 
 
 

@@ -27,7 +27,8 @@ public class SpellDAO extends DataAccessObject<Spell> {
                                             "spell_component_material, " +
                                             "spell_component_materials, " +
                                             "spell_duration, " +
-                                            "spell_concentration, spell_ritual, " +
+                                            "spell_concentration, " +
+                                            "spell_ritual, " +
                                             "spell_school, " +
                                             "spell_save_type, " +
                                             "spell_description, " +
@@ -36,7 +37,8 @@ public class SpellDAO extends DataAccessObject<Spell> {
                                          "VALUES " +
                                              "(?, ?, ?, ?, ?, " +
                                              "?, ?, ?, ?, ?, " +
-                                             "?, ?, ?, ?, ?) ";
+                                             "?, ?, ?, ?, ?," +
+                                             "?) ";
 
     private final static String GET_BY_ID = "SELECT * FROM spells " +
                                             "WHERE spell_id = ? ";
@@ -62,7 +64,8 @@ public class SpellDAO extends DataAccessObject<Spell> {
                                              "spell_component_material = ?, " +
                                              "spell_component_materials = ?, " +
                                              "spell_duration = ?, " +
-                                             "spell_concentration = ?, spell_ritual = ?, " +
+                                             "spell_concentration = ?, " +
+                                             "spell_ritual = ?, " +
                                              "spell_school = ?, " +
                                              "spell_save_type = ?, " +
                                              "spell_description = ?, " +
@@ -71,7 +74,8 @@ public class SpellDAO extends DataAccessObject<Spell> {
                                          "WHERE " +
                                              "spell_id = ?";
 
-    private final static String DELETE = "";
+    private final static String DELETE = "DELETE FROM spells " +
+                                         "WHERE spell_id = ? ";
 
     // CONs
     public SpellDAO(Connection connection){
@@ -81,7 +85,30 @@ public class SpellDAO extends DataAccessObject<Spell> {
     // OVRs
     @Override
     public Spell create(Spell dto) {
-        return null;
+        try (PreparedStatement statement = this.connection.prepareStatement(INSERT);){
+            statement.setString(1, dto.getSpellName());
+            statement.setString(2, dto.getSpellLevel());
+            statement.setString(3, dto.getSpellCastingTime());
+            statement.setString(4, dto.getSpellRange());
+            statement.setBoolean(5, dto.isSpellComponentsVisual());
+            statement.setBoolean(6, dto.isSpellComponentsSemantic());
+            statement.setBoolean(7, dto.isSpellComponentsMaterial());
+            statement.setString(8, dto.getSpellComponentsMaterials());
+            statement.setString(9, dto.getSpellDuration());
+            statement.setBoolean(10, dto.isSpellConcentration());
+            statement.setBoolean(11, dto.isSpellRitual());
+            statement.setString(12, dto.getSpellSchool());
+            statement.setString(13, dto.getSpellSaveType());
+            statement.setString(14, dto.getSpellDescription());
+            statement.setString(15, dto.getSpellImageUrl());
+            statement.setLong(16, dto.getSpellSource());
+            statement.execute();
+            long id = this.getLastVal(SPELL_SEQUENCE);
+            return this.findById(id);
+        }catch (SQLException e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -89,7 +116,7 @@ public class SpellDAO extends DataAccessObject<Spell> {
         Spell spell = new Spell();
 
         try (PreparedStatement statement = this.connection.prepareStatement(GET_BY_ID);) {
-            statement.setLong(1 = ?, id);
+            statement.setLong(1, id);
 
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
@@ -198,12 +225,46 @@ public class SpellDAO extends DataAccessObject<Spell> {
 
     @Override
     public Spell update(Spell dto) {
-        return null;
-    }
+        Spell spell = null;
 
+        try (PreparedStatement statement = this.connection.prepareStatement(UPDATE);){
+            statement.setString(1, dto.getSpellName());
+            statement.setString(2, dto.getSpellLevel());
+            statement.setString(3, dto.getSpellCastingTime());
+            statement.setString(4, dto.getSpellRange());
+            statement.setBoolean(5, dto.isSpellComponentsVisual());
+            statement.setBoolean(6, dto.isSpellComponentsSemantic());
+            statement.setBoolean(7, dto.isSpellComponentsMaterial());
+            statement.setString(8, dto.getSpellComponentsMaterials());
+            statement.setString(9, dto.getSpellDuration());
+            statement.setBoolean(10, dto.isSpellConcentration());
+            statement.setBoolean(11, dto.isSpellRitual());
+            statement.setString(12, dto.getSpellSchool());
+            statement.setString(13, dto.getSpellSaveType());
+            statement.setString(14, dto.getSpellDescription());
+            statement.setString(15, dto.getSpellImageUrl());
+            statement.setLong(16, dto.getSpellSource());
+            statement.setLong(17, dto.getSpellId());
+            statement.execute();
+
+            spell = this.findById(dto.getSpellId());
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        return spell;
+    }
 
     @Override
     public void delete(long id) {
+        try(PreparedStatement statement = this.connection.prepareStatement(DELETE);){
+            statement.setLong(1, id);
+            statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 
     // METHs

@@ -8,6 +8,7 @@ public class Spell implements DataTransferObject {
 
     // ATTs
     private long spellId;
+
     private String spellName;
     private String spellLevel;
     private String spellCastingTime;
@@ -37,7 +38,24 @@ public class Spell implements DataTransferObject {
     public Spell() {
     }
 
-    public Spell(long spellId, String spellName, String spellLevel, String spellCastingTime, String spellRange, boolean spellComponentsVisual, boolean spellComponentsSemantic, boolean spellComponentsMaterial, String spellComponentsMaterials, String spellDuration, boolean spellConcentration, boolean spellRitual, String spellSchool, String spellSaveType, String spellDescription, String spellImageUrl, long spellSource) {
+    public Spell(
+            long spellId,
+            String spellName,
+            String spellLevel,
+            String spellCastingTime,
+            String spellRange,
+            boolean spellComponentsVisual,
+            boolean spellComponentsSemantic,
+            boolean spellComponentsMaterial,
+            String spellComponentsMaterials,
+            String spellDuration,
+            boolean spellConcentration,
+            boolean spellRitual,
+            String spellSchool,
+            String spellSaveType,
+            String spellDescription,
+            String spellImageUrl,
+            long spellSource) {
         this.spellId = spellId;
         this.spellName = spellName;
         this.spellLevel = spellLevel;
@@ -94,14 +112,14 @@ public class Spell implements DataTransferObject {
     }
 
     public boolean isSpellComponentsVisual() {
-        return spellComponentsVisual;
+        return this.spellComponentsVisual;
     }
     public void setSpellComponentsVisual(boolean spellComponentsVisual) {
         this.spellComponentsVisual = spellComponentsVisual;
     }
 
     public boolean isSpellComponentsSemantic() {
-        return spellComponentsSemantic;
+        return this.spellComponentsSemantic;
     }
     public void setSpellComponentsSemantic(boolean spellComponentsSemantic) {
         this.spellComponentsSemantic = spellComponentsSemantic;

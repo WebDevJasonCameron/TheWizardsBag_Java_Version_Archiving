@@ -13,7 +13,6 @@ import java.util.List;
 
 public class RpgClassJDBCExecutor {
 
-
     // ATTs
     final Keys keys = new Keys();
     final String password = keys.jdbcPassword();

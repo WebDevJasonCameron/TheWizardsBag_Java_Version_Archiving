@@ -60,6 +60,53 @@ public class Executor_test {
         // TEST Spell
         SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
 
+        // create
+        /*
+        System.out.println(spellJDBCExecutor.create(
+                "Calvin Spell",
+                "2nd",
+                "Instant",
+                "30 ft",
+                true,
+                true,
+                false,
+                "",
+                "1 hr",
+                true,
+                false,
+                "puppy school",
+                "",
+                "Calvin can describe this to you later",
+                "",
+                5));
+        */
+
+        // update
+        /*
+        Spell spellWithNewData = new Spell(
+                289,
+                "Mocha's Awesome Spell!",
+                "8nd",
+                "Instant",
+                "60 ft",
+                true,
+                true,
+                false,
+                "",
+                "5 hr",
+                true,
+                false,
+                "mocha school",
+                "",
+                "Mocha will not tell you cause she knows all",
+                "",
+                5
+                );
+        System.out.println(spellJDBCExecutor.update(spellWithNewData));
+        */
+
+        // delete
+        spellJDBCExecutor.delete(289);
 
         // -------------------------------------------------------------------------------
         // TEST SpellClass

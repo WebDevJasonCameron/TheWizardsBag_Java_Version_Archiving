@@ -170,7 +170,7 @@ public class SpellDAO extends DataAccessObject<Spell> {
     public List<Spell> findAll() {
         List<Spell> spells = new ArrayList<>();
 
-        try(PreparedStatement statement = this.connection.prepareStatement("SELECT * FROM spells");){
+        try(PreparedStatement statement = this.connection.prepareStatement(GET_ALL);){
 
             ResultSet rs = statement.executeQuery();
 

@@ -81,6 +81,15 @@ public class Executor_test {
                 5));
         */
 
+        // find all
+        /*
+        List<Spell> spells = spellJDBCExecutor.getAll();
+        for (Spell spell : spells) {
+            System.out.println(spell);
+        }
+        */
+
+
         // update
         /*
         Spell spellWithNewData = new Spell(
@@ -106,7 +115,9 @@ public class Executor_test {
         */
 
         // delete
+        /*
         spellJDBCExecutor.delete(289);
+         */
 
         // -------------------------------------------------------------------------------
         // TEST SpellClass

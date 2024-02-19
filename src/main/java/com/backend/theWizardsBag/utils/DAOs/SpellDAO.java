@@ -139,7 +139,9 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 spell.setSpellImageUrl(rs.getString("spell_image_url"));
                 spell.setSpellSource(rs.getInt("spell_source_id"));
 
+                /*
                 // Get & Set Spell Tags
+
                 SpellTagJDBCExecutor spellTagJDBCExecutor = new SpellTagJDBCExecutor();
                 spell.setSpellTagList(spellTagJDBCExecutor.getAllBySpellId(spell.getSpellId()));
 
@@ -154,7 +156,7 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 // Get & Set Spell Damages
                 SpellDamagetypeJDBCExecutor spellDamagetypeJDBCExecutor = new SpellDamagetypeJDBCExecutor();
                 spell.setSpellDamageList(spellDamagetypeJDBCExecutor.getAllBySpellId(spell.getSpellId()));
-
+                */
 
             }
 
@@ -195,6 +197,7 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 spell.setSpellImageUrl(rs.getString("spell_image_url"));
                 spell.setSpellSource(rs.getInt("spell_source_id"));
 
+                /*
                 // Get & Set Spell Tags
                 SpellTagJDBCExecutor spellTagJDBCExecutor = new SpellTagJDBCExecutor();
                 spell.setSpellTagList(spellTagJDBCExecutor.getAllBySpellId(spell.getSpellId()));
@@ -210,8 +213,11 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 // Get & Set Spell Damages
                 SpellDamagetypeJDBCExecutor spellDamagetypeJDBCExecutor = new SpellDamagetypeJDBCExecutor();
                 spell.setSpellDamageList(spellDamagetypeJDBCExecutor.getAllBySpellId(spell.getSpellId()));
+                 */
+
                 // Add to Spell List
                 spells.add(spell);
+
             }
 
 
@@ -294,6 +300,7 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 spell.setSpellImageUrl(rs.getString("spell_image_url"));
                 spell.setSpellSource(rs.getInt("spell_source_id"));
 
+                /*
                 // Get & Set Spell Tags
                 SpellTagJDBCExecutor spellTagJDBCExecutor = new SpellTagJDBCExecutor();
                 spell.setSpellTagList(spellTagJDBCExecutor.getAllBySpellId(spell.getSpellId()));
@@ -309,6 +316,7 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 // Get & Set Spell Damages
                 SpellDamagetypeJDBCExecutor spellDamagetypeJDBCExecutor = new SpellDamagetypeJDBCExecutor();
                 spell.setSpellDamageList(spellDamagetypeJDBCExecutor.getAllBySpellId(spell.getSpellId()));
+                 */
             }
 
         } catch (SQLException e) {
@@ -347,6 +355,7 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 spell.setSpellImageUrl(rs.getString("spell_image_url"));
                 spell.setSpellSource(rs.getInt("spell_source_id"));
 
+                /*
                 // Get & Set Spell Tags
                 SpellTagJDBCExecutor spellTagJDBCExecutor = new SpellTagJDBCExecutor();
                 spell.setSpellTagList(spellTagJDBCExecutor.getAllBySpellId(spell.getSpellId()));
@@ -362,8 +371,12 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 // Get & Set Spell Damages
                 SpellDamagetypeJDBCExecutor spellDamagetypeJDBCExecutor = new SpellDamagetypeJDBCExecutor();
                 spell.setSpellDamageList(spellDamagetypeJDBCExecutor.getAllBySpellId(spell.getSpellId()));
+                 */
+
                 // Add to Spell List
                 spells.add(spell);
+
+
             }
 
         } catch (SQLException e) {

@@ -1,5 +1,6 @@
 package com.backend.theWizardsBag.utils.DAOs;
 
+import com.backend.theWizardsBag.models.Spell;
 import com.backend.theWizardsBag.models.SpellClass;
 import com.backend.theWizardsBag.utils.Objects.DataAccessObject;
 
@@ -13,33 +14,24 @@ import java.util.List;
 public class SpellClassDAO extends DataAccessObject<SpellClass> {
 
     // SQLs
-    private final static String INSERT = "INSERT INTO rpg_classes " +
-                                            "(class_name, class_subclass_name, class_description) " +
-                                         "VALUES (?, ?, ?)";
+    private final static String INSERT = "INSERT INTO spell_classes " +
+                                            "(spells_spell_id, classes_class_id) " +
+                                         "VALUES " +
+                                            "(?, ?) ";
 
-    private final static String DELETE = "DELETE FROM rpg_classes " +
-                                         "WHERE class_id = ?";
+    private final static String GET_BY_ID = "SELECT * FROM spell_classes " +
+                                            "WHERE spell_class_id = ? ";
 
-    private final static String GET_BY_ID = "SELECT * FROM rpg_classes " +
-                                            "WHERE class_id=?";
+    private final static String GET_ALL = "SELECT * FROM spell_classes ";
 
-    private final static String GET_ALL_BY_NAME = "SELECT * FROM rpg_classes " +
-                                                  "WHERE class_name=?";
+    private final static String GET_ALL_BY_CLASS_ID = "SELECT * FROM spell_classes " +
+                                                  "WHERE classes_class_id = ? ";
 
-    private final static String GET_BY_NAME_AND_SUB_NAME = "SELECT * FROM rpg_classes " +
-                                                            "WHERE class_name=? " +
-                                                            "AND class_subclass_name=?";
+    private final static String GET_ALL_BY_SPELL_ID = "SELECT * FROM spell_classes " +
+                                                      "WHERE spells_spell_id = ? ";
 
-    private final static String GET_ALL_BY_SPELL_ID = "SELECT \n" +
-                                                " s.*,\n" +
-                                                " sc.*,\n" +
-                                                " rc.*\n" +
-                                                "FROM spells s\n" +
-                                                "\tJOIN spell_classes sc ON s.spell_id = sc.spells_spell_id\n" +
-                                                "\tJOIN rpg_classes rc ON rc.class_id = sc.classes_class_id\n" +
-                                                "WHERE \n" +
-                                                "\ts.spell_id = ?";
-
+    private final static String DELETE = "DELETE FROM spell_classes " +
+            "WHERE spell_class_id = ? ";
     // CONs
     public SpellClassDAO(Connection connection) {
         super(connection);
@@ -47,24 +39,39 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
 
     // OVRs
     @Override
+    public SpellClass create(SpellClass dto) {
+        try (PreparedStatement statement = this.connection.prepareStatement(INSERT);){
+            statement.setLong(1, dto.getSpellsSpellId());
+            statement.setLong(2, dto.getClassesClassId());
+            statement.execute();
+
+            long id = this.getLastVal(SPELL_CLASS_SEQUENCE);
+            return this.findById(id);
+
+        }catch (SQLException e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public SpellClass findById(long id) {
         SpellClass spellClass = new SpellClass();
 
-        try (PreparedStatement statement = this.connection.prepareStatement(GET_BY_ID);) {
+        try(PreparedStatement statement = this.connection.prepareStatement(GET_BY_ID);){
             statement.setLong(1, id);
 
             ResultSet rs = statement.executeQuery();
             while (rs.next()){
-                spellClass.setClassID(rs.getLong("class_id"));
-                spellClass.setClassName(rs.getString("class_name"));
-                spellClass.setClassSubClassName(rs.getString("class_subclass_name"));
-                spellClass.setClassDescription(rs.getString("class_description"));
+                spellClass.setSpellClassId(rs.getLong("spell_class_id"));
+                spellClass.setSpellsSpellId(rs.getLong("spells_spell_id"));
+                spellClass.setClassesClassId(rs.getLong("classes_class_id"));
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
-
         return spellClass;
     }
 
@@ -72,17 +79,14 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
     public List<SpellClass> findAll() {
         List<SpellClass> spellClasses = new ArrayList<>();
 
-        try(PreparedStatement statement = this.connection.prepareStatement("SELECT * FROM rpg_classes");){
-
+        try (PreparedStatement statement = this.connection.prepareStatement(GET_ALL);){
             ResultSet rs = statement.executeQuery();
-
             while (rs.next()){
                 SpellClass spellClass = new SpellClass();
 
-                spellClass.setClassID(rs.getLong("class_id"));
-                spellClass.setClassName(rs.getString("class_name"));
-                spellClass.setClassSubClassName(rs.getString("class_subclass_name"));
-                spellClass.setClassDescription(rs.getString("class_description"));
+                spellClass.setSpellClassId(rs.getLong("spell_class_id"));
+                spellClass.setSpellsSpellId(rs.getLong("spells_spell_id"));
+                spellClass.setClassesClassId(rs.getLong("classes_class_id"));
 
                 spellClasses.add(spellClass);
             }
@@ -91,28 +95,12 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
-
         return spellClasses;
     }
 
     @Override
     public SpellClass update(SpellClass dto) {
         return null;
-    }
-
-    @Override
-    public SpellClass create(SpellClass dto) {
-        try(PreparedStatement statement = this.connection.prepareStatement(INSERT);){
-            statement.setString(1, dto.getClassName());
-            statement.setString(2, dto.getClassSubClassName());
-            statement.setString(3, dto.getClassDescription());
-            statement.execute();
-            long id = this.getLastVal(CLASS_SEQUENCE);
-            return this.findById(id);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
     }
 
     @Override
@@ -129,87 +117,11 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
     // METHs
     // <!> Move this to a rpgClassDAO!
     public List<SpellClass> findAllByName (String className) {
-        List<SpellClass> spellClasses = new ArrayList<>();
-
-        try(PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_NAME);){
-            statement.setString(1, className);
-
-            ResultSet rs = statement.executeQuery();
-
-            while (rs.next()){
-                SpellClass spellClass = new SpellClass();
-
-                spellClass.setClassID(rs.getLong("class_id"));
-                spellClass.setClassName(rs.getString("class_name"));
-                spellClass.setClassSubClassName(rs.getString("class_subclass_name"));
-                spellClass.setClassDescription(rs.getString("class_description"));
-
-                spellClasses.add(spellClass);
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
-
-        return spellClasses;
-    }
-    // <!> Move this to a rpgClassDAO!
-    public SpellClass findByNameAndSubName (String className, String classSubclassName){
-        SpellClass spellClass = new SpellClass();
-
-        try (PreparedStatement statement = this.connection.prepareStatement(GET_BY_NAME_AND_SUB_NAME);) {
-            statement.setString(1, className);
-            statement.setString(2, classSubclassName);
-
-            ResultSet rs = statement.executeQuery();
-            while (rs.next()) {
-                spellClass.setClassID(rs.getLong("class_id"));
-                spellClass.setClassName(rs.getString("class_name"));
-                spellClass.setClassSubClassName(rs.getString("class_subclass_name"));
-                spellClass.setClassDescription(rs.getString("class_description"));
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
-
-        return spellClass;
+        return null;
     }
 
     public List<SpellClass> findAllBySpellId (long spellId) {
-        List<SpellClass> spellClasses = new ArrayList<>();
-
-        try (PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_SPELL_ID);) {
-            statement.setLong(1, spellId);
-
-            ResultSet rs = statement.executeQuery();
-            long classId = 0;
-
-            while (rs.next()) {
-                long currentClassId = rs.getLong("class_id");
-
-                if (currentClassId != classId) {
-                    SpellClass spellClass = new SpellClass();
-
-                    spellClass.setSpellClassID(rs.getLong("spell_class_id"));
-                    spellClass.setClassID(rs.getLong("class_id"));
-                    spellClass.setClassName(rs.getString("class_name"));
-                    spellClass.setClassSubClassName(rs.getString("class_subclass_name"));
-                    spellClass.setClassDescription(rs.getString("class_description"));
-
-                    spellClasses.add(spellClass);
-                }
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
-
-
-        return spellClasses;
+        return null;
     }
 
 

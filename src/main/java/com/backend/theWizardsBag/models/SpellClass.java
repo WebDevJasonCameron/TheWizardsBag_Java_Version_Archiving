@@ -5,49 +5,45 @@ import com.backend.theWizardsBag.utils.Objects.DataTransferObject;
 public class SpellClass implements DataTransferObject {
 
     // ATTs
-    private long spellClassID;                          //   Junction ID
-    private long classID;
-    private String className;
-    private  String classSubClassName;
-    private String classDescription;
+    private long spellClassId;
+    private long classesClassId;
+    private long spellsSpellId;
 
     // CONs
+    public SpellClass() {
+    }
 
+    public SpellClass(long classesClassId, long spellsSpellId) {
+        this.classesClassId = classesClassId;
+        this.spellsSpellId = spellsSpellId;
+    }
+
+    public SpellClass(long spellClassId, long classesClassId, long spellsSpellId) {
+        this.spellClassId = spellClassId;
+        this.classesClassId = classesClassId;
+        this.spellsSpellId = spellsSpellId;
+    }
 
     // GETs & SETs
-    public long getSpellClassID() {
-        return spellClassID;
+    public long getSpellClassId() {
+        return spellClassId;
     }
-    public void setSpellClassID(long spellClassID) {
-        this.spellClassID = spellClassID;
-    }
-
-    public long getClassID() {
-        return classID;
-    }
-    public void setClassID(long classID) {
-        this.classID = classID;
+    public void setSpellClassId(long spellClassId) {
+        this.spellClassId = spellClassId;
     }
 
-    public String getClassName() {
-        return className;
+    public long getClassesClassId() {
+        return classesClassId;
     }
-    public void setClassName(String className) {
-        this.className = className;
-    }
-
-    public String getClassSubClassName() {
-        return classSubClassName;
-    }
-    public void setClassSubClassName(String classSubClassName) {
-        this.classSubClassName = classSubClassName;
+    public void setClassesClassId(long classesClassId) {
+        this.classesClassId = classesClassId;
     }
 
-    public String getClassDescription() {
-        return classDescription;
+    public long getSpellsSpellId() {
+        return spellsSpellId;
     }
-    public void setClassDescription(String classDescription) {
-        this.classDescription = classDescription;
+    public void setSpellsSpellId(long spellsSpellId) {
+        this.spellsSpellId = spellsSpellId;
     }
 
     // OVRs
@@ -59,11 +55,9 @@ public class SpellClass implements DataTransferObject {
     @Override
     public String toString() {
         return "SpellClass{" +
-                "spellClassID=" + spellClassID +
-                ", classID=" + classID +
-                ", className='" + className + '\'' +
-                ", classSubClassName='" + classSubClassName + '\'' +
-                ", classDescription='" + classDescription + '\'' +
+                "spellClassId=" + spellClassId +
+                ", classesClassId=" + classesClassId +
+                ", spellsSpellId=" + spellsSpellId +
                 '}';
     }
 

@@ -1,9 +1,7 @@
 package com.backend.theWizardsBag.utils.Executables;
 
 import com.backend.theWizardsBag.constants.keys.Keys;
-import com.backend.theWizardsBag.models.Note;
 import com.backend.theWizardsBag.models.RpgClass;
-import com.backend.theWizardsBag.utils.DAOs.NoteDAO;
 import com.backend.theWizardsBag.utils.DAOs.RpgClassDAO;
 import com.backend.theWizardsBag.utils.Managers.DatabaseConnectionManager;
 

@@ -104,7 +104,8 @@ public class SpellConditionDAO extends DataAccessObject<SpellCondition> {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
-        return spellConditions;    }
+        return spellConditions;
+    }
 
     @Override
     public SpellCondition update(SpellCondition dto) {
@@ -122,7 +123,8 @@ public class SpellConditionDAO extends DataAccessObject<SpellCondition> {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
-        return spellCondition;    }
+        return spellCondition;
+    }
 
     @Override
     public void delete(long id) {

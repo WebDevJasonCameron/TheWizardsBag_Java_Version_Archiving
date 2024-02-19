@@ -28,7 +28,7 @@ public class Spell implements DataTransferObject {
     // LISTs
     private List<SpellTag> spellTagList;
     private List<SpellCondition> spellConditionList;
-    private List<SpellDamage> spellDamageList;
+    private List<SpellDamagetype> spellDamagetypeList;
     private List<SpellClass> spellClassList;
 
     // OBJs
@@ -204,11 +204,11 @@ public class Spell implements DataTransferObject {
         this.spellConditionList = spellConditionList;
     }
 
-    public List<SpellDamage> getSpellDamageList() {
-        return spellDamageList;
+    public List<SpellDamagetype> getSpellDamagetypeList() {
+        return spellDamagetypeList;
     }
-    public void setSpellDamageList(List<SpellDamage> spellDamageList) {
-        this.spellDamageList = spellDamageList;
+    public void setSpellDamagetypeList(List<SpellDamagetype> spellDamagetypeList) {
+        this.spellDamagetypeList = spellDamagetypeList;
     }
 
     public List<SpellClass> getSpellClassList() {
@@ -255,7 +255,7 @@ public class Spell implements DataTransferObject {
                 ", spellImageUrl='" + spellImageUrl + '\'' +
                 ", spellTagList=" + spellTagList +
                 ", spellConditionList=" + spellConditionList +
-                ", spellDamageList=" + spellDamageList +
+                ", spellDamagetypeList=" + spellDamagetypeList +
                 ", spellClassList=" + spellClassList +
                 ", spellSource=" + spellSource +
                 '}';

@@ -72,7 +72,7 @@ public class SpellConditionJDBCExecutor {
         try {
             Connection connection = this.dcm.getConnection();
             SpellConditionDAO spellConditionDAO = new SpellConditionDAO(connection);
-            return spellConditionDAO.findAllBySpellId(conditionId);
+            return spellConditionDAO.findAllByConditionId(conditionId);
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);

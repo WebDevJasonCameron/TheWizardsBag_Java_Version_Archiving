@@ -64,11 +64,6 @@ public class Executor_test {
         // TEST SpellClass
         SpellClassJDBCExecutor spellClassJDBCExecutor = new SpellClassJDBCExecutor();
 
-        List<SpellClass> spellClasses = spellClassJDBCExecutor.getAllByClassId(1);
-        for(SpellClass spellClass : spellClasses){
-            System.out.println(spellClass);
-        }
-
 
         // -------------------------------------------------------------------------------
         // TEST SpellCondition
@@ -84,6 +79,11 @@ public class Executor_test {
         // -------------------------------------------------------------------------------
         // TEST SpellTag
         SpellTagJDBCExecutor spellTagJDBCExecutor = new SpellTagJDBCExecutor();
+
+        List<SpellTag> spellTags = spellTagJDBCExecutor.getAllByTagId(8);
+        for (SpellTag spellTag : spellTags) {
+            System.out.println(spellTag);
+        }
 
 
 

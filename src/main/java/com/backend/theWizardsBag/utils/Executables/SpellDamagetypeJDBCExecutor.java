@@ -73,7 +73,7 @@ public class SpellDamagetypeJDBCExecutor {
         try {
             Connection connection = this.dcm.getConnection();
             SpellDamagetypeDAO spellDamagetypeDAO = new SpellDamagetypeDAO(connection);
-            return spellDamagetypeDAO.findAllBySpellId(damagetypeId);
+            return spellDamagetypeDAO.findAllByDamagetypeId(damagetypeId);
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);

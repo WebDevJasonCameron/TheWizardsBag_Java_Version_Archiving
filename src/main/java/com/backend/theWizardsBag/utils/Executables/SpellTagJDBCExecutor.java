@@ -13,65 +13,106 @@ import java.util.List;
 public class SpellTagJDBCExecutor {
 
 
+    // ATTs
+    final Keys keys = new Keys();
+    final String password = keys.jdbcPassword();
+    final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
 
-    public List<SpellTag> getAll(){
-        final Keys jdbcKey = new Keys();
-        final String password = jdbcKey.jdbcPassword();
-        final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db",  "postgres", password);
-
-        List<SpellTag> spellTags = new ArrayList<>();
-
+    // MTHs
+    public SpellTag create(long spellsSpellId, long tagsTagId){
         try {
-            Connection connection = dcm.getConnection();
+            Connection connection= this.dcm.getConnection();
             SpellTagDAO spellTagDAO = new SpellTagDAO(connection);
-            spellTags =  spellTagDAO.findAll();
+            SpellTag spellTag = new SpellTag();
+
+            spellTag.setSpellTagId(spellsSpellId);
+            spellTag.setTagsTagId(tagsTagId);
+            return spellTagDAO.create(spellTag);
 
         } catch (SQLException e) {
             e.printStackTrace();
+            throw new RuntimeException(e);
         }
-
-        return spellTags;
     }
 
-    public SpellTag getById(long id) {
-        final Keys jdbcKey = new Keys();
-        final String password = jdbcKey.jdbcPassword();
-        final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db",  "postgres", password);
-
-        SpellTag spellTag = new SpellTag();
-
+    public SpellTag getById(long id){
         try {
-            Connection connection = dcm.getConnection();
+            Connection connection = this.dcm.getConnection();
             SpellTagDAO spellTagDAO = new SpellTagDAO(connection);
-            spellTag = spellTagDAO.findById(id);
+            return spellTagDAO.findById(id);
 
         } catch (SQLException e) {
             e.printStackTrace();
+            throw new RuntimeException(e);
         }
+    }
 
-        return null;
+    public List<SpellTag> getAll(){
+        try{
+            Connection connection = this.dcm.getConnection();
+            SpellTagDAO spellTagDAO = new SpellTagDAO(connection);
+            return spellTagDAO.findAll();
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 
     public List<SpellTag> getAllBySpellId(long spellId){
-
-        final Keys jdbcKey = new Keys();
-        final String password = jdbcKey.jdbcPassword();
-        final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db",  "postgres", password);
-
-        List<SpellTag> spellTags = new ArrayList<>();
-
         try {
-            Connection connection = dcm.getConnection();
+            Connection connection = this.dcm.getConnection();
+            SpellTagDAO spellTagDAO = new SpellTagDAO(connection);
+            return spellTagDAO.findAllBySpellId(spellId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<SpellTag> getAllByTagId(long tagId){
+        try {
+            Connection connection = this.dcm.getConnection();
+            SpellTagDAO spellTagDAO = new SpellTagDAO(connection);
+            return spellTagDAO.findAllByTagId(tagId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public SpellTag update(SpellTag spellTagNewData){
+        try {
+            Connection connection = this.dcm.getConnection();
             SpellTagDAO spellTagDAO = new SpellTagDAO(connection);
 
-            spellTags = spellTagDAO.findAllWithSpellId(spellId);
+            SpellTag spellTag = spellTagDAO.findById(spellTagNewData.getSpellTagId());
+
+            spellTag.setSpellTagId(spellTagNewData.getSpellTagId());
+            spellTag.setSpellsSpellId(spellTagNewData.getSpellsSpellId());
+            spellTag.setTagsTagId(spellTagNewData.getTagsTagId());
+
+            return spellTagDAO.update(spellTag);
+
+        } catch (SQLException e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void delete(long id){
+        try {
+            Connection connection = this.dcm.getConnection();
+            SpellTagDAO spellTagDAO = new SpellTagDAO(connection);
+            SpellTag spellTag = spellTagDAO.findById(id);
+            System.out.println("Deleted spell_tag with " + spellTag.getSpellTagId() + " id");
+            spellTagDAO.delete(id);
 
         } catch (SQLException e) {
             e.printStackTrace();
+            throw new RuntimeException(e);
         }
-
-        return spellTags;
     }
+
 
 }

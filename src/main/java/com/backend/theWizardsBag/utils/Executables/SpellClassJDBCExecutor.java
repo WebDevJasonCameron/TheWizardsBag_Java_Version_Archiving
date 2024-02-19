@@ -73,7 +73,7 @@ public class SpellClassJDBCExecutor {
         try {
             Connection connection = this.dcm.getConnection();
             SpellClassDAO spellClassDAO = new SpellClassDAO(connection);
-            return spellClassDAO.findAllBySpellId(classId);
+            return spellClassDAO.findAllByClassId(classId);
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);

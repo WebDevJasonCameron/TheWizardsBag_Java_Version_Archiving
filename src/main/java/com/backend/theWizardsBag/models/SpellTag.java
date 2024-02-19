@@ -5,49 +5,45 @@ import com.backend.theWizardsBag.utils.Objects.DataTransferObject;
 public class SpellTag implements DataTransferObject {
 
     // ATTs
-    private long spellTagID;                          //   Junction ID
-    private long tagID;
-    private String spellName;
-    private String tagName;
-    private String tagType;
+    private long spellTagId;
+    private long spellsSpellId;
+    private long tagsTagId;
 
     // CONs
+    public SpellTag() {
+    }
 
+    public SpellTag(long spellsSpellId, long tagsTagId) {
+        this.spellsSpellId = spellsSpellId;
+        this.tagsTagId = tagsTagId;
+    }
+
+    public SpellTag(long spellTagId, long spellsSpellId, long tagsTagId) {
+        this.spellTagId = spellTagId;
+        this.spellsSpellId = spellsSpellId;
+        this.tagsTagId = tagsTagId;
+    }
 
     // GETS & SETs
-    public long getSpellTagID() {
-        return spellTagID;
+    public long getSpellTagId() {
+        return spellTagId;
     }
-    public void setSpellTagID(long spellTagID) {
-        this.spellTagID = spellTagID;
-    }
-
-    public String getSpellName() {
-        return spellName;
-    }
-    public void setSpellName(String spellName) {
-        this.spellName = spellName;
+    public void setSpellTagId(long spellTagId) {
+        this.spellTagId = spellTagId;
     }
 
-    public long getTagID() {
-        return tagID;
+    public long getSpellsSpellId() {
+        return spellsSpellId;
     }
-    public void setTagID(long tagID) {
-        this.tagID = tagID;
-    }
-
-    public String getTagName() {
-        return tagName;
-    }
-    public void setTagName(String tagName) {
-        this.tagName = tagName;
+    public void setSpellsSpellId(long spellsSpellId) {
+        this.spellsSpellId = spellsSpellId;
     }
 
-    public String getTagType() {
-        return tagType;
+    public long getTagsTagId() {
+        return tagsTagId;
     }
-    public void setTagType(String tagType) {
-        this.tagType = tagType;
+    public void setTagsTagId(long tagsTagId) {
+        this.tagsTagId = tagsTagId;
     }
 
     // OVRs
@@ -59,13 +55,9 @@ public class SpellTag implements DataTransferObject {
     @Override
     public String toString() {
         return "SpellTag{" +
-                "spellTagID=" + spellTagID +
-                ", tagID=" + tagID +
-                ", spellName='" + spellName + '\'' +
-                ", tagName='" + tagName + '\'' +
-                ", tagType='" + tagType + '\'' +
+                "spellTagId=" + spellTagId +
+                ", spellsSpellId=" + spellsSpellId +
+                ", tagsTagId=" + tagsTagId +
                 '}';
     }
-
-// METHs
 }

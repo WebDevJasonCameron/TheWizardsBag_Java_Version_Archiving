@@ -25,11 +25,11 @@ public class SpellDamagetypeDAO extends DataAccessObject<SpellDamagetype> {
     private final static String GET_ALL = "SELECT * FROM spell_damagetypes ";
 
     private final static String GET_ALL_BY_SPELL_ID = "SELECT * FROM spell_damagetypes " +
-                                                      "WHERE spells_spell_id = ?";
+                                                      "WHERE spells_spell_id = ? ";
 
 
     private final static String GET_ALL_BY_DAMAGETYPE_ID = "SELECT * FROM spell_damagetypes " +
-                                                          "WHERE damagetypes_damagetype_id = ?";
+                                                          "WHERE damagetypes_damagetype_id = ? ";
 
     private final static String UPDATE =    "UPDATE spell_damagetypes " +
                                             "SET " +
@@ -54,13 +54,14 @@ public class SpellDamagetypeDAO extends DataAccessObject<SpellDamagetype> {
             statement.setLong(2, dto.getDamagetypesDamagetypeId());
             statement.execute();
 
-            long id = this.getLastVal(SPELL_CONDITION_SEQUENCE);
+            long id = this.getLastVal(SPELL_DAMAGETYPE_SEQUENCE);
             return this.findById(id);
 
         }catch (SQLException e){
             e.printStackTrace();
             throw new RuntimeException(e);
-        }    }
+        }
+    }
 
     @Override
     public SpellDamagetype findById(long id) {
@@ -81,7 +82,7 @@ public class SpellDamagetypeDAO extends DataAccessObject<SpellDamagetype> {
                 throw new RuntimeException(e);
             }
             return spellDamagetype;
-        }
+    }
 
     @Override
     public List<SpellDamagetype> findAll() {
@@ -103,7 +104,8 @@ public class SpellDamagetypeDAO extends DataAccessObject<SpellDamagetype> {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
-        return spellDamagetypes;      }
+        return spellDamagetypes;
+    }
 
     @Override
     public SpellDamagetype update(SpellDamagetype dto) {
@@ -121,7 +123,8 @@ public class SpellDamagetypeDAO extends DataAccessObject<SpellDamagetype> {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
-        return spellDamagetype;    }
+        return spellDamagetype;
+    }
 
     @Override
     public void delete(long id) {

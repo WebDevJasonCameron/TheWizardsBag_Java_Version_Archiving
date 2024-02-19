@@ -24,6 +24,8 @@ public abstract class DataAccessObject <T extends DataTransferObject> {
 
     protected final static String SPELL_CLASS_SEQUENCE = "spell_class_seq";
     protected final static String SPELL_CONDITION_SEQUENCE = "spell_condition_seq";
+    protected final static String SPELL_DAMAGETYPE_SEQUENCE = "spell_damagetypes_seq";  // <!> Change to singular
+    protected final static String SPELL_TAG_SEQUENCE = "spell_tag_seq";
 
     // CONs
     public DataAccessObject(Connection connection){

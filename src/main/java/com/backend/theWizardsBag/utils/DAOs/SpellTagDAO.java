@@ -13,114 +13,168 @@ import java.util.List;
 public class SpellTagDAO extends DataAccessObject<SpellTag> {
 
     // SQLs
-    private final static String GET_BY_ID = "SELECT " +
-                                                "st.*, " +
-                                                "s.*, " +
-                                                "t.* " +
-                                            "FROM spell_tags st " +
-                                                "JOIN spells s ON st.spells_spell_id = s.spell_id " +
-                                                "JOIN tags t ON st.tags_tag_id = t.tag_id " +
-                                            "WHERE " +
-                                                "st.spell_tag_id = 1;";
+    private final static String INSERT = "INSERT INTO spell_tags " +
+                                            "(spells_spell_id, tags_tag_id) " +
+                                         "VALUES " +
+                                            "(?, ?) ";
 
-    // <!> Change to focus on spell_tags table
-    private final static String GET_ALL_BY_SPELL_ID = "SELECT " +
-                                            " s.*, " +
-                                            " st.*, " +
-                                            " t.* " +
-                                        "FROM spells s " +
-                                            "JOIN spell_tags st ON s.spell_id = st.spells_spell_id " +
-                                            "JOIN tags t ON t.tag_id = st.tags_tag_id " +
-                                        "WHERE " +
-                                            "s.spell_id = ?";
+    private final static String GET_BY_ID = "SELECT * FROM spell_tags " +
+                                            "WHERE spell_tag_id = ? ";
+
+    private final static String GET_ALL = "SELECT * FROM spell_tags ";
+
+    private final static String GET_ALL_BY_SPELL_ID = "SELECT * FROM spell_tags " +
+                                                      "WHERE spells_spell_id = ? ";
+
+
+    private final static String GET_ALL_BY_TAG_ID = "SELECT * FROM spell_tags " +
+                                                           "WHERE tags_tag_id = ?  ";
+
+    private final static String UPDATE =    "UPDATE spell_tags " +
+                                            "SET " +
+                                                "spell_tag_id, " +
+                                                "spells_spell_id, " +
+                                                "tags_tag_id " +
+                                            "WHERE " +
+                                                "spell_tag_id = ? ";
+
+    private final static String DELETE = "DELETE FROM spell_tags " +
+                                         "WHERE spell_tag_id = ? ";
 
     // CONs
     public SpellTagDAO(Connection connection) {
         super(connection);
     }
 
+
     // OVRs
+
+    @Override
+    public SpellTag create(SpellTag dto) {
+        try (PreparedStatement statement = this.connection.prepareStatement(INSERT);){
+            statement.setLong(1, dto.getSpellsSpellId());
+            statement.setLong(2, dto.getTagsTagId());
+            statement.execute();
+
+            long id = this.getLastVal(SPELL_TAG_SEQUENCE);
+            return this.findById(id);
+
+        }catch (SQLException e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }     }
+
     @Override
     public SpellTag findById(long id) {
         SpellTag spellTag = new SpellTag();
 
-        try (PreparedStatement statement = this.connection.prepareStatement(GET_BY_ID);) {
+        try(PreparedStatement statement = this.connection.prepareStatement(GET_BY_ID);){
             statement.setLong(1, id);
 
             ResultSet rs = statement.executeQuery();
             while (rs.next()){
-
-                spellTag.setSpellTagID(rs.getLong("spell_tag_id"));
-                spellTag.setTagID(rs.getLong("tags_tag_id"));
-                spellTag.setSpellName(rs.getString("spell_name"));
-                spellTag.setTagName(rs.getString("tag_name"));
-                spellTag.setTagType(rs.getString("tag_type"));
+                spellTag.setSpellTagId(rs.getLong("spell_tag_id"));
+                spellTag.setSpellsSpellId(rs.getLong("spells_spell_id"));
+                spellTag.setTagsTagId(rs.getLong("tags_tag_id"));
 
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
         return spellTag;
+
     }
 
     @Override
-    // <!> Should group by spell id, so you can see a list of spells and their related tags
     public List<SpellTag> findAll() {
-        return null;
-    }
-
-    @Override
-    // <!> This should focus on the spell tag relations, NOT tag itself!  Think spell_tags table, not tags!
-    // <!>
-    public SpellTag update(SpellTag dto) {
-        return null;
-    }
-
-    @Override
-    // <!> This should focus on the spell tag relations, NOT tag itself!  Think spell_tags table, not tags!
-    public SpellTag create(SpellTag dto) {
-        return null;
-    }
-
-    @Override
-    // <!> This should focus on the spell tag relations, NOT tag itself!  Think spell_tags table, not tags!
-    public void delete(long id) {
-    }
-
-    // METHs
-    public List<SpellTag> findAllWithSpellId(long spellId) {
         List<SpellTag> spellTags = new ArrayList<>();
 
-        try (PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_SPELL_ID);) {
-            statement.setLong(1, spellId);
-
+        try (PreparedStatement statement = this.connection.prepareStatement(GET_ALL);){
             ResultSet rs = statement.executeQuery();
-            long tagId = 0;
+            while (rs.next()){
+                SpellTag spellTag = new SpellTag();
+
+                spellTag.setSpellTagId(rs.getLong("spell_tag_id"));
+                spellTag.setSpellsSpellId(rs.getLong("spells_spell_id"));
+                spellTag.setTagsTagId(rs.getLong("tags_tag_id"));
+
+                spellTags.add(spellTag);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        return spellTags;      }
+
+    @Override
+    public SpellTag update(SpellTag dto) {
+        SpellTag spellTag = null;
+
+        try (PreparedStatement statement = this.connection.prepareStatement(UPDATE); ) {
+            statement.setLong(1, dto.getSpellsSpellId());
+            statement.setLong(2, dto.getTagsTagId());
+            statement.setLong(3, dto.getSpellTagId());
+            statement.execute();
+
+            spellTag = this.findById(dto.getSpellTagId());
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        return spellTag;      }
+
+    @Override
+    public void delete(long id) {
+
+    }
+
+    // MTHs
+    public List<SpellTag> findAllBySpellId(long spellId){
+        List<SpellTag> spellTags = new ArrayList<>();
+
+        try(PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_SPELL_ID);) {
+            statement.setLong(1, spellId);
+            ResultSet rs = statement.executeQuery();
 
             while (rs.next()){
-                long currentTagId = rs.getLong("tag_id");
+                SpellTag spellTag = new SpellTag();
 
-                if(currentTagId != tagId) {
-                    SpellTag spellTag = new SpellTag();
+                spellTag.setSpellTagId(rs.getLong("spell_tag_id"));
+                spellTag.setSpellsSpellId(rs.getLong("spells_spell_id"));
+                spellTag.setTagsTagId(rs.getLong("tags_tag_id"));
 
-                    spellTag.setSpellTagID(rs.getLong("spell_tag_id"));
-                    spellTag.setTagID(rs.getLong("tag_id"));
-                    spellTag.setTagName(rs.getString("tag_name"));
-                    spellTag.setTagType(rs.getString("tag_type"));
-
-                    spellTags.add(spellTag);
-                }
+                spellTags.add(spellTag);
             }
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
-
-
-
         return spellTags;
     }
 
+    public List<SpellTag> findAllByTagId(long tagId){
+        List<SpellTag> spellTags = new ArrayList<>();
+
+        try(PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_TAG_ID);) {
+            statement.setLong(1, tagId);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()){
+                SpellTag spellTag = new SpellTag();
+
+                spellTag.setSpellTagId(rs.getLong("spell_tag_id"));
+                spellTag.setSpellsSpellId(rs.getLong("spells_spell_id"));
+                spellTag.setTagsTagId(rs.getLong("tags_tag_id"));
+
+                spellTags.add(spellTag);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        return spellTags;
+    }
 }

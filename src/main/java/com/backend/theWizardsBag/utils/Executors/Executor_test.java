@@ -64,15 +64,10 @@ public class Executor_test {
         // TEST SpellClass
         SpellClassJDBCExecutor spellClassJDBCExecutor = new SpellClassJDBCExecutor();
 
-        // find all
-        List<SpellClass> spellClasses = spellClassJDBCExecutor.getAll();
-        for (SpellClass spellClass : spellClasses){
+        List<SpellClass> spellClasses = spellClassJDBCExecutor.getAllByClassId(1);
+        for(SpellClass spellClass : spellClasses){
             System.out.println(spellClass);
         }
-
-
-
-
 
 
         // -------------------------------------------------------------------------------

@@ -5,40 +5,46 @@ import com.backend.theWizardsBag.utils.Objects.DataTransferObject;
 public class SpellCondition implements DataTransferObject {
 
     // ATTs
-    private long spellConditionID;                          //   Junction ID
-    private long conditionID;
-    private String conditionName;
-    private String conditionDescription;
+    private long spellConditionId;
+    private long spellsSpellId;
+    private long conditionsConditionId;
 
     // CONs
+    public SpellCondition() {
+    }
+
+    public SpellCondition(long spellsSpellId, long conditionsConditionId) {
+        this.spellsSpellId = spellsSpellId;
+        this.conditionsConditionId = conditionsConditionId;
+    }
+
+    public SpellCondition(long spellConditionId, long spellsSpellId, long conditionsConditionId) {
+        this.spellConditionId = spellConditionId;
+        this.spellsSpellId = spellsSpellId;
+        this.conditionsConditionId = conditionsConditionId;
+    }
+
 
     // GETs & SETs
-    public long getSpellConditionID() {
-        return spellConditionID;
+    public long getSpellConditionId() {
+        return spellConditionId;
     }
-    public void setSpellConditionID(long spellConditionID) {
-        this.spellConditionID = spellConditionID;
-    }
-
-    public long getConditionID() {
-        return conditionID;
-    }
-    public void setConditionID(long conditionID) {
-        this.conditionID = conditionID;
+    public void setSpellConditionId(long spellConditionId) {
+        this.spellConditionId = spellConditionId;
     }
 
-    public String getConditionName() {
-        return conditionName;
+    public long getSpellsSpellId() {
+        return spellsSpellId;
     }
-    public void setConditionName(String conditionName) {
-        this.conditionName = conditionName;
+    public void setSpellsSpellId(long spellsSpellId) {
+        this.spellsSpellId = spellsSpellId;
     }
 
-    public String getConditionDescription() {
-        return conditionDescription;
+    public long getConditionsConditionId() {
+        return conditionsConditionId;
     }
-    public void setConditionDescription(String conditionDescription) {
-        this.conditionDescription = conditionDescription;
+    public void setConditionsConditionId(long conditionsConditionId) {
+        this.conditionsConditionId = conditionsConditionId;
     }
 
     // OVRs
@@ -50,12 +56,9 @@ public class SpellCondition implements DataTransferObject {
     @Override
     public String toString() {
         return "SpellCondition{" +
-                "spellConditionID=" + spellConditionID +
-                ", conditionID=" + conditionID +
-                ", conditionName='" + conditionName + '\'' +
-                ", conditionDescription='" + conditionDescription + '\'' +
+                "spellConditionId=" + spellConditionId +
+                ", spellsSpellId=" + spellsSpellId +
+                ", conditionsConditionId=" + conditionsConditionId +
                 '}';
     }
-
-// METHs
 }

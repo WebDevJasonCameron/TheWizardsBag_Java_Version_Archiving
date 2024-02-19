@@ -7,69 +7,109 @@ import com.backend.theWizardsBag.utils.Managers.DatabaseConnectionManager;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class SpellConditionJDBCExecutor {
 
-    public static List<SpellCondition> getAll() {
-        Keys jdbcKey = new Keys();
-        String password = jdbcKey.jdbcPassword();
-        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db",  "postgres", password);
+    // ATTs
+    final Keys keys = new Keys();
+    final String password = keys.jdbcPassword();
+    final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
 
-        List<SpellCondition> spellConditions = new ArrayList<>();
-
+    // MTHs
+    public SpellCondition create(long spellsSpellId, long conditionsConditionId){
         try {
-            Connection connection = dcm.getConnection();
+            Connection connection= this.dcm.getConnection();
             SpellConditionDAO spellConditionDAO = new SpellConditionDAO(connection);
-            spellConditions = spellConditionDAO.findAll();
+            SpellCondition spellCondition = new SpellCondition();
+
+            spellCondition.setSpellConditionId(spellsSpellId);
+            spellCondition.setConditionsConditionId(conditionsConditionId);
+            return spellConditionDAO.create(spellCondition);
 
         } catch (SQLException e) {
             e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return spellConditions;
     }
 
-    public static SpellCondition getById(long id) {
-        Keys jdbcKey = new Keys();
-        String password = jdbcKey.jdbcPassword();
-        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db",  "postgres", password);
-
-        SpellCondition spellCondition = new SpellCondition();
-
+    public SpellCondition getById(long id){
         try {
-            Connection connection = dcm.getConnection();
+            Connection connection = this.dcm.getConnection();
             SpellConditionDAO spellConditionDAO = new SpellConditionDAO(connection);
-            spellCondition = spellConditionDAO.findById(id);
+            return spellConditionDAO.findById(id);
 
         } catch (SQLException e) {
             e.printStackTrace();
+            throw new RuntimeException(e);
         }
-
-        return spellCondition;
-
     }
 
-    public static List<SpellCondition> getAllBySpellId(long spellId) {
-        Keys jdbcKey = new Keys();
-        String password = jdbcKey.jdbcPassword();
-        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db",  "postgres", password);
-
-        List<SpellCondition> spellConditions = new ArrayList<>();
-
-        try {
-            Connection connection = dcm.getConnection();
+    public List<SpellCondition> getAll(){
+        try{
+            Connection connection = this.dcm.getConnection();
             SpellConditionDAO spellConditionDAO = new SpellConditionDAO(connection);
-
-            spellConditions = spellConditionDAO.findAllBySpellId(spellId);
-
-            for (SpellCondition spellCondition : spellConditions) {
-                System.out.println(spellCondition);
-            }
+            return spellConditionDAO.findAll();
 
         } catch (SQLException e) {
             e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return spellConditions;
     }
+
+    public List<SpellCondition> getAllBySpellId(long spellId){
+        try {
+            Connection connection = this.dcm.getConnection();
+            SpellConditionDAO spellConditionDAO = new SpellConditionDAO(connection);
+            return spellConditionDAO.findAllBySpellId(spellId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<SpellCondition> getAllByConditionId(long conditionId){
+        try {
+            Connection connection = this.dcm.getConnection();
+            SpellConditionDAO spellConditionDAO = new SpellConditionDAO(connection);
+            return spellConditionDAO.findAllBySpellId(conditionId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public SpellCondition update(SpellCondition spellConditionNewData){
+        try {
+            Connection connection = this.dcm.getConnection();
+            SpellConditionDAO spellConditionDAO = new SpellConditionDAO(connection);
+
+            SpellCondition spellCondition = spellConditionDAO.findById(spellConditionNewData.getSpellConditionId());
+
+            spellCondition.setSpellConditionId(spellConditionNewData.getSpellConditionId());
+            spellCondition.setSpellsSpellId(spellConditionNewData.getSpellsSpellId());
+            spellCondition.setConditionsConditionId(spellConditionNewData.getConditionsConditionId());
+
+            return spellConditionDAO.update(spellCondition);
+
+        } catch (SQLException e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void delete(long id){
+        try {
+            Connection connection = this.dcm.getConnection();
+            SpellConditionDAO spellConditionDAO = new SpellConditionDAO(connection);
+            SpellCondition spellCondition = spellConditionDAO.findById(id);
+            System.out.println("Deleted spell_condition with " + spellCondition.getSpellConditionId() + " id");
+            spellConditionDAO.delete(id);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
 }

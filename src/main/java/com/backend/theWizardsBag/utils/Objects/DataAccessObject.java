@@ -23,6 +23,7 @@ public abstract class DataAccessObject <T extends DataTransferObject> {
     protected final static String TYPE_SEQUENCE = "type_seq";
 
     protected final static String SPELL_CLASS_SEQUENCE = "spell_class_seq";
+    protected final static String SPELL_CONDITION_SEQUENCE = "spell_condition_seq";
 
     // CONs
     public DataAccessObject(Connection connection){
@@ -31,10 +32,10 @@ public abstract class DataAccessObject <T extends DataTransferObject> {
     }
 
     // METHs in a DAO
+    public abstract T create(T dto);                    //   Create
     public abstract T findById(long id);                //   Read
     public abstract List<T> findAll();
     public abstract T update(T dto);                    //   Update
-    public abstract T create(T dto);                    //   Create
     public abstract void delete(long id);               //   Delete
 
     protected int getLastVal(String sequence) {

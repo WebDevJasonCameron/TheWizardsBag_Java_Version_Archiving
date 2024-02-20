@@ -46,6 +46,15 @@ public class RpgClassDAO extends DataAccessObject<RpgClass> {
     private final static String DELETE = "DELETE FROM rpg_classes " +
                                          "WHERE class_id = ? ";
 
+    // SQL & SPELL
+    private final static String GET_ALL_BY_SPELL_ID =
+                    "SELECT  " +
+                        "c.* " +
+                    "FROM spells s  " +
+                    "JOIN spell_classes sc ON sc.spells_spell_id = s.spell_id " +
+                    "JOIN rpg_classes c ON sc.spell_class_id = c.class_id " +
+                    "WHERE s.spell_id = ?";
+
     // CONs
     public RpgClassDAO(Connection connection) {
         super(connection);
@@ -192,6 +201,31 @@ public class RpgClassDAO extends DataAccessObject<RpgClass> {
         }
 
         return rpgClass;
+    }
+
+    public List<RpgClass> findAllBySpellId(long spellId){
+        List<RpgClass> rpgClasses = new ArrayList<>();
+
+        try (PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_SPELL_ID);){
+            statement.setLong(1, spellId);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()){
+                RpgClass rpgClass = new RpgClass();
+
+                rpgClass.setClassId(rs.getLong("class_id"));
+                rpgClass.setClassName(rs.getString("class_name"));
+                rpgClass.setClassSubclassName(rs.getString("class_subclass_name"));
+                rpgClass.setClassDescription(rs.getString("class_description"));
+
+                rpgClasses.add(rpgClass);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        return rpgClasses;
     }
 
 }

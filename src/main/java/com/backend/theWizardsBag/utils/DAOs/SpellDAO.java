@@ -1,10 +1,7 @@
 package com.backend.theWizardsBag.utils.DAOs;
 
 import com.backend.theWizardsBag.models.*;
-import com.backend.theWizardsBag.utils.Executables.SpellClassJDBCExecutor;
-import com.backend.theWizardsBag.utils.Executables.SpellConditionJDBCExecutor;
-import com.backend.theWizardsBag.utils.Executables.SpellDamagetypeJDBCExecutor;
-import com.backend.theWizardsBag.utils.Executables.SpellTagJDBCExecutor;
+import com.backend.theWizardsBag.utils.Executables.*;
 import com.backend.theWizardsBag.utils.Objects.DataAccessObject;
 
 import java.sql.Connection;
@@ -77,6 +74,39 @@ public class SpellDAO extends DataAccessObject<Spell> {
     private final static String DELETE = "DELETE FROM spells " +
                                          "WHERE spell_id = ? ";
 
+    // SQL LISTs
+    private final static String GET_CLASS_LIST =
+                                "SELECT  " +
+                                    "c.* " +
+                                "FROM spells s  " +
+                                "JOIN spell_classes sc ON sc.spells_spell_id = s.spell_id " +
+                                "JOIN rpg_classes c ON sc.spell_class_id = c.class_id " +
+                                "WHERE s.spell_id = ?";
+
+    private final static String GET_CONDITION_LIST =
+                                "SELECT  " +
+                                    "c.* " +
+                                "FROM spells s  " +
+                                "JOIN spell_conditions sc ON sc.spells_spell_id = s.spell_id " +
+                                "JOIN conditions c ON sc.spell_condition_id = c.condition_id " +
+                                "WHERE s.spell_id = ?";
+
+    private final static String GET_DAMAGETYPE_LIST =
+                                "SELECT  " +
+                                    "d.* " +
+                                "FROM spells s  " +
+                                "JOIN spell_damagetypes sd ON sd.spells_spell_id = s.spell_id " +
+                                "JOIN damagetypes d ON sd.spell_damagetype_id = d.damagetype_id " +
+                                "WHERE s.spell_id = ?";
+
+    private final static String GET_TAG_LIST =
+                                "SELECT  " +
+                                    "t.* " +
+                                "FROM spells s  " +
+                                "JOIN spell_tags st ON st.spells_spell_id = s.spell_id " +
+                                "JOIN tags t ON sd.spell_tag_id = t.tag_id " +
+                                "WHERE s.spell_id = ?";
+
     // CONs
     public SpellDAO(Connection connection){
         super(connection);
@@ -139,19 +169,19 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 spell.setSpellImageUrl(rs.getString("spell_image_url"));
                 spell.setSpellSource(rs.getInt("spell_source_id"));
 
+
+                // Get & Set Spell Classes
+                RpgClassJDBCExecutor rpgClassJDBCExecutor = new RpgClassJDBCExecutor();
+                spell.setClassList(rpgClassJDBCExecutor.getAllBySpell(spell.getSpellId()));
+
                 /*
                 // Get & Set Spell Tags
-
                 SpellTagJDBCExecutor spellTagJDBCExecutor = new SpellTagJDBCExecutor();
                 spell.setSpellTagList(spellTagJDBCExecutor.getAllBySpellId(spell.getSpellId()));
 
                 // Get & Set Spell Conditions
                 SpellConditionJDBCExecutor spellConditionJDBCExecutor = new SpellConditionJDBCExecutor();
                 spell.setSpellConditionList(spellConditionJDBCExecutor.getAllBySpellId(spell.getSpellId()));
-
-                // Get & Set Spell Classes
-                SpellClassJDBCExecutor spellClassJDBCExecutor = new SpellClassJDBCExecutor();
-                spell.setSpellClassList(spellClassJDBCExecutor.getAllBySpellId(spell.getSpellId()));
 
                 // Get & Set Spell Damages
                 SpellDamagetypeJDBCExecutor spellDamagetypeJDBCExecutor = new SpellDamagetypeJDBCExecutor();

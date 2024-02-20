@@ -26,10 +26,10 @@ public class Spell implements DataTransferObject {
     private String spellImageUrl;
 
     // LISTs
-    private List<SpellTag> spellTagList;
-    private List<SpellCondition> spellConditionList;
-    private List<SpellDamagetype> spellDamagetypeList;
-    private List<SpellClass> spellClassList;
+    private List<Tag> tagList;
+    private List<Condition> conditionList;
+    private List<Damagetype> damagetypeList;
+    private List<RpgClass> classList;
 
     // OBJs
     private long spellSource;
@@ -190,34 +190,33 @@ public class Spell implements DataTransferObject {
 
 
     // GETs & SETs LISTs
-    public List<SpellTag> getSpellTagList() {
-        return spellTagList;
+    public List<Tag> getTagList() {
+        return tagList;
     }
-    public void setSpellTagList(List<SpellTag> spellTagList) {
-        this.spellTagList = spellTagList;
-    }
-
-    public List<SpellCondition> getSpellConditionList() {
-        return spellConditionList;
-    }
-    public void setSpellConditionList(List<SpellCondition> spellConditionList) {
-        this.spellConditionList = spellConditionList;
+    public void setTagList(List<Tag> tagList) {
+        this.tagList = tagList;
     }
 
-    public List<SpellDamagetype> getSpellDamagetypeList() {
-        return spellDamagetypeList;
+    public List<Condition> getConditionList() {
+        return conditionList;
     }
-    public void setSpellDamagetypeList(List<SpellDamagetype> spellDamagetypeList) {
-        this.spellDamagetypeList = spellDamagetypeList;
-    }
-
-    public List<SpellClass> getSpellClassList() {
-        return spellClassList;
-    }
-    public void setSpellClassList(List<SpellClass> spellClassList) {
-        this.spellClassList = spellClassList;
+    public void setConditionList(List<Condition> conditionList) {
+        this.conditionList = conditionList;
     }
 
+    public List<Damagetype> getDamagetypeList() {
+        return damagetypeList;
+    }
+    public void setDamagetypeList(List<Damagetype> damagetypeList) {
+        this.damagetypeList = damagetypeList;
+    }
+
+    public List<RpgClass> getClassList() {
+        return classList;
+    }
+    public void setClassList(List<RpgClass> classList) {
+        this.classList = classList;
+    }
 
     // GETs & SETs OBJs
     public long getSpellSource() {
@@ -253,13 +252,11 @@ public class Spell implements DataTransferObject {
                 ", spellSaveType='" + spellSaveType + '\'' +
                 ", spellDescription='" + spellDescription + '\'' +
                 ", spellImageUrl='" + spellImageUrl + '\'' +
-                ", spellTagList=" + spellTagList +
-                ", spellConditionList=" + spellConditionList +
-                ", spellDamagetypeList=" + spellDamagetypeList +
-                ", spellClassList=" + spellClassList +
+                ", tagList=" + tagList +
+                ", conditionList=" + conditionList +
+                ", damagetypeList=" + damagetypeList +
+                ", classList=" + classList +
                 ", spellSource=" + spellSource +
                 '}';
     }
-
-
 }

@@ -114,4 +114,17 @@ public class RpgClassJDBCExecutor {
         }
     }
 
+    // SPELL
+    public List<RpgClass> getAllBySpell (long spellId){
+        try {
+            Connection connection = this.dcm.getConnection();
+            RpgClassDAO classDAO = new RpgClassDAO(connection);
+            return classDAO.findAllBySpellId(spellId);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
 }

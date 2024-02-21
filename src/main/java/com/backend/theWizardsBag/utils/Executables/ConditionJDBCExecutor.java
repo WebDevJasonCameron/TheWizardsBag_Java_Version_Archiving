@@ -2,7 +2,9 @@ package com.backend.theWizardsBag.utils.Executables;
 
 import com.backend.theWizardsBag.constants.keys.Keys;
 import com.backend.theWizardsBag.models.Condition;
+import com.backend.theWizardsBag.models.RpgClass;
 import com.backend.theWizardsBag.utils.DAOs.ConditionDAO;
+import com.backend.theWizardsBag.utils.DAOs.RpgClassDAO;
 import com.backend.theWizardsBag.utils.Managers.DatabaseConnectionManager;
 
 import java.sql.Connection;
@@ -104,4 +106,18 @@ public class ConditionJDBCExecutor {
             throw new RuntimeException(e);
         }
     }
+
+    // SPELL
+    public List<Condition> getAllBySpell (long spellId){
+        try {
+            Connection connection = this.dcm.getConnection();
+            ConditionDAO conditionDAO = new ConditionDAO(connection);
+            return conditionDAO.findAllBySpellId(spellId);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
 }

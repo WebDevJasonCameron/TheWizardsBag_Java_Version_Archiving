@@ -170,18 +170,19 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 spell.setSpellSource(rs.getInt("spell_source_id"));
 
 
-                // Get & Set Spell Classes
+                // Get & Set Classes List
                 RpgClassJDBCExecutor rpgClassJDBCExecutor = new RpgClassJDBCExecutor();
                 spell.setClassList(rpgClassJDBCExecutor.getAllBySpell(spell.getSpellId()));
+
+                // Get & Set Conditions List
+                ConditionJDBCExecutor conditionJDBCExecutor = new ConditionJDBCExecutor();
+                spell.setConditionList(conditionJDBCExecutor.getAllBySpell(spell.getSpellId()));
 
                 /*
                 // Get & Set Spell Tags
                 SpellTagJDBCExecutor spellTagJDBCExecutor = new SpellTagJDBCExecutor();
                 spell.setSpellTagList(spellTagJDBCExecutor.getAllBySpellId(spell.getSpellId()));
 
-                // Get & Set Spell Conditions
-                SpellConditionJDBCExecutor spellConditionJDBCExecutor = new SpellConditionJDBCExecutor();
-                spell.setSpellConditionList(spellConditionJDBCExecutor.getAllBySpellId(spell.getSpellId()));
 
                 // Get & Set Spell Damages
                 SpellDamagetypeJDBCExecutor spellDamagetypeJDBCExecutor = new SpellDamagetypeJDBCExecutor();

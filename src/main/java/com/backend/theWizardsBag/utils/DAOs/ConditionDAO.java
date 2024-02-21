@@ -1,6 +1,7 @@
 package com.backend.theWizardsBag.utils.DAOs;
 
 import com.backend.theWizardsBag.models.Condition;
+import com.backend.theWizardsBag.models.RpgClass;
 import com.backend.theWizardsBag.utils.Objects.DataAccessObject;
 
 import java.sql.Connection;
@@ -32,6 +33,15 @@ public class ConditionDAO extends DataAccessObject<Condition> {
 
     private final static String DELETE = "DELETE FROM conditions " +
                                          "WHERE condition_id = ?";
+
+    // SQL & SPELL
+    private final static String GET_ALL_BY_SPELL_ID =
+            "SELECT  " +
+                    "c.* " +
+                    "FROM spells s  " +
+                    "JOIN spell_conditions sc ON sc.spells_spell_id = s.spell_id " +
+                    "JOIN conditions c ON sc.spell_condition_id = c.condition_id " +
+                    "WHERE s.spell_id = ?";
 
     // CONs
     public ConditionDAO(Connection connection) {
@@ -150,4 +160,29 @@ public class ConditionDAO extends DataAccessObject<Condition> {
 
         return condition;
     }
+
+    public List<Condition> findAllBySpellId(long spellId){
+        List<Condition> conditions = new ArrayList<>();
+
+        try (PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_SPELL_ID);){
+            statement.setLong(1, spellId);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()){
+                Condition condition = new Condition();
+
+                condition.setConditionId(rs.getLong("condition_id"));
+                condition.setConditionName(rs.getString("condition_name"));
+                condition.setConditionDescription(rs.getString("condition_description"));
+
+                conditions.add(condition);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        return conditions;
+    }
+
 }

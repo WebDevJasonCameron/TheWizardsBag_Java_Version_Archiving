@@ -25,7 +25,16 @@ public class TagDAO extends DataAccessObject<Tag> {
     private final static String UPDATE = " UPDATE tags SET tag_name = ?, tag_type = ? WHERE tag_id = ? ";
 
     private final static String DELETE = "DELETE FROM tags " +
-            "WHERE tag_id = ?";
+                                         "WHERE tag_id = ?";
+
+    // SQL & SPELL
+    private final static String GET_ALL_BY_SPELL_ID =
+                                        "SELECT  " +
+                                            "t.* " +
+                                        "FROM spells s  " +
+                                        "JOIN spell_tags st ON st.spells_spell_id = s.spell_id " +
+                                        "JOIN tags t ON sd.spell_tag_id = t.tag_id " +
+                                        "WHERE s.spell_id = ?";
 
     // CONs
     public TagDAO(Connection connection) {
@@ -57,7 +66,7 @@ public class TagDAO extends DataAccessObject<Tag> {
 
             ResultSet rs = statement.executeQuery();
             while (rs.next()){
-                tag.setTagID(rs.getLong("tag_id"));
+                tag.setTagId(rs.getLong("tag_id"));
                 tag.setTagName(rs.getString("tag_name"));
                 tag.setTagType(rs.getString("tag_type"));
             }
@@ -81,7 +90,7 @@ public class TagDAO extends DataAccessObject<Tag> {
             while (rs.next()) {
                 Tag tag = new Tag();
 
-                tag.setTagID(rs.getLong("tag_id"));
+                tag.setTagId(rs.getLong("tag_id"));
                 tag.setTagName(rs.getString("tag_name"));
                 tag.setTagType(rs.getString("tag_type"));
 
@@ -103,10 +112,10 @@ public class TagDAO extends DataAccessObject<Tag> {
         try (PreparedStatement statement = this.connection.prepareStatement(UPDATE);){
             statement.setString(1, dto.getTagName());
             statement.setString(2, dto.getTagType());
-            statement.setLong(3, dto.getTagID());
+            statement.setLong(3, dto.getTagId());
             statement.execute();
 
-            tag = this.findById(dto.getTagID());
+            tag = this.findById(dto.getTagId());
             System.out.println(tag);
 
         } catch (SQLException e) {
@@ -136,7 +145,7 @@ public class TagDAO extends DataAccessObject<Tag> {
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()){
-                tag.setTagID(rs.getLong("tag_id"));
+                tag.setTagId(rs.getLong("tag_id"));
                 tag.setTagName(rs.getString("tag_name"));
                 tag.setTagType(rs.getString("tag_type"));
             }
@@ -148,4 +157,29 @@ public class TagDAO extends DataAccessObject<Tag> {
 
         return tag;
     }
+
+    public List<Tag> findAllBySpellId(long spellId){
+        List<Tag> tags = new ArrayList<>();
+
+        try (PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_SPELL_ID);){
+            statement.setLong(1, spellId);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()){
+                Tag tag = new Tag();
+
+                tag.setTagId(rs.getLong("tag_id"));
+                tag.setTagName(rs.getString("tag_name"));
+                tag.setTagType(rs.getString("tag_type"));
+
+                tags.add(tag);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        return tags;
+    }
+
 }

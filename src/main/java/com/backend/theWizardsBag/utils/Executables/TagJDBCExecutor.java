@@ -83,7 +83,7 @@ public class TagJDBCExecutor {
             Connection connection = this.dcm.getConnection();
             TagDAO tagDAO = new TagDAO(connection);
 
-            Tag tag = tagDAO.findById(tagNewData.getTagID());
+            Tag tag = tagDAO.findById(tagNewData.getTagId());
             System.out.println(tag.getTagName() + " - " + tag.getTagType() );   // <R> remove after test
 
             tag.setTagName(tagNewData.getTagName());
@@ -108,6 +108,20 @@ public class TagJDBCExecutor {
             Tag tagBeingDeleted = tagDAO.findById(id);
             tagDAO.delete(id);
             System.out.println("Deleted: " + tagBeingDeleted.getTagName());
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    // SPELL
+    public List<Tag> getAllBySpell (long spellId){
+        try {
+            Connection connection = this.dcm.getConnection();
+            TagDAO tagDAO = new TagDAO(connection);
+            return tagDAO.findAllBySpellId(spellId);
 
         } catch (SQLException e) {
             e.printStackTrace();

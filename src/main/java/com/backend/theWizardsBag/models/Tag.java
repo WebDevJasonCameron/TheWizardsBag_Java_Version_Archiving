@@ -5,7 +5,7 @@ import com.backend.theWizardsBag.utils.Objects.DataTransferObject;
 public class Tag implements DataTransferObject {
 
     // ATTs
-    private long tagID;
+    private long tagId;
     private String tagName;
     private String tagType;
 
@@ -13,18 +13,18 @@ public class Tag implements DataTransferObject {
     public Tag() {
     }
 
-    public Tag(long tagID, String tagName, String tagType) {
-        this.tagID = tagID;
+    public Tag(long tagId, String tagName, String tagType) {
+        this.tagId = tagId;
         this.tagName = tagName;
         this.tagType = tagType;
     }
 
     // GETs & SETs
-    public long getTagID() {
-        return tagID;
+    public long getTagId() {
+        return tagId;
     }
-    public void setTagID(long tagID) {
-        this.tagID = tagID;
+    public void setTagId(long tagId) {
+        this.tagId = tagId;
     }
 
     public String getTagName() {
@@ -49,7 +49,7 @@ public class Tag implements DataTransferObject {
     @Override
     public String toString() {
         return "Tag{" +
-                "tagID=" + tagID +
+                "tagId=" + tagId +
                 ", tagName='" + tagName + '\'' +
                 ", tagType='" + tagType + '\'' +
                 '}';

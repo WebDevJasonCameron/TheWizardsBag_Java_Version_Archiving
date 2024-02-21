@@ -41,6 +41,14 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
     private final static String DELETE = "DELETE FROM spell_tags " +
                                          "WHERE spell_tag_id = ? ";
 
+    // SQL & SPELL
+    private final static String GET_BY_SPELL_AND_TAG_IDS = "SELECT  " +
+                                                                 "spell_tag_id " +
+                                                                 "FROM spell_tags " +
+                                                                 "WHERE " +
+                                                                 "spells_spell_id = ? " +
+                                                                 "AND tags_tag_id = ? ";
+
     // CONs
     public SpellTagDAO(Connection connection) {
         super(connection);
@@ -128,7 +136,13 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
 
     @Override
     public void delete(long id) {
-
+        try(PreparedStatement statement = this.connection.prepareStatement(DELETE);) {
+            statement.setLong(1, id);
+            statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 
     // MTHs
@@ -176,5 +190,27 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
             throw new RuntimeException(e);
         }
         return spellTags;
+    }
+
+    // MTHs & SPELL
+    public SpellTag findBySpellAndTagIds(long spellId, long tagId) {
+        SpellTag spellTag = new SpellTag();
+
+        try(PreparedStatement statement = this.connection.prepareStatement(GET_BY_SPELL_AND_TAG_IDS);){
+            statement.setLong(1, spellId);
+            statement.setLong(2, tagId);
+
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()){
+                spellTag.setSpellTagId(rs.getLong("spell_tag_id"));
+                spellTag.setSpellsSpellId(rs.getLong("spells_spell_id"));
+                spellTag.setTagsTagId(rs.getLong("tags_tag_id"));
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        return spellTag;
     }
 }

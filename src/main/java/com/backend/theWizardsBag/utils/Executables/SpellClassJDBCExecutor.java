@@ -113,4 +113,19 @@ public class SpellClassJDBCExecutor {
         }
     }
 
+    // MTHs & SPELL
+    public SpellClass getBySpellAndClassIds(long spellId, long classId){
+        try {
+            Connection connection = this.dcm.getConnection();
+            SpellClassDAO spellClassDAO = new SpellClassDAO(connection);
+
+            return spellClassDAO.findBySpellAndClassIds(spellId, classId);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+
 }

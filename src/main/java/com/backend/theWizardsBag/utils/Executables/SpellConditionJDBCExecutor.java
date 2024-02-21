@@ -1,7 +1,9 @@
 package com.backend.theWizardsBag.utils.Executables;
 
 import com.backend.theWizardsBag.constants.keys.Keys;
+import com.backend.theWizardsBag.models.SpellClass;
 import com.backend.theWizardsBag.models.SpellCondition;
+import com.backend.theWizardsBag.utils.DAOs.SpellClassDAO;
 import com.backend.theWizardsBag.utils.DAOs.SpellConditionDAO;
 import com.backend.theWizardsBag.utils.Managers.DatabaseConnectionManager;
 
@@ -112,4 +114,17 @@ public class SpellConditionJDBCExecutor {
         }
     }
 
+    // MTHs & SPELL
+    public SpellCondition getBySpellAndConditionIds(long spellId, long conditionId){
+        try {
+            Connection connection = this.dcm.getConnection();
+            SpellConditionDAO spellConditionDAO = new SpellConditionDAO(connection);
+
+            return spellConditionDAO.findBySpellAndConditionIds(spellId, conditionId);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
 }

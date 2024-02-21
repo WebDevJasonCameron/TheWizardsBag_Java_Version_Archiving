@@ -26,7 +26,6 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
     private final static String GET_ALL_BY_SPELL_ID = "SELECT * FROM spell_classes " +
                                                       "WHERE spells_spell_id = ?";
 
-
     private final static String GET_ALL_BY_CLASS_ID = "SELECT * FROM spell_classes " +
                                                       "WHERE classes_class_id = ?";
 
@@ -40,6 +39,15 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
 
     private final static String DELETE = "DELETE FROM spell_classes " +
             "WHERE spell_class_id = ? ";
+
+    // SQL & SPELL
+    private final static String GET_BY_SPELL_AND_CLASS_IDS = "SELECT  " +
+                                                                "spell_class_id " +
+                                                             "FROM spell_classes " +
+                                                             "WHERE " +
+                                                                "spells_spell_id = ? " +
+                                                                "AND classes_class_id = ? ";
+
 
     // CONs
     public SpellClassDAO(Connection connection) {
@@ -138,7 +146,7 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
     }
 
     // MTHs
-    public List<SpellClass> findAllBySpellId(long spellId){
+    public List<SpellClass> findAllBySpellId (long spellId){
         List<SpellClass> spellClasses = new ArrayList<>();
 
         try(PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_SPELL_ID);) {
@@ -161,7 +169,7 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
         return spellClasses;
     }
 
-    public List<SpellClass> findAllByClassId(long classId){
+    public List<SpellClass> findAllByClassId (long classId){
         List<SpellClass> spellClasses = new ArrayList<>();
 
         try(PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_CLASS_ID);) {
@@ -182,5 +190,28 @@ public class SpellClassDAO extends DataAccessObject<SpellClass> {
             throw new RuntimeException(e);
         }
         return spellClasses;
+    }
+
+    // MTHs & SPELL
+
+    public SpellClass findBySpellAndClassIds(long spellId, long classId) {
+        SpellClass spellClass = new SpellClass();
+
+        try(PreparedStatement statement = this.connection.prepareStatement(GET_BY_SPELL_AND_CLASS_IDS);){
+            statement.setLong(1, spellId);
+            statement.setLong(2, classId);
+
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()){
+                spellClass.setSpellClassId(rs.getLong("spell_class_id"));
+                spellClass.setSpellsSpellId(rs.getLong("spells_spell_id"));
+                spellClass.setClassesClassId(rs.getLong("classes_class_id"));
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        return spellClass;
     }
 }

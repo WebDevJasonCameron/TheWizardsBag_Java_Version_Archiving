@@ -1,6 +1,6 @@
 package com.backend.theWizardsBag.utils.DAOs;
 
-import com.backend.theWizardsBag.models.SpellCondition;
+import com.backend.theWizardsBag.models.SpellDamagetype;
 import com.backend.theWizardsBag.models.SpellDamagetype;
 import com.backend.theWizardsBag.utils.Objects.DataAccessObject;
 
@@ -41,6 +41,14 @@ public class SpellDamagetypeDAO extends DataAccessObject<SpellDamagetype> {
 
     private final static String DELETE = "DELETE FROM spell_damagetypes " +
                                          "WHERE spell_damagetype_id = ? ";
+
+    // SQL & SPELL
+    private final static String GET_BY_SPELL_AND_DAMAGETYPE_IDS = "SELECT  " +
+                                                                    "spell_damagetype_id " +
+                                                                  "FROM spell_damagetypes " +
+                                                                  "WHERE " +
+                                                                    "spells_spell_id = ? " +
+                                                                    "AND damagetypes_damagetype_id = ? ";
 
     // CONs
     public SpellDamagetypeDAO(Connection connection) {
@@ -184,7 +192,27 @@ public class SpellDamagetypeDAO extends DataAccessObject<SpellDamagetype> {
         return spellDamagetypes;
     }
 
+    // MTHs & SPELL
+    public SpellDamagetype findBySpellAndDamagetypeIds(long spellId, long damagetypeId) {
+        SpellDamagetype spellDamagetype = new SpellDamagetype();
 
+        try(PreparedStatement statement = this.connection.prepareStatement(GET_BY_SPELL_AND_DAMAGETYPE_IDS);){
+            statement.setLong(1, spellId);
+            statement.setLong(2, damagetypeId);
+
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()){
+                spellDamagetype.setSpellDamagetypeId(rs.getLong("spell_damagetype_id"));
+                spellDamagetype.setSpellsSpellId(rs.getLong("spells_spell_id"));
+                spellDamagetype.setDamagetypesDamagetypeId(rs.getLong("damagetypes_damagetype_id"));
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        return spellDamagetype;
+    }
 
 
 }

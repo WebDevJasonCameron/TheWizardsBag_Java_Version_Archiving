@@ -1,5 +1,6 @@
 package com.backend.theWizardsBag.utils.DAOs;
 
+import com.backend.theWizardsBag.models.SpellClass;
 import com.backend.theWizardsBag.models.SpellCondition;
 import com.backend.theWizardsBag.utils.Objects.DataAccessObject;
 
@@ -40,6 +41,14 @@ public class SpellConditionDAO extends DataAccessObject<SpellCondition> {
 
     private final static String DELETE = "DELETE FROM spell_conditions " +
                                          "WHERE spell_condition_id = ? ";
+
+    // SQL & SPELL
+    private final static String GET_BY_SPELL_AND_CONDITION_IDS = "SELECT  " +
+                                                                    "spell_condition_id " +
+                                                                 "FROM spell_conditions " +
+                                                                 "WHERE " +
+                                                                    "spells_spell_id = ? " +
+                                                                    "AND conditions_condition_id = ? ";
 
     // CONs
     public SpellConditionDAO(Connection connection) {
@@ -182,5 +191,27 @@ public class SpellConditionDAO extends DataAccessObject<SpellCondition> {
             throw new RuntimeException(e);
         }
         return spellConditions;
+    }
+
+    // MTHs & SPELL
+    public SpellCondition findBySpellAndConditionIds(long spellId, long conditionId) {
+        SpellCondition spellCondition = new SpellCondition();
+
+        try(PreparedStatement statement = this.connection.prepareStatement(GET_BY_SPELL_AND_CONDITION_IDS);){
+            statement.setLong(1, spellId);
+            statement.setLong(2, conditionId);
+
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()){
+                spellCondition.setSpellConditionId(rs.getLong("spell_condition_id"));
+                spellCondition.setSpellsSpellId(rs.getLong("spells_spell_id"));
+                spellCondition.setConditionsConditionId(rs.getLong("conditions_condition_id"));
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        return spellCondition;
     }
 }

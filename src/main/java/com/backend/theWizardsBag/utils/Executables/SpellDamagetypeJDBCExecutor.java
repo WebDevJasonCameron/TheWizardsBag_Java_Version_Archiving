@@ -113,4 +113,18 @@ public class SpellDamagetypeJDBCExecutor {
         }
     }
 
+    // MTHs & SPELL
+    public SpellDamagetype getBySpellAndDamagetypeIds(long spellId, long damagetypeId){
+        try {
+            Connection connection = this.dcm.getConnection();
+            SpellDamagetypeDAO spellDamagetypeDAO = new SpellDamagetypeDAO(connection);
+
+            return spellDamagetypeDAO.findBySpellAndDamagetypeIds(spellId, damagetypeId);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
 }

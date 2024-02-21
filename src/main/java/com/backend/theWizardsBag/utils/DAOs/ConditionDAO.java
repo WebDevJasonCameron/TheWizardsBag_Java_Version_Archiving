@@ -36,12 +36,12 @@ public class ConditionDAO extends DataAccessObject<Condition> {
 
     // SQL & SPELL
     private final static String GET_ALL_BY_SPELL_ID =
-            "SELECT  " +
-                    "c.* " +
-                    "FROM spells s  " +
-                    "JOIN spell_conditions sc ON sc.spells_spell_id = s.spell_id " +
-                    "JOIN conditions c ON sc.spell_condition_id = c.condition_id " +
-                    "WHERE s.spell_id = ?";
+                                        "SELECT  " +
+                                            "c.* " +
+                                        "FROM spells s  " +
+                                        "JOIN spell_conditions sc ON sc.spells_spell_id = s.spell_id " +
+                                        "JOIN conditions c ON sc.spell_condition_id = c.condition_id " +
+                                        "WHERE s.spell_id = ?";
 
     // CONs
     public ConditionDAO(Connection connection) {

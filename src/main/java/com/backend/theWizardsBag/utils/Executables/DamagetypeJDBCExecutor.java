@@ -1,7 +1,6 @@
 package com.backend.theWizardsBag.utils.Executables;
 
 import com.backend.theWizardsBag.constants.keys.Keys;
-import com.backend.theWizardsBag.models.Condition;
 import com.backend.theWizardsBag.models.Damagetype;
 import com.backend.theWizardsBag.utils.DAOs.DamagetypeDAO;
 import com.backend.theWizardsBag.utils.Managers.DatabaseConnectionManager;
@@ -99,6 +98,17 @@ public class DamagetypeJDBCExecutor {
         }
     }
 
+    // MTHs & SPELL
+    public List<Damagetype> getAllBySpell (long spellId){
+        try {
+            Connection connection = this.dcm.getConnection();
+            DamagetypeDAO damagetypeDAO = new DamagetypeDAO(connection);
+            return damagetypeDAO.findAllBySpellId(spellId);
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
 
 }

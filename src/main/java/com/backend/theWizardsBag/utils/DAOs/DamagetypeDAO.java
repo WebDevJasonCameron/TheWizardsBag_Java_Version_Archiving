@@ -14,23 +14,32 @@ public class DamagetypeDAO extends DataAccessObject<Damagetype> {
 
     // SQLs
     private final static String INSERT = "INSERT INTO damagetypes " +
-            "(damagetype_name) " +
-            "VALUES (?)";
+                                         "(damagetype_name) " +
+                                         "VALUES (?)";
 
     private final static String GET_BY_ID = "SELECT * FROM damagetypes " +
-            "WHERE damagetype_id = ?";
+                                            "WHERE damagetype_id = ?";
 
     private final static String GET_ALL = "SELECT * FROM damagetypes ";
 
     private final static String GET_BY_NAME = "SELECT * FROM damagetypes " +
-            "WHERE LOWER(damagetype_name) = LOWER( ? )";
+                                              "WHERE LOWER(damagetype_name) = LOWER( ? )";
 
     private final static String UPDATE = "UPDATE damagetypes " +
-            "SET damagetype_name = ? " +
-            "WHERE damagetype_id = ?";
+                                         "SET damagetype_name = ? " +
+                                         "WHERE damagetype_id = ?";
 
     private final static String DELETE = "DELETE FROM damagetypes " +
-            "WHERE damagetype_id = ?";
+                                         "WHERE damagetype_id = ?";
+
+    // SQL & SPELL
+    private final static String GET_ALL_BY_SPELL_ID =
+                                        "SELECT  " +
+                                            "d.* " +
+                                        "FROM spells s  " +
+                                        "JOIN spell_damagetypes sd ON sd.spells_spell_id = s.spell_id " +
+                                        "JOIN damagetypes d ON sd.spell_damagetype_id = d.damagetype_id " +
+                                        "WHERE s.spell_id = ?";
 
     // CONs
     public DamagetypeDAO(Connection connection) {
@@ -144,5 +153,29 @@ public class DamagetypeDAO extends DataAccessObject<Damagetype> {
 
         return damagetype;
     }
+
+    public List<Damagetype> findAllBySpellId(long spellId){
+        List<Damagetype> damagetypes = new ArrayList<>();
+
+        try (PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_SPELL_ID);){
+            statement.setLong(1, spellId);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()){
+                Damagetype damagetype = new Damagetype();
+
+                damagetype.setDamagetypeId(rs.getLong("damagetype_id"));
+                damagetype.setDamagetypeName(rs.getString("damagetype_name"));
+
+                damagetypes.add(damagetype);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        return damagetypes;
+    }
+
 
 }

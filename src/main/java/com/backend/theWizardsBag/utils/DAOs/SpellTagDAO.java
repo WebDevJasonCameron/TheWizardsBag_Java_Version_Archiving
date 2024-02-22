@@ -26,7 +26,6 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
     private final static String GET_ALL_BY_SPELL_ID = "SELECT * FROM spell_tags " +
                                                       "WHERE spells_spell_id = ? ";
 
-
     private final static String GET_ALL_BY_TAG_ID = "SELECT * FROM spell_tags " +
                                                            "WHERE tags_tag_id = ?  ";
 
@@ -43,11 +42,11 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
 
     // SQL & SPELL
     private final static String GET_BY_SPELL_AND_TAG_IDS = "SELECT  " +
-                                                                 "spell_tag_id " +
-                                                                 "FROM spell_tags " +
-                                                                 "WHERE " +
-                                                                 "spells_spell_id = ? " +
-                                                                 "AND tags_tag_id = ? ";
+                                                              "spell_tag_id " +
+                                                           "FROM spell_tags " +
+                                                           "WHERE " +
+                                                              "spells_spell_id = ? " +
+                                                              "AND tags_tag_id = ? ";
 
     // CONs
     public SpellTagDAO(Connection connection) {
@@ -56,7 +55,6 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
 
 
     // OVRs
-
     @Override
     public SpellTag create(SpellTag dto) {
         try (PreparedStatement statement = this.connection.prepareStatement(INSERT);){

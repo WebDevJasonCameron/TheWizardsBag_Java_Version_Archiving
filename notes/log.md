@@ -1,5 +1,9 @@
 # Log
 
+## 2024-02-22 | Next
+
+I need to figure out what is next.  The Spell SQL commands and executors are completed.  I now need to build something around them.  I thought that "something" should be a CLI program that CRUDs all the different spells and attributes.  Another option is to build a GUI with JavaFX.  That is something I'm leaning towards wanting to do rather than the CLI.  It's something I really haven't built before.  Third option is to just push everything to Web browser.  This is probably the quickest and most fruitful.  Let me think about this for a couple of days.  I might even start a JavaFX Udemy course for a month to really decide.  We'll see...
+
 ## 2024-02-05 | Mixed Classes
 
 I was having a hard time figuring how to build out my DAOs.  For example, the SpellClass DAO was making SQL queries for all the classes.  This it hit me, I don't want that.  That should go to the class (prgClasses) DAO.  If I want to create, update or delete a rpg class, I should use a targeted class DAO.  The SpellClass DAO should let me target the junction table and CRUD data relating this.  Then, I should be able to use the executables within the narrower class DAO to read the class information.  I also need to realize that it doesn't matter if I don't use rpg class in the items attributes.  Doing it this way means things stay confined to the "best answer" so-to-spake.  So!  I need a:

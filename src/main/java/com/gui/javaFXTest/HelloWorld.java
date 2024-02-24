@@ -1,4 +1,4 @@
-package com.gui.JavaFXTest;
+package com.gui.javaFXTest;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -7,6 +7,7 @@ public class HelloWorld extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Hello World");
+        System.out.println("hello World");
 
         primaryStage.show();
     }

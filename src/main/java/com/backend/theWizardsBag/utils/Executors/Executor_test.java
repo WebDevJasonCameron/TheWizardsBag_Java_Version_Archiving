@@ -57,6 +57,10 @@ public class Executor_test {
         // -------------------------------------------------------------------------------
         // TEST Spell     <- Completed
         SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
+        List<Spell> spells = spellJDBCExecutor.getAll();
+        for (Spell spell : spells){
+            System.out.println(spell);
+        }
 
         // -------------------------------------------------------------------------------
         // TEST SpellClass

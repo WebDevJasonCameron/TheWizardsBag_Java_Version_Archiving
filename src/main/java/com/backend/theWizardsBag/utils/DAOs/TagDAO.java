@@ -33,7 +33,7 @@ public class TagDAO extends DataAccessObject<Tag> {
                                             "t.* " +
                                         "FROM spells s  " +
                                         "JOIN spell_tags st ON st.spells_spell_id = s.spell_id " +
-                                        "JOIN tags t ON sd.spell_tag_id = t.tag_id " +
+                                        "JOIN tags t ON st.spell_tag_id = t.tag_id " +
                                         "WHERE s.spell_id = ?";
 
     // CONs

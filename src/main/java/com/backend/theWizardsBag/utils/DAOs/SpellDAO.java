@@ -142,10 +142,10 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 RpgClassJDBCExecutor rpgClassJDBCExecutor = new RpgClassJDBCExecutor();
                 spell.setClassList(rpgClassJDBCExecutor.getAllBySpell(spell.getSpellId()));
 
+
                 // Get & Set Conditions List
                 ConditionJDBCExecutor conditionJDBCExecutor = new ConditionJDBCExecutor();
                 spell.setConditionList(conditionJDBCExecutor.getAllBySpell(spell.getSpellId()));
-
 
                 // Get & Set Spell Damages
                 DamagetypeJDBCExecutor damagetypeJDBCExecutor = new DamagetypeJDBCExecutor();
@@ -154,6 +154,7 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 // Get & Set Spell Tags
                 TagJDBCExecutor tagJDBCExecutor = new TagJDBCExecutor();
                 spell.setTagList(tagJDBCExecutor.getAllBySpell(spell.getSpellId()));
+
             }
 
         } catch (SQLException e) {
@@ -193,29 +194,9 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 spell.setSpellImageUrl(rs.getString("spell_image_url"));
                 spell.setSpellSource(rs.getInt("spell_source_id"));
 
-                // Get & Set Classes List
-                RpgClassJDBCExecutor rpgClassJDBCExecutor = new RpgClassJDBCExecutor();
-                spell.setClassList(rpgClassJDBCExecutor.getAllBySpell(spell.getSpellId()));
-
-                // Get & Set Conditions List
-                ConditionJDBCExecutor conditionJDBCExecutor = new ConditionJDBCExecutor();
-                spell.setConditionList(conditionJDBCExecutor.getAllBySpell(spell.getSpellId()));
-
-
-                // Get & Set Spell Damages
-                DamagetypeJDBCExecutor damagetypeJDBCExecutor = new DamagetypeJDBCExecutor();
-                spell.setDamagetypeList(damagetypeJDBCExecutor.getAllBySpell(spell.getSpellId()));
-
-                // Get & Set Spell Tags
-                TagJDBCExecutor tagJDBCExecutor = new TagJDBCExecutor();
-                spell.setTagList(tagJDBCExecutor.getAllBySpell(spell.getSpellId()));
-
                 // Add to Spell List
                 spells.add(spell);
-
             }
-
-
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);

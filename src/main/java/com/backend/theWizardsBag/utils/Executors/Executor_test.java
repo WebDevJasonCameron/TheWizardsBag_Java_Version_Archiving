@@ -57,6 +57,7 @@ public class Executor_test {
         // -------------------------------------------------------------------------------
         // TEST Spell     <- Completed
         SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
+
         List<Spell> spells = spellJDBCExecutor.getAll();
         for (Spell spell : spells){
             System.out.println(spell);
@@ -81,13 +82,6 @@ public class Executor_test {
         // -------------------------------------------------------------------------------
         // TEST SpellTag
         SpellTagJDBCExecutor spellTagJDBCExecutor = new SpellTagJDBCExecutor();
-
-        List<SpellTag> spellTags = spellTagJDBCExecutor.getAllByTagId(8);
-        for (SpellTag spellTag : spellTags) {
-            System.out.println(spellTag);
-        }
-
-
 
     }
 }

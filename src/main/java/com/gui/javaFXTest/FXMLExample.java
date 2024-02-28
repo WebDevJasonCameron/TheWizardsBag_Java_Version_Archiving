@@ -10,18 +10,19 @@ import java.net.URL;
 
 public class FXMLExample extends Application{
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(new URL("com/gui/javaFXTest/hello-world.fxml"));
-        VBox vbox = loader.<VBox>load();
+        // This is the way!
+        FXMLLoader loader = new FXMLLoader(FXMLExample.class.getResource("hello-world.fxml"));
 
-        Scene scene = new Scene(vbox);
+        VBox vBox = loader.<VBox>load();
+
+        Scene scene = new Scene(vBox);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+    public static void main(String[] args) {
+        launch();
+    }
+
 }

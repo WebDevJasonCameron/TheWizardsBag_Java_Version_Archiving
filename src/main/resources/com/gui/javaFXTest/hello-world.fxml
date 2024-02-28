@@ -3,7 +3,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Label?>
 
-<VBox alignment="CENTER" spacing="20.0" >
+<VBox alignment="CENTER" spacing="20.0"  xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.gui.javaFXTest.HelloWorld" >
 
     <children>
         <Label text="Hello world FXML"/>

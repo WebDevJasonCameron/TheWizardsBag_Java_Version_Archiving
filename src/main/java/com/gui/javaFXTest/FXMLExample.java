@@ -17,7 +17,7 @@ public class FXMLExample extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(new URL("/Users/jasoncameron/IdeaProjects/TheWizardsBag/src/main/resources/com/gui/javaFXTest/hello-world.fxml"));
+        loader.setLocation(new URL("com/gui/javaFXTest/hello-world.fxml"));
         VBox vbox = loader.<VBox>load();
 
         Scene scene = new Scene(vbox);

@@ -9,7 +9,7 @@ public class HelloWorld extends Application {
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Test");
 
-        primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
+        primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, (event -> {
             System.out.println("Key pressed: " + event.toString());
 
             switch (event.getCode().getCode()){
@@ -24,11 +24,13 @@ public class HelloWorld extends Application {
                     System.out.println("Unrecognized Key");
                 }
             }
-        });
+        }));
 
 
         primaryStage.show();
     }
 
-
+    public static void main(String[] args) {
+        Application.launch(args);
+    }
 }

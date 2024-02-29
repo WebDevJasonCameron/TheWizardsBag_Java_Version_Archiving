@@ -3,10 +3,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Label?>
 
-<VBox alignment="CENTER" spacing="20.0"  xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.gui.javaFXTest.HelloWorld" >
-
-    <children>
-        <Label text="Hello world FXML"/>
-    </children>
+<?import javafx.scene.control.Button?>
+<VBox spacing="200.0" xmlns:fx="http://javafx.com/fxml">
+    <Label fx:id="label1" text="Line 1" />
+    <Label fx:id="label2" text="LIne 2"/>
+    <Button fx:id="button1" text="Click Me!">
+        <style>
+            -fx-padding: 10;
+            -fx-boarder-width: 3;
+            -fx-color: blue;
+        </style>
+    </Button>
 </VBox>

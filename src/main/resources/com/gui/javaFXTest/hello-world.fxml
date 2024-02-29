@@ -4,10 +4,13 @@
 <?import javafx.scene.control.Label?>
 
 <?import javafx.scene.control.Button?>
-<VBox spacing="200.0" xmlns:fx="http://javafx.com/fxml">
+<?import javafx.geometry.Insets?>
+<VBox spacing="20.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.gui.javaFXTest.HelloController">
+    <padding>
+        <Insets bottom="100.0" left="100.0" right="10.0" top="100.0"/>
+    </padding>
     <Label fx:id="label1" text="Line 1" />
-    <Label fx:id="label2" text="LIne 2"/>
-    <Button fx:id="button1" text="Click Me!">
+    <Button fx:id="button1" text="Click Me!" onAction="#buttonClicked">
         <style>
             -fx-padding: 10;
             -fx-boarder-width: 3;

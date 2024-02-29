@@ -1,5 +1,6 @@
 package com.gui.javaFXTest;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -8,7 +9,7 @@ public class HelloController {
     private Label welcomeText;
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    public void buttonClicked(Event e) {
+        System.out.println("Button Clicked");
     }
 }

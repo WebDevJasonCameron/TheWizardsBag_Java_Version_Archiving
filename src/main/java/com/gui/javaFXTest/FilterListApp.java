@@ -116,18 +116,3 @@ public class FilterListApp extends Application {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

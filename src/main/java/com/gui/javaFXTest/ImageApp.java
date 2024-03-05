@@ -20,4 +20,9 @@ public class ImageApp extends Application {
         Image image3 = new Image(IMAGE_LOC, 360.0d, 360.0d, false, true);
         Image image4 = new Image(IMAGE_LOC);
     }
+
+    // RUN
+    public static void main(String[] args) {
+        launch(args);
+    }
 }

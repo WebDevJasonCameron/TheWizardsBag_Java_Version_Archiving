@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 public class ImageApp extends Application {
 
     // ATTs
-    private final static String IMAGE_LOC = "images/MoonWave.png";
+    private final static String IMAGE_LOC = "com/gui/javaFXTest/MoonWave.png";
 
     // CONs
 

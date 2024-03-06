@@ -10,8 +10,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.io.File;
-
 public class HelloImageView extends Application {
 
     private final static String IMAGE_LOC = "/images/avatar_0001.png";

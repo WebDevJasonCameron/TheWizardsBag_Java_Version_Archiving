@@ -3,9 +3,9 @@ package com.gui.javaFXTest;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.TableView;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -43,11 +43,49 @@ public class VBoxAndHBoxApp extends Application {
         topControls.getChildren().addAll( btnRefresh, topRightControls );
 
         // Table Container
-        TableView<Customer> tblCustomer = new TableView<>();
-        tblCustomer.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        VBox.setMargin( tblCustomer, new Insets(0.0d, 10.0d, 10.0d, 10.0d) );
-        VBox.setVgrow( tblCustomer, Priority.ALWAYS );
+        TableView<Customer> tblCustomers = new TableView<>();
+        tblCustomers.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        VBox.setMargin( tblCustomers, new Insets(0.0d, 10.0d, 10.0d, 10.0d) );
+        VBox.setVgrow( tblCustomers, Priority.ALWAYS );
 
+        // Cols
+        TableColumn<Customer, String> lastNameCol = new TableColumn<>("Last Name");
+        lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+
+        TableColumn<Customer, String> firstNameCol = new TableColumn<>("First Name");
+        firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+
+        tblCustomers.getColumns().addAll( lastNameCol, firstNameCol );
+
+        Separator sep = new Separator();
+
+        // Bottom Container
+        HBox bottomControls = new HBox();
+        bottomControls.setAlignment(Pos.BOTTOM_RIGHT);
+        VBox.setMargin( bottomControls, new Insets(10.0d) );
+
+        Button btnClose = new Button("Close");
+
+        bottomControls.getChildren().addAll( btnClose );
+
+        // Combine All into vBox
+        vBox.getChildren().addAll(
+                topControls,
+                tblCustomers,
+                sep,
+                bottomControls
+        );
+
+        // Combine All into Scene
+        Scene scene = new Scene(vBox);
+
+        // Combine and Build Primary Stage
+        primaryStage.setScene( scene );
+        primaryStage.setWidth( 800 );
+        primaryStage.setHeight( 600 );
+        primaryStage.setTitle( "VBox and HBox App" );
+        primaryStage.setOnShowing( (evt) -> loadTable(tblCustomers) );
+        primaryStage.show();
 
     }
 

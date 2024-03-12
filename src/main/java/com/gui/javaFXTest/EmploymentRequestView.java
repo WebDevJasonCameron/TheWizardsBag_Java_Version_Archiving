@@ -1,5 +1,6 @@
 package com.gui.javaFXTest;
 
+import javafx.beans.binding.Bindings;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -7,10 +8,11 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.util.converter.NumberStringConverter;
 
 import java.nio.MappedByteBuffer;
 
-public class EmploymentRequestView extends MappedByteBuffer {
+public abstract class EmploymentRequestView extends MappedByteBuffer {
     private GridPane gp = new GridPane();
 
     private TextField tfName = new TextField();
@@ -24,6 +26,19 @@ public class EmploymentRequestView extends MappedByteBuffer {
     public EmploymentRequestView() {
         createView();
         bindViewModel();
+    }
+
+    private final EmploymentRequestViewModel viewModel = new EmploymentRequestViewModel();
+
+    private void bindViewModel() {
+        tfName.textProperty().bindBidirectional(viewModel.nameProperty());
+        tfPosition.textProperty().bindBidirectional(viewModel.positionProperty());
+
+        Bindings.bindBidirectional(
+                tfAnnualSalary.textProperty(),
+                viewModel.annualSalaryProperty(),
+                new NumberStringConverter()
+        );
     }
 
     private void createView(){
@@ -45,7 +60,7 @@ public class EmploymentRequestView extends MappedByteBuffer {
 
         VBox.setVgrow( gpwrap, Priority.ALWAYS );
 
-        btnSave.setOnAction( this:: save );
+        btnSave.setOnAction( this::save );
         btnCancel.setOnAction( this::cancel );
         btnReset.setOnAction( this::reset );
 

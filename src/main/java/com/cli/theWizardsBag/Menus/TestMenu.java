@@ -12,8 +12,8 @@ public class TestMenu {
     public String response;
 
     // MENUs
-    public void firstMenu(){
-        System.out.println("Welcome.  Would you like to search for a spell?  (y or n)");
+    public void firstMenu(String msg){
+        System.out.println(msg);
         String choiceResponse = this.scanner.nextLine();
 
         if(choiceResponse.toLowerCase().equals("y")){
@@ -25,8 +25,10 @@ public class TestMenu {
 
             System.out.println(spell);
 
+            firstMenu("Would you like another search? (y or n)\n");
+
         } else if(choiceResponse.toLowerCase().equals("n")){
-            System.out.println("Thank you for using the Wizards Bag!");
+            System.out.println("Thank you for using the Wizard's Bag!");
         } else {
             System.out.println("Sorry, that is not a valid response.");
         }

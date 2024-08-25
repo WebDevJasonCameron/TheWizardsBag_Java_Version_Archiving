@@ -6,7 +6,7 @@ public class TestExecutor {
     public static void main(String[] args) {
 
         TestMenu testMenu = new TestMenu();
-        testMenu.firstMenu();
+        testMenu.firstMenu("Welcome.  Would you like to search for a spell?  (y or n)");
 
     }
 }

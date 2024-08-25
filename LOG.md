@@ -1,5 +1,11 @@
 # Log
 
+## 2024 08 24
+
+Alright.  I have a python tool that needs to be built for work.  After that is done, I'll come back to this.  Should take about a week.  Fingers crossed!
+
+---
+
 ## 2024 08 23
 Good progress in today's reintegration of the code.  I am still not sure how to go about handling all the CLI menus.  However, I was able to get back to the basics of input and response within the CLI.  It is good to finally get back into the simple stuff.  I hope I will look back at all this and think that I am being too simple as I will have grown to grasp the more complex modular stuff.  I am not even using Java beyond its most basic capes.  Still, got to start (or keep restarting) somewhere.  
 

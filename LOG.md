@@ -1,5 +1,15 @@
 # Log
 
+Let's figure out how the CLI should function.  A main menu should ask the user what they would like to do.  1. Search for an Item or Spell.  This is one branch.  If they choose to search for 1.A Item or 1.B spell, we should then ask them how they want to search the Item or Spell: (1) name, or some searchable attribute (2...3).  After they find the Spell or Item, we may ask them if they want to edit it or copy and edit the existing one to make it their own.  I don't think it is smart to try to remove a spell since it may be tied to items later.  
+
+Although this function might be doable if we run a query for all items and then remove it from those records.  This also means that if this is done then we potentially will need to re-add a spell for those items, and we won't know what items need a spell added to them.  With that thought, I think it is probably best to just not remove a spell at this point.  One other thing we can do is show the user how removing the spell will affect all the different items.  This can be given to the user as a confirmation box.  For example, a box of text can "show a WARNING, that removing a spell will affect item 111, item 222, item 333, etc." and if they still want to remove the spell they will need to confirm.  However, I think we can do this from the main menu's branch of removing something.  
+
+The main menu should include whether the user wants to edit, delete, or add an Item or Spell.  These will also spawn their own branches or options.  Additionally, one may need to create a spell that is associated with an item if the spell doesn't already exist. 　I should look into the attributes of each and draw out a user flow chart of how each menu branch will need to be worked out within the CLI.  
+
+I find it interesting that CLI will need to get the user to make decisions as a flow due to its nature.  However, when we use a GUI, the user can kind of bypass all these flows because the user can select multiple choices prior to call an execution.  And yet, I expect the program will still need to follow the CLI flow to function properly.  That's why I think working out this CLI flow should be done right now (especially when I'm trying to feel out the application's development rather than just "knowing").
+
+---
+
 ## 2024 08 24
 
 Alright.  I have a python tool that needs to be built for work.  After that is done, I'll come back to this.  Should take about a week.  Fingers crossed!

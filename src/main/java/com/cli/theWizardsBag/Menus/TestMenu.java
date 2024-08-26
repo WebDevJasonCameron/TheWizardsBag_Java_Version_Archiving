@@ -31,6 +31,8 @@ public class TestMenu {
             System.out.println("Thank you for using the Wizard's Bag!");
         } else {
             System.out.println("Sorry, that is not a valid response.");
+
+            firstMenu("Would you like to try again? (y or n)\n.");
         }
 
     }

@@ -1,8 +1,52 @@
 # Log
 
+---
+
+## 2024 08 27
+Wow, I'm a dunce sometimes.  I didn't realize that... yes, I did create a log in the "notes" directory.  As such, I moved my most recent rants... I mean logs, into their proper place. Here. Here is the proper place. **Sigh
+
+---
+
+## 2024 08 26
+
+Let's figure out how the CLI should function.  A main menu should ask the user what they would like to do.  1. Search for an Item or Spell.  This is one branch.  If they choose to search for 1.A Item or 1.B spell, we should then ask them how they want to search the Item or Spell: (1) name, or some searchable attribute (2...3).  After they find the Spell or Item, we may ask them if they want to edit it or copy and edit the existing one to make it their own.  I don't think it is smart to try to remove a spell since it may be tied to items later.
+
+Although this function might be doable if we run a query for all items and then remove it from those records.  This also means that if this is done then we potentially will need to re-add a spell for those items, and we won't know what items need a spell added to them.  With that thought, I think it is probably best to just not remove a spell at this point.  One other thing we can do is show the user how removing the spell will affect all the different items.  This can be given to the user as a confirmation box.  For example, a box of text can "show a WARNING, that removing a spell will affect item 111, item 222, item 333, etc." and if they still want to remove the spell they will need to confirm.  However, I think we can do this from the main menu's branch of removing something.
+
+The main menu should include whether the user wants to edit, delete, or add an Item or Spell.  These will also spawn their own branches or options.  Additionally, one may need to create a spell that is associated with an item if the spell doesn't already exist. 　I should look into the attributes of each and draw out a user flow chart of how each menu branch will need to be worked out within the CLI.
+
+I find it interesting that CLI will need to get the user to make decisions as a flow due to its nature.  However, when we use a GUI, the user can kind of bypass all these flows because the user can select multiple choices prior to call an execution.  And yet, I expect the program will still need to follow the CLI flow to function properly.  That's why I think working out this CLI flow should be done right now (especially when I'm trying to feel out the application's development rather than just "knowing").
+
+---
+
+## 2024 08 24
+
+Alright.  I have a python tool that needs to be built for work.  After that is done, I'll come back to this.  Should take about a week.  Fingers crossed!
+
+---
+
+## 2024 08 23
+Good progress in today's reintegration of the code.  I am still not sure how to go about handling all the CLI menus.  However, I was able to get back to the basics of input and response within the CLI.  It is good to finally get back into the simple stuff.  I hope I will look back at all this and think that I am being too simple as I will have grown to grasp the more complex modular stuff.  I am not even using Java beyond its most basic capes.  Still, got to start (or keep restarting) somewhere.
+
+---
+
+## 2024 08 22
+I was trying to figure out where to start back into.  I think I was first working on trying to create a GUI system with JavaFX.  The problem, I hadn't figured out the interaction that needs to be done.  That means, I want to run through the CLI menu commands.  I want to figure out how the User should interact with the DB.  That leaves me to wonder (once again) where to begin.  Since the DB is created and the CRUD commands are already created, lets write a simple menu (test menu) that ask the User to input a "spell name" to search for.  If the name returns a response, we can display it and ask if the user wants to search again or finish the program.  If it doesn't, it should tell the user that nothing was found and (once again), ask them if they want to try again or finish the program.  Really simple I know.  That's what happens when you don't get to write code all day... instead, I'm spending my time at work as a "sys-ad," something I can do but really don't want to do.  I digress... this is where we are for tonight's work.
+
+---
+
+## 2024 08 21
+I started this project earlier this year.  I got really far, but (as with everything) I got side track with so many other things.  I was learning so much with this project and I want to come back to it.  I really think it was organized pretty well.  However, I can't remember what I was getting stuck on.  That is why I should have had a log.  Even though it's a little late in the game, I figured I would create a log now.  I think I can figure out where I left off.  I'll put my thoughts on the subject here.  At least I had a plan written in the RM.
+
+I think I was working on the Java GUI by looking up all the JavaFX tutorials.
+
+---
+
 ## 2024-02-22 | Next
 
 I need to figure out what is next.  The Spell SQL commands and executors are completed.  I now need to build something around them.  I thought that "something" should be a CLI program that CRUDs all the different spells and attributes.  Another option is to build a GUI with JavaFX.  That is something I'm leaning towards wanting to do rather than the CLI.  It's something I really haven't built before.  Third option is to just push everything to Web browser.  This is probably the quickest and most fruitful.  Let me think about this for a couple of days.  I might even start a JavaFX Udemy course for a month to really decide.  We'll see...
+
+---
 
 ## 2024-02-05 | Mixed Classes
 
@@ -22,6 +66,8 @@ When that is done, I'll need to rework the following DAOs to focus on junction t
 - spellConditions
 - spellDamagetypes
 - spellTags 
+
+---
 
 ## 2024-01-29 | Spells 
 
@@ -137,9 +183,13 @@ I find that I'm doing a lot of reorganizing to some of the code as I figure out 
 
 So what are enums good for?  I really don't know.  I thought it would keep me from needing to pull data from a DB, which might be yet another query slowing my web application down.   I think I would like to try asking someone who is smarter than me on that question.
 
+---
+
 ### 1800 | Enum Answer
 
 So I asked ChatGPT on that question from above.  I logged the answer in the AI notes.  It's interesting if you want to see the results.
+
+---
 
 ### 2100 | Executors
 
@@ -166,6 +216,8 @@ With that said, I need to build out a Read function, so I can see what I have pr
 
 ## 2023-11-25 | Planning Mass DB Input
 Since I found a lot of great list content that can be used to load my DB, I'm figuring out how to get it ingested.  First, I need to take in a JSON file.  The result will be JSON array.  From there, I need to script out a parser that coverts that array into an array of Spell and Item objects (not both at once mind you).  Once I have my array of hundreds of spells and items, I'll need to run them through a creat spell/item sql record.  The interesting thing here is, as I create a spell or item, I'll need to grab its id.  I also need to grab the ids from the matching tag, effect, condition and effect tables.  Finally, I can loop through the many different tags, effects, conditions, and effects each spell and item has and create the multiple records within their respective junction table using the spell/item id and the matching ids from those tag, type, condition, and effect tables.  That's a lot of small actions to create all these items!  I might want to start with coding out a process to create a single item from the CLI.  The work I do on this smaller task could be replicated towards a larger scale record ingestion!  I'll first work on creating a spell. Then I can build out the mas spell-book ingestion.  With that as a proof-of-concept, I should be able to repurpose most of the template into creating my items.  Although, I haven't really found an in-depth JSON file for items.  I might need to create those by hand. If that's the case, I might end up working on a GUI... We'll see.  
+
+---
 
 ### 1000 | Dir and Pack Org
 While java programs are usually set up as com.HighLevelPackageType.nameOfSite.LowerLevelPackageTypes where the higher level package reflects a "frontEnd" or "backEnd," I've decided to include a "cli" higher level package.  This "cli" is where I'll probably build out the java construction code needed for program scaffolding.  I should be able to use it to with the other higher level package labelled "gui."  I debated on this format because I think it could be argued that cli and gui are still backend type stuff.  Then I thought that the distinction between cli and gui are more localized whereas the backend serves to be the junction between frontend, backend, and cli.  In essence, gui is the only package that seems to be a subset of one of the lower level packages (cli).  

@@ -5,7 +5,6 @@ import com.cli.theWizardsBag.MenuCons.MenuOption;
 
 public class MainMenu extends Menu {
 
-
     // CONs
     public MainMenu() {
         super("Main Menu");

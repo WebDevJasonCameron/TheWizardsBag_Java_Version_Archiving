@@ -1,8 +1,13 @@
 # Log
 
+## 2024 08 29
+
+I should remember that work of this project could be divided into different aspects.  One, of course there is the code.  Second, there is the writing of different items and spells.  I should start that at some point.  Third, there is the design (or sketching out) the product look.  Fourth, there is the sculpting and final item product look that should be collected for display.  It may take some time, but I think we can provide a fantastic shop for our customers.  
+
 ---
 
 ## 2024 08 27
+
 Wow, I'm a dunce sometimes.  I didn't realize that... yes, I did create a log in the "notes" directory.  As such, I moved my most recent rants... I mean logs, into their proper place. Here. Here is the proper place. **Sigh
 
 ---

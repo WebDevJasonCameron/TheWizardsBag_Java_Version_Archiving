@@ -7,6 +7,7 @@ public class TestExecutor {
 
         MainMenu mainMenu = new MainMenu();
         mainMenu.display();
+        mainMenu.handleUserInput();
 
     }
 }

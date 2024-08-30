@@ -26,6 +26,9 @@ public class MenuOption {
 
     // METHs
     public void execute() {
+        if (inputHandler != null) {
+            String userInput = inputHandler.handleInput();
+        }
         action.run();
     }
 }

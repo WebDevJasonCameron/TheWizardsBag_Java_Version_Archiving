@@ -34,6 +34,31 @@ public class ValidationInputHandler implements InputHandler {
         }
     }
 
+    private int getValidateNumber(){
+        while (true){
+            String input = handleInput();
+            try {
+                return Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input, please enter a valid number");
+            }
+        }
+    }
+
+    public boolean getValidatedYesNo() {
+        while (true) {
+            String input = handleInput().toLowerCase();
+            if (input.equals("y")) {
+                return true;
+            } else if (input.equals("n")) {
+                return false;
+            } else {
+                System.out.println("Invalid input, please enter 'y' or 'n'.");
+            }
+        }
+    }
+
+
     private boolean isValid(String input) {
         return !input.isEmpty();
     }

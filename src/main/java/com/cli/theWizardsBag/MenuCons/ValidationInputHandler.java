@@ -3,7 +3,7 @@ package com.cli.theWizardsBag.MenuCons;
 
 import java.util.Scanner;
 
-public class ValidationInputHandler implements InputHandler {
+public abstract class ValidationInputHandler implements InputHandler {
 
     // ATTs
     private Scanner scanner;
@@ -26,12 +26,7 @@ public class ValidationInputHandler implements InputHandler {
         sanatizedInput = sanatizedInput.replace("[<>]", "");
         sanatizedInput = sanatizedInput.replace("[\"';]", "");
 
-        if (isValid(sanatizedInput)) {
-            return sanatizedInput;
-        } else {
-            System.out.println("Invalid input, please try again");
-            return handleInput();
-        }
+        return sanatizedInput;
     }
 
     private int getValidateNumber(){
@@ -58,9 +53,5 @@ public class ValidationInputHandler implements InputHandler {
         }
     }
 
-
-    private boolean isValid(String input) {
-        return !input.isEmpty();
-    }
-
+    protected abstract boolean isValid(String input);
 }

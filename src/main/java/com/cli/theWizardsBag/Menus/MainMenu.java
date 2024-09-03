@@ -2,7 +2,6 @@ package com.cli.theWizardsBag.Menus;
 
 import com.cli.theWizardsBag.MenuCons.Menu;
 import com.cli.theWizardsBag.MenuCons.MenuOption;
-import com.cli.theWizardsBag.MenuCons.NumericInputHandler;
 
 public class MainMenu extends Menu {
 

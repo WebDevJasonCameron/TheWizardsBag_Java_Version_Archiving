@@ -3,7 +3,7 @@ package com.cli.theWizardsBag.MenuCons;
 
 import java.util.Scanner;
 
-public abstract class ValidationInputHandler implements InputHandler {
+public class ValidationInputHandler implements InputHandler {
 
     // ATTs
     private Scanner scanner;
@@ -52,6 +52,4 @@ public abstract class ValidationInputHandler implements InputHandler {
             }
         }
     }
-
-    protected abstract boolean isValid(String input);
 }

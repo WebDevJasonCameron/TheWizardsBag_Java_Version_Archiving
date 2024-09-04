@@ -16,7 +16,6 @@ public class MenuOption {
     public MenuOption(String name, Runnable action, InputHandler inputHandler) {
         this.name = name;
         this.action = action;
-//        this.inputHandler = inputHandler;
         this.inputHandler = new ValidationInputHandler();
     }
 

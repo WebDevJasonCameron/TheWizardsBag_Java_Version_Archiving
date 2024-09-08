@@ -1,5 +1,11 @@
 # Log
 
+## 2024 09 07 
+
+Not really sure how this works
+
+---
+
 ## 2024 08 29
 
 I should remember that work of this project could be divided into different aspects.  One, of course there is the code.  Second, there is the writing of different items and spells.  I should start that at some point.  Third, there is the design (or sketching out) the product look.  Fourth, there is the sculpting and final item product look that should be collected for display.  It may take some time, but I think we can provide a fantastic shop for our customers.  

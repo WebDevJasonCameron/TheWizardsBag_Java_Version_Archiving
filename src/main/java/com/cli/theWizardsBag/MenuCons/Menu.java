@@ -10,12 +10,14 @@ public abstract class Menu {
     protected String title;
     protected List<MenuOption> options;
     protected Scanner scanner;
+    protected ValidationInputHandler validationInputHandler;
 
     // CONs
     public Menu(String title) {
         this.title = title;
         this.options = new ArrayList<>();
         this.scanner = new Scanner(System.in);
+        this.validationInputHandler = new ValidationInputHandler();
     }
 
     // METHs

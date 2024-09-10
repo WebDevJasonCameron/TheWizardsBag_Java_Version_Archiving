@@ -10,7 +10,7 @@ The 'InputHandler' interface, of course handles user input validation.  We also 
 
 Note: The 'ValidationInputHandler' also uses another interface called ValidationStrategy.  I thought that means I need to implement the 'ValidationStrategy' interface with the 'InputHandler', but I all the red was removed from IntelliJ.  **Not sure if it is okay yet**.  
 
-
+We included a 'NumberValidationStrategy' class that implements 'ValidationStrategy' interface. This ensures the user submits a number within the menu when we ask for it.  It also means I can have other validation methods and remove sus characters from the input!  That's where the other validation classes come into play.  I need to add them next.
 
 ---
 

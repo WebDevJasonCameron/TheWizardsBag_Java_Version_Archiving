@@ -1,8 +1,16 @@
 # Log
 
-## 2024 09 07 
+## 2024 09 10
 
-Not really sure how this works
+So, this is how the CLI menu works.  The Menu class holds the common functionality for all menus.  It manages a list of 'MenuOption' objects.  The 'display' method shows the menu and handles user input.  The 'getValidatedNumber' meth ensures that the user input is a valid integer.  The 'handleUserChoice' meth is abstract and must be implemented by subclasses.  
+
+The MenuOption represents an option within a menu.  The menu obj uses an list of these.  It is short but, it contains the name of the option and the action it is to perform when selected.  The execute meth runs the associated action.  
+
+The 'InputHandler' interface, of course handles user input validation.  We also use a 'ValidationInputHandler' class to sanitize the input.  This part really had me scratching my head on how it should function.  As an interface, the 'InputHandler' defines a contract for input handling classes.  This means the 'ValidationInputHandler' is a input handling class as it implements the 'InputHandler' interface.  
+
+Note: The 'ValidationInputHandler' also uses another interface called ValidationStrategy.  I thought that means I need to implement the 'ValidationStrategy' interface with the 'InputHandler', but I all the red was removed from IntelliJ.  **Not sure if it is okay yet**.  
+
+
 
 ---
 

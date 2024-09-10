@@ -4,16 +4,20 @@ import java.util.List;
 import java.util.Scanner;
 
 public abstract class Menu {
+
+    // ATTs
     protected String title;
     protected List<MenuOption> options;
     protected Scanner scanner;
 
+    // CONs
     public Menu(String title) {
         this.title = title;
         this.options = new ArrayList<>();
         this.scanner = new Scanner(System.in);
     }
 
+    // METHs
     public void addOption(MenuOption option) {
         options.add(option);
     }

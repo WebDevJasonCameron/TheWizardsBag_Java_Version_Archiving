@@ -23,24 +23,24 @@ public class MainMenu extends Menu {
     }
 
     // METHs
-    private void addItem(MenuOption option) {
+    private void addItem() {
         System.out.println("Adding an item...");
         // Implementation for adding an item
     }
 
-    private void editItem(MenuOption option) {
+    private void editItem() {
         System.out.println("Editing an item...");
         // Implementation for editing an item, such as...
         // EditItem editItemMenu = new EditItemMenu();
         // editItemMenu.display();
     }
 
-    private void viewItem(MenuOption option) {
+    private void viewItem() {
         System.out.println("Viewing an item...");
         // Implementation for viewing an item
     }
 
-    private void removeItem(MenuOption option) {
+    private void removeItem() {
         System.out.println("Removing an item...");
         // Implementation for removing an item
     }

@@ -1,5 +1,8 @@
-package com.cli.theWizardsBag.MenuCons;
+package com.cli.theWizardsBag.Menus;
 
+
+import com.cli.theWizardsBag.MenuCons.Menu;
+import com.cli.theWizardsBag.MenuCons.MenuOption;
 
 public class MainMenu extends Menu {
 
@@ -30,9 +33,8 @@ public class MainMenu extends Menu {
 
     private void editItem() {
         System.out.println("Editing an item...");
-        // Implementation for editing an item, such as...
-        // EditItem editItemMenu = new EditItemMenu();
-        // editItemMenu.display();
+        EditItemMenu editItemMenu = new EditItemMenu();
+        editItemMenu.display();
     }
 
     private void viewItem() {

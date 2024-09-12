@@ -9,6 +9,10 @@ public class ValidationInputHandler implements InputHandler {
     private ValidationStrategy strategy;
 
     // CONs
+    public ValidationInputHandler(ValidationStrategy strategy) {
+        this.strategy = strategy;
+    }
+
     public ValidationInputHandler(Scanner scanner, ValidationStrategy strategy) {
         this.scanner = scanner;
         this.strategy = strategy;

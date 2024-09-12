@@ -1,5 +1,11 @@
 # Log
 
+## 2024 10 12
+
+I'm at the edit menu.  It all works up till you select an item from the edit menu.  Then it crashes.  I think it's because I haven't prepped it to handle anything beyond asking it to choose something.  It handles non numbers with eloquence.  After you select a number from the list, it crashes... probably need to give it a better output.
+
+---
+
 ## 2024 09 10
 
 So, this is how the CLI menu works.  The Menu class holds the common functionality for all menus.  It manages a list of 'MenuOption' objects.  The 'display' method shows the menu and handles user input.  The 'getValidatedNumber' meth ensures that the user input is a valid integer.  The 'handleUserChoice' meth is abstract and must be implemented by subclasses.  

@@ -5,6 +5,8 @@ import com.cli.theWizardsBag.MenuCons.MenuOption;
 import com.cli.theWizardsBag.MenuCons.TextValidationStrategy;
 import com.cli.theWizardsBag.MenuCons.ValidationInputHandler;
 
+import java.util.Scanner;
+
 public class EditItemMenu extends Menu {
 
     // CONs
@@ -27,7 +29,7 @@ public class EditItemMenu extends Menu {
     // METHs
     private void editByName(){
         System.out.println("Enter the name of the item to edit: ");
-        ValidationInputHandler inputHandler = new ValidationInputHandler(new TextValidationStrategy());
+        ValidationInputHandler inputHandler = new ValidationInputHandler(new Scanner, new TextValidationStrategy());
         String itemName = inputHandler.handleInput();
         System.out.println("Editing item with name: " + itemName);
         // Implementation for editing by name

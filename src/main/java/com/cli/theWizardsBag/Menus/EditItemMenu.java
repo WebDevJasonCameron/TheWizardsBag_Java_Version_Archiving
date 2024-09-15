@@ -9,6 +9,8 @@ import java.util.Scanner;
 
 public class EditItemMenu extends Menu {
 
+    Scanner scanner = new Scanner(System.in);
+
     // CONs
     public EditItemMenu() {
         super("Edit Item Menu");
@@ -29,7 +31,7 @@ public class EditItemMenu extends Menu {
     // METHs
     private void editByName(){
         System.out.println("Enter the name of the item to edit: ");
-        ValidationInputHandler inputHandler = new ValidationInputHandler(new Scanner, new TextValidationStrategy());
+        ValidationInputHandler inputHandler = new ValidationInputHandler(this.scanner,  new TextValidationStrategy());
         String itemName = inputHandler.handleInput();
         System.out.println("Editing item with name: " + itemName);
         // Implementation for editing by name
@@ -37,7 +39,7 @@ public class EditItemMenu extends Menu {
 
     private void editByAttribute() {
         System.out.print("Enter the attribute to edit: ");
-        ValidationInputHandler inputHandler = new ValidationInputHandler(new TextValidationStrategy());
+        ValidationInputHandler inputHandler = new ValidationInputHandler(this.scanner,new TextValidationStrategy());
         String attribute = inputHandler.handleInput();
         System.out.println("Editing item with attribute: " + attribute);
         // Implementation for editing by attribute

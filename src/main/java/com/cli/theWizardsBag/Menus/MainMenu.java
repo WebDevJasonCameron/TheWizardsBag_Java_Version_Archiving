@@ -46,4 +46,24 @@ public class MainMenu extends Menu {
         System.out.println("Removing an item...");
         // Implementation for removing an item
     }
+
+    private void addSpell() {
+        System.out.println("Adding an spell...");
+        // Implementation for adding a spell
+    }
+
+    private void editSpell() {
+        System.out.println("Editing a spell...");
+        // Implementation for editing a spell
+    }
+
+    private void viewSpell() {
+        System.out.println("Viewing a spell...");
+        // Implementation for viewing a spell
+    }
+
+    private void removeSpell() {
+        System.out.println("Removing a spell...");
+        // Implementation for removing a spell
+    }
 }

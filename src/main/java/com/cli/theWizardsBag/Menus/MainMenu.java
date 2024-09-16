@@ -13,6 +13,11 @@ public class MainMenu extends Menu {
         addOption(new MenuOption("Edit Item", this::editItem));
         addOption(new MenuOption("View Item", this::viewItem));
         addOption(new MenuOption("Remove Item", this::removeItem));
+        addOption(new MenuOption("Add Spell", this::addSpell);
+        addOption(new MenuOption("Edit Spell", this::editSpell));
+        addOption(new MenuOption("View Spell", this::viewSpell));
+        addOption(new MenuOption("Remove Spell", this::removeSpell));
+        addOption(new MenuOption("Exit", this::exit));
     }
 
     // OVRs
@@ -64,6 +69,11 @@ public class MainMenu extends Menu {
 
     private void removeSpell() {
         System.out.println("Removing a spell...");
+        // Implementation for removing a spell
+    }
+
+    private void exit() {
+        System.out.println("Thank you for using the Wizards Bag!");
         // Implementation for removing a spell
     }
 }

@@ -23,16 +23,6 @@ public class ViewSpellMenu extends Menu {
         addOption(new MenuOption("Select Spells to View by Source", this::viewBySource));
     }
 
-    // OVRs
-    @Override
-    protected void handleUserChoice(int choice) {
-        if (choice > 0 && choice <= options.size()) {
-            options.get(choice - 1).execute();
-        } else {
-            System.out.println("Invalid choice, please try again");
-        }
-    }
-
     // METHs
     private void viewByName(){
         System.out.println("Enter the name of the spell to view: ");
@@ -43,26 +33,61 @@ public class ViewSpellMenu extends Menu {
     }
 
     private void viewByLevel() {
+        System.out.println("Enter the level of the spells to view: ");
+        ValidationInputHandler inputHandler = new ValidationInputHandler(this.scanner,  new TextValidationStrategy());
+        String level = inputHandler.handleInput();
+        System.out.println("Viewing spells with level: " + level);
+        // Implementation for viewing by level
     }
 
     private void viewByCastingTime() {
+        System.out.println("Enter the casting time of the spells to view: ");
+        ValidationInputHandler inputHandler = new ValidationInputHandler(this.scanner,  new TextValidationStrategy());
+        String castingTime = inputHandler.handleInput();
+        System.out.println("Viewing spells with casting time: " + castingTime);
+        // Implementation for viewing by casting time
     }
 
     private void viewByRange() {
+        System.out.println("Enter the range of the spells to view: ");
+        ValidationInputHandler inputHandler = new ValidationInputHandler(this.scanner,  new TextValidationStrategy());
+        String range = inputHandler.handleInput();
+        System.out.println("Viewing spells with range: " + range);
+        // Implementation for viewing by range
     }
 
     private void viewByConcentration() {
+        System.out.println("Enter the concentration type of the spells to view: ");
+        ValidationInputHandler inputHandler = new ValidationInputHandler(this.scanner,  new TextValidationStrategy());
+        String concentration = inputHandler.handleInput();
+        System.out.println("Viewing spells with concentration type: " + concentration);
+        // Implementation for viewing by concentration
     }
 
     private void viewByAttribute() {
-        System.out.print("Enter the school attribute the spells you want to view belongs to: ");
+        System.out.print("Enter the spell school the spells you want to view belongs to: ");
         ValidationInputHandler inputHandler = new ValidationInputHandler(this.scanner,new TextValidationStrategy());
-        String attribute = inputHandler.handleInput();
-        System.out.println("Here are the spells from the " + attribute + " spell school:");
-        // Implementation for viewing by attribute
+        String school = inputHandler.handleInput();
+        System.out.println("Here are the spells from the " + school + " spell school:");
+        // Implementation for viewing by spell school
     }
 
     private void viewBySource() {
+        System.out.println("Enter the source of the spells you want to view belongs to: ");
+        ValidationInputHandler inputHandler = new ValidationInputHandler(this.scanner,new TextValidationStrategy());
+        String source = inputHandler.handleInput();
+        System.out.println("Here are the spells from " + source + " source:");
+        // Implementation for viewing by source
+    }
+
+    // OVRs
+    @Override
+    protected void handleUserChoice(int choice) {
+        if (choice > 0 && choice <= options.size()) {
+            options.get(choice - 1).execute();
+        } else {
+            System.out.println("Invalid choice, please try again");
+        }
     }
 
 }

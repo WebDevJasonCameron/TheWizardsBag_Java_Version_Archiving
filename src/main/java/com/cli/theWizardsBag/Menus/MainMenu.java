@@ -65,7 +65,8 @@ public class MainMenu extends Menu {
 
     private void viewSpell() {
         System.out.println("Viewing a spell...");
-        // Implementation for viewing a spell
+        ViewSpellMenu viewSpellMenu = new ViewSpellMenu();
+        viewSpellMenu.display();
     }
 
     private void removeSpell() {

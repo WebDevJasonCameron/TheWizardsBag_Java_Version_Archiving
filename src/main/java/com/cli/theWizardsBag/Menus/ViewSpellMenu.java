@@ -1,10 +1,13 @@
 package com.cli.theWizardsBag.Menus;
 
+import com.backend.theWizardsBag.models.Spell;
+import com.backend.theWizardsBag.utils.Executables.SpellJDBCExecutor;
 import com.cli.theWizardsBag.MenuCons.Menu;
 import com.cli.theWizardsBag.MenuCons.MenuOption;
 import com.cli.theWizardsBag.MenuCons.TextValidationStrategy;
 import com.cli.theWizardsBag.MenuCons.ValidationInputHandler;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class ViewSpellMenu extends Menu {
@@ -30,6 +33,18 @@ public class ViewSpellMenu extends Menu {
         String spellName = inputHandler.handleInput();
         System.out.println("Viewing spell with name: " + spellName);
         // Implementation for viewing by name
+        Spell spell = new Spell();
+        SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
+        spell = spellJDBCExecutor.getBySpellName(spellName);
+
+        System.out.println("- Name: " + spell.getSpellName());
+        System.out.println("- Class List: " + spell.getClassList());
+        System.out.println("- Description: " + spell.getSpellDescription());
+        System.out.println("- Duration: " + spell.getSpellDuration());
+        System.out.println("- Level: " + spell.getSpellLevel());
+        System.out.println("- Casting Time: " + spell.getSpellCastingTime());
+        System.out.println("- Condition List: " + spell.getConditionList());
+        System.out.println("- Component Materials: " + spell.getSpellComponentsMaterials());
     }
 
     private void viewByLevel() {

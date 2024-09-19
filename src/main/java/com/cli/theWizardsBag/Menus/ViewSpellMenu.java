@@ -8,6 +8,7 @@ import com.cli.theWizardsBag.MenuCons.TextValidationStrategy;
 import com.cli.theWizardsBag.MenuCons.ValidationInputHandler;
 
 import java.sql.SQLOutput;
+import java.util.List;
 import java.util.Scanner;
 
 public class ViewSpellMenu extends Menu {
@@ -18,6 +19,7 @@ public class ViewSpellMenu extends Menu {
     public ViewSpellMenu() {
         super("View Spell Menu");
         addOption(new MenuOption("Select Spell to View by Name", this::viewByName));
+        addOption(new MenuOption("Search for Spells with a word in their name: ", this::viewByWordInSpellName));
         addOption(new MenuOption("Select Spells to View by Level", this::viewByLevel));
         addOption(new MenuOption("Select Spells to View by Casting Time", this::viewByCastingTime));
         addOption(new MenuOption("Select Spells to View by Range", this::viewByRange));
@@ -47,6 +49,21 @@ public class ViewSpellMenu extends Menu {
             System.out.println("- Casting Time: " + spell.getSpellCastingTime());
             System.out.println("- Condition List: " + spell.getConditionList());
             System.out.println("- Component Materials: " + spell.getSpellComponentsMaterials());
+        }
+    }
+
+    private void viewByWordInSpellName() {
+        System.out.println("Search for Spells with a word in their name: ");
+        ValidationInputHandler inputHandler = new ValidationInputHandler(this.scanner,  new TextValidationStrategy());
+        String word = inputHandler.handleInput();
+        System.out.println("Searched for spells with the following word in its name: " + word);
+        // Implementation for viewing by name search
+        SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
+        List<Spell> spells = spellJDBCExecutor.getAllByWordInSpellName(word);
+
+        for (int i = 0; i < spells.size(); i++) {
+            Spell spell = spells.get(i);
+            System.out.println(spell.getSpellName());
         }
     }
 

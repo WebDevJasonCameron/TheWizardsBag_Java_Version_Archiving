@@ -53,7 +53,7 @@ public class ViewSpellMenu extends Menu {
     }
 
     private void viewByWordInSpellName() {
-        System.out.println("Search for Spells with a word in their name: ");
+        System.out.println("Search for Spells with a Word in Their Name: ");
         ValidationInputHandler inputHandler = new ValidationInputHandler(this.scanner,  new TextValidationStrategy());
         String word = inputHandler.handleInput();
         System.out.println("Searched for spells with the following word in its name: " + word);
@@ -61,9 +61,13 @@ public class ViewSpellMenu extends Menu {
         SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
         List<Spell> spells = spellJDBCExecutor.getAllByWordInSpellName(word);
 
-        for (int i = 0; i < spells.size(); i++) {
-            Spell spell = spells.get(i);
-            System.out.println(spell.getSpellName());
+        if (spells.size() == 0) {
+            System.out.println("No spells found with name: " + word);
+        } else {
+            for (int i = 0; i < spells.size(); i++) {
+                Spell spell = spells.get(i);
+                System.out.println(spell.getSpellName());
+            }
         }
     }
 

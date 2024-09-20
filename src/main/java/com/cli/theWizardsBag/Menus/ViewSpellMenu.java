@@ -18,14 +18,14 @@ public class ViewSpellMenu extends Menu {
     // CONs
     public ViewSpellMenu() {
         super("View Spell Menu");
-        addOption(new MenuOption("Select Spell to View by Name", this::viewByName));
-        addOption(new MenuOption("Search for Spells with a word in their name: ", this::viewByWordInSpellName));
-        addOption(new MenuOption("Select Spells to View by Level", this::viewByLevel));
-        addOption(new MenuOption("Select Spells to View by Casting Time", this::viewByCastingTime));
-        addOption(new MenuOption("Select Spells to View by Range", this::viewByRange));
-        addOption(new MenuOption("Select Spells to View if Concentration Type", this::viewByConcentration));
-        addOption(new MenuOption("Select Spells to View by School Attribute", this::viewByAttribute));
-        addOption(new MenuOption("Select Spells to View by Source", this::viewBySource));
+        addOption(new MenuOption("Select Spell to View by Name: ", this::viewByName));
+        addOption(new MenuOption("Search for Spells with a Word in Their Name: ", this::viewByWordInSpellName));
+        addOption(new MenuOption("Select Spells to View by Level: ", this::viewByLevel));
+        addOption(new MenuOption("Select Spells to View by Casting Time: ", this::viewByCastingTime));
+        addOption(new MenuOption("Select Spells to View by Range: ", this::viewByRange));
+        addOption(new MenuOption("Select Spells to View if Concentration Type: ", this::viewByConcentration));
+        addOption(new MenuOption("Select Spells to View by School Attribute: ", this::viewByAttribute));
+        addOption(new MenuOption("Select Spells to View by Source: ", this::viewBySource));
     }
 
     // METHs

@@ -4,6 +4,8 @@
 
 I continue to chip away at this extremely ambitious project.  I am thrilled with the project as it really does bring all the things I love: programming, problem-solving, artistic images and 3d modelling, and story telling.  I really do love this project. I wish I could spend all my time on it, but I don't think it will net me a nice extravagant lifestyle just yet.  With that said, I need to post this log to test whether things are getting uploaded to the all-seeing octo-cat GitHub.  So... what is going with my git???
 
+Since I'm here... I should explain what I'm currently doing.  I found that the CLI will need more backend queries that let me use multi table functions.  For example, the search by spell school will require me to take only those "schools" already placed in the system, and use them to query.  In some cases (later), I'll need to recognize the key item number of another table to do further searches.  That is going to be a brain twister!  Funny, but we haven't even come close to solving GUI type things.  I can only wonder if that might be easier.  (?)  Also... I haven't figured out the school thing, cause it's still showing nothing (no errors... just nothing responding in the tests)
+
 ---
 
 ## 2024 09 12

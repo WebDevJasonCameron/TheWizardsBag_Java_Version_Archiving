@@ -58,13 +58,18 @@ public class Executor_test {
         // TEST Spell     <- Completed
         SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
 
-//        List<Spell> spells = spellJDBCExecutor.getAll();
-//        for (Spell spell : spells){
-//            System.out.println(spell);
-//        }
+        //  List<Spell> spells = spellJDBCExecutor.getAll();
+        // for (Spell spell : spells){
+        // System.out.println(spell);
+        // }
 
-        Spell spell = spellJDBCExecutor.getBySpellName("Raise Dead");
-        System.out.println(spell);
+        // Spell spell = spellJDBCExecutor.getBySpellName("Raise Dead");
+        // System.out.println(spell);
+
+        List<Spell> spells = spellJDBCExecutor.getAllBySpellSchool("transmutation");
+        for (Spell spell : spells) {
+            System.out.println(spell.getSpellName());
+        }
 
         // -------------------------------------------------------------------------------
         // TEST SpellClass

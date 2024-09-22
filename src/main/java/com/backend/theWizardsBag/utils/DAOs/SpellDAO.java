@@ -50,6 +50,10 @@ public class SpellDAO extends DataAccessObject<Spell> {
                                                       "WHERE " +
                                                          "POSITION(LOWER(?) IN (LOWER(spell_name))) > 0";
 
+    private final static String GET_ALL_BY_SPELL_SCHOOL = "SELECT * FROM spells " +
+                                                          "WHERE spell_school = ? ";
+    ;
+
     private final static String UPDATE = "UPDATE spells " +
                                          "SET " +
                                              "spell_name = ?, " +
@@ -358,6 +362,63 @@ public class SpellDAO extends DataAccessObject<Spell> {
         }
 
         return spells;
-
     }
+
+    public List<Spell> findAllWithSpellSchool(String word){
+        List<Spell> spells = new ArrayList<>();
+
+        try(PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_SPELL_SCHOOL);){
+            statement.setString(1, word);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()){
+                Spell spell = new Spell();
+
+                spell.setSpellId(rs.getLong("spell_id"));
+                spell.setSpellName(rs.getString("spell_name"));
+                spell.setSpellLevel(rs.getString("spell_level"));
+                spell.setSpellCastingTime(rs.getString("spell_casting_time"));
+                spell.setSpellRange(rs.getString("spell_range_area"));
+                spell.setSpellComponentsVisual(rs.getBoolean("spell_component_visual"));
+                spell.setSpellComponentsSemantic(rs.getBoolean("spell_component_semantic"));
+                spell.setSpellComponentsMaterial(rs.getBoolean("spell_component_material"));
+                spell.setSpellComponentsMaterials(rs.getString("spell_component_materials"));
+                spell.setSpellDuration(rs.getString("spell_duration"));
+                spell.setSpellConcentration(rs.getBoolean("spell_concentration"));
+                spell.setSpellRitual(rs.getBoolean("spell_ritual"));
+                spell.setSpellSchool(rs.getString("spell_school"));
+                spell.setSpellSaveType(rs.getString("spell_save_type"));
+                spell.setSpellDescription(rs.getString("spell_description"));
+                spell.setSpellImageUrl(rs.getString("spell_image_url"));
+                spell.setSpellSource(rs.getInt("spell_source_id"));
+
+                // Get & Set Classes List
+                RpgClassJDBCExecutor rpgClassJDBCExecutor = new RpgClassJDBCExecutor();
+                spell.setClassList(rpgClassJDBCExecutor.getAllBySpell(spell.getSpellId()));
+
+                // Get & Set Conditions List
+                ConditionJDBCExecutor conditionJDBCExecutor = new ConditionJDBCExecutor();
+                spell.setConditionList(conditionJDBCExecutor.getAllBySpell(spell.getSpellId()));
+
+
+                // Get & Set Spell Damages
+                DamagetypeJDBCExecutor damagetypeJDBCExecutor = new DamagetypeJDBCExecutor();
+                spell.setDamagetypeList(damagetypeJDBCExecutor.getAllBySpell(spell.getSpellId()));
+
+                // Get & Set Spell Tags
+                TagJDBCExecutor tagJDBCExecutor = new TagJDBCExecutor();
+                spell.setTagList(tagJDBCExecutor.getAllBySpell(spell.getSpellId()));
+
+                // Add to Spell List
+                spells.add(spell);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        return spells;
+    }
+
 }

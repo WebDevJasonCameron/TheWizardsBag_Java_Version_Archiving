@@ -1,6 +1,12 @@
 # Log
 
-## 2024 10 12
+## 2024 09 21 
+
+I continue to chip away at this extremely ambitious project.  I am thrilled with the project as it really does bring all the things I love: programming, problem-solving, artistic images and 3d modelling, and story telling.  I really do love this project. I wish I could spend all my time on it, but I don't think it will net me a nice extravagant lifestyle just yet.  With that said, I need to post this log to test whether things are getting uploaded to the all-seeing octo-cat GitHub.  So... what is going with my git???
+
+---
+
+## 2024 09 12
 
 I'm at the edit menu.  It all works up till you select an item from the edit menu.  Then it crashes.  I think it's because I haven't prepped it to handle anything beyond asking it to choose something.  It handles non numbers with eloquence.  After you select a number from the list, it crashes... probably need to give it a better output.
 

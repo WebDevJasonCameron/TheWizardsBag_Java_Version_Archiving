@@ -131,7 +131,7 @@ public class SpellJDBCExecutor {
         try {
             Connection connection = this.dcm.getConnection();
             SpellDAO spellDAO = new SpellDAO(connection);
-            spells =  spellDAO.findAllWithWordInSpellName(word);
+            spells =  spellDAO.findAllWithSpellSchool(word);
 
         } catch (SQLException e) {
             e.printStackTrace();

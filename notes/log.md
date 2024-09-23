@@ -1,5 +1,11 @@
 # Log
 
+## 2024 09 22
+
+Stuck on trying to get the spells via a spell school search.  I think it's because I haven't done the DAO for a very long time and now I need to remember how it is done...
+
+---
+
 ## 2024 09 21 
 
 I continue to chip away at this extremely ambitious project.  I am thrilled with the project as it really does bring all the things I love: programming, problem-solving, artistic images and 3d modelling, and story telling.  I really do love this project. I wish I could spend all my time on it, but I don't think it will net me a nice extravagant lifestyle just yet.  With that said, I need to post this log to test whether things are getting uploaded to the all-seeing octo-cat GitHub.  So... what is going with my git???

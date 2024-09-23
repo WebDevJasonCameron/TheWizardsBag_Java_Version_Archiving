@@ -66,10 +66,12 @@ public class Executor_test {
         // Spell spell = spellJDBCExecutor.getBySpellName("Raise Dead");
         // System.out.println(spell);
 
-//        List<Spell> spells = spellJDBCExecutor.getAllBySpellSchool("transmutation");
-//        for (Spell spell : spells) {
-//            System.out.println(spell.getSpellName());
-//        }
+
+        // TEST Spell Search by Spell School
+        List<Spell> spells = spellJDBCExecutor.getAllBySpellSchool("transmutation");
+        for (Spell spell : spells) {
+            System.out.println(spell.getSpellName());
+        }
 
         // -------------------------------------------------------------------------------
         // TEST SpellClass

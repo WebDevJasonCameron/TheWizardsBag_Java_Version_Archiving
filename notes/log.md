@@ -1,8 +1,16 @@
 # Log
 
+## 2024 09 24
+
+I think I partially figured out why getting a list of spells using a spell school search wasn't working.  It is doing multiple searches within Spell DAO to get the list of attributes for each spell it finds.  Now... Another method does the same (Get Spells with the word found in the Spell).  This doesn't have a problem.  I do remember trying to figure out this problem back then.  And I did.  I just don't remember the solution a year later.  Perhaps I actually wrote it in this log??? Let me check...
+
+I feel like I did write it down somewhere.  I need to start implementing a tag writing structure to find things years later.  Something like <!> means it's important within my code and <?> means I have a problems that I need to come back to.  As such, I should add <?!> to a solution to a problem I figured out.  That and probably a title in between.  Such as <?!>spell school query</> .  It might look dumb, but I bet I'll control "<?!>" and find things a lot quicker! 
+
+---
+
 ## 2024 09 22
 
-Stuck on trying to get the spells via a spell school search.  I think it's because I haven't done the DAO for a very long time and now I need to remember how it is done...
+Stuck on trying to get the spells via a spell school search.  I think it's because I haven't done the DAO for a very long time, and now I need to remember how it is done...
 
 ---
 

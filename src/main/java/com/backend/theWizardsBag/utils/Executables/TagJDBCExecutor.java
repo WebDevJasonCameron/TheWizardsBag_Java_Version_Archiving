@@ -17,6 +17,7 @@ public class TagJDBCExecutor {
     final String password = jdbcKey.jdbcPassword();
     final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
 
+
     //MTHs
     public Tag create(String tagName, String tagType){
         try {

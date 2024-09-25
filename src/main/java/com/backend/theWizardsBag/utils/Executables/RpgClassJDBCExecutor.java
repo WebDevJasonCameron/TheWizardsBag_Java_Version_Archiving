@@ -16,6 +16,7 @@ public class RpgClassJDBCExecutor {
     final String password = keys.jdbcPassword();
     final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
 
+
     // MTHs
     public RpgClass create(String className, String classSubclassName, String classDescription){
         try {

@@ -121,7 +121,19 @@ public class SpellJDBCExecutor {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return spells;
+    }
 
+    public List<Spell> getAllByLevel(String word) {
+        List<Spell> spells = new ArrayList<>();
+
+        try {
+            Connection connection = this.dcm.getConnection();
+            SpellDAO spellDAO = new SpellDAO(connection);
+            spells = spellDAO.findAllWithSpellLevel(word);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return spells;
     }
 

@@ -67,11 +67,18 @@ public class Executor_test {
         // System.out.println(spell);
 
 
+        // <!>  The word in spell name works bu spell school doesn't... why?
+//        List<Spell> spells = spellJDBCExecutor.getAllByWordInSpellName("power");
+//        for (Spell spell : spells) {
+//            System.out.println(spell.getSpellName());
+//        }
+
+
         // TEST Spell Search by Spell School
-        List<Spell> spells = spellJDBCExecutor.getAllBySpellSchool("transmutation");
-        for (Spell spell : spells) {
-            System.out.println(spell.getSpellName());
-        }
+//        List<Spell> spells = spellJDBCExecutor.getAllBySpellSchool("transmutation");
+//        for (Spell spell : spells) {
+//            System.out.println(spell.getSpellName());
+//        }
 
         // -------------------------------------------------------------------------------
         // TEST SpellClass

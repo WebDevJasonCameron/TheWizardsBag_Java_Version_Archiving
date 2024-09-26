@@ -24,7 +24,7 @@ public class ViewSpellMenu extends Menu {
         addOption(new MenuOption("Select Spells to View by Casting Time: ", this::viewByCastingTime));
         addOption(new MenuOption("Select Spells to View by Range: ", this::viewByRange));
         addOption(new MenuOption("Select Spells to View if Concentration Type: ", this::viewByConcentration));
-        addOption(new MenuOption("Select Spells to View by School Attribute: ", this::viewByAttribute));
+        addOption(new MenuOption("Select Spells to View by School Attribute: ", this::viewBySchool));
         addOption(new MenuOption("Select Spells to View by Source: ", this::viewBySource));
     }
 
@@ -77,6 +77,17 @@ public class ViewSpellMenu extends Menu {
         String level = inputHandler.handleInput();
         System.out.println("Viewing spells with level: " + level);
         // Implementation for viewing by level
+        SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
+        List<Spell> spells = spellJDBCExecutor.getAllByLevel(level);
+
+        if (spells.size() == 0) {
+            System.out.println("No spells found with name: " + level);
+        } else {
+            for (int i = 0; i < spells.size(); i++) {
+                Spell spell = spells.get(i);
+                System.out.println(spell.getSpellName());
+            }
+        }
     }
 
     private void viewByCastingTime() {
@@ -103,12 +114,23 @@ public class ViewSpellMenu extends Menu {
         // Implementation for viewing by concentration
     }
 
-    private void viewByAttribute() {
+    private void viewBySchool() {
         System.out.print("Enter the spell school the spells you want to view belongs to: ");
         ValidationInputHandler inputHandler = new ValidationInputHandler(this.scanner,new TextValidationStrategy());
         String school = inputHandler.handleInput();
         System.out.println("Here are the spells from the " + school + " spell school:");
         // Implementation for viewing by spell school
+        SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
+        List<Spell> spells = spellJDBCExecutor.getAllBySpellSchool(school);
+
+        if (spells.size() == 0) {
+            System.out.println("No spells found with name: " + school);
+        } else {
+            for (int i = 0; i < spells.size(); i++) {
+                Spell spell = spells.get(i);
+                System.out.println(spell.getSpellName());
+            }
+        }
     }
 
     private void viewBySource() {

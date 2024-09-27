@@ -81,7 +81,7 @@ public class ViewSpellMenu extends Menu {
         List<Spell> spells = spellJDBCExecutor.getAllByLevel(level);
 
         if (spells.size() == 0) {
-            System.out.println("No spells found with name: " + level);
+            System.out.println("No spells found with the level: " + level);
         } else {
             for (int i = 0; i < spells.size(); i++) {
                 Spell spell = spells.get(i);
@@ -96,6 +96,17 @@ public class ViewSpellMenu extends Menu {
         String castingTime = inputHandler.handleInput();
         System.out.println("Viewing spells with casting time: " + castingTime);
         // Implementation for viewing by casting time
+        SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
+        List<Spell> spells = spellJDBCExecutor.getAllByCastingTime(castingTime);
+
+        if (spells.size() == 0) {
+            System.out.println("No spells found with the casting time of: " + castingTime);
+        } else {
+            for (int i = 0; i < spells.size(); i++) {
+                Spell spell = spells.get(i);
+                System.out.println(spell.getSpellName());
+            }
+        }
     }
 
     private void viewByRange() {
@@ -124,7 +135,7 @@ public class ViewSpellMenu extends Menu {
         List<Spell> spells = spellJDBCExecutor.getAllBySpellSchool(school);
 
         if (spells.size() == 0) {
-            System.out.println("No spells found with name: " + school);
+            System.out.println("No spells found with the school of: " + school);
         } else {
             for (int i = 0; i < spells.size(); i++) {
                 Spell spell = spells.get(i);

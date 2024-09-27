@@ -137,6 +137,19 @@ public class SpellJDBCExecutor {
         return spells;
     }
 
+    public List<Spell> getAllByCastingTime(String word){
+        List<Spell> spells = new ArrayList<>();
+
+        try {
+            Connection connection = this.dcm.getConnection();
+            SpellDAO spellDAO = new SpellDAO(connection);
+            spells = spellDAO.findAllWithCastingTime(word);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return spells;
+    }
+
     public List<Spell> getAllBySpellSchool(String word) {
         List<Spell> spells = new ArrayList<>();
 

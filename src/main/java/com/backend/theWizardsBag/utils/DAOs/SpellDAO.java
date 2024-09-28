@@ -51,7 +51,8 @@ public class SpellDAO extends DataAccessObject<Spell> {
                                                          "POSITION(LOWER(?) IN (LOWER(spell_name))) > 0";
 
     private final static String GET_BY_LEVEL = "SELECT * FROM spells " +
-                                               "WHERE spell_level = ?";
+                                               "WHERE " +
+                                                 "POSITION(LOWER(?) IN (LOWER(spell_level))) > 0";
 
     private final static String GET_ALL_BY_SPELL_SCHOOL = "SELECT * FROM spells " +
                                                           "WHERE spell_school = ? ";
@@ -59,7 +60,6 @@ public class SpellDAO extends DataAccessObject<Spell> {
     private final static String GET_BY_CASTING_TIME = "SELECT * FROM spells " +
                                         "WHERE " +
                                             "POSITION(LOWER(?) IN (LOWER(spell_casting_time))) > 0";
-
 
     private final static String UPDATE = "UPDATE spells " +
                                          "SET " +

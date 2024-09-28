@@ -172,6 +172,7 @@ public class SpellTagDAO extends DataAccessObject<SpellTag> {
 
         try(PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_TAG_ID);) {
             statement.setLong(1, tagId);
+
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()){

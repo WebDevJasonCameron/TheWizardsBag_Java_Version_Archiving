@@ -99,6 +99,10 @@ public class Executor_test {
         // -------------------------------------------------------------------------------
         // TEST SpellTag
         SpellTagJDBCExecutor spellTagJDBCExecutor = new SpellTagJDBCExecutor();
+        List<SpellTag> spellTags = spellTagJDBCExecutor.getAllByTagId(15);
 
+        for(SpellTag spellTag : spellTags){
+            System.out.println(spellTag.getSpellsSpellId());
+        }
     }
 }

@@ -115,6 +115,17 @@ public class ViewSpellMenu extends Menu {
         String range = inputHandler.handleInput();
         System.out.println("Viewing spells with range: " + range);
         // Implementation for viewing by range
+        SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
+        List<Spell> spells = spellJDBCExecutor.getAllByRange(range);
+
+        if (spells.size() == 0) {
+            System.out.println("No spells found with the casting time of: " + range);
+        } else {
+            for (int i = 0; i < spells.size(); i++) {
+                Spell spell = spells.get(i);
+                System.out.println(spell.getSpellName());
+            }
+        }
     }
 
     private void viewByConcentration() {

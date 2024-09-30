@@ -150,6 +150,19 @@ public class SpellJDBCExecutor {
         return spells;
     }
 
+    public List<Spell> getAllByRange(String word){
+        List<Spell> spells = new ArrayList<>();
+
+        try {
+            Connection connection = this.dcm.getConnection();
+            SpellDAO spellDAO = new SpellDAO(connection);
+            spells = spellDAO.findAllWithRange(word);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return spells;
+    }
+
     public List<Spell> getAllBySpellSchool(String word) {
         List<Spell> spells = new ArrayList<>();
 

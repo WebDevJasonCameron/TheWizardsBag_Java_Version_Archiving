@@ -61,6 +61,10 @@ public class SpellDAO extends DataAccessObject<Spell> {
                                         "WHERE " +
                                             "POSITION(LOWER(?) IN (LOWER(spell_casting_time))) > 0";
 
+    private final static String GET_BY_RANGE = "SELECT * FROM spells " +
+                                        "WHERE " +
+                                            "POSITION(LOWER(?) IN (LOWER(spell_range_area))) > 0";
+
     private final static String UPDATE = "UPDATE spells " +
                                          "SET " +
                                              "spell_name = ?, " +
@@ -432,6 +436,64 @@ public class SpellDAO extends DataAccessObject<Spell> {
         List<Spell> spells = new ArrayList<>();
 
         try(PreparedStatement statement = this.connection.prepareStatement(GET_BY_CASTING_TIME);){
+            statement.setString(1, word);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()){
+                Spell spell = new Spell();
+
+                spell.setSpellId(rs.getLong("spell_id"));
+                spell.setSpellName(rs.getString("spell_name"));
+                spell.setSpellLevel(rs.getString("spell_level"));
+                spell.setSpellCastingTime(rs.getString("spell_casting_time"));
+                spell.setSpellRange(rs.getString("spell_range_area"));
+                spell.setSpellComponentsVisual(rs.getBoolean("spell_component_visual"));
+                spell.setSpellComponentsSemantic(rs.getBoolean("spell_component_semantic"));
+                spell.setSpellComponentsMaterial(rs.getBoolean("spell_component_material"));
+                spell.setSpellComponentsMaterials(rs.getString("spell_component_materials"));
+                spell.setSpellDuration(rs.getString("spell_duration"));
+                spell.setSpellConcentration(rs.getBoolean("spell_concentration"));
+                spell.setSpellRitual(rs.getBoolean("spell_ritual"));
+                spell.setSpellSchool(rs.getString("spell_school"));
+                spell.setSpellSaveType(rs.getString("spell_save_type"));
+                spell.setSpellDescription(rs.getString("spell_description"));
+                spell.setSpellImageUrl(rs.getString("spell_image_url"));
+                spell.setSpellSource(rs.getInt("spell_source_id"));
+
+                // <!> Getting an error for the following meths, "too many connections"
+
+                // Get & Set Classes List
+//                RpgClassJDBCExecutor rpgClassJDBCExecutor = new RpgClassJDBCExecutor();
+//                spell.setClassList(rpgClassJDBCExecutor.getAllBySpell(spell.getSpellId()));
+
+                // Get & Set Conditions List
+//                ConditionJDBCExecutor conditionJDBCExecutor = new ConditionJDBCExecutor();
+//                spell.setConditionList(conditionJDBCExecutor.getAllBySpell(spell.getSpellId()));
+
+                // Get & Set Spell Damages
+//                DamagetypeJDBCExecutor damagetypeJDBCExecutor = new DamagetypeJDBCExecutor();
+//                spell.setDamagetypeList(damagetypeJDBCExecutor.getAllBySpell(spell.getSpellId()));
+
+                // Get & Set Spell Tags
+//                TagJDBCExecutor tagJDBCExecutor = new TagJDBCExecutor();
+//                spell.setTagList(tagJDBCExecutor.getAllBySpell(spell.getSpellId()));
+
+                // Add to Spell List
+                spells.add(spell);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        return spells;
+    }
+
+    public List<Spell> findAllWithRange(String word){
+        List<Spell> spells = new ArrayList<>();
+
+        try(PreparedStatement statement = this.connection.prepareStatement(GET_BY_RANGE);){
             statement.setString(1, word);
             ResultSet rs = statement.executeQuery();
 

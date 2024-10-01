@@ -119,7 +119,7 @@ public class ViewSpellMenu extends Menu {
         List<Spell> spells = spellJDBCExecutor.getAllByRange(range);
 
         if (spells.size() == 0) {
-            System.out.println("No spells found with the casting time of: " + range);
+            System.out.println("No spells found with the range of: " + range);
         } else {
             for (int i = 0; i < spells.size(); i++) {
                 Spell spell = spells.get(i);
@@ -127,6 +127,7 @@ public class ViewSpellMenu extends Menu {
             }
         }
     }
+
 
     private void viewByConcentration() {
         System.out.println("Enter the concentration type of the spells to view: ");

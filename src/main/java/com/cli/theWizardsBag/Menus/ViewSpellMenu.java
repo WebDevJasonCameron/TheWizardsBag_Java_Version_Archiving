@@ -2,10 +2,7 @@ package com.cli.theWizardsBag.Menus;
 
 import com.backend.theWizardsBag.models.Spell;
 import com.backend.theWizardsBag.utils.Executables.SpellJDBCExecutor;
-import com.cli.theWizardsBag.MenuCons.Menu;
-import com.cli.theWizardsBag.MenuCons.MenuOption;
-import com.cli.theWizardsBag.MenuCons.TextValidationStrategy;
-import com.cli.theWizardsBag.MenuCons.ValidationInputHandler;
+import com.cli.theWizardsBag.MenuCons.*;
 
 import java.sql.SQLOutput;
 import java.util.List;
@@ -130,11 +127,22 @@ public class ViewSpellMenu extends Menu {
 
 
     private void viewByConcentration() {
-        System.out.println("Enter the concentration type of the spells to view: ");
-        ValidationInputHandler inputHandler = new ValidationInputHandler(this.scanner,  new TextValidationStrategy());
+        System.out.println("Enter 'y' for concentration spells or 'n' for non-concentration spells spells: ");
+        ValidationInputHandler inputHandler = new ValidationInputHandler(this.scanner,  new YesNoValidationStrategy());
         String concentration = inputHandler.handleInput();
-        System.out.println("Viewing spells with concentration type: " + concentration);
+        System.out.println("Viewing spells with concentration: " + concentration);
         // Implementation for viewing by concentration
+        SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
+        List<Spell> spells = spellJDBCExecutor.getAllByConcentration(concentration);
+
+        if (spells.size() == 0) {
+            System.out.println("No spells found with the range of: " + concentration);
+        } else {
+            for (int i = 0; i < spells.size(); i++) {
+                Spell spell = spells.get(i);
+                System.out.println(spell.getSpellName());
+            }
+        }
     }
 
     private void viewBySchool() {

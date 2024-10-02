@@ -136,7 +136,7 @@ public class ViewSpellMenu extends Menu {
         List<Spell> spells = spellJDBCExecutor.getAllByConcentration(concentration);
 
         if (spells.size() == 0) {
-            System.out.println("No spells found with the range of: " + concentration);
+            System.out.println("Error concentrating.  We did not find spells for or against concentration");
         } else {
             for (int i = 0; i < spells.size(); i++) {
                 Spell spell = spells.get(i);

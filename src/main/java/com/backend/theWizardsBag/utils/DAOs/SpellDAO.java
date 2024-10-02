@@ -67,7 +67,7 @@ public class SpellDAO extends DataAccessObject<Spell> {
 
     private final static String GET_BY_CONCENTRATION = "SELECT * FROM spells " +
                                                        "WHERE " +
-                                                          "spell_concentratioN = ?";
+                                                          "spell_concentration = ?";
 
     private final static String UPDATE = "UPDATE spells " +
                                          "SET " +
@@ -552,7 +552,8 @@ public class SpellDAO extends DataAccessObject<Spell> {
         return spells;
     }
 
-    public List<Spell> findAllWithConcentration(String word){
+    public List<Spell> findAllWithConcentration(boolean searchTrueOrFalse){
+        String word = (searchTrueOrFalse == true)? "true" : "false";
         List<Spell> spells = new ArrayList<>();
 
         try(PreparedStatement statement = this.connection.prepareStatement(GET_BY_CONCENTRATION);){

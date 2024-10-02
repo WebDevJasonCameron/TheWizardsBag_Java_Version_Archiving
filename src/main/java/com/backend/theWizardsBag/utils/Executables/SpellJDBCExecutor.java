@@ -164,7 +164,7 @@ public class SpellJDBCExecutor {
     }
 
     public List<Spell> getAllByConcentration(String word){
-        boolean searchTrueOrFalse = (word.equals("y")) ? true : false;
+        boolean searchTrueOrFalse = word.equals("y") ? true : false;
         List<Spell> spells = new ArrayList<>();
 
         try {

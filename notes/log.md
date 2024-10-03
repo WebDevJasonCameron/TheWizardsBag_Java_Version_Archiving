@@ -1,5 +1,13 @@
 # Log
 
+## 2024 10 03
+
+I think things are going well.  I am at a point where I need to build more complicated query menus.  I am starting with the Spell Tag search menu.  I want to use the abstract menu and menu options to build a specific ViewSpellByTagMenu class.  This will first need to grab all the tags that are related to spells ("both" and "spell" tag_type).  The tag_name and tag_id need to be stored in a dictionary list.  All the tag names need to be used as the menu_option name for the list of all the menu options.  Next, a method needs to be built to read the user's number response, recognize it as the name and then records the corresponding tag_id to do the "getAllSpellsByTagsTagId" (name WIP).  Sounds complicated as stupid goes.  I need to workshop this to figure out if there is a better way.  
+
+The goal here is to be able to use this "pull results from the db" and "query from a selection of one of those results."  This should allow me to ask the user, "hey, from the list of tags, damage type, condition it places the user, rpg classes that can use the spell (or later item), or anything else we have a many-to-many table structure, what do you want to view a list of spells by?"  In truth, I think I could probably pipe the list of spells into this type of menu, so you could view the actual spell even when you are using a one-to-one or one-to-many relation.  Further goals... 
+
+---
+
 ## 2024 09 24
 
 I think I partially figured out why getting a list of spells using a spell school search wasn't working.  It is doing multiple searches within Spell DAO to get the list of attributes for each spell it finds.  Now... Another method does the same (Get Spells with the word found in the Spell).  This doesn't have a problem.  I do remember trying to figure out this problem back then.  And I did.  I just don't remember the solution a year later.  Perhaps I actually wrote it in this log??? Let me check...

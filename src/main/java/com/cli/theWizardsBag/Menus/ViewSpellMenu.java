@@ -125,7 +125,6 @@ public class ViewSpellMenu extends Menu {
         }
     }
 
-
     private void viewByConcentration() {
         System.out.println("Enter 'y' for concentration spells or 'n' for non-concentration spells spells: ");
         ValidationInputHandler inputHandler = new ValidationInputHandler(this.scanner,  new YesNoValidationStrategy());
@@ -166,12 +165,17 @@ public class ViewSpellMenu extends Menu {
         }
     }
 
+    // <!> Later
     private void viewBySource() {
         System.out.println("Enter the source of the spells you want to view belongs to: ");
         ValidationInputHandler inputHandler = new ValidationInputHandler(this.scanner,new TextValidationStrategy());
         String source = inputHandler.handleInput();
         System.out.println("Here are the spells from " + source + " source:");
         // Implementation for viewing by source
+    }
+
+    private void viewByTag(){
+        // THIS WILL CALL A viewBySpellTagMenu ...
     }
 
     // OVRs

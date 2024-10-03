@@ -132,8 +132,10 @@ public class ViewSpellMenu extends Menu {
         String concentration = inputHandler.handleInput();
         System.out.println("Viewing spells with concentration: " + concentration);
         // Implementation for viewing by concentration
+        boolean word = concentration.equals("y")? true: false;
+
         SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
-        List<Spell> spells = spellJDBCExecutor.getAllByConcentration(concentration);
+        List<Spell> spells = spellJDBCExecutor.getAllByConcentration(word);
 
         if (spells.size() == 0) {
             System.out.println("Error concentrating.  We did not find spells for or against concentration");

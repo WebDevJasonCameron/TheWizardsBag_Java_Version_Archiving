@@ -552,12 +552,11 @@ public class SpellDAO extends DataAccessObject<Spell> {
         return spells;
     }
 
-    public List<Spell> findAllWithConcentration(boolean searchTrueOrFalse){
-        String word = (searchTrueOrFalse == true)? "true" : "false";
+    public List<Spell> findAllWithConcentration(boolean word){
         List<Spell> spells = new ArrayList<>();
 
         try(PreparedStatement statement = this.connection.prepareStatement(GET_BY_CONCENTRATION);){
-            statement.setString(1, word);
+            statement.setBoolean(1, word);
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()){

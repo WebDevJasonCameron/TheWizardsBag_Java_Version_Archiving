@@ -163,14 +163,13 @@ public class SpellJDBCExecutor {
         return spells;
     }
 
-    public List<Spell> getAllByConcentration(String word){
-        boolean searchTrueOrFalse = word.equals("y") ? true : false;
+    public List<Spell> getAllByConcentration(boolean word){
         List<Spell> spells = new ArrayList<>();
 
         try {
             Connection connection = this.dcm.getConnection();
             SpellDAO spellDAO = new SpellDAO(connection);
-            spells = spellDAO.findAllWithConcentration(searchTrueOrFalse);
+            spells = spellDAO.findAllWithConcentration(word);
         } catch (SQLException e) {
             e.printStackTrace();
         }

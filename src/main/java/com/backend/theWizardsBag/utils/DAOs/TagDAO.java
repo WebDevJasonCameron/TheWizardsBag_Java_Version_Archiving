@@ -193,11 +193,11 @@ public class TagDAO extends DataAccessObject<Tag> {
         return tags;
     }
 
-    public List<Tag> findAllByTagType(String tagType1){
+    public List<Tag> findAllByTagType(String tagType){
         List<Tag> tags = new ArrayList<>();
 
         try (PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_TAG_TYPE);){
-            statement.setString(1, tagType1);
+            statement.setString(1, tagType);
             ResultSet rs = statement.executeQuery();
             while (rs.next()){
                 Tag tag = new Tag();

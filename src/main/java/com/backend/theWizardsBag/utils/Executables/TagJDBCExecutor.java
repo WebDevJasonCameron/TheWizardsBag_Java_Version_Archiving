@@ -18,7 +18,7 @@ public class TagJDBCExecutor {
     final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
 
 
-    //MTHs
+    // MTHs
     public Tag create(String tagName, String tagType){
         try {
             Connection connection = this.dcm.getConnection();
@@ -117,12 +117,36 @@ public class TagJDBCExecutor {
     }
 
 
-    // SPELL
+    // SPELL MTHs
     public List<Tag> getAllBySpell (long spellId){
         try {
             Connection connection = this.dcm.getConnection();
             TagDAO tagDAO = new TagDAO(connection);
             return tagDAO.findAllBySpellId(spellId);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Tag> getAllByTagType (String tagType){
+        try {
+            Connection connection = this.dcm.getConnection();
+            TagDAO tagDAO = new TagDAO(connection);
+            return tagDAO.findAllByTagType(tagType);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Tag> getAllByTagTypes (String tagType1, String tagType2){
+        try {
+            Connection connection = this.dcm.getConnection();
+            TagDAO tagDAO = new TagDAO(connection);
+            return tagDAO.findAllByTagTypes(tagType1, tagType2);
 
         } catch (SQLException e) {
             e.printStackTrace();

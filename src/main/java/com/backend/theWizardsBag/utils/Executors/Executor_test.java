@@ -4,6 +4,7 @@ package com.backend.theWizardsBag.utils.Executors;
 import com.backend.theWizardsBag.models.*;
 import com.backend.theWizardsBag.utils.Executables.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Executor_test {
@@ -99,10 +100,10 @@ public class Executor_test {
         // -------------------------------------------------------------------------------
         // TEST SpellTag
         SpellTagJDBCExecutor spellTagJDBCExecutor = new SpellTagJDBCExecutor();
-        List<SpellTag> spellTags = spellTagJDBCExecutor.getAllByTagId(15);
-
-        for(SpellTag spellTag : spellTags){
-            System.out.println(spellTag.getSpellsSpellId());
-        }
+//        List<SpellTag> spellTags = spellTagJDBCExecutor.getAllByTagId(15);
+//
+//        for(SpellTag spellTag : spellTags){
+//            System.out.println(spellTag.getSpellsSpellId());
+//        }
     }
 }

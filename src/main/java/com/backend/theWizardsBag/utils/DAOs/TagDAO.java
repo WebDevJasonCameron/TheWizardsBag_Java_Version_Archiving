@@ -36,6 +36,17 @@ public class TagDAO extends DataAccessObject<Tag> {
                                         "JOIN tags t ON st.spell_tag_id = t.tag_id " +
                                         "WHERE s.spell_id = ?";
 
+    private final static String GET_ALL_BY_TAG_TYPE = "SELECT * FROM tags " +
+                                                     "WHERE " +
+                                                         "tag_type = ? " +
+                                                     "ORDER BY tag_name ASC";
+
+    private final static String GET_ALL_BY_TAG_TYPES = "SELECT * FROM tags " +
+                                                             "WHERE " +
+                                                                  "tag_type = ? OR " +
+                                                                  "tag_type = ? " +
+                                                             "ORDER BY tag_name ASC";
+
     // CONs
     public TagDAO(Connection connection) {
         super(connection);
@@ -163,6 +174,55 @@ public class TagDAO extends DataAccessObject<Tag> {
 
         try (PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_SPELL_ID);){
             statement.setLong(1, spellId);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()){
+                Tag tag = new Tag();
+
+                tag.setTagId(rs.getLong("tag_id"));
+                tag.setTagName(rs.getString("tag_name"));
+                tag.setTagType(rs.getString("tag_type"));
+
+                tags.add(tag);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        return tags;
+    }
+
+    public List<Tag> findAllByTagType(String tagType1){
+        List<Tag> tags = new ArrayList<>();
+
+        try (PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_TAG_TYPE);){
+            statement.setString(1, tagType1);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()){
+                Tag tag = new Tag();
+
+                tag.setTagId(rs.getLong("tag_id"));
+                tag.setTagName(rs.getString("tag_name"));
+                tag.setTagType(rs.getString("tag_type"));
+
+                tags.add(tag);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        return tags;
+    }
+
+    public List<Tag> findAllByTagTypes(String tagType1, String tagType2){
+        List<Tag> tags = new ArrayList<>();
+
+        try (PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_TAG_TYPES);){
+            statement.setString(1, tagType1);
+            statement.setString(2, tagType2);
             ResultSet rs = statement.executeQuery();
             while (rs.next()){
                 Tag tag = new Tag();

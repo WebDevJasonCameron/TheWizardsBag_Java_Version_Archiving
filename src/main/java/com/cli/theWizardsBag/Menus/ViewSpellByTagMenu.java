@@ -1,10 +1,12 @@
 package com.cli.theWizardsBag.Menus;
 
 import com.backend.theWizardsBag.models.Tag;
+import com.backend.theWizardsBag.utils.Executables.SpellTagJDBCExecutor;
 import com.backend.theWizardsBag.utils.Executables.TagJDBCExecutor;
 import com.cli.theWizardsBag.MenuCons.Menu;
 import com.cli.theWizardsBag.MenuCons.MenuOption;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,14 +20,17 @@ public class ViewSpellByTagMenu extends Menu {
     public ViewSpellByTagMenu(String title) {
         super("View Spell by Its Tag Menu");
 
-        for (Tag tag : tags) {
-            addOption(new MenuOption(tag.getTagName(), this::viewByTag));
-        }
     }
 
 
     // METHs
-    private void viewByTag() {}
+    private List<MenuOption> viewByTag() {
+        SpellTagJDBCExecutor spellTagJDBCExecutor = new SpellTagJDBCExecutor();
+        List<MenuOption> options = new ArrayList<>();
+        for (Tag tag : tags) {
+            options.add(new MenuOption(tag.getTagName(), spellTagJDBCExecutor.getAllByTagId(tag.getTagId()));
+        }
+    }
 
 
     // OVRs

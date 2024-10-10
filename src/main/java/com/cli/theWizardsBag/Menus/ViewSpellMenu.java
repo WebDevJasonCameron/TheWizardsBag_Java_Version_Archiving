@@ -23,6 +23,8 @@ public class ViewSpellMenu extends Menu {
         addOption(new MenuOption("Select Spells to View if Concentration Type: ", this::viewByConcentration));
         addOption(new MenuOption("Select Spells to View by School Attribute: ", this::viewBySchool));
         addOption(new MenuOption("Select Spells to View by Source: ", this::viewBySource));
+        addOption(new MenuOption("Select Spells to View by Tags: ", this::viewByTag));
+
     }
 
     // METHs
@@ -176,6 +178,9 @@ public class ViewSpellMenu extends Menu {
 
     private void viewByTag(){
         // THIS WILL CALL A viewBySpellTagMenu ...
+        ViewSpellByTagMenu viewSpellByTagMenu = new ViewSpellByTagMenu("Enter the corresponding tag you want to see spells by: ");
+        viewSpellByTagMenu.display();
+
     }
 
     // OVRs

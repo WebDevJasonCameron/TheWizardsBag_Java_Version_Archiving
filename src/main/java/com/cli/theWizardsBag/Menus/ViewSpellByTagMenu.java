@@ -20,7 +20,7 @@ public class ViewSpellByTagMenu extends Menu {
     // CONs
     public ViewSpellByTagMenu(String title) {
         super(title);
-        menuOptions.addAll(getMenuOptions(tags));
+        this.options = menuOptions;
     }
 
     // METHs

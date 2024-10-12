@@ -1,4 +1,6 @@
 package com.cli.theWizardsBag.MenuCons;
+import com.sun.security.jgss.GSSUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -23,6 +25,7 @@ public abstract class Menu {
     }
 
     public void display() {
+        System.out.println(options.size());
         while (true) {
             System.out.println("\n=== " + title + " ===");
             for (int i = 0; i < options.size(); i++) {

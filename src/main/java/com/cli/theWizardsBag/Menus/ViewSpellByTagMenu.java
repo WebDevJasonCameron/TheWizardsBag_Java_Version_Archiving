@@ -26,12 +26,13 @@ public class ViewSpellByTagMenu extends Menu {
     // METHs
     private List<MenuOption> getMenuOptions(List<Tag> tags) {
         SpellTagJDBCExecutor spellTagJDBCExecutor = new SpellTagJDBCExecutor();
+
         List<MenuOption> menuOptionsOutput = new ArrayList<>();
         for (Tag tag : tags) {
-            menuOptionsOutput.add(new MenuOption(tag.getTagName(), () -> {spellTagJDBCExecutor.getAllByTagId(tag.getTagId());
+            menuOptionsOutput.add(new MenuOption(tag.getTagName(), () -> {
+                spellTagJDBCExecutor.getAllByTagId(tag.getTagId());
             }));
         }
-
         return menuOptionsOutput;
     }
 

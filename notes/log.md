@@ -1,5 +1,11 @@
 # Log
 
+## 2024 10 12
+
+I think I'm getting this menu and sub sub sub sub menus figured out. It's slow and sometimes I think I just want to start building a web app to show something of my work.  This is so very slow when you can't spend more than ten to fifteen minutes a day on the project.  I want to say baby steps will eventually get us there. However, I think someone is going to pick up the baby and toss it if it doesn't eventually start running and making progress!  
+
+---
+
 ## 2024 10 03
 
 I think things are going well.  I am at a point where I need to build more complicated query menus.  I am starting with the Spell Tag search menu.  I want to use the abstract menu and menu options to build a specific ViewSpellByTagMenu class.  This will first need to grab all the tags that are related to spells ("both" and "spell" tag_type).  The tag_name and tag_id need to be stored in a dictionary list.  All the tag names need to be used as the menu_option name for the list of all the menu options.  Next, a method needs to be built to read the user's number response, recognize it as the name and then records the corresponding tag_id to do the "getAllSpellsByTagsTagId" (name WIP).  Sounds complicated as stupid goes.  I need to workshop this to figure out if there is a better way.  

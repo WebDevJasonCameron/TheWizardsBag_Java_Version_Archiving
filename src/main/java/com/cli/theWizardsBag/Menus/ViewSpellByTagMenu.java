@@ -54,7 +54,11 @@ public class ViewSpellByTagMenu extends Menu {
     // OVRs
     @Override
     protected void handleUserChoice(int choice) {
-
+        if (choice > 0 && choice <= options.size()) {
+            options.get(choice - 1).execute();
+        } else {
+            System.out.println("Invalid choice, please try again");
+        }
     }
 
 

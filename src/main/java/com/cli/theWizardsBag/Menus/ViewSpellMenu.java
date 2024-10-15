@@ -180,7 +180,6 @@ public class ViewSpellMenu extends Menu {
         // THIS WILL CALL A viewBySpellTagMenu ...
         ViewSpellByTagMenu viewSpellByTagMenu = new ViewSpellByTagMenu("Enter the corresponding tag you want to see spells by: ");
         viewSpellByTagMenu.display();
-
     }
 
     // OVRs

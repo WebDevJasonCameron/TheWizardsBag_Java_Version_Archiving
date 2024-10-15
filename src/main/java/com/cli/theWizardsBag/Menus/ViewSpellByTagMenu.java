@@ -6,8 +6,6 @@ import com.backend.theWizardsBag.utils.Executables.SpellTagJDBCExecutor;
 import com.backend.theWizardsBag.utils.Executables.TagJDBCExecutor;
 import com.cli.theWizardsBag.MenuCons.Menu;
 import com.cli.theWizardsBag.MenuCons.MenuOption;
-import com.cli.theWizardsBag.MenuCons.TextValidationStrategy;
-import com.cli.theWizardsBag.MenuCons.ValidationInputHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +29,8 @@ public class ViewSpellByTagMenu extends Menu {
         List<MenuOption> menuOptionsOutput = new ArrayList<>();
         for (Tag tag : tags) {
             menuOptionsOutput.add(new MenuOption(tag.getTagName(), () -> {
-                viewByTagId(tag.getId());
+                System.out.println("You chose " + tag.getTagName());
+                viewByTagId(tag.getTagId());
             }));
         }
         return menuOptionsOutput;
@@ -39,14 +38,10 @@ public class ViewSpellByTagMenu extends Menu {
 
     private void viewByTagId(Long tagId){
         SpellTagJDBCExecutor spellTagJDBCExecutor = new SpellTagJDBCExecutor();
-        System.out.println("Enter the tag number you want to view spells: ");
-        // input handler
+        System.out.println("The following spells have that tag:  \n");
 
-        // Implementation for viewing by name
-        List<SpellTag> spellTags = spellTagJDBCExecutor.getAllByTagId(tagId);
-        for (SpellTag spellTag : spellTags) {
-            System.out.println(spellTag.getSpellsSpellId());
-        }
+        // get all spell ids with that tag id
+        // print out all the spell names with that tag id
     }
 
 

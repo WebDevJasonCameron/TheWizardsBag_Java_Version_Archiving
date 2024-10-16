@@ -1,7 +1,9 @@
 package com.cli.theWizardsBag.Menus;
 
+import com.backend.theWizardsBag.models.Spell;
 import com.backend.theWizardsBag.models.SpellTag;
 import com.backend.theWizardsBag.models.Tag;
+import com.backend.theWizardsBag.utils.Executables.SpellJDBCExecutor;
 import com.backend.theWizardsBag.utils.Executables.SpellTagJDBCExecutor;
 import com.backend.theWizardsBag.utils.Executables.TagJDBCExecutor;
 import com.cli.theWizardsBag.MenuCons.Menu;
@@ -38,10 +40,21 @@ public class ViewSpellByTagMenu extends Menu {
 
     private void viewByTagId(Long tagId){
         SpellTagJDBCExecutor spellTagJDBCExecutor = new SpellTagJDBCExecutor();
+        SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
+
+        List<SpellTag> spellTags = spellTagJDBCExecutor.getAllByTagId(tagId);
+        List<Spell> spells = new ArrayList<>();
+
+        for (SpellTag spellTag : spellTags) {
+            spells.add(spellJDBCExecutor.getById(spellTag.getSpellsSpellId()));
+        }
+
         System.out.println("The following spells have that tag:  \n");
 
-        // get all spell ids with that tag id
-        // print out all the spell names with that tag id
+        for (Spell spell : spells) {
+            System.out.println(spell.getSpellName());
+        }
+
     }
 
 

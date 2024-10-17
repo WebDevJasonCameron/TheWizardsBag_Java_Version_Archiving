@@ -20,8 +20,7 @@ public class ConditionJDBCExecutor {
 
     // MTHs
     public Condition create(String conditionName, String conditionDescription){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             ConditionDAO conditionDAO = new ConditionDAO(connection);
             Condition condition = new Condition();
 
@@ -37,8 +36,7 @@ public class ConditionJDBCExecutor {
     }
 
     public Condition getByID (long id){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             ConditionDAO conditionDAO = new ConditionDAO(connection);
             return conditionDAO.findById(id);
 
@@ -50,8 +48,7 @@ public class ConditionJDBCExecutor {
     }
 
     public List<Condition> getAll (){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             ConditionDAO conditionDAO = new ConditionDAO(connection);
             return conditionDAO.findAll();
         } catch (SQLException e) {
@@ -61,8 +58,7 @@ public class ConditionJDBCExecutor {
     }
 
     public Condition getByName (String conditionName){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             ConditionDAO conditionDAO = new ConditionDAO(connection);
             return conditionDAO.findByName(conditionName);
 
@@ -73,8 +69,7 @@ public class ConditionJDBCExecutor {
     }
 
     public Condition update(Condition conditionNewData) {
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             ConditionDAO conditionDAO = new ConditionDAO(connection);
 
             Condition condition = conditionDAO.findById(conditionNewData.getConditionId());
@@ -94,8 +89,7 @@ public class ConditionJDBCExecutor {
     }
 
     public void delete(long id) {
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             ConditionDAO conditionDAO = new ConditionDAO(connection);
             Condition conditionBeingDeleted = conditionDAO.findById(id);
             conditionDAO.delete(id);
@@ -109,8 +103,7 @@ public class ConditionJDBCExecutor {
 
     // SPELL
     public List<Condition> getAllBySpell (long spellId){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             ConditionDAO conditionDAO = new ConditionDAO(connection);
             return conditionDAO.findAllBySpellId(spellId);
 

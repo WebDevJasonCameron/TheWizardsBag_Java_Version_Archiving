@@ -19,8 +19,7 @@ public class SpellDamagetypeJDBCExecutor {
 
     // MTHs
     public SpellDamagetype create(long spellsSpellId, long damagetypesDamagetypeId){
-        try {
-            Connection connection= this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SpellDamagetypeDAO spellDamagetypeDAO = new SpellDamagetypeDAO(connection);
             SpellDamagetype spellDamagetype = new SpellDamagetype();
 
@@ -35,8 +34,7 @@ public class SpellDamagetypeJDBCExecutor {
     }
 
     public SpellDamagetype getById(long id){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SpellDamagetypeDAO spellDamagetypeDAO = new SpellDamagetypeDAO(connection);
             return spellDamagetypeDAO.findById(id);
 
@@ -47,8 +45,7 @@ public class SpellDamagetypeJDBCExecutor {
     }
 
     public List<SpellDamagetype> getAll(){
-        try{
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SpellDamagetypeDAO spellDamagetypeDAO = new SpellDamagetypeDAO(connection);
             return spellDamagetypeDAO.findAll();
 
@@ -59,8 +56,7 @@ public class SpellDamagetypeJDBCExecutor {
     }
 
     public List<SpellDamagetype> getAllBySpellId(long spellId){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SpellDamagetypeDAO spellDamagetypeDAO = new SpellDamagetypeDAO(connection);
             return spellDamagetypeDAO.findAllBySpellId(spellId);
         } catch (SQLException e) {
@@ -70,8 +66,7 @@ public class SpellDamagetypeJDBCExecutor {
     }
 
     public List<SpellDamagetype> getAllByDamagetypeId(long damagetypeId){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SpellDamagetypeDAO spellDamagetypeDAO = new SpellDamagetypeDAO(connection);
             return spellDamagetypeDAO.findAllByDamagetypeId(damagetypeId);
         } catch (SQLException e) {
@@ -81,8 +76,7 @@ public class SpellDamagetypeJDBCExecutor {
     }
 
     public SpellDamagetype update(SpellDamagetype spellDamagetypeNewData){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SpellDamagetypeDAO spellDamagetypeDAO = new SpellDamagetypeDAO(connection);
 
             SpellDamagetype spellDamagetype = spellDamagetypeDAO.findById(spellDamagetypeNewData.getSpellDamagetypeId());
@@ -100,8 +94,7 @@ public class SpellDamagetypeJDBCExecutor {
     }
 
     public void delete(long id){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SpellDamagetypeDAO spellDamagetypeDAO = new SpellDamagetypeDAO(connection);
             SpellDamagetype spellDamagetype = spellDamagetypeDAO.findById(id);
             System.out.println("Deleted spell_damagetype with " + spellDamagetype.getSpellDamagetypeId() + " id");
@@ -115,8 +108,7 @@ public class SpellDamagetypeJDBCExecutor {
 
     // MTHs & SPELL
     public SpellDamagetype getBySpellAndDamagetypeIds(long spellId, long damagetypeId){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SpellDamagetypeDAO spellDamagetypeDAO = new SpellDamagetypeDAO(connection);
 
             return spellDamagetypeDAO.findBySpellAndDamagetypeIds(spellId, damagetypeId);

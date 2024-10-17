@@ -19,8 +19,7 @@ public class SpellClassJDBCExecutor {
 
     // MTHs
     public SpellClass create(long spellsSpellId, long classesClassId){
-        try {
-            Connection connection= this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection()){
             SpellClassDAO spellClassDAO = new SpellClassDAO(connection);
             SpellClass spellClass = new SpellClass();
 
@@ -35,8 +34,7 @@ public class SpellClassJDBCExecutor {
     }
 
     public SpellClass getById(long id){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection()){
             SpellClassDAO spellClassDAO = new SpellClassDAO(connection);
             return spellClassDAO.findById(id);
 
@@ -47,8 +45,7 @@ public class SpellClassJDBCExecutor {
     }
 
     public List<SpellClass> getAll(){
-        try{
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection()){
             SpellClassDAO spellClassDAO = new SpellClassDAO(connection);
             return spellClassDAO.findAll();
 
@@ -59,8 +56,7 @@ public class SpellClassJDBCExecutor {
     }
 
     public List<SpellClass> getAllBySpellId(long spellId){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection()){
             SpellClassDAO spellClassDAO = new SpellClassDAO(connection);
             return spellClassDAO.findAllBySpellId(spellId);
         } catch (SQLException e) {
@@ -70,8 +66,7 @@ public class SpellClassJDBCExecutor {
     }
 
     public List<SpellClass> getAllByClassId(long classId){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection()){
             SpellClassDAO spellClassDAO = new SpellClassDAO(connection);
             return spellClassDAO.findAllByClassId(classId);
         } catch (SQLException e) {
@@ -81,8 +76,7 @@ public class SpellClassJDBCExecutor {
     }
 
     public SpellClass update(SpellClass spellClassNewData){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection()){
             SpellClassDAO spellClassDAO = new SpellClassDAO(connection);
 
             SpellClass spellClass = spellClassDAO.findById(spellClassNewData.getSpellClassId());
@@ -100,8 +94,7 @@ public class SpellClassJDBCExecutor {
     }
 
     public void delete(long id){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection()){
             SpellClassDAO spellClassDAO = new SpellClassDAO(connection);
             SpellClass spellClass = spellClassDAO.findById(id);
             System.out.println("Deleted spell_class with " + spellClass.getSpellClassId() + " id");
@@ -115,8 +108,7 @@ public class SpellClassJDBCExecutor {
 
     // MTHs & SPELL
     public SpellClass getBySpellAndClassIds(long spellId, long classId){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection()){
             SpellClassDAO spellClassDAO = new SpellClassDAO(connection);
 
             return spellClassDAO.findBySpellAndClassIds(spellId, classId);
@@ -126,6 +118,4 @@ public class SpellClassJDBCExecutor {
             throw new RuntimeException(e);
         }
     }
-
-
 }

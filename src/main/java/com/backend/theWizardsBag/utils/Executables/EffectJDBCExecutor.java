@@ -19,8 +19,7 @@ public class EffectJDBCExecutor {
 
     // MTHs
     public Effect create(String effectName, String effectSubEffect){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             EffectDAO effectDAO = new EffectDAO(connection);
             Effect effect = new Effect();
 
@@ -35,8 +34,7 @@ public class EffectJDBCExecutor {
     }
 
     public Effect getById(long id){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             EffectDAO effectDAO = new EffectDAO(connection);
             return effectDAO.findById(id);
 
@@ -47,8 +45,7 @@ public class EffectJDBCExecutor {
     }
 
     public List<Effect> getAll (){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             EffectDAO effectDAO = new EffectDAO(connection);
             return effectDAO.findAll();
         } catch (SQLException e) {
@@ -58,8 +55,7 @@ public class EffectJDBCExecutor {
     }
 
     public List<Effect> getAllByName(String effectName) {
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             EffectDAO effectDAO = new EffectDAO(connection);
             return effectDAO.findAllByName(effectName);
 
@@ -70,8 +66,7 @@ public class EffectJDBCExecutor {
     }
 
     public Effect getByNameAndSub(String effectName, String effectSubEffect) {
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             EffectDAO effectDAO = new EffectDAO(connection);
             return effectDAO.findByNameAndSub(effectName, effectSubEffect);
 
@@ -82,8 +77,7 @@ public class EffectJDBCExecutor {
     }
 
     public Effect update(Effect effectNewData){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             EffectDAO effectDAO = new EffectDAO(connection);
 
             Effect effect = effectDAO.findById(effectNewData.getEffectId());
@@ -99,8 +93,7 @@ public class EffectJDBCExecutor {
     }
 
     public void delete(long id) {
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             EffectDAO effectDAO = new EffectDAO(connection);
             Effect effectBeingDeleted = effectDAO.findById(id);
             effectDAO.delete(id);

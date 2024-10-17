@@ -20,8 +20,7 @@ public class SpellConditionJDBCExecutor {
 
     // MTHs
     public SpellCondition create(long spellsSpellId, long conditionsConditionId){
-        try {
-            Connection connection= this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SpellConditionDAO spellConditionDAO = new SpellConditionDAO(connection);
             SpellCondition spellCondition = new SpellCondition();
 
@@ -36,8 +35,7 @@ public class SpellConditionJDBCExecutor {
     }
 
     public SpellCondition getById(long id){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SpellConditionDAO spellConditionDAO = new SpellConditionDAO(connection);
             return spellConditionDAO.findById(id);
 
@@ -48,8 +46,7 @@ public class SpellConditionJDBCExecutor {
     }
 
     public List<SpellCondition> getAll(){
-        try{
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SpellConditionDAO spellConditionDAO = new SpellConditionDAO(connection);
             return spellConditionDAO.findAll();
 
@@ -60,8 +57,7 @@ public class SpellConditionJDBCExecutor {
     }
 
     public List<SpellCondition> getAllBySpellId(long spellId){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SpellConditionDAO spellConditionDAO = new SpellConditionDAO(connection);
             return spellConditionDAO.findAllBySpellId(spellId);
         } catch (SQLException e) {
@@ -71,8 +67,7 @@ public class SpellConditionJDBCExecutor {
     }
 
     public List<SpellCondition> getAllByConditionId(long conditionId){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SpellConditionDAO spellConditionDAO = new SpellConditionDAO(connection);
             return spellConditionDAO.findAllByConditionId(conditionId);
         } catch (SQLException e) {
@@ -82,8 +77,7 @@ public class SpellConditionJDBCExecutor {
     }
 
     public SpellCondition update(SpellCondition spellConditionNewData){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SpellConditionDAO spellConditionDAO = new SpellConditionDAO(connection);
 
             SpellCondition spellCondition = spellConditionDAO.findById(spellConditionNewData.getSpellConditionId());
@@ -101,8 +95,7 @@ public class SpellConditionJDBCExecutor {
     }
 
     public void delete(long id){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SpellConditionDAO spellConditionDAO = new SpellConditionDAO(connection);
             SpellCondition spellCondition = spellConditionDAO.findById(id);
             System.out.println("Deleted spell_condition with " + spellCondition.getSpellConditionId() + " id");
@@ -116,8 +109,7 @@ public class SpellConditionJDBCExecutor {
 
     // MTHs & SPELL
     public SpellCondition getBySpellAndConditionIds(long spellId, long conditionId){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SpellConditionDAO spellConditionDAO = new SpellConditionDAO(connection);
 
             return spellConditionDAO.findBySpellAndConditionIds(spellId, conditionId);

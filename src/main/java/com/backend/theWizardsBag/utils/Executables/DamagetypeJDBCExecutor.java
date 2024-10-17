@@ -18,8 +18,7 @@ public class DamagetypeJDBCExecutor {
 
     // MTHs
     public Damagetype create(String damagetypeName){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             DamagetypeDAO damagetypeDAO = new DamagetypeDAO(connection);
             Damagetype damagetype = new Damagetype();
 
@@ -33,8 +32,7 @@ public class DamagetypeJDBCExecutor {
     }
 
     public Damagetype getById(long id){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             DamagetypeDAO damagetypeDAO = new DamagetypeDAO(connection);
             return damagetypeDAO.findById(id);
 
@@ -45,8 +43,7 @@ public class DamagetypeJDBCExecutor {
     }
 
     public List<Damagetype> getAll (){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             DamagetypeDAO damagetypeDAO = new DamagetypeDAO(connection);
             return damagetypeDAO.findAll();
         } catch (SQLException e) {
@@ -56,8 +53,7 @@ public class DamagetypeJDBCExecutor {
     }
 
     public Damagetype getByName (String damagetypeName){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             DamagetypeDAO damagetypeDAO = new DamagetypeDAO(connection);
             return damagetypeDAO.findByName(damagetypeName);
 
@@ -68,8 +64,7 @@ public class DamagetypeJDBCExecutor {
     }
 
     public Damagetype update(Damagetype damagetypeNewData) {
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             DamagetypeDAO damagetypeDAO = new DamagetypeDAO(connection);
 
             Damagetype damagetype = damagetypeDAO.findById(damagetypeNewData.getDamagetypeId());
@@ -85,8 +80,7 @@ public class DamagetypeJDBCExecutor {
     }
 
     public void delete(long id) {
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             DamagetypeDAO damagetypeDAO = new DamagetypeDAO(connection);
             Damagetype damagetypeBeingDeleted = damagetypeDAO.findById(id);
             damagetypeDAO.delete(id);
@@ -100,8 +94,7 @@ public class DamagetypeJDBCExecutor {
 
     // MTHs & SPELL
     public List<Damagetype> getAllBySpell (long spellId){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             DamagetypeDAO damagetypeDAO = new DamagetypeDAO(connection);
             return damagetypeDAO.findAllBySpellId(spellId);
 

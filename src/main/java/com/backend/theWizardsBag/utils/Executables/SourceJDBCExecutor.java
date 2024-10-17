@@ -19,8 +19,7 @@ public class SourceJDBCExecutor {
 
     // MTHs
     public Source create(String sourceName, Date sourcePublishDate, String sourcePublisher, String sourceTTRPG){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SourceDAO sourceDAO = new SourceDAO(connection);
             Source source = new Source();
 
@@ -37,8 +36,7 @@ public class SourceJDBCExecutor {
     }
 
     public Source getById(long id){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SourceDAO sourceDAO = new SourceDAO(connection);
             return sourceDAO.findById(id);
 
@@ -49,8 +47,7 @@ public class SourceJDBCExecutor {
     }
 
     public List<Source> getAll (){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SourceDAO sourceDAO = new SourceDAO(connection);
             return sourceDAO.findAll();
         } catch (SQLException e) {
@@ -60,8 +57,7 @@ public class SourceJDBCExecutor {
     }
 
     public List<Source> getAllByTTRPG (String sourceTTRPG){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SourceDAO sourceDAO = new SourceDAO(connection);
             return sourceDAO.findAllByTTRPG(sourceTTRPG);
 
@@ -73,8 +69,7 @@ public class SourceJDBCExecutor {
 
 
     public Source update(Source sourceNewData){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SourceDAO sourceDAO = new SourceDAO(connection);
 
             Source source = sourceDAO.findById(sourceNewData.getSourceId());
@@ -93,8 +88,7 @@ public class SourceJDBCExecutor {
     }
 
     public void delete(long id) {
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SourceDAO sourceDAO = new SourceDAO(connection);
             Source sourceBeingDeleted = sourceDAO.findById(id);
             sourceDAO.delete(id);
@@ -105,7 +99,4 @@ public class SourceJDBCExecutor {
             throw new RuntimeException(e);
         }
     }
-
-
-
 }

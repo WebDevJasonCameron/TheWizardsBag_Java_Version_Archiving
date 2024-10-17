@@ -20,8 +20,7 @@ public class TagJDBCExecutor {
 
     // MTHs
     public Tag create(String tagName, String tagType){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             TagDAO tagDAO = new TagDAO(connection);
             Tag tag = new Tag();
 
@@ -38,8 +37,7 @@ public class TagJDBCExecutor {
 
     public Tag getById(long id){
         Tag tag = new Tag();
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             TagDAO tagDAO = new TagDAO(connection);
             tag = tagDAO.findById(id);
 
@@ -48,16 +46,12 @@ public class TagJDBCExecutor {
         }
 
         return tag;
-
     }
 
     public Tag getByName(String name){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             TagDAO tagDAO = new TagDAO(connection);
-
             return tagDAO.findByName(name);
-
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
@@ -67,8 +61,7 @@ public class TagJDBCExecutor {
     public List<Tag> getAll(){
         List<Tag> tags = new ArrayList<>();
 
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             TagDAO tagDAO = new TagDAO(connection);
             tags =  tagDAO.findAll();
 
@@ -80,8 +73,7 @@ public class TagJDBCExecutor {
     }
 
     public Tag update(Tag tagNewData){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             TagDAO tagDAO = new TagDAO(connection);
 
             Tag tag = tagDAO.findById(tagNewData.getTagId());
@@ -103,8 +95,7 @@ public class TagJDBCExecutor {
     }
 
     public void delete(long id){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             TagDAO tagDAO = new TagDAO(connection);
             Tag tagBeingDeleted = tagDAO.findById(id);
             tagDAO.delete(id);
@@ -119,8 +110,7 @@ public class TagJDBCExecutor {
 
     // SPELL MTHs
     public List<Tag> getAllBySpell (long spellId){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             TagDAO tagDAO = new TagDAO(connection);
             return tagDAO.findAllBySpellId(spellId);
 
@@ -131,8 +121,7 @@ public class TagJDBCExecutor {
     }
 
     public List<Tag> getAllByTagType (String tagType){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             TagDAO tagDAO = new TagDAO(connection);
             return tagDAO.findAllByTagType(tagType);
 
@@ -143,8 +132,7 @@ public class TagJDBCExecutor {
     }
 
     public List<Tag> getAllByTagTypes (String tagType1, String tagType2){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             TagDAO tagDAO = new TagDAO(connection);
             return tagDAO.findAllByTagTypes(tagType1, tagType2);
 

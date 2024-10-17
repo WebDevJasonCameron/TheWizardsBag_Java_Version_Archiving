@@ -20,8 +20,7 @@ public class NoteJDBCExecutor {
 
     // MTHs
     public Note create(String noteName, Date noteDate, String noteContent, String noteAuthor){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             NoteDAO noteDAO = new NoteDAO(connection);
             Note note = new Note();
 
@@ -38,8 +37,7 @@ public class NoteJDBCExecutor {
     }
 
     public Note getById(long id){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             NoteDAO noteDAO = new NoteDAO(connection);
             return noteDAO.findById(id);
 
@@ -50,8 +48,7 @@ public class NoteJDBCExecutor {
     }
 
     public List<Note> getAll (){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             NoteDAO noteDAO = new NoteDAO(connection);
             return noteDAO.findAll();
         } catch (SQLException e) {
@@ -61,8 +58,7 @@ public class NoteJDBCExecutor {
     }
 
     public List<Note> getAllByAuthor (String noteAuthor){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             NoteDAO noteDAO = new NoteDAO(connection);
             return noteDAO.findAllByAuthor(noteAuthor);
 
@@ -73,8 +69,7 @@ public class NoteJDBCExecutor {
     }
 
     public Note update(Note noteNewData){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             NoteDAO noteDAO = new NoteDAO(connection);
 
             Note note = noteDAO.findById(noteNewData.getNoteId());
@@ -93,8 +88,7 @@ public class NoteJDBCExecutor {
     }
 
     public void delete(long id) {
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             NoteDAO noteDAO = new NoteDAO(connection);
             Note noteBeingDeleted = noteDAO.findById(id);
             noteDAO.delete(id);
@@ -105,7 +99,4 @@ public class NoteJDBCExecutor {
             throw new RuntimeException(e);
         }
     }
-
-
-
 }

@@ -19,8 +19,7 @@ public class TypeJDBCExecutor {
 
     // MTHs
     public Type create(String typeName, String typeSubType) {
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             TypeDAO typeDAO = new TypeDAO(connection);
             Type type = new Type();
 
@@ -36,11 +35,9 @@ public class TypeJDBCExecutor {
     }
 
     public Type getById(long id) {
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             TypeDAO typeDAO = new TypeDAO(connection);
             return typeDAO.findById(id);
-
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -49,8 +46,7 @@ public class TypeJDBCExecutor {
     }
 
     public List<Type> getAll(){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             TypeDAO typeDAO = new TypeDAO(connection);
             return typeDAO.findAll();
 
@@ -58,12 +54,10 @@ public class TypeJDBCExecutor {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
-
     }
 
     public List<Type> getAllByName(String typeName){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             TypeDAO typeDAO = new TypeDAO(connection);
             return typeDAO.findAllByName(typeName);
 
@@ -74,8 +68,7 @@ public class TypeJDBCExecutor {
     }
 
     public Type getByNameAndSubType(String typeName, String typeSubType) {
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             TypeDAO typeDAO = new TypeDAO(connection);
 
             return typeDAO.findByNameAndSubType(typeName, typeSubType);
@@ -87,8 +80,7 @@ public class TypeJDBCExecutor {
     }
 
     public Type update(Type typeNewData) {
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             TypeDAO typeDAO = new TypeDAO(connection);
 
             Type type = typeDAO.findById(typeNewData.getTypeId());
@@ -109,8 +101,7 @@ public class TypeJDBCExecutor {
     }
 
     public void delete(long id) {
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             TypeDAO typeDAO = new TypeDAO(connection);
             Type typeBeingDeleted = typeDAO.findById(id);
             typeDAO.delete(id);

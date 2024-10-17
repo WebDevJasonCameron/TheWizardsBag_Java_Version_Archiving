@@ -20,8 +20,7 @@ public class SpellTagJDBCExecutor {
 
     // MTHs
     public SpellTag create(long spellsSpellId, long tagsTagId){
-        try {
-            Connection connection= this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SpellTagDAO spellTagDAO = new SpellTagDAO(connection);
             SpellTag spellTag = new SpellTag();
 
@@ -36,8 +35,7 @@ public class SpellTagJDBCExecutor {
     }
 
     public SpellTag getById(long id){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SpellTagDAO spellTagDAO = new SpellTagDAO(connection);
             return spellTagDAO.findById(id);
 
@@ -48,8 +46,7 @@ public class SpellTagJDBCExecutor {
     }
 
     public List<SpellTag> getAll(){
-        try{
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SpellTagDAO spellTagDAO = new SpellTagDAO(connection);
             return spellTagDAO.findAll();
 
@@ -60,8 +57,7 @@ public class SpellTagJDBCExecutor {
     }
 
     public List<SpellTag> getAllBySpellId(long spellId){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SpellTagDAO spellTagDAO = new SpellTagDAO(connection);
             return spellTagDAO.findAllBySpellId(spellId);
         } catch (SQLException e) {
@@ -71,8 +67,7 @@ public class SpellTagJDBCExecutor {
     }
 
     public List<SpellTag> getAllByTagId(long tagId){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SpellTagDAO spellTagDAO = new SpellTagDAO(connection);
             return spellTagDAO.findAllByTagId(tagId);
         } catch (SQLException e) {
@@ -82,8 +77,7 @@ public class SpellTagJDBCExecutor {
     }
 
     public SpellTag update(SpellTag spellTagNewData){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SpellTagDAO spellTagDAO = new SpellTagDAO(connection);
 
             SpellTag spellTag = spellTagDAO.findById(spellTagNewData.getSpellTagId());
@@ -101,8 +95,7 @@ public class SpellTagJDBCExecutor {
     }
 
     public void delete(long id){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             SpellTagDAO spellTagDAO = new SpellTagDAO(connection);
             SpellTag spellTag = spellTagDAO.findById(id);
             System.out.println("Deleted spell_tag with " + spellTag.getSpellTagId() + " id");
@@ -113,6 +106,4 @@ public class SpellTagJDBCExecutor {
             throw new RuntimeException(e);
         }
     }
-
-
 }

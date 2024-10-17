@@ -19,8 +19,7 @@ public class RpgClassJDBCExecutor {
 
     // MTHs
     public RpgClass create(String className, String classSubclassName, String classDescription){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             RpgClassDAO classDAO = new RpgClassDAO(connection);
             RpgClass rpgClass = new RpgClass();
 
@@ -36,8 +35,7 @@ public class RpgClassJDBCExecutor {
     }
 
     public RpgClass getById(long id){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             RpgClassDAO classDAO = new RpgClassDAO(connection);
             return classDAO.findById(id);
 
@@ -48,8 +46,7 @@ public class RpgClassJDBCExecutor {
     }
 
     public List<RpgClass> getAll (){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             RpgClassDAO classDAO = new RpgClassDAO(connection);
             return classDAO.findAll();
         } catch (SQLException e) {
@@ -59,8 +56,7 @@ public class RpgClassJDBCExecutor {
     }
 
     public List<RpgClass> getAllByName (String className){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             RpgClassDAO classDAO = new RpgClassDAO(connection);
             return classDAO.findAllByName(className);
 
@@ -71,8 +67,7 @@ public class RpgClassJDBCExecutor {
     }
 
     public RpgClass getByNameAndSub (String className, String classSubclassName){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             RpgClassDAO classDAO = new RpgClassDAO(connection);
             return classDAO.findByNameAndSub(className, classSubclassName);
 
@@ -83,8 +78,7 @@ public class RpgClassJDBCExecutor {
     }
 
     public RpgClass update(RpgClass classNewData){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             RpgClassDAO classDAO = new RpgClassDAO(connection);
 
             RpgClass rpgClass = classDAO.findById(classNewData.getClassId());
@@ -102,8 +96,7 @@ public class RpgClassJDBCExecutor {
     }
 
     public void delete(long id) {
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             RpgClassDAO classDAO = new RpgClassDAO(connection);
             RpgClass classBeingDeleted = classDAO.findById(id);
             classDAO.delete(id);
@@ -117,8 +110,7 @@ public class RpgClassJDBCExecutor {
 
     // SPELL
     public List<RpgClass> getAllBySpell (long spellId){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = dcm.getConnection();){
             RpgClassDAO classDAO = new RpgClassDAO(connection);
             return classDAO.findAllBySpellId(spellId);
 
@@ -127,5 +119,4 @@ public class RpgClassJDBCExecutor {
             throw new RuntimeException(e);
         }
     }
-
 }

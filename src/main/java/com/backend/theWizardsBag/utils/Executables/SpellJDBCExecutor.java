@@ -67,12 +67,9 @@ public class SpellJDBCExecutor {
 
         Spell spell = new Spell();
 
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = this.dcm.getConnection()){
             SpellDAO spellDAO = new SpellDAO(connection);
             spell =  spellDAO.findById(id);
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -83,8 +80,7 @@ public class SpellJDBCExecutor {
     public final List<Spell> getAll() {
         List<Spell> spells = new ArrayList<>();
 
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = this.dcm.getConnection()){
             SpellDAO spellDAO = new SpellDAO(connection);
             spells =  spellDAO.findAll();
 
@@ -98,8 +94,7 @@ public class SpellJDBCExecutor {
     public Spell getBySpellName(String spellName) {
         Spell spell = new Spell();
 
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = this.dcm.getConnection()){
             SpellDAO spellDAO = new SpellDAO(connection);
             spell =  spellDAO.findBySpellName(spellName);
 
@@ -113,8 +108,7 @@ public class SpellJDBCExecutor {
     public List<Spell> getAllByWordInSpellName(String word) {
         List<Spell> spells = new ArrayList<>();
 
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = this.dcm.getConnection()){
             SpellDAO spellDAO = new SpellDAO(connection);
             spells =  spellDAO.findAllWithWordInSpellName(word);
 
@@ -127,8 +121,7 @@ public class SpellJDBCExecutor {
     public List<Spell> getAllByLevel(String word) {
         List<Spell> spells = new ArrayList<>();
 
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = this.dcm.getConnection()){
             SpellDAO spellDAO = new SpellDAO(connection);
             spells = spellDAO.findAllWithSpellLevel(word);
         } catch (SQLException e) {
@@ -140,8 +133,7 @@ public class SpellJDBCExecutor {
     public List<Spell> getAllByCastingTime(String word){
         List<Spell> spells = new ArrayList<>();
 
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = this.dcm.getConnection()){
             SpellDAO spellDAO = new SpellDAO(connection);
             spells = spellDAO.findAllWithCastingTime(word);
         } catch (SQLException e) {
@@ -153,8 +145,7 @@ public class SpellJDBCExecutor {
     public List<Spell> getAllByRange(String word){
         List<Spell> spells = new ArrayList<>();
 
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = this.dcm.getConnection()){
             SpellDAO spellDAO = new SpellDAO(connection);
             spells = spellDAO.findAllWithRange(word);
         } catch (SQLException e) {
@@ -166,8 +157,7 @@ public class SpellJDBCExecutor {
     public List<Spell> getAllByConcentration(boolean word){
         List<Spell> spells = new ArrayList<>();
 
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = this.dcm.getConnection()){
             SpellDAO spellDAO = new SpellDAO(connection);
             spells = spellDAO.findAllWithConcentration(word);
         } catch (SQLException e) {
@@ -179,8 +169,7 @@ public class SpellJDBCExecutor {
     public List<Spell> getAllBySpellSchool(String word) {
         List<Spell> spells = new ArrayList<>();
 
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = this.dcm.getConnection()){
             SpellDAO spellDAO = new SpellDAO(connection);
             spells =  spellDAO.findAllWithSpellSchool(word);
 
@@ -192,8 +181,7 @@ public class SpellJDBCExecutor {
     }
 
     public Spell update(Spell spellNewData){
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = this.dcm.getConnection()){
             SpellDAO spellDAO = new SpellDAO(connection);
 
             Spell spell = spellDAO.findById(spellNewData.getSpellId());
@@ -224,8 +212,7 @@ public class SpellJDBCExecutor {
     }
 
     public void delete(long id) {
-        try {
-            Connection connection = this.dcm.getConnection();
+        try (Connection connection = this.dcm.getConnection()){
             SpellDAO spellDAO = new SpellDAO(connection);
             Spell spellBeingDeleted = spellDAO.findById(id);
             spellDAO.delete(id);

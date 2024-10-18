@@ -4,7 +4,6 @@ import com.backend.theWizardsBag.models.Spell;
 import com.backend.theWizardsBag.utils.Executables.SpellJDBCExecutor;
 import com.cli.theWizardsBag.MenuCons.*;
 
-import java.sql.SQLOutput;
 import java.util.List;
 import java.util.Scanner;
 
@@ -178,8 +177,8 @@ public class ViewSpellMenu extends Menu {
 
     private void viewByTag(){
         // THIS WILL CALL A viewBySpellTagMenu ...
-        ViewSpellByTagMenu viewSpellByTagMenu = new ViewSpellByTagMenu("Enter the corresponding tag you want to see spells by: ");
-        viewSpellByTagMenu.display();
+        ViewSpellsByTagMenu viewSpellsByTagMenu = new ViewSpellsByTagMenu("Enter the corresponding tag you want to see spells by: ");
+        viewSpellsByTagMenu.display();
     }
 
     // OVRs

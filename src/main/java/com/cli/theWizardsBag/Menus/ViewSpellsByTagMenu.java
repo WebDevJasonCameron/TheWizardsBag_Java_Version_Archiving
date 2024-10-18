@@ -11,17 +11,15 @@ import com.cli.theWizardsBag.MenuCons.MenuOption;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-public class ViewSpellByTagMenu extends Menu {
+public class ViewSpellsByTagMenu extends Menu {
 
-    Scanner scanner = new Scanner(System.in);
     TagJDBCExecutor tagJDBCExecutor = new TagJDBCExecutor();
     List<Tag> tags = tagJDBCExecutor.getAllByTagTypes("spell", "both");
     List<MenuOption> menuOptions = getMenuOptions(tags);
 
     // CONs
-    public ViewSpellByTagMenu(String title) {
+    public ViewSpellsByTagMenu(String title) {
         super(title);
         this.options = menuOptions;
     }
@@ -49,14 +47,12 @@ public class ViewSpellByTagMenu extends Menu {
             spells.add(spellJDBCExecutor.getById(spellTag.getSpellsSpellId()));
         }
 
-        System.out.println("The following spells have that tag:  \n");
+        System.out.println("The following spells have the tag:  \n");
 
         for (Spell spell : spells) {
             System.out.println(spell.getSpellName());
         }
-
     }
-
 
 
     // OVRs
@@ -68,7 +64,4 @@ public class ViewSpellByTagMenu extends Menu {
             System.out.println("Invalid choice, please try again");
         }
     }
-
-
-
 }

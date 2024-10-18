@@ -409,20 +409,20 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 // <!> Getting an error for the following meths, "too many connections"
 
                 // Get & Set Classes List
-//                RpgClassJDBCExecutor rpgClassJDBCExecutor = new RpgClassJDBCExecutor();
-//                spell.setClassList(rpgClassJDBCExecutor.getAllBySpell(spell.getSpellId()));
+                RpgClassJDBCExecutor rpgClassJDBCExecutor = new RpgClassJDBCExecutor();
+                spell.setClassList(rpgClassJDBCExecutor.getAllBySpell(spell.getSpellId()));
 
                 // Get & Set Conditions List
-//                ConditionJDBCExecutor conditionJDBCExecutor = new ConditionJDBCExecutor();
-//                spell.setConditionList(conditionJDBCExecutor.getAllBySpell(spell.getSpellId()));
+                ConditionJDBCExecutor conditionJDBCExecutor = new ConditionJDBCExecutor();
+                spell.setConditionList(conditionJDBCExecutor.getAllBySpell(spell.getSpellId()));
 
                 // Get & Set Spell Damages
-//                DamagetypeJDBCExecutor damagetypeJDBCExecutor = new DamagetypeJDBCExecutor();
-//                spell.setDamagetypeList(damagetypeJDBCExecutor.getAllBySpell(spell.getSpellId()));
+                DamagetypeJDBCExecutor damagetypeJDBCExecutor = new DamagetypeJDBCExecutor();
+                spell.setDamagetypeList(damagetypeJDBCExecutor.getAllBySpell(spell.getSpellId()));
 
                 // Get & Set Spell Tags
-//                TagJDBCExecutor tagJDBCExecutor = new TagJDBCExecutor();
-//                spell.setTagList(tagJDBCExecutor.getAllBySpell(spell.getSpellId()));
+                TagJDBCExecutor tagJDBCExecutor = new TagJDBCExecutor();
+                spell.setTagList(tagJDBCExecutor.getAllBySpell(spell.getSpellId()));
 
                 // Add to Spell List
                 spells.add(spell);
@@ -467,20 +467,20 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 // <!> Getting an error for the following meths, "too many connections"
 
                 // Get & Set Classes List
-//                RpgClassJDBCExecutor rpgClassJDBCExecutor = new RpgClassJDBCExecutor();
-//                spell.setClassList(rpgClassJDBCExecutor.getAllBySpell(spell.getSpellId()));
+                RpgClassJDBCExecutor rpgClassJDBCExecutor = new RpgClassJDBCExecutor();
+                spell.setClassList(rpgClassJDBCExecutor.getAllBySpell(spell.getSpellId()));
 
                 // Get & Set Conditions List
-//                ConditionJDBCExecutor conditionJDBCExecutor = new ConditionJDBCExecutor();
-//                spell.setConditionList(conditionJDBCExecutor.getAllBySpell(spell.getSpellId()));
+                ConditionJDBCExecutor conditionJDBCExecutor = new ConditionJDBCExecutor();
+                spell.setConditionList(conditionJDBCExecutor.getAllBySpell(spell.getSpellId()));
 
                 // Get & Set Spell Damages
-//                DamagetypeJDBCExecutor damagetypeJDBCExecutor = new DamagetypeJDBCExecutor();
-//                spell.setDamagetypeList(damagetypeJDBCExecutor.getAllBySpell(spell.getSpellId()));
+                DamagetypeJDBCExecutor damagetypeJDBCExecutor = new DamagetypeJDBCExecutor();
+                spell.setDamagetypeList(damagetypeJDBCExecutor.getAllBySpell(spell.getSpellId()));
 
                 // Get & Set Spell Tags
-//                TagJDBCExecutor tagJDBCExecutor = new TagJDBCExecutor();
-//                spell.setTagList(tagJDBCExecutor.getAllBySpell(spell.getSpellId()));
+                TagJDBCExecutor tagJDBCExecutor = new TagJDBCExecutor();
+                spell.setTagList(tagJDBCExecutor.getAllBySpell(spell.getSpellId()));
 
                 // Add to Spell List
                 spells.add(spell);
@@ -525,20 +525,20 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 // <!> Getting an error for the following meths, "too many connections"
 
                 // Get & Set Classes List
-//                RpgClassJDBCExecutor rpgClassJDBCExecutor = new RpgClassJDBCExecutor();
-//                spell.setClassList(rpgClassJDBCExecutor.getAllBySpell(spell.getSpellId()));
+                RpgClassJDBCExecutor rpgClassJDBCExecutor = new RpgClassJDBCExecutor();
+                spell.setClassList(rpgClassJDBCExecutor.getAllBySpell(spell.getSpellId()));
 
                 // Get & Set Conditions List
-//                ConditionJDBCExecutor conditionJDBCExecutor = new ConditionJDBCExecutor();
-//                spell.setConditionList(conditionJDBCExecutor.getAllBySpell(spell.getSpellId()));
+                ConditionJDBCExecutor conditionJDBCExecutor = new ConditionJDBCExecutor();
+                spell.setConditionList(conditionJDBCExecutor.getAllBySpell(spell.getSpellId()));
 
                 // Get & Set Spell Damages
-//                DamagetypeJDBCExecutor damagetypeJDBCExecutor = new DamagetypeJDBCExecutor();
-//                spell.setDamagetypeList(damagetypeJDBCExecutor.getAllBySpell(spell.getSpellId()));
+                DamagetypeJDBCExecutor damagetypeJDBCExecutor = new DamagetypeJDBCExecutor();
+                spell.setDamagetypeList(damagetypeJDBCExecutor.getAllBySpell(spell.getSpellId()));
 
                 // Get & Set Spell Tags
-//                TagJDBCExecutor tagJDBCExecutor = new TagJDBCExecutor();
-//                spell.setTagList(tagJDBCExecutor.getAllBySpell(spell.getSpellId()));
+                TagJDBCExecutor tagJDBCExecutor = new TagJDBCExecutor();
+                spell.setTagList(tagJDBCExecutor.getAllBySpell(spell.getSpellId()));
 
                 // Add to Spell List
                 spells.add(spell);
@@ -583,20 +583,20 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 // <!> Getting an error for the following meths, "too many connections"
 
                 // Get & Set Classes List
-//                RpgClassJDBCExecutor rpgClassJDBCExecutor = new RpgClassJDBCExecutor();
-//                spell.setClassList(rpgClassJDBCExecutor.getAllBySpell(spell.getSpellId()));
+                RpgClassJDBCExecutor rpgClassJDBCExecutor = new RpgClassJDBCExecutor();
+                spell.setClassList(rpgClassJDBCExecutor.getAllBySpell(spell.getSpellId()));
 
                 // Get & Set Conditions List
-//                ConditionJDBCExecutor conditionJDBCExecutor = new ConditionJDBCExecutor();
-//                spell.setConditionList(conditionJDBCExecutor.getAllBySpell(spell.getSpellId()));
+                ConditionJDBCExecutor conditionJDBCExecutor = new ConditionJDBCExecutor();
+                spell.setConditionList(conditionJDBCExecutor.getAllBySpell(spell.getSpellId()));
 
                 // Get & Set Spell Damages
-//                DamagetypeJDBCExecutor damagetypeJDBCExecutor = new DamagetypeJDBCExecutor();
-//                spell.setDamagetypeList(damagetypeJDBCExecutor.getAllBySpell(spell.getSpellId()));
+                DamagetypeJDBCExecutor damagetypeJDBCExecutor = new DamagetypeJDBCExecutor();
+                spell.setDamagetypeList(damagetypeJDBCExecutor.getAllBySpell(spell.getSpellId()));
 
                 // Get & Set Spell Tags
-//                TagJDBCExecutor tagJDBCExecutor = new TagJDBCExecutor();
-//                spell.setTagList(tagJDBCExecutor.getAllBySpell(spell.getSpellId()));
+                TagJDBCExecutor tagJDBCExecutor = new TagJDBCExecutor();
+                spell.setTagList(tagJDBCExecutor.getAllBySpell(spell.getSpellId()));
 
                 // Add to Spell List
                 spells.add(spell);
@@ -641,20 +641,20 @@ public class SpellDAO extends DataAccessObject<Spell> {
                 // <!> Getting an error for the following meths, "too many connections"
 
                 // Get & Set Classes List
-//                RpgClassJDBCExecutor rpgClassJDBCExecutor = new RpgClassJDBCExecutor();
-//                spell.setClassList(rpgClassJDBCExecutor.getAllBySpell(spell.getSpellId()));
+                RpgClassJDBCExecutor rpgClassJDBCExecutor = new RpgClassJDBCExecutor();
+                spell.setClassList(rpgClassJDBCExecutor.getAllBySpell(spell.getSpellId()));
 
                 // Get & Set Conditions List
-//                ConditionJDBCExecutor conditionJDBCExecutor = new ConditionJDBCExecutor();
-//                spell.setConditionList(conditionJDBCExecutor.getAllBySpell(spell.getSpellId()));
+                ConditionJDBCExecutor conditionJDBCExecutor = new ConditionJDBCExecutor();
+                spell.setConditionList(conditionJDBCExecutor.getAllBySpell(spell.getSpellId()));
 
                 // Get & Set Spell Damages
-//                DamagetypeJDBCExecutor damagetypeJDBCExecutor = new DamagetypeJDBCExecutor();
-//                spell.setDamagetypeList(damagetypeJDBCExecutor.getAllBySpell(spell.getSpellId()));
+                DamagetypeJDBCExecutor damagetypeJDBCExecutor = new DamagetypeJDBCExecutor();
+                spell.setDamagetypeList(damagetypeJDBCExecutor.getAllBySpell(spell.getSpellId()));
 
                 // Get & Set Spell Tags
-//                TagJDBCExecutor tagJDBCExecutor = new TagJDBCExecutor();
-//                spell.setTagList(tagJDBCExecutor.getAllBySpell(spell.getSpellId()));
+                TagJDBCExecutor tagJDBCExecutor = new TagJDBCExecutor();
+                spell.setTagList(tagJDBCExecutor.getAllBySpell(spell.getSpellId()));
 
                 // Add to Spell List
                 spells.add(spell);

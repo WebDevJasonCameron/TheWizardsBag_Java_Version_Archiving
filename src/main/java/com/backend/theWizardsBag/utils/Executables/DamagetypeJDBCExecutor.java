@@ -3,6 +3,7 @@ package com.backend.theWizardsBag.utils.Executables;
 import com.backend.theWizardsBag.constants.keys.Keys;
 import com.backend.theWizardsBag.models.Damagetype;
 import com.backend.theWizardsBag.utils.DAOs.DamagetypeDAO;
+import com.backend.theWizardsBag.utils.DAOs.TagDAO;
 import com.backend.theWizardsBag.utils.Managers.DatabaseConnectionManager;
 
 import java.sql.Connection;
@@ -97,6 +98,17 @@ public class DamagetypeJDBCExecutor {
         try (Connection connection = dcm.getConnection();){
             DamagetypeDAO damagetypeDAO = new DamagetypeDAO(connection);
             return damagetypeDAO.findAllBySpellId(spellId);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Damagetype> getAllByDamagetypeName (String damagetypeName){
+        try (Connection connection = dcm.getConnection();){
+            DamagetypeDAO damagetypeDAO = new DamagetypeDAO(connection);
+            return damagetypeDAO.findAllByDamagetypeName(damagetypeName);
 
         } catch (SQLException e) {
             e.printStackTrace();

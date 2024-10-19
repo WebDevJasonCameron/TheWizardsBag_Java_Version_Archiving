@@ -36,12 +36,12 @@ public class TagDAO extends DataAccessObject<Tag> {
                                         "JOIN tags t ON st.spell_tag_id = t.tag_id " +
                                         "WHERE s.spell_id = ?";
 
-    private final static String GET_ALL_BY_TAG_TYPE = "SELECT * FROM tags " +
+    private final static String GET_ALL_BY_TAG_NAME = "SELECT * FROM tags " +
                                                      "WHERE " +
                                                          "tag_type = ? " +
                                                      "ORDER BY tag_name ASC";
 
-    private final static String GET_ALL_BY_TAG_TYPES = "SELECT * FROM tags " +
+    private final static String GET_ALL_BY_TAG_NAMES = "SELECT * FROM tags " +
                                                              "WHERE " +
                                                                   "tag_type = ? OR " +
                                                                   "tag_type = ? " +
@@ -193,10 +193,10 @@ public class TagDAO extends DataAccessObject<Tag> {
         return tags;
     }
 
-    public List<Tag> findAllByTagType(String tagType){
+    public List<Tag> findAllByTagName(String tagType){
         List<Tag> tags = new ArrayList<>();
 
-        try (PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_TAG_TYPE);){
+        try (PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_TAG_NAME);){
             statement.setString(1, tagType);
             ResultSet rs = statement.executeQuery();
             while (rs.next()){
@@ -217,10 +217,10 @@ public class TagDAO extends DataAccessObject<Tag> {
         return tags;
     }
 
-    public List<Tag> findAllByTagTypes(String tagType1, String tagType2){
+    public List<Tag> findAllByTagNames(String tagType1, String tagType2){
         List<Tag> tags = new ArrayList<>();
 
-        try (PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_TAG_TYPES);){
+        try (PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_TAG_NAMES);){
             statement.setString(1, tagType1);
             statement.setString(2, tagType2);
             ResultSet rs = statement.executeQuery();

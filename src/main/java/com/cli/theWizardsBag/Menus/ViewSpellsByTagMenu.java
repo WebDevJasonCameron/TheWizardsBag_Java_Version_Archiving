@@ -15,7 +15,7 @@ import java.util.List;
 public class ViewSpellsByTagMenu extends Menu {
 
     TagJDBCExecutor tagJDBCExecutor = new TagJDBCExecutor();
-    List<Tag> tags = tagJDBCExecutor.getAllByTagTypes("spell", "both");
+    List<Tag> tags = tagJDBCExecutor.getAllByTagNames("spell", "both");
     List<MenuOption> menuOptions = getMenuOptions(tags);
 
     // CONs

@@ -120,10 +120,10 @@ public class TagJDBCExecutor {
         }
     }
 
-    public List<Tag> getAllByTagType (String tagType){
+    public List<Tag> getAllByTagName (String tagType){
         try (Connection connection = dcm.getConnection();){
             TagDAO tagDAO = new TagDAO(connection);
-            return tagDAO.findAllByTagType(tagType);
+            return tagDAO.findAllByTagName(tagType);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -131,10 +131,10 @@ public class TagJDBCExecutor {
         }
     }
 
-    public List<Tag> getAllByTagTypes (String tagType1, String tagType2){
+    public List<Tag> getAllByTagNames (String tagType1, String tagType2){
         try (Connection connection = dcm.getConnection();){
             TagDAO tagDAO = new TagDAO(connection);
-            return tagDAO.findAllByTagTypes(tagType1, tagType2);
+            return tagDAO.findAllByTagNames(tagType1, tagType2);
 
         } catch (SQLException e) {
             e.printStackTrace();

@@ -1,6 +1,7 @@
 package com.backend.theWizardsBag.utils.DAOs;
 
 import com.backend.theWizardsBag.models.Damagetype;
+import com.backend.theWizardsBag.models.Tag;
 import com.backend.theWizardsBag.utils.Objects.DataAccessObject;
 
 import java.sql.Connection;
@@ -40,6 +41,10 @@ public class DamagetypeDAO extends DataAccessObject<Damagetype> {
                                         "JOIN spell_damagetypes sd ON sd.spells_spell_id = s.spell_id " +
                                         "JOIN damagetypes d ON sd.spell_damagetype_id = d.damagetype_id " +
                                         "WHERE s.spell_id = ?";
+
+    private final static String GET_ALL_BY_DAMAGETYPE_NAME = "SELECT * FROM damagetypes " +
+                                                             "WHERE damagetype_id = ? " +
+                                                             "ORDER BY damagetype_name ";
 
     // CONs
     public DamagetypeDAO(Connection connection) {
@@ -177,5 +182,27 @@ public class DamagetypeDAO extends DataAccessObject<Damagetype> {
         return damagetypes;
     }
 
+    public List<Damagetype> findAllByDamagetypeName(String damagetypeName){
+        List<Damagetype> damagetypes = new ArrayList<>();
 
+        try (PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_DAMAGETYPE_NAME);){
+            statement.setString(1, damagetypeName);
+
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()){
+                Damagetype damagetype = new Damagetype();
+
+                damagetype.setDamagetypeId(rs.getLong("damagetype_id"));
+                damagetype.setDamagetypeName(rs.getString("damagetype_name"));
+
+                damagetypes.add(damagetype);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        return damagetypes;
+    }
 }

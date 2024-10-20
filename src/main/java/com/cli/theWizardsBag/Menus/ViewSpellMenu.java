@@ -23,6 +23,7 @@ public class ViewSpellMenu extends Menu {
         addOption(new MenuOption("Select Spells to View by School Attribute: ", this::viewBySchool));
         addOption(new MenuOption("Select Spells to View by Source: ", this::viewBySource));
         addOption(new MenuOption("Select Spells to View by Tags: ", this::viewByTag));
+        addOption(new MenuOption("Select Spells to View by Damage Type: ", this::viewByDamagetype));
 
     }
 
@@ -179,6 +180,12 @@ public class ViewSpellMenu extends Menu {
         // THIS WILL CALL A viewBySpellTagMenu ...
         ViewSpellsByTagMenu viewSpellsByTagMenu = new ViewSpellsByTagMenu("Enter the corresponding tag you want to see spells by: ");
         viewSpellsByTagMenu.display();
+    }
+
+    private void viewByDamagetype(){
+        // THIS WILL CALL A viewBySpellTagMenu ...
+        ViewSpellsByDamagetypeMenu viewSpellsByDamagetypeMenu = new ViewSpellsByDamagetypeMenu("Enter the corresponding damage type you want to see spells by: ");
+        viewSpellsByDamagetypeMenu.display();
     }
 
     // OVRs

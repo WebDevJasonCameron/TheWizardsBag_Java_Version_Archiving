@@ -5,6 +5,7 @@ import com.backend.theWizardsBag.models.Spell;
 import com.backend.theWizardsBag.models.SpellDamagetype;
 import com.backend.theWizardsBag.models.SpellTag;
 import com.backend.theWizardsBag.utils.Executables.DamagetypeJDBCExecutor;
+import com.backend.theWizardsBag.utils.Executables.SpellDamagetypeJDBCExecutor;
 import com.backend.theWizardsBag.utils.Executables.SpellJDBCExecutor;
 import com.backend.theWizardsBag.utils.Executables.SpellTagJDBCExecutor;
 import com.cli.theWizardsBag.MenuCons.Menu;
@@ -32,19 +33,17 @@ public class ViewSpellsByDamagetypeMenu extends Menu {
         for (Damagetype damagetype : damagetypes) {
             menuOptionsOutput.add(new MenuOption(damagetype.getDamagetypeName(), () -> {
                 System.out.println("You chose " + damagetype.getDamagetypeName());
-                // More here
+                viewByDamagetypeId(damagetype.getDamagetypeId());
             }));
         }
         return menuOptionsOutput;
     }
 
     private void viewByDamagetypeId(Long DamagetypeId){
-        DamagetypeJDBCExecutor damagetypeJDBCExecutor = new DamagetypeJDBCExecutor();
+        SpellDamagetypeJDBCExecutor spellDamagetypeJDBCExecutor = new SpellDamagetypeJDBCExecutor();
         SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
 
-
-        //List<SpellTag> spellTags = spellTagJDBCExecutor.getAllByTagId(DamagetypeId);
-        List<SpellDamagetype> spellDamagetypes = damagetypeJDBCExecutor.getAllByDamagetypeId(DamagetypeId);
+        List<SpellDamagetype> spellDamagetypes = spellDamagetypeJDBCExecutor.getAllByDamagetypeId(DamagetypeId);
 
         List<Spell> spells = new ArrayList<>();
 
@@ -52,7 +51,7 @@ public class ViewSpellsByDamagetypeMenu extends Menu {
             spells.add(spellJDBCExecutor.getById(spellDamagetype.getSpellsSpellId()));
         }
 
-        System.out.println("The following spells have the tag:  \n");
+        System.out.println("The following spells have the damage type:  \n");
 
         for (Spell spell : spells) {
             System.out.println(spell.getSpellName());

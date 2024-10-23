@@ -3,11 +3,9 @@ package com.cli.theWizardsBag.Menus;
 import com.backend.theWizardsBag.models.Damagetype;
 import com.backend.theWizardsBag.models.Spell;
 import com.backend.theWizardsBag.models.SpellDamagetype;
-import com.backend.theWizardsBag.models.SpellTag;
 import com.backend.theWizardsBag.utils.Executables.DamagetypeJDBCExecutor;
 import com.backend.theWizardsBag.utils.Executables.SpellDamagetypeJDBCExecutor;
 import com.backend.theWizardsBag.utils.Executables.SpellJDBCExecutor;
-import com.backend.theWizardsBag.utils.Executables.SpellTagJDBCExecutor;
 import com.cli.theWizardsBag.MenuCons.Menu;
 import com.cli.theWizardsBag.MenuCons.MenuOption;
 

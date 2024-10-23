@@ -24,6 +24,7 @@ public class ViewSpellMenu extends Menu {
         addOption(new MenuOption("Select Spells to View by Source: ", this::viewBySource));
         addOption(new MenuOption("Select Spells to View by Tags: ", this::viewByTag));
         addOption(new MenuOption("Select Spells to View by Damage Type: ", this::viewByDamagetype));
+        addOption(new MenuOption("Select Spells to View by a Condition Involved in the Spell: ", this::viewByCondition));
 
     }
 
@@ -167,15 +168,6 @@ public class ViewSpellMenu extends Menu {
         }
     }
 
-    // <!> Later
-    private void viewBySource() {
-        System.out.println("Enter the source of the spells you want to view belongs to: ");
-        ValidationInputHandler inputHandler = new ValidationInputHandler(this.scanner,new TextValidationStrategy());
-        String source = inputHandler.handleInput();
-        System.out.println("Here are the spells from " + source + " source:");
-        // Implementation for viewing by source
-    }
-
     private void viewByTag(){
         // THIS WILL CALL A viewBySpellTagMenu ...
         ViewSpellsByTagMenu viewSpellsByTagMenu = new ViewSpellsByTagMenu("Enter the corresponding tag you want to see spells by: ");
@@ -186,6 +178,20 @@ public class ViewSpellMenu extends Menu {
         // THIS WILL CALL A viewBySpellTagMenu ...
         ViewSpellsByDamagetypeMenu viewSpellsByDamagetypeMenu = new ViewSpellsByDamagetypeMenu("Enter the corresponding damage type you want to see spells by: ");
         viewSpellsByDamagetypeMenu.display();
+    }
+
+    private void viewByCondition(){
+        // (!) Add here to display results
+    }
+
+
+    // <!> Later
+    private void viewBySource() {
+        System.out.println("Enter the source of the spells you want to view belongs to: ");
+        ValidationInputHandler inputHandler = new ValidationInputHandler(this.scanner,new TextValidationStrategy());
+        String source = inputHandler.handleInput();
+        System.out.println("Here are the spells from " + source + " source:");
+        // Implementation for viewing by source
     }
 
     // OVRs

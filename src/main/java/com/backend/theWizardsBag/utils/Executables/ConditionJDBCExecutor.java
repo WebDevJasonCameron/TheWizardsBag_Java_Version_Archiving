@@ -5,6 +5,7 @@ import com.backend.theWizardsBag.models.Condition;
 import com.backend.theWizardsBag.models.RpgClass;
 import com.backend.theWizardsBag.utils.DAOs.ConditionDAO;
 import com.backend.theWizardsBag.utils.DAOs.RpgClassDAO;
+import com.backend.theWizardsBag.utils.DAOs.TagDAO;
 import com.backend.theWizardsBag.utils.Managers.DatabaseConnectionManager;
 
 import java.sql.Connection;
@@ -113,4 +114,17 @@ public class ConditionJDBCExecutor {
         }
     }
 
+    public List<Condition> getAllByConditionNames (){
+        try (Connection connection = dcm.getConnection();){
+            TagDAO tagDAO = new TagDAO(connection);
+            return tagDAO.findAllByTagName();
+
+            ConditionDAO conditionDAO = new ConditionDAO(connection);
+            return conditionDAO.findAllByConditionName();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
 }

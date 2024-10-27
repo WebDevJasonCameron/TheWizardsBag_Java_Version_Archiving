@@ -116,8 +116,6 @@ public class ConditionJDBCExecutor {
 
     public List<Condition> getAllByConditionNames (){
         try (Connection connection = dcm.getConnection();){
-            TagDAO tagDAO = new TagDAO(connection);
-            return tagDAO.findAllByTagName();
 
             ConditionDAO conditionDAO = new ConditionDAO(connection);
             return conditionDAO.findAllByConditionName();

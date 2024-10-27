@@ -41,6 +41,11 @@ public class ConditionDAO extends DataAccessObject<Condition> {
                                         "JOIN conditions c ON sc.spell_condition_id = c.condition_id " +
                                         "WHERE s.spell_id = ?";
 
+    private final static String GET_ALL_BY_CONDITION_NAME = "SELECT * FROM conditions " +
+                                            "WHERE " +
+                                                "condition_name = ? " +
+                                            "ORDER BY condition_name ASC";
+
     // CONs
     public ConditionDAO(Connection connection) {
         super(connection);
@@ -182,5 +187,6 @@ public class ConditionDAO extends DataAccessObject<Condition> {
 
         return conditions;
     }
+
 
 }

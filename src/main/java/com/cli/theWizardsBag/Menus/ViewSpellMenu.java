@@ -175,13 +175,13 @@ public class ViewSpellMenu extends Menu {
     }
 
     private void viewByDamagetype(){
-        // THIS WILL CALL A viewBySpellTagMenu ...
         ViewSpellsByDamagetypeMenu viewSpellsByDamagetypeMenu = new ViewSpellsByDamagetypeMenu("Enter the corresponding damage type you want to see spells by: ");
         viewSpellsByDamagetypeMenu.display();
     }
 
     private void viewByCondition(){
-        // (!) Add here to display results
+        ViewSpellsByConditionMenu viewSpellsByConditionMenu = new  ViewSpellsByConditionMenu("Enter the corresponding condition you want to see spells by: ");
+        viewSpellsByConditionMenu.display();
     }
 
 

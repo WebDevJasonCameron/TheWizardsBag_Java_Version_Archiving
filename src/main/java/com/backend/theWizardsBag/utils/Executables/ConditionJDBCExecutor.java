@@ -19,7 +19,7 @@ public class ConditionJDBCExecutor {
     final String password = keys.jdbcPassword();
     final DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "the_wizards_db", "postgres", password);
 
-    // MTHs
+    // MTHs & SPELL
     public Condition create(String conditionName, String conditionDescription){
         try (Connection connection = dcm.getConnection();){
             ConditionDAO conditionDAO = new ConditionDAO(connection);
@@ -102,7 +102,6 @@ public class ConditionJDBCExecutor {
         }
     }
 
-    // SPELL
     public List<Condition> getAllBySpell (long spellId){
         try (Connection connection = dcm.getConnection();){
             ConditionDAO conditionDAO = new ConditionDAO(connection);
@@ -114,11 +113,11 @@ public class ConditionJDBCExecutor {
         }
     }
 
-    public List<Condition> getAllByConditionNames (){
+    public List<Condition> getAllByConditionNames (String conditionName){
         try (Connection connection = dcm.getConnection();){
 
             ConditionDAO conditionDAO = new ConditionDAO(connection);
-            return conditionDAO.findAllByConditionName();
+            return conditionDAO.findAllByConditionName(conditionName);
 
         } catch (SQLException e) {
             e.printStackTrace();

@@ -1,6 +1,7 @@
 package com.backend.theWizardsBag.utils.DAOs;
 
 import com.backend.theWizardsBag.models.Condition;
+import com.backend.theWizardsBag.models.Damagetype;
 import com.backend.theWizardsBag.utils.Objects.DataAccessObject;
 
 import java.sql.Connection;
@@ -189,4 +190,27 @@ public class ConditionDAO extends DataAccessObject<Condition> {
     }
 
 
+    public List<Condition> findAllByConditionName(String conditionName){
+        List<Condition> conditions = new ArrayList<>();
+
+        try (PreparedStatement statement = this.connection.prepareStatement(GET_ALL_BY_CONDITION_NAME);){
+            statement.setString(1, conditionName);
+
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()){
+                Condition condition = new Condition();
+
+                condition.setConditionId(rs.getLong("condition_id"));
+                condition.setConditionName(rs.getString("condition_name"));
+
+                conditions.add(condition);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        return conditions;
+    }
 }

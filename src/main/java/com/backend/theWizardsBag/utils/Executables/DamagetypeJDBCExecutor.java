@@ -107,6 +107,7 @@ public class DamagetypeJDBCExecutor {
 
     public List<Damagetype> getAllByDamagetypeName (String damagetypeName){
         try (Connection connection = dcm.getConnection();){
+
             DamagetypeDAO damagetypeDAO = new DamagetypeDAO(connection);
             return damagetypeDAO.findAllByDamagetypeName(damagetypeName);
 

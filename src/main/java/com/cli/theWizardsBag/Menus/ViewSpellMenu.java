@@ -25,7 +25,7 @@ public class ViewSpellMenu extends Menu {
         addOption(new MenuOption("Select Spells to View by Tags: ", this::viewByTag));
         addOption(new MenuOption("Select Spells to View by Damage Type: ", this::viewByDamagetype));
         addOption(new MenuOption("Select Spells to View by a Condition Involved in the Spell: ", this::viewByCondition));
-
+        addOption(new MenuOption("Select Spells to View by a Classes that can use them: ", this::viewByRPGClass));
     }
 
     // METHs
@@ -182,6 +182,11 @@ public class ViewSpellMenu extends Menu {
     private void viewByCondition(){
         ViewSpellsByConditionMenu viewSpellsByConditionMenu = new  ViewSpellsByConditionMenu("Enter the corresponding condition you want to see spells by: ");
         viewSpellsByConditionMenu.display();
+    }
+
+    private void viewByRPGClass(){
+        ViewSpellsByRPGClassMenu viewSpellsByRPGClassMenu = new  ViewSpellsByRPGClassMenu("Enter the corresponding player class you want to see spells by: ");
+        viewSpellsByRPGClassMenu.display();
     }
 
 

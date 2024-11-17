@@ -37,11 +37,11 @@ public class ViewSpellsByDamagetypeMenu extends Menu {
         return menuOptionsOutput;
     }
 
-    private void viewByDamagetypeId(Long DamagetypeId){
+    private void viewByDamagetypeId(Long damagetypeId){
         SpellDamagetypeJDBCExecutor spellDamagetypeJDBCExecutor = new SpellDamagetypeJDBCExecutor();
         SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
 
-        List<SpellDamagetype> spellDamagetypes = spellDamagetypeJDBCExecutor.getAllByDamagetypeId(DamagetypeId);
+        List<SpellDamagetype> spellDamagetypes = spellDamagetypeJDBCExecutor.getAllByDamagetypeId(damagetypeId);
 
         List<Spell> spells = new ArrayList<>();
 

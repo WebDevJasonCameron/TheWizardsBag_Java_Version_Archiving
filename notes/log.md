@@ -1,5 +1,11 @@
 # Log
 
+## 2024 11 16
+
+Still working on this.  Happy birthday!
+
+---
+
 ## 2024 10 12
 
 I think I'm getting this menu and sub sub sub sub menus figured out. It's slow and sometimes I think I just want to start building a web app to show something of my work.  This is so very slow when you can't spend more than ten to fifteen minutes a day on the project.  I want to say baby steps will eventually get us there. However, I think someone is going to pick up the baby and toss it if it doesn't eventually start running and making progress!  

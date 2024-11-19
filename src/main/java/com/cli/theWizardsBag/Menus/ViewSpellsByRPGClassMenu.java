@@ -31,7 +31,7 @@ public class ViewSpellsByRPGClassMenu extends Menu {
         for (RpgClass rpgClass : rpgClasses) {
             menuOptionsOutput.add(new MenuOption(rpgClass.getClassName(), () -> {
                 System.out.println("You chose " + rpgClass.getClassName());
-                // <!> viewByRPGClassID(rpgClass.getRpgClassId()
+                viewByRPGClassId(rpgClass.getClassId());
             }));
         }
         return menuOptionsOutput;

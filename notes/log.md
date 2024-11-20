@@ -1,5 +1,11 @@
 # Log
 
+## 2024 11 20
+
+I've spent a lot on viewing spells.  I think it's time to add spells.  Then, we can delete. Finally, we want to edit.  This is usually the hardest part.  
+
+---
+
 ## 2024 11 19 
 
 This is an interesting one.  I hadn't come across this yet, but I need to query the rpg class table to get a list of all the subclass names first... then I can take the class id... or, maybe I should just list out all the class and subclass names for the user to choose.  That would probably be better than trying to keep drilling down into the menus.  That is going to get rally tedious.  As such, I need to not only output the class name, but the subclass.  Then, the user can select the menu number choice.  That... will that work?  Are the spells connected by the actual class id?  I need to find that out.

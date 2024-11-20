@@ -29,8 +29,8 @@ public class ViewSpellsByRPGClassMenu extends Menu {
     private List<MenuOption> getMenuOptions(List<RpgClass> rpgClasses) {
         List<MenuOption> menuOptionsOutput = new ArrayList<>();
         for (RpgClass rpgClass : rpgClasses) {
-            menuOptionsOutput.add(new MenuOption(rpgClass.getClassName(), () -> {
-                System.out.println("You chose " + rpgClass.getClassName());
+            menuOptionsOutput.add(new MenuOption(rpgClass.getClassName() + " " + rpgClass.getClassSubclassName(), () -> {
+                System.out.println("You chose " + rpgClass.getClassName() + " " + rpgClass.getClassSubclassName() );
                 viewByRPGClassId(rpgClass.getClassId());
             }));
         }
@@ -43,7 +43,7 @@ public class ViewSpellsByRPGClassMenu extends Menu {
 
         List<SpellClass> spellClasses = spellClassJDBCExecutor.getAllByClassId(rpgClassId);
 
-        List<Spell> spells = new ArrayList<Spell>();
+        List<Spell> spells = new ArrayList<>();
 
         for (SpellClass spellClass : spellClasses) {
             spells.add(spellJDBCExecutor.getById(spellClass.getSpellsSpellId()));

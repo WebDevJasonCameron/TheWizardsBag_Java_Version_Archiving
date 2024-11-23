@@ -1,5 +1,11 @@
 # Log
 
+## 2024 11 22
+
+Spell to add: Earworm... Concentration effecting spell. Spell 2 -> Wet Socks... 
+
+---
+
 ## 2024 11 20
 
 I've spent a lot on viewing spells.  I think it's time to add spells.  Then, we can delete. Finally, we want to edit.  This is usually the hardest part.  

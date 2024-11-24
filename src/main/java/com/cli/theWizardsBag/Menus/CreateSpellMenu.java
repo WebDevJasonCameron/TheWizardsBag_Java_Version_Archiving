@@ -51,11 +51,20 @@ public class CreateSpellMenu extends Menu {
         spell.setSpellName(setSpellName());
         spell.setSpellLevel(setSpellLevel());
         spell.setSpellCastingTime(setSpellCastingTime());
-
-
-        spell.setSpellDescription(setSpellDescription());
+        spell.setSpellRange(setSpellRange());
+        spell.setSpellComponentsVisual(isSpellComponentVisual());
+        spell.setSpellComponentsSemantic(isSpellComponentSemantic());
+        spell.setSpellComponentsMaterial(isSpellComponentMaterial());
+        if (spell.isSpellComponentsMaterial() == true) {
+            spell.setSpellComponentsMaterials(setSpellComponentMaterials());
+        }
+        spell.setSpellDuration(setSpellDuration());
+        spell.setSpellConcentration(isSpellConcentration());
+        spell.setSpellRitual(isSpellRitual());
         spell.setSpellSchool(setSpellSchool());
-
+        spell.setSpellSaveType(setSpellSave());
+        spell.setSpellDescription(setSpellDescription());
+        spell.setSpellImageUrl(setSpellImageUrl());
 
 
         return spell;
@@ -146,6 +155,13 @@ public class CreateSpellMenu extends Menu {
         String spellImageUrl = scanner.nextLine();
         return spellImageUrl;
     }
+
+    /* Return ArrayList of
+    - tags
+    - conditions
+    - damage types
+    - class
+     */
 
 
     // OVR

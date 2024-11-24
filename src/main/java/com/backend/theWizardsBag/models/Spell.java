@@ -50,7 +50,7 @@ public class Spell implements DataTransferObject {
             String spellComponentsMaterials,
             String spellDuration,
             boolean spellConcentration,
-            boolean spellRitual,
+            boolean spellRitual,t
             String spellSchool,
             String spellSaveType,
             String spellDescription,

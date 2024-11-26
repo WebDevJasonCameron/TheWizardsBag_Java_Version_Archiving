@@ -15,15 +15,18 @@ import java.util.List;
 
 public class ViewSpellsByRPGClassMenu extends Menu {
 
+    // ATTs
     RpgClassJDBCExecutor rpgClassJDBCExecutor = new RpgClassJDBCExecutor();
     List<RpgClass> rpgClasses = rpgClassJDBCExecutor.getAll();
     List<MenuOption> menuOptions = getMenuOptions(rpgClasses);
+
 
     // CONs
     public ViewSpellsByRPGClassMenu(String title) {
         super(title);
         this.options = menuOptions;
     }
+
 
     // METHs
     private List<MenuOption> getMenuOptions(List<RpgClass> rpgClasses) {

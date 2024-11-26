@@ -93,6 +93,9 @@ public class SpellDAO extends DataAccessObject<Spell> {
     private final static String DELETE = "DELETE FROM spells " +
                                          "WHERE spell_id = ? ";
 
+    // SUB Qs
+    private final static String GET_ALL_SPELL_LEVELS = "SELECT DISTINCT spell_level FROM spells";
+
 
     // CONs
     public SpellDAO(Connection connection){
@@ -666,6 +669,24 @@ public class SpellDAO extends DataAccessObject<Spell> {
         }
 
         return spells;
+    }
+
+    // SUB METHs
+    public List<String> findAllSpellLevels(){
+        List<String> spellLevels = new ArrayList<>();
+
+        try(PreparedStatement statement = this.connection.prepareStatement(GET_ALL_SPELL_LEVELS);){
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()){
+                spellLevels.add(rs.getString("spell_level"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        return spellLevels;
     }
 
 }

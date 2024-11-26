@@ -63,6 +63,7 @@ public class SpellJDBCExecutor {
         }
     }
 
+    // ACTs
     public Spell getById (long id) {
 
         Spell spell = new Spell();
@@ -222,5 +223,18 @@ public class SpellJDBCExecutor {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+    }
+
+    // SUB ACTs
+    public List<String> getAllSpellLevels(){
+        List<String> spellLevels = new ArrayList<>();
+
+        try (Connection connection = this.dcm.getConnection()){
+            SpellDAO spellDAO = new SpellDAO(connection);
+            spellLevels = spellDAO.findAllSpellLevels();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return spellLevels;
     }
 }

@@ -53,8 +53,10 @@ public class MainMenu extends Menu {
     }
 
     private void addSpell() {
-        System.out.println("Adding an spell...");
+        System.out.println("Adding a spell...");
         // Implementation for adding a spell
+        CreateSpellMenu createSpellMenu = new CreateSpellMenu();
+        createSpellMenu.display();
     }
 
     private void editSpell() {

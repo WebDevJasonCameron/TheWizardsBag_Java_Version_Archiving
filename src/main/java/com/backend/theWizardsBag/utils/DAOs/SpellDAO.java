@@ -94,7 +94,9 @@ public class SpellDAO extends DataAccessObject<Spell> {
                                          "WHERE spell_id = ? ";
 
     // SUB Qs
-    private final static String GET_ALL_SPELL_LEVELS = "SELECT DISTINCT spell_level FROM spells";
+    private final static String GET_ALL_SPELL_LEVELS = "SELECT DISTINCT spell_level " +
+                                                        "FROM spells " +
+                                                        "ORDER BY spell_level ASC";
 
 
     // CONs

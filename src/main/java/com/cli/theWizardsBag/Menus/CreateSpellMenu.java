@@ -3,6 +3,7 @@ package com.cli.theWizardsBag.Menus;
 import com.backend.theWizardsBag.models.Spell;
 import com.cli.theWizardsBag.MenuCons.Menu;
 import com.cli.theWizardsBag.MenuCons.MenuOption;
+import com.cli.theWizardsBag.Menus.SupportMenus.SelectAvailableSpellLevelMenu;
 
 import java.util.Scanner;
 
@@ -47,7 +48,7 @@ public class CreateSpellMenu extends Menu {
 
     // METHs
     private Spell spellCreation() {
-        System.out.println("Starting the spell creation...");
+        System.out.println("\nStarting the spell creation...");
         spell.setSpellName(setSpellName());
         spell.setSpellLevel(setSpellLevel());
         spell.setSpellCastingTime(setSpellCastingTime());
@@ -72,15 +73,19 @@ public class CreateSpellMenu extends Menu {
 
     // SUP METHs
     private String setSpellName() {
-        System.out.println("Enter the name of the spell: ");
+        System.out.println("===================\n1. Enter the name of the spell: ");
         String spellName = scanner.nextLine();
+        System.out.println("Spell name: " + spellName + "\n");
         return spellName;
     }
 
     private String setSpellLevel() {
-        System.out.println("Enter the level of the spell: ");
-        String spellLevel = scanner.nextLine();                         // <!> This changes to a selection
-        return spellLevel;
+        SelectAvailableSpellLevelMenu selectAvailableSpellLevelMenu = new SelectAvailableSpellLevelMenu();
+        System.out.println("2. Enter the level of the spell: ");
+        selectAvailableSpellLevelMenu.display();
+        String chosenSpellLevel = selectAvailableSpellLevelMenu.getChosenSpellLevel();
+        System.out.println("Spell level (CreateSpellMenu): " + chosenSpellLevel + "\n");
+        return chosenSpellLevel;
     }
 
     private String setSpellCastingTime() {

@@ -51,6 +51,8 @@ public class CreateSpellMenu extends Menu {
         System.out.println("\nStarting the spell creation...");
         spell.setSpellName(setSpellName());
         spell.setSpellLevel(setSpellLevel());
+
+        /*
         spell.setSpellCastingTime(setSpellCastingTime());
         spell.setSpellRange(setSpellRange());
         spell.setSpellComponentsVisual(isSpellComponentVisual());
@@ -66,7 +68,7 @@ public class CreateSpellMenu extends Menu {
         spell.setSpellSaveType(setSpellSave());
         spell.setSpellDescription(setSpellDescription());
         spell.setSpellImageUrl(setSpellImageUrl());
-
+        */
 
         return spell;
     }

@@ -12,22 +12,24 @@ public class SelectAvailableSpellLevelMenu extends Menu {
     // ATTs
     SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
     List<String> spellLevelList = spellJDBCExecutor.getAllSpellLevels();
-    List<MenuOption> menuOptions = getMenuOptions(spellLevelList);
     String chosenSpellLevel;
+    List<MenuOption> menuOptions = getMenuOptions(spellLevelList);
+
 
 
     // CONs
     public SelectAvailableSpellLevelMenu() {
         super("Enter the level of the spell: ");
+        this.chosenSpellLevel = "n/a";
         this.options = menuOptions;
     }
 
     // METHs
     private List<MenuOption> getMenuOptions(List<String> spellLevelList) {
         List<MenuOption> menuOptions = new ArrayList<>();
+
         for(String spellLevel : spellLevelList) {
             menuOptions.add(new MenuOption(spellLevel, () ->{
-                System.out.println("Selected Spell Level (SelectAvailableSpellLevel): " + spellLevel);
                 chosenSpellLevel = spellLevel;
             }));
         }
@@ -36,7 +38,8 @@ public class SelectAvailableSpellLevelMenu extends Menu {
 
     // GETs & SETs
     public String getChosenSpellLevel() {
-        return chosenSpellLevel;
+        System.out.println("Selected Spell Level (SelectAvailableSpellLevel): " + this.chosenSpellLevel);
+        return this.chosenSpellLevel;
     }
 
     // OVRs

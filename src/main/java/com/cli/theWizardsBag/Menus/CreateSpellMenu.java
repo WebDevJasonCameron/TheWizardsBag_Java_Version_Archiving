@@ -48,7 +48,7 @@ public class CreateSpellMenu extends Menu {
 
     // METHs
     private Spell spellCreation() {
-        System.out.println("\nStarting the spell creation...");
+        System.out.println("\nTo Start the spell creation process, we need to fill out some parameters...");
         spell.setSpellName(setSpellName());
         spell.setSpellLevel(setSpellLevel());
 
@@ -75,7 +75,7 @@ public class CreateSpellMenu extends Menu {
 
     // SUP METHs
     private String setSpellName() {
-        System.out.println("===================\n1. Enter the name of the spell: ");
+        System.out.println("===================\n\t1) Enter the name of the spell: ");
         String spellName = scanner.nextLine();
         System.out.println("Spell name: " + spellName + "\n");
         return spellName;
@@ -83,9 +83,11 @@ public class CreateSpellMenu extends Menu {
 
     private String setSpellLevel() {
         SelectAvailableSpellLevelMenu selectAvailableSpellLevelMenu = new SelectAvailableSpellLevelMenu();
-        System.out.println("2. Enter the level of the spell: ");
+        System.out.println("\t2) Enter the level of the spell: ");
+
         selectAvailableSpellLevelMenu.display();
         String chosenSpellLevel = selectAvailableSpellLevelMenu.getChosenSpellLevel();
+
         System.out.println("Spell level (CreateSpellMenu): " + chosenSpellLevel + "\n");
         return chosenSpellLevel;
     }

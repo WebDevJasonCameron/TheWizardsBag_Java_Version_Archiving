@@ -11,8 +11,9 @@ public class SelectAvailableSpellLevelMenu extends Menu {
 
     // ATTs
     SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
-    List<String> spellLevelList = spellJDBCExecutor.getAllSpellLevels();
     String chosenSpellLevel;
+
+    List<String> spellLevelList = spellJDBCExecutor.getAllSpellLevels();
     List<MenuOption> menuOptions = getMenuOptions(spellLevelList);
 
 

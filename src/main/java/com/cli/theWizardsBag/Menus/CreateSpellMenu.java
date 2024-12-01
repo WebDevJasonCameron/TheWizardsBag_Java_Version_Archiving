@@ -1,9 +1,11 @@
 package com.cli.theWizardsBag.Menus;
 
 import com.backend.theWizardsBag.models.Spell;
+import com.backend.theWizardsBag.utils.Executables.SpellJDBCExecutor;
 import com.cli.theWizardsBag.MenuCons.Menu;
 import com.cli.theWizardsBag.MenuCons.MenuOption;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class CreateSpellMenu extends Menu {
@@ -81,8 +83,22 @@ public class CreateSpellMenu extends Menu {
     }
 
     private String setSpellLevel() {
-        String chosenSpellLevel = "not picked";                          // <!> build support class to give you a list of options... query string???
+        String chosenSpellLevel = "not picked";                          // <!!>
+        SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
+        List<String> spellLevelList = spellJDBCExecutor.getAllSpellLevels();
+
+        // put spellLevelList in a dictionary with a coordinating number
+        // get user to select a number  (you will need a scanner and verifier cape)
+        // have that number result in the value's output
+        // take output and return that as the string
+
+
         System.out.println("\t2) Enter the level of the spell: ");
+        int count = 1;
+        for (String spellLevel : spellLevelList) {
+            System.out.println(count + ". " + spellLevel);
+            count += 1;
+        }
 
         return chosenSpellLevel;
     }

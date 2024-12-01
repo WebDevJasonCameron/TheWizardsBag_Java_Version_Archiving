@@ -3,7 +3,6 @@ package com.cli.theWizardsBag.Menus;
 import com.backend.theWizardsBag.models.Spell;
 import com.cli.theWizardsBag.MenuCons.Menu;
 import com.cli.theWizardsBag.MenuCons.MenuOption;
-import com.cli.theWizardsBag.Menus.SupportMenus.SelectAvailableSpellLevelMenu;
 
 import java.util.Scanner;
 
@@ -82,13 +81,9 @@ public class CreateSpellMenu extends Menu {
     }
 
     private String setSpellLevel() {
-        SelectAvailableSpellLevelMenu selectAvailableSpellLevelMenu = new SelectAvailableSpellLevelMenu();
+        String chosenSpellLevel = "not picked";                          // <!> build support class to give you a list of options... query string???
         System.out.println("\t2) Enter the level of the spell: ");
 
-        selectAvailableSpellLevelMenu.display();
-        String chosenSpellLevel = selectAvailableSpellLevelMenu.getChosenSpellLevel();
-
-        System.out.println("Spell level (CreateSpellMenu): " + chosenSpellLevel + "\n");
         return chosenSpellLevel;
     }
 

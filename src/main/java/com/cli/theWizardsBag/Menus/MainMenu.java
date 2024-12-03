@@ -20,16 +20,6 @@ public class MainMenu extends Menu {
         addOption(new MenuOption("Remove Spell", this::removeSpell));
     }
 
-    // OVRs
-    @Override
-    protected void handleUserChoice(int choice) {
-        if (choice > 0 && choice <= options.size()) {
-            options.get(choice - 1).execute();
-        } else {
-            System.out.println("Invalid choice, please try again");
-        }
-    }
-
     // METHs
     private void addItem() {
         System.out.println("Adding an item...");
@@ -75,5 +65,16 @@ public class MainMenu extends Menu {
         System.out.println("Removing a spell...");
         // Implementation for removing a spell
     }
+
+    // OVRs
+    @Override
+    protected void handleUserChoice(int choice) {
+        if (choice > 0 && choice <= options.size()) {
+            options.get(choice - 1).execute();
+        } else {
+            System.out.println("Invalid choice, please try again");
+        }
+    }
+
 
 }

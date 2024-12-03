@@ -15,34 +15,6 @@ public class CreateSpellMenu extends Menu {
     Scanner scanner = new Scanner(System.in);
     Spell spell = new Spell();
 
-    /*  The Plan
-    Create a spell container
-    Ask the user
-        - Name of spell
-        - Level
-        - Casting time
-        - Casting range
-        - If there are visual components
-        - If there are semantic components
-        - If there are material components
-        -- if so, what are they
-        - What is the Spells duration
-        - Is the spell a concentration spell
-        - Can the spell be a ritual
-        - What school of magic does it belong to
-        - Is there a save roll component to the spell
-        - Provide a description
-        - Provide an image url?
-        - Do you want to add tag
-        -- What tag
-        -- Again?
-        - Does the spell cause any conditions?
-        -- What conditions do you want to add?
-        - Does the spell cause a damage type?
-        -- What damage types do you want to add?
-        - What classes can use this spell?
-     */
-
     // CONs
     public CreateSpellMenu() {
         super("Create Spell");
@@ -85,23 +57,35 @@ public class CreateSpellMenu extends Menu {
     }
 
     private String setSpellLevel() {
-        Map<Integer, String> spellLevelDictionary = new HashMap<>();
-        Scanner spellLevelScanner = new Scanner(System.in);
+        Map<String, String> spellLevelDictionary = new HashMap<>();
 
+        String spellLevelOutput = "";
         int count = 0;
-        spellLevelDictionary.put(count, "no level");
+        spellLevelDictionary.put(String.valueOf(count), "no level");
 
         SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
         List<String> spellLevelList = spellJDBCExecutor.getAllSpellLevels();
 
         System.out.println("\t2) Enter the level of the spell: ");
 
+        System.out.println("0. No Level");
         for (String spellLevel : spellLevelList) {
-            System.out.println((count + 1) + ". " + spellLevel);
-            spellLevelDictionary.put(count, spellLevel);
+            System.out.println((count += 1) + ". " + spellLevel);
+            spellLevelDictionary.put(String.valueOf(count), spellLevel);
         }
 
-        return "awaiting a reply";                              // <!> HERE
+        String spellLevel = scanner.nextLine();
+
+        if (spellLevelDictionary.containsKey(spellLevel)) {
+            spellLevelOutput = spellLevelDictionary.get(spellLevel);
+        } else {
+            System.out.println("Unrecognized spell level: " + spellLevel);
+            System.out.println("Please try again.");
+            setSpellLevel();
+        }
+
+        System.out.println("\tThe chosen spell level is : " + spellLevelOutput) ;
+        return spellLevelOutput;
 
     }
 

@@ -26,9 +26,9 @@ public class CreateSpellMenu extends Menu {
         System.out.println("\nTo Start the spell creation process, we need to fill out some parameters...");
         spell.setSpellName(setSpellName());
         spell.setSpellLevel(setSpellLevel());
+        spell.setSpellCastingTime(setSpellCastingTime());
 
         /*
-        spell.setSpellCastingTime(setSpellCastingTime());
         spell.setSpellRange(setSpellRange());
         spell.setSpellComponentsVisual(isSpellComponentVisual());
         spell.setSpellComponentsSemantic(isSpellComponentSemantic());
@@ -90,9 +90,35 @@ public class CreateSpellMenu extends Menu {
     }
 
     private String setSpellCastingTime() {
-        System.out.println("Enter the casting time: ");
-        String castingTime = scanner.nextLine();                         // <!> This changes to a selection
-        return castingTime;
+        Map<String, String> spellCastingTimeDictionary = new HashMap<>();
+
+        String spellLevelOutput = "";
+        int count = 0;
+        spellCastingTimeDictionary.put(String.valueOf(count), "no level");
+
+        SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
+        List<String> spellCastingTimeList = spellJDBCExecutor.getAllSpellCastingTimes();
+
+        System.out.println("\t2) Enter the Casting Time of the spell: ");
+
+        System.out.println("0. No Level");
+        for (String spellLevel : spellLevelList) {
+            System.out.println((count += 1) + ". " + spellLevel);
+            spellCastingTimeDictionary.put(String.valueOf(count), spellLevel);
+        }
+
+        String spellLevel = scanner.nextLine();
+
+        if (spellLevelDictionary.containsKey(spellLevel)) {
+            spellLevelOutput = spellLevelDictionary.get(spellLevel);
+        } else {
+            System.out.println("Unrecognized spell level: " + spellLevel);
+            System.out.println("Please try again.");
+            setSpellLevel();
+        }
+
+        System.out.println("\tThe chosen spell level is : " + spellLevelOutput) ;
+        return spellLevelOutput;
     }
 
     private String setSpellRange() {

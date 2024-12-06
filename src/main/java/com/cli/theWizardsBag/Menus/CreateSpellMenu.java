@@ -89,36 +89,36 @@ public class CreateSpellMenu extends Menu {
 
     }
 
-    private String setSpellCastingTime() {
+    private String setSpellCastingTime() {                                          // <!> HERE
         Map<String, String> spellCastingTimeDictionary = new HashMap<>();
 
-        String spellLevelOutput = "";
+        String spellCastingTimeOutput = "";
         int count = 0;
         spellCastingTimeDictionary.put(String.valueOf(count), "no level");
 
         SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
-        List<String> spellCastingTimeList = spellJDBCExecutor.getAllSpellCastingTimes();
+        List<String> spellCastingTimeList = spellJDBCExecutor.getAllSpellCastingTime();
 
         System.out.println("\t2) Enter the Casting Time of the spell: ");
 
         System.out.println("0. No Level");
-        for (String spellLevel : spellLevelList) {
-            System.out.println((count += 1) + ". " + spellLevel);
-            spellCastingTimeDictionary.put(String.valueOf(count), spellLevel);
+        for (String spellCastingTime : spellCastingTimeList) {
+            System.out.println((count += 1) + ". " + spellCastingTime);
+            spellCastingTimeDictionary.put(String.valueOf(count), spellCastingTime);
         }
 
-        String spellLevel = scanner.nextLine();
+        String spellCastingTime = scanner.nextLine();
 
-        if (spellLevelDictionary.containsKey(spellLevel)) {
-            spellLevelOutput = spellLevelDictionary.get(spellLevel);
+        if (spellCastingTimeDictionary.containsKey(spellCastingTime)) {
+            spellCastingTimeOutput = spellCastingTimeDictionary.get(spellCastingTime);
         } else {
-            System.out.println("Unrecognized spell level: " + spellLevel);
+            System.out.println("Unrecognized spell level: " + spellCastingTime);
             System.out.println("Please try again.");
             setSpellLevel();
         }
 
-        System.out.println("\tThe chosen spell level is : " + spellLevelOutput) ;
-        return spellLevelOutput;
+        System.out.println("\tThe chosen spell level is : " + spellCastingTime) ;
+        return spellCastingTimeOutput;
     }
 
     private String setSpellRange() {

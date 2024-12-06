@@ -237,4 +237,16 @@ public class SpellJDBCExecutor {
         }
         return spellLevels;
     }
+
+    public List<String> getAllSpellCastingTime(){                   // <!> HERE
+        List<String> spellCastingTimes = new ArrayList<>();
+
+        try (Connection connection = this.dcm.getConnection()){
+            SpellDAO spellDAO = new SpellDAO(connection);
+            spellCastingTimes = spellDAO.findAllSpellLevels();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return spellCastingTimes;
+    }
 }

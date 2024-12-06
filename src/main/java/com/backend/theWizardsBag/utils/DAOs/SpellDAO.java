@@ -694,14 +694,14 @@ public class SpellDAO extends DataAccessObject<Spell> {
         return spellLevels;
     }
 
-    public List<String> getAllSpellCastingTime(){                   // <!> Here
+    public List<String> findAllSpellCastingTime(){                   // <!> Here
         List<String> spellCastingTimes = new ArrayList<>();
 
-        try(PreparedStatement statement = this.connection.prepareStatement(GET_ALL_SPELL_LEVELS);){
+        try(PreparedStatement statement = this.connection.prepareStatement(GET_ALL_SPELL_CASTING_TIMES);){
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()){
-                spellCastingTimes.add(rs.getString("spell_level"));
+                spellCastingTimes.add(rs.getString("spell_casting_time"));
             }
 
         } catch (SQLException e) {

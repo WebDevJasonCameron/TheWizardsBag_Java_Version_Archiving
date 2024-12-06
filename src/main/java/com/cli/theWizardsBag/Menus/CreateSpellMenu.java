@@ -89,19 +89,19 @@ public class CreateSpellMenu extends Menu {
 
     }
 
-    private String setSpellCastingTime() {                                          // <!> HERE
+    private String setSpellCastingTime() {
         Map<String, String> spellCastingTimeDictionary = new HashMap<>();
 
         String spellCastingTimeOutput = "";
         int count = 0;
-        spellCastingTimeDictionary.put(String.valueOf(count), "no level");
+        spellCastingTimeDictionary.put(String.valueOf(count), "no casting time");
 
         SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
         List<String> spellCastingTimeList = spellJDBCExecutor.getAllSpellCastingTime();
 
         System.out.println("\t2) Enter the Casting Time of the spell: ");
 
-        System.out.println("0. No Level");
+        System.out.println("0. No Casting Time");
         for (String spellCastingTime : spellCastingTimeList) {
             System.out.println((count += 1) + ". " + spellCastingTime);
             spellCastingTimeDictionary.put(String.valueOf(count), spellCastingTime);
@@ -112,18 +112,18 @@ public class CreateSpellMenu extends Menu {
         if (spellCastingTimeDictionary.containsKey(spellCastingTime)) {
             spellCastingTimeOutput = spellCastingTimeDictionary.get(spellCastingTime);
         } else {
-            System.out.println("Unrecognized spell level: " + spellCastingTime);
+            System.out.println("Unrecognized spell casting time: " + spellCastingTime);
             System.out.println("Please try again.");
             setSpellLevel();
         }
 
-        System.out.println("\tThe chosen spell level is : " + spellCastingTime) ;
+        System.out.println("\tThe chosen spell casting time is : " + spellCastingTimeOutput) ;
         return spellCastingTimeOutput;
     }
 
     private String setSpellRange() {
         System.out.println("Enter the range of the spell: ");
-        String spellRange = scanner.nextLine();                          // <!> This changes to a selection
+        String spellRange = scanner.nextLine();
         return spellRange;
     }
 

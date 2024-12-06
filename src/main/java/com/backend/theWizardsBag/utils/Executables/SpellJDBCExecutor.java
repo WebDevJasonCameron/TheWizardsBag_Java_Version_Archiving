@@ -243,7 +243,7 @@ public class SpellJDBCExecutor {
 
         try (Connection connection = this.dcm.getConnection()){
             SpellDAO spellDAO = new SpellDAO(connection);
-            spellCastingTimes = spellDAO.findAllSpellLevels();
+            spellCastingTimes = spellDAO.findAllSpellCastingTime();
         } catch (SQLException e) {
             e.printStackTrace();
         }

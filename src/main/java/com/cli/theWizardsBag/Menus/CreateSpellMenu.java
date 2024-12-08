@@ -27,9 +27,9 @@ public class CreateSpellMenu extends Menu {
         spell.setSpellName(setSpellName());
         spell.setSpellLevel(setSpellLevel());
         spell.setSpellCastingTime(setSpellCastingTime());
+        spell.setSpellRange(setSpellRange());
 
         /*
-        spell.setSpellRange(setSpellRange());
         spell.setSpellComponentsVisual(isSpellComponentVisual());
         spell.setSpellComponentsSemantic(isSpellComponentSemantic());
         spell.setSpellComponentsMaterial(isSpellComponentMaterial());

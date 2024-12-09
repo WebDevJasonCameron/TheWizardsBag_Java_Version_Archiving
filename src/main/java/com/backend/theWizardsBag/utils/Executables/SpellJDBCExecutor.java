@@ -243,10 +243,22 @@ public class SpellJDBCExecutor {
 
         try (Connection connection = this.dcm.getConnection()){
             SpellDAO spellDAO = new SpellDAO(connection);
-            spellCastingTimes = spellDAO.findAllSpellCastingTime();
+            spellCastingTimes = spellDAO.findAllSpellCastingTimes();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return spellCastingTimes;
+    }
+
+    public List<String> getAllSpellRange(){                   // <!> HERE
+        List<String> spellRanges = new ArrayList<>();
+
+        try (Connection connection = this.dcm.getConnection()){
+            SpellDAO spellDAO = new SpellDAO(connection);
+            spellRanges = spellDAO.findAllRanges();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return spellRanges;
     }
 }

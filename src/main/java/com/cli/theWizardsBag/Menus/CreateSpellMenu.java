@@ -114,7 +114,7 @@ public class CreateSpellMenu extends Menu {
         } else {
             System.out.println("Unrecognized spell casting time: " + spellCastingTime);
             System.out.println("Please try again.");
-            setSpellLevel();
+            setSpellCastingTime();
         }
 
         System.out.println("\tThe chosen spell casting time is : " + spellCastingTimeOutput) ;
@@ -122,9 +122,35 @@ public class CreateSpellMenu extends Menu {
     }
 
     private String setSpellRange() {
-        System.out.println("Enter the range of the spell: ");
+        Map<String, String> spellRangeDictionary = new HashMap<>();
+
+        String spellRangeOutput = "";
+        int count = 0;
+        spellRangeDictionary.put(String.valueOf(count), "no range");
+
+        SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
+        List<String> spellRangeList = spellJDBCExecutor.getAllSpellRange();
+
+        System.out.println("\t2) Enter the range of the spell: ");
+
+        System.out.println("0. No Range");
+        for (String spellRange : spellRangeList) {
+            System.out.println((count += 1) + ". " + spellRange);
+            spellRangeDictionary.put(String.valueOf(count), spellRange);
+        }
+
         String spellRange = scanner.nextLine();
-        return spellRange;
+
+        if (spellRangeDictionary.containsKey(spellRange)) {
+            spellRangeOutput = spellRangeDictionary.get(spellRange);
+        } else {
+            System.out.println("Unrecognized spell range: " + spellRange);
+            System.out.println("Please try again.");
+            setSpellRange();
+        }
+
+        System.out.println("\tThe chosen spell range is : " + spellRangeOutput) ;
+        return spellRangeOutput;
     }
 
     private boolean isSpellComponentVisual() {

@@ -156,14 +156,16 @@ public class CreateSpellMenu extends Menu {
     private boolean isSpellComponentVisual() {
         System.out.println("Is there a visual component to the spell? ");
 
-        Map<String, Boolean> spellComponentBinary = new HashMap<>();
+        Map<String, Boolean> spellComponentBooleanOptions = new HashMap<>();
         boolean spellComponentVisualOutput = false;
 
         int count = 1;
-        spellComponentBinary.put(String.valueOf(count), false);
-        spellComponentBinary.put(String.valueOf(count), true);
+        spellComponentBooleanOptions.put(String.valueOf(count), false);
+        spellComponentBooleanOptions.put(String.valueOf(count), true);
 
-        // <!> not sure, but list out
+        for (String spellComponent : spellComponentBooleanOptions.keySet()) {
+            System.out.println(spellComponent);      // <!> true or false, but doesn't work correctly
+        }
 
 
         return scanner.nextBoolean();

@@ -164,7 +164,7 @@ public class CreateSpellMenu extends Menu {
         spellComponentBooleanOptions.put(String.valueOf(count), true);
 
         for (String spellComponent : spellComponentBooleanOptions.keySet()) {
-            System.out.println(spellComponent);      // <!> true or false, but doesn't work correctly
+            System.out.println(spellComponent);      // <!><!>true or false, but doesn't work correctly
         }
 
 

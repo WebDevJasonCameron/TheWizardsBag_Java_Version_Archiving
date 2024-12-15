@@ -4,11 +4,9 @@ import com.backend.theWizardsBag.models.Spell;
 import com.backend.theWizardsBag.utils.Executables.SpellJDBCExecutor;
 import com.cli.theWizardsBag.MenuCons.Menu;
 import com.cli.theWizardsBag.MenuCons.MenuOption;
+import jdk.jfr.BooleanFlag;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class CreateSpellMenu extends Menu {
 
@@ -155,20 +153,29 @@ public class CreateSpellMenu extends Menu {
 
     private boolean isSpellComponentVisual() {
         System.out.println("Is there a visual component to the spell? ");
-
-        Map<String, Boolean> spellComponentBooleanOptions = new HashMap<>();
         boolean spellComponentVisualOutput = false;
 
-        int count = 1;
-        spellComponentBooleanOptions.put(String.valueOf(count), false);
-        spellComponentBooleanOptions.put(String.valueOf(count), true);
+        List<Boolean> spellComponentVisualChoices = new ArrayList<>();
+        spellComponentVisualChoices.add(Boolean.FALSE);
+        spellComponentVisualChoices.add(Boolean.TRUE);
 
-        for (String spellComponentBooleanOption : spellComponentBooleanOptions.keySet()) {
-            System.out.println(spellComponentBooleanOption);      // <!> true or false, but doesn't work
+        Map<String, Boolean> spellComponentVisualChoicesList = new HashMap<>();
+        int count = 0;
+        for (Boolean spellComponentVisualChoice : spellComponentVisualChoices) {
+            System.out.println((count += 1) + ". " + spellComponentVisualChoice);
+            spellComponentVisualChoicesList.put(String.valueOf(count), spellComponentVisualChoice);
+        }
+        String spellComponentVisualChoiceNumber = scanner.nextLine();
+
+        if (spellComponentVisualChoicesList.containsKey(spellComponentVisualChoiceNumber)) {
+            spellComponentVisualOutput = spellComponentVisualChoicesList.get(spellComponentVisualChoiceNumber);
+        } else {
+            System.out.println("Unrecognized reply: " + spellComponentVisualChoiceNumber);
+            System.out.println("Please try again.");
+            setSpellRange();
         }
 
-
-        return scanner.nextBoolean();
+        return spellComponentVisualOutput;
     }
 
 

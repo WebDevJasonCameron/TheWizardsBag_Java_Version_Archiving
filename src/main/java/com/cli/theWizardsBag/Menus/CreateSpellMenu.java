@@ -163,13 +163,14 @@ public class CreateSpellMenu extends Menu {
         spellComponentBooleanOptions.put(String.valueOf(count), false);
         spellComponentBooleanOptions.put(String.valueOf(count), true);
 
-        for (String spellComponent : spellComponentBooleanOptions.keySet()) {
-            System.out.println(spellComponent);      // <!><!>true or false, but doesn't work correctly
+        for (String spellComponentBooleanOption : spellComponentBooleanOptions.keySet()) {
+            System.out.println(spellComponentBooleanOption);      // <!> true or false, but doesn't work
         }
 
 
         return scanner.nextBoolean();
     }
+
 
     private boolean isSpellComponentSemantic() {
         System.out.println("Is there a semantic component to the spell? ");

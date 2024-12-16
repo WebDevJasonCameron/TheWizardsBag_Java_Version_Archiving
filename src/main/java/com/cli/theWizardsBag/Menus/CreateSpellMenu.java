@@ -27,10 +27,10 @@ public class CreateSpellMenu extends Menu {
         spell.setSpellCastingTime(setSpellCastingTime());
         spell.setSpellRange(setSpellRange());
         spell.setSpellComponentsVisual(isSpellComponentVisual());
-
-        /*
         spell.setSpellComponentsSemantic(isSpellComponentSemantic());
         spell.setSpellComponentsMaterial(isSpellComponentMaterial());
+        /*
+
         if (spell.isSpellComponentsMaterial() == true) {
             spell.setSpellComponentsMaterials(setSpellComponentMaterials());
         }
@@ -181,12 +181,56 @@ public class CreateSpellMenu extends Menu {
 
     private boolean isSpellComponentSemantic() {
         System.out.println("Is there a semantic component to the spell? ");
-        return scanner.nextBoolean();
+        boolean spellComponentSemanticOutput = false;
+
+        List<Boolean> spellComponentSemanticChoices = new ArrayList<>();
+        spellComponentSemanticChoices.add(Boolean.FALSE);
+        spellComponentSemanticChoices.add(Boolean.TRUE);
+
+        Map<String, Boolean> spellComponentSemanticChoicesList = new HashMap<>();
+        int count = 0;
+        for (Boolean spellComponentSemanticChoice : spellComponentSemanticChoices) {
+            System.out.println((count += 1) + ". " + spellComponentSemanticChoice);
+            spellComponentSemanticChoicesList.put(String.valueOf(count), spellComponentSemanticChoice);
+        }
+        String spellComponentSemanticChoiceNumber = scanner.nextLine();
+
+        if (spellComponentSemanticChoicesList.containsKey(spellComponentSemanticChoiceNumber)) {
+            spellComponentSemanticOutput = spellComponentSemanticChoicesList.get(spellComponentSemanticChoiceNumber);
+        } else {
+            System.out.println("Unrecognized reply: " + spellComponentSemanticChoiceNumber);
+            System.out.println("Please try again.");
+            setSpellRange();
+        }
+
+        return spellComponentSemanticOutput;
     }
 
     private boolean isSpellComponentMaterial() {
-        System.out.println("Is there a visual component to the spell? ");
-        return scanner.nextBoolean();
+        System.out.println("Is there a semantic component to the spell? ");
+        boolean spellComponentMaterialOutput = false;
+
+        List<Boolean> spellComponentMaterialChoices = new ArrayList<>();
+        spellComponentMaterialChoices.add(Boolean.FALSE);
+        spellComponentMaterialChoices.add(Boolean.TRUE);
+
+        Map<String, Boolean> spellComponentMaterialChoicesList = new HashMap<>();
+        int count = 0;
+        for (Boolean spellComponentMaterialChoice : spellComponentMaterialChoices) {
+            System.out.println((count += 1) + ". " + spellComponentMaterialChoice);
+            spellComponentMaterialChoicesList.put(String.valueOf(count), spellComponentMaterialChoice);
+        }
+        String spellComponentMaterialChoiceNumber = scanner.nextLine();
+
+        if (spellComponentMaterialChoicesList.containsKey(spellComponentMaterialChoiceNumber)) {
+            spellComponentMaterialOutput = spellComponentMaterialChoicesList.get(spellComponentMaterialChoiceNumber);
+        } else {
+            System.out.println("Unrecognized reply: " + spellComponentMaterialChoiceNumber);
+            System.out.println("Please try again.");
+            setSpellRange();
+        }
+
+        return spellComponentMaterialOutput;
     }
 
     private String setSpellComponentMaterials() {

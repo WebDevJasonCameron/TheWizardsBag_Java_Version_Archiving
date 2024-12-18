@@ -29,12 +29,12 @@ public class CreateSpellMenu extends Menu {
         spell.setSpellComponentsVisual(isSpellComponentVisual());
         spell.setSpellComponentsSemantic(isSpellComponentSemantic());
         spell.setSpellComponentsMaterial(isSpellComponentMaterial());
-        /*
-
         if (spell.isSpellComponentsMaterial() == true) {
             spell.setSpellComponentsMaterials(setSpellComponentMaterials());
         }
         spell.setSpellDuration(setSpellDuration());
+
+        /*
         spell.setSpellConcentration(isSpellConcentration());
         spell.setSpellRitual(isSpellRitual());
         spell.setSpellSchool(setSpellSchool());

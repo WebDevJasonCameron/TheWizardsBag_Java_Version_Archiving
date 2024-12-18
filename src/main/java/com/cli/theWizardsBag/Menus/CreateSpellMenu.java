@@ -178,7 +178,6 @@ public class CreateSpellMenu extends Menu {
         return spellComponentVisualOutput;
     }
 
-
     private boolean isSpellComponentSemantic() {
         System.out.println("Is there a semantic component to the spell? ");
         boolean spellComponentSemanticOutput = false;
@@ -240,9 +239,35 @@ public class CreateSpellMenu extends Menu {
     }
 
     private String setSpellDuration() {
-        System.out.println("Enter the duration of the spell: ");
-        String duration = scanner.nextLine();                          // <!> This changes to a selection
-        return duration;
+        Map<String, String> spellDurationDictionary = new HashMap<>();
+
+        String spellDurationOutput = "";
+        int count = 0;
+        spellDurationDictionary.put(String.valueOf(count), "no duration");
+
+        SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
+        List<String> spellDurationList = spellJDBCExecutor.getAllSpellDuration();
+
+        System.out.println("\t2) Enter the duration of the spell: ");
+
+        System.out.println("0. No Range");
+        for (String spellDuration : spellDurationList) {
+            System.out.println((count += 1) + ". " + spellDuration);
+            spellDurationDictionary.put(String.valueOf(count), spellDuration);
+        }
+
+        String spellDuration = scanner.nextLine();
+
+        if (spellDurationDictionary.containsKey(spellDuration)) {
+            spellDurationOutput = spellDurationDictionary.get(spellDuration);
+        } else {
+            System.out.println("Unrecognized spell duration: " + spellDuration);
+            System.out.println("Please try again.");
+            setSpellDuration();
+        }
+
+        System.out.println("\tThe chosen spell duration is : " + spellDurationOutput) ;
+        return spellDurationOutput;
     }
 
     private boolean isSpellConcentration() {

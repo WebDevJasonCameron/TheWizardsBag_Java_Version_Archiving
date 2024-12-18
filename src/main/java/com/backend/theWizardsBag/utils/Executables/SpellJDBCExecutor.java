@@ -238,7 +238,7 @@ public class SpellJDBCExecutor {
         return spellLevels;
     }
 
-    public List<String> getAllSpellCastingTime(){                   // <!> HERE
+    public List<String> getAllSpellCastingTime(){
         List<String> spellCastingTimes = new ArrayList<>();
 
         try (Connection connection = this.dcm.getConnection()){
@@ -250,7 +250,7 @@ public class SpellJDBCExecutor {
         return spellCastingTimes;
     }
 
-    public List<String> getAllSpellRange(){                   // <!> HERE
+    public List<String> getAllSpellRange(){
         List<String> spellRanges = new ArrayList<>();
 
         try (Connection connection = this.dcm.getConnection()){
@@ -260,5 +260,17 @@ public class SpellJDBCExecutor {
             e.printStackTrace();
         }
         return spellRanges;
+    }
+
+    public List<String> getAllSpellDuration(){
+        List<String> spellDurations = new ArrayList<>();
+
+        try (Connection connection = this.dcm.getConnection()){
+            SpellDAO spellDAO = new SpellDAO(connection);
+            spellDurations = spellDAO.findAllDurations();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return spellDurations;
     }
 }

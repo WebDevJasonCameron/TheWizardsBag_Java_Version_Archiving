@@ -106,6 +106,11 @@ public class SpellDAO extends DataAccessObject<Spell> {
             "FROM spells " +
             "ORDER BY spell_range_area ASC";
 
+
+    private final static String GET_ALL_SPELL_DURATIONS = "SELECT DISTINCT spell_duration " +
+            "FROM spells " +
+            "ORDER BY spell_duration ASC";
+
     // CONs
     public SpellDAO(Connection connection){
         super(connection);
@@ -730,6 +735,23 @@ public class SpellDAO extends DataAccessObject<Spell> {
             throw new RuntimeException(e);
         }
         return spellRanges;
+    }
+
+    public List<String> findAllDurations(){                   // <!> Here
+        List<String> spellDurations = new ArrayList<>();
+
+        try(PreparedStatement statement = this.connection.prepareStatement(GET_ALL_SPELL_DURATIONS);){
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()){
+                spellDurations.add(rs.getString("spell_duration"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        return spellDurations;
     }
 
 }

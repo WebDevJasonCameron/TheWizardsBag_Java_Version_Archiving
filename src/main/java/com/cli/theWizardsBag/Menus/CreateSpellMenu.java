@@ -35,9 +35,9 @@ public class CreateSpellMenu extends Menu {
         spell.setSpellDuration(setSpellDuration());
         spell.setSpellConcentration(isSpellConcentration());
         spell.setSpellRitual(isSpellRitual());
+        spell.setSpellSchool(setSpellSchool());
 
         /*
-        spell.setSpellSchool(setSpellSchool());
         spell.setSpellSaveType(setSpellSave());
         spell.setSpellDescription(setSpellDescription());
         spell.setSpellImageUrl(setSpellImageUrl());
@@ -206,7 +206,7 @@ public class CreateSpellMenu extends Menu {
     }
 
     private boolean isSpellComponentMaterial() {
-        System.out.println("Is there a semantic component to the spell? ");
+        System.out.println("Are there material components to the spell? ");
         boolean spellComponentMaterialOutput = false;
 
         List<Boolean> spellComponentMaterialChoices = new ArrayList<>();
@@ -325,9 +325,33 @@ public class CreateSpellMenu extends Menu {
     }
 
     private String setSpellSchool() {
-        System.out.println("Enter the school of the spell: ");
-        String spellSchool = scanner.nextLine();                        // <!> This changes to a selection
-        return spellSchool;
+        Map<String, String> spellSchoolDictionary = new HashMap<>();
+
+        String spellSchoolOutput = "";
+        int count = 0;
+
+        SpellJDBCExecutor spellJDBCExecutor = new SpellJDBCExecutor();
+        List<String> spellSchoolList = spellJDBCExecutor.getAllSpellSchools();
+
+        System.out.println("\t2) Enter the school the spell belongs to: ");
+
+        for (String spellSchool : spellSchoolList) {
+            System.out.println((count += 1) + ". " + spellSchool);
+            spellSchoolDictionary.put(String.valueOf(count), spellSchool);
+        }
+
+        String spellSchool = scanner.nextLine();
+
+        if (spellSchoolDictionary.containsKey(spellSchool)) {
+            spellSchoolOutput = spellSchoolDictionary.get(spellSchool);
+        } else {
+            System.out.println("Unrecognized spell school: " + spellSchool);
+            System.out.println("Please try again.");
+            setSpellSchool();
+        }
+
+        System.out.println("\tThe chosen spell school is : " + spellSchoolOutput) ;
+        return spellSchoolOutput;
     }
 
     private String setSpellSave() {

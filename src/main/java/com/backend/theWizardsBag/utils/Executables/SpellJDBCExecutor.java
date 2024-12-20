@@ -273,4 +273,16 @@ public class SpellJDBCExecutor {
         }
         return spellDurations;
     }
+
+    public List<String> getAllSpellSchools(){
+        List<String> spellSchools = new ArrayList<>();
+
+        try (Connection connection = this.dcm.getConnection()){
+            SpellDAO spellDAO = new SpellDAO(connection);
+            spellSchools = spellDAO.findAllSchools();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return spellSchools;
+    }
 }

@@ -33,10 +33,10 @@ public class CreateSpellMenu extends Menu {
             spell.setSpellComponentsMaterials(setSpellComponentMaterials());
         }
         spell.setSpellDuration(setSpellDuration());
-
-        /*
         spell.setSpellConcentration(isSpellConcentration());
         spell.setSpellRitual(isSpellRitual());
+
+        /*
         spell.setSpellSchool(setSpellSchool());
         spell.setSpellSaveType(setSpellSave());
         spell.setSpellDescription(setSpellDescription());
@@ -271,13 +271,57 @@ public class CreateSpellMenu extends Menu {
     }
 
     private boolean isSpellConcentration() {
-        System.out.println("Is there a concentration component to the spell? ");
-        return scanner.nextBoolean();
+        System.out.println("Is this a concentrated spell? ");
+        boolean spellComponentConcentrationOutput = false;
+
+        List<Boolean> spellComponentConcentrationChoices = new ArrayList<>();
+        spellComponentConcentrationChoices.add(Boolean.FALSE);
+        spellComponentConcentrationChoices.add(Boolean.TRUE);
+
+        Map<String, Boolean> spellComponentConcentrationChoicesList = new HashMap<>();
+        int count = 0;
+        for (Boolean spellComponentConcentrationChoice : spellComponentConcentrationChoices) {
+            System.out.println((count += 1) + ". " + spellComponentConcentrationChoice);
+            spellComponentConcentrationChoicesList.put(String.valueOf(count), spellComponentConcentrationChoice);
+        }
+        String spellComponentConcentrationChoiceNumber = scanner.nextLine();
+
+        if (spellComponentConcentrationChoicesList.containsKey(spellComponentConcentrationChoiceNumber)) {
+            spellComponentConcentrationOutput = spellComponentConcentrationChoicesList.get(spellComponentConcentrationChoiceNumber);
+        } else {
+            System.out.println("Unrecognized reply: " + spellComponentConcentrationChoiceNumber);
+            System.out.println("Please try again.");
+            setSpellRange();
+        }
+
+        return spellComponentConcentrationOutput;
     }
 
     private boolean isSpellRitual() {
-        System.out.println("Is there a ritual component to the spell? ");
-        return scanner.nextBoolean();
+        System.out.println("Is this a ritual spell? ");
+        boolean spellComponentRitualOutput = false;
+
+        List<Boolean> spellComponentRitualChoices = new ArrayList<>();
+        spellComponentRitualChoices.add(Boolean.FALSE);
+        spellComponentRitualChoices.add(Boolean.TRUE);
+
+        Map<String, Boolean> spellComponentRitualChoicesList = new HashMap<>();
+        int count = 0;
+        for (Boolean spellComponentRitualChoice : spellComponentRitualChoices) {
+            System.out.println((count += 1) + ". " + spellComponentRitualChoice);
+            spellComponentRitualChoicesList.put(String.valueOf(count), spellComponentRitualChoice);
+        }
+        String spellComponentRitualChoiceNumber = scanner.nextLine();
+
+        if (spellComponentRitualChoicesList.containsKey(spellComponentRitualChoiceNumber)) {
+            spellComponentRitualOutput = spellComponentRitualChoicesList.get(spellComponentRitualChoiceNumber);
+        } else {
+            System.out.println("Unrecognized reply: " + spellComponentRitualChoiceNumber);
+            System.out.println("Please try again.");
+            setSpellRange();
+        }
+
+        return spellComponentRitualOutput;
     }
 
     private String setSpellSchool() {

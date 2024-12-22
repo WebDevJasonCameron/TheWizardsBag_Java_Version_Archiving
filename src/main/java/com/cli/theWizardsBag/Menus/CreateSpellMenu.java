@@ -9,6 +9,9 @@ import jdk.jfr.BooleanFlag;
 
 import java.util.*;
 
+import static com.backend.theWizardsBag.constants.enums.SpellSaveTypes.DEXTERITY;
+import static javax.security.sasl.Sasl.STRENGTH;
+
 public class CreateSpellMenu extends Menu {
 
     Scanner scanner = new Scanner(System.in);
@@ -357,10 +360,20 @@ public class CreateSpellMenu extends Menu {
     }
 
     private String setSpellSave() {
+
         Map<String, String> spellSaveDictionary = new HashMap<>();
+        ArrayList<SpellSaveTypes> spellSaveTypesList = new ArrayList<>();
+
+
 
         String spellSaveOutput = "";
+
         int count = 0;
+
+
+
+
+
 
         // List out the enums
         // Add the enums to a dictionary with numbers as keys

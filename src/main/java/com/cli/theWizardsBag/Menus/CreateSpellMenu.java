@@ -1,5 +1,6 @@
 package com.cli.theWizardsBag.Menus;
 
+import com.backend.theWizardsBag.constants.enums.SpellSaveTypes;
 import com.backend.theWizardsBag.models.Spell;
 import com.backend.theWizardsBag.utils.Executables.SpellJDBCExecutor;
 import com.cli.theWizardsBag.MenuCons.Menu;
@@ -36,9 +37,10 @@ public class CreateSpellMenu extends Menu {
         spell.setSpellConcentration(isSpellConcentration());
         spell.setSpellRitual(isSpellRitual());
         spell.setSpellSchool(setSpellSchool());
+        spell.setSpellSaveType(setSpellSave());
+
 
         /*
-        spell.setSpellSaveType(setSpellSave());
         spell.setSpellDescription(setSpellDescription());
         spell.setSpellImageUrl(setSpellImageUrl());
         */
@@ -355,9 +357,17 @@ public class CreateSpellMenu extends Menu {
     }
 
     private String setSpellSave() {
-        System.out.println("Enter the name of the spell: ");
-        String spellSave = scanner.nextLine();
-        return spellSave;
+        Map<String, String> spellSaveDictionary = new HashMap<>();
+
+        String spellSaveOutput = "";
+        int count = 0;
+
+        // List out the enums
+        // Add the enums to a dictionary with numbers as keys
+        // User selects key, that produces the values and output
+
+
+        return "Reply with enum and change the db values to reflect the enums";
     }
 
     private String setSpellDescription() {
